@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkHere — Гонка за кандидатами начинается здесь</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="nav">
+        <div class="nav-dots">
+            <button class="nav-dot active" data-slide="0"></button>
+            <button class="nav-dot" data-slide="1"></button>
+            <button class="nav-dot" data-slide="2"></button>
+            <button class="nav-dot" data-slide="3"></button>
+            <button class="nav-dot" data-slide="4"></button>
+            <button class="nav-dot" data-slide="5"></button>
+            <button class="nav-dot" data-slide="6"></button>
+            <button class="nav-dot" data-slide="7"></button>
+            <button class="nav-dot" data-slide="8"></button>
+            <button class="nav-dot" data-slide="9"></button>
+            <button class="nav-dot" data-slide="10"></button>
+        </div>
+        <div class="nav-arrows">
+            <button class="nav-arrow prev" id="prevBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button class="nav-arrow next" id="nextBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Slide 1: Титульная -->
+    <section class="slide slide-1 active" data-slide="0">
+        <div class="slide-content">
+            <div class="logo">
+                <svg class="logo-icon" width="60" height="60" viewBox="0 0 60 60">
+                    <circle cx="30" cy="30" r="28" fill="url(#logoGrad)" stroke="#fff" stroke-width="2"/>
+                    <path d="M20 35 L30 25 L40 35" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#6366f1"/>
+                            <stop offset="100%" style="stop-color:#8b5cf6"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="logo-text">WorkHere</span>
+            </div>
+            <h1 class="title-main">
+                <span class="title-line">Гонка за кандидатами</span>
+                <span class="title-accent">начинается здесь</span>
+            </h1>
+            <div class="hero-visual">
+                <div class="race-track">
+                    <div class="track-line"></div>
+                    <div class="track-line"></div>
+                    <div class="track-line"></div>
+                </div>
+                <div class="mascot">
+                    <svg width="180" height="180" viewBox="0 0 180 180">
+                        <!-- Котик-маскот с флажком -->
+                        <ellipse cx="90" cy="150" rx="40" ry="10" fill="rgba(0,0,0,0.1)"/>
+                        <!-- Тело -->
+                        <ellipse cx="90" cy="110" rx="35" ry="40" fill="#FFD93D"/>
+                        <!-- Голова -->
+                        <circle cx="90" cy="60" r="35" fill="#FFD93D"/>
+                        <!-- Уши -->
+                        <path d="M60 40 L55 15 L75 35 Z" fill="#FFD93D"/>
+                        <path d="M120 40 L125 15 L105 35 Z" fill="#FFD93D"/>
+                        <path d="M63 38 L60 20 L73 35 Z" fill="#FFB347"/>
+                        <path d="M117 38 L120 20 L107 35 Z" fill="#FFB347"/>
+                        <!-- Глаза -->
+                        <ellipse cx="75" cy="55" rx="8" ry="10" fill="#333"/>
+                        <ellipse cx="105" cy="55" rx="8" ry="10" fill="#333"/>
+                        <circle cx="77" cy="52" r="3" fill="#fff"/>
+                        <circle cx="107" cy="52" r="3" fill="#fff"/>
+                        <!-- Нос -->
+                        <ellipse cx="90" cy="70" rx="5" ry="4" fill="#FF6B6B"/>
+                        <!-- Рот -->
+                        <path d="M82 78 Q90 85 98 78" stroke="#333" stroke-width="2" fill="none"/>
+                        <!-- Усы -->
+                        <line x1="55" y1="68" x2="75" y2="70" stroke="#333" stroke-width="1.5"/>
+                        <line x1="55" y1="75" x2="75" y2="75" stroke="#333" stroke-width="1.5"/>
+                        <line x1="125" y1="68" x2="105" y2="70" stroke="#333" stroke-width="1.5"/>
+                        <line x1="125" y1="75" x2="105" y2="75" stroke="#333" stroke-width="1.5"/>
+                        <!-- Лапки -->
+                        <ellipse cx="65" cy="140" rx="12" ry="8" fill="#FFD93D"/>
+                        <ellipse cx="115" cy="140" rx="12" ry="8" fill="#FFD93D"/>
+                        <!-- Флажок -->
+                        <line x1="130" y1="50" x2="130" y2="100" stroke="#6366f1" stroke-width="4"/>
+                        <path d="M130 50 L165 60 L130 75 Z" fill="url(#flagGrad)"/>
+                        <text x="140" y="67" font-size="12" fill="#fff" font-weight="bold">GO!</text>
+                        <defs>
+                            <linearGradient id="flagGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#6366f1"/>
+                                <stop offset="100%" style="stop-color:#a855f7"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+            <p class="subtitle">HRM-система для победителей в рекрутинге</p>
+        </div>
+        <div class="slide-number">01 / 11</div>
+    </section>
+
+    <!-- Slide 2: Достижения -->
+    <section class="slide slide-2" data-slide="1">
+        <div class="slide-content">
+            <h2 class="section-title">Надёжный механизм в рекрутинге</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">1095</div>
+                    <div class="stat-label">дней непрерывного<br>развития</div>
+                    <div class="stat-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48">
+                            <circle cx="24" cy="24" r="20" stroke="#6366f1" stroke-width="3" fill="none" stroke-dasharray="100 30"/>
+                            <path d="M24 14 L24 26 L32 30" stroke="#6366f1" stroke-width="3" stroke-linecap="round" fill="none"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="stat-card featured">
+                    <div class="stat-number">8500+</div>
+                    <div class="stat-label">клиентов успешно<br>закрывают вакансии</div>
+                    <div class="stat-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48">
+                            <circle cx="24" cy="18" r="8" stroke="#fff" stroke-width="3" fill="none"/>
+                            <path d="M10 42 C10 32 18 26 24 26 C30 26 38 32 38 42" stroke="#fff" stroke-width="3" fill="none"/>
+                            <circle cx="36" cy="14" r="5" stroke="#fff" stroke-width="2" fill="none"/>
+                            <path d="M42 30 C42 24 38 20 36 20" stroke="#fff" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100</div>
+                    <div class="stat-label">компаний ежемесячно<br>по рекомендации</div>
+                    <div class="stat-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48">
+                            <path d="M24 4 L28 16 L40 16 L30 24 L34 36 L24 28 L14 36 L18 24 L8 16 L20 16 Z" stroke="#6366f1" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="trust-badge">
+                <span>Малый, средний и крупный бизнес доверяют нам</span>
+            </div>
+        </div>
+        <div class="slide-number">02 / 11</div>
+    </section>
+
+    <!-- Slide 3: Ценности -->
+    <section class="slide slide-3" data-slide="2">
+        <div class="slide-content">
+            <h2 class="section-title">Закрой вакансию в 3 раза быстрее</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <path d="M20 5 L20 35 M5 20 L35 20" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                            <circle cx="20" cy="20" r="15" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Уверенность</h3>
+                    <p>Российское ПО, которое не боится санкций</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <path d="M20 35 C8 30 5 20 5 15 L20 8 L35 15 C35 20 32 30 20 35Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M14 20 L18 24 L26 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Безопасность</h3>
+                    <p>Работаем по ФЗ-152</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <circle cx="20" cy="15" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M20 23 L20 32 M15 28 L25 28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Забота</h3>
+                    <p>Техническая поддержка 24/7</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <path d="M8 30 L8 20 L16 20 L16 30 M16 30 L16 14 L24 14 L24 30 M24 30 L24 8 L32 8 L32 30" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Адаптивность</h3>
+                    <p>Реализация персональных доработок</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <circle cx="20" cy="20" r="12" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M20 12 L20 20 L26 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Скорость</h3>
+                    <p>AI для быстрого и точного найма</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <path d="M10 20 Q20 10 30 20 Q20 30 10 20" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="20" cy="20" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Гибкость</h3>
+                    <p>Настройка системы под ваш процесс</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">03 / 11</div>
+    </section>
+
+    <!-- Slide 4: Этапы найма -->
+    <section class="slide slide-4" data-slide="3">
+        <div class="slide-content">
+            <h2 class="section-title">Этапы найма вместе с WorkHere</h2>
+            <div class="pipeline">
+                <div class="pipeline-step">
+                    <div class="step-number">1</div>
+                    <h3>Постановка задачи</h3>
+                    <ul>
+                        <li>Заявки на подбор от заказчиков</li>
+                        <li>Интеграции с Job-сайтами</li>
+                        <li>Шаблоны вакансий</li>
+                        <li>Автопубликация вакансий</li>
+                    </ul>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="step-number">2</div>
+                    <h3>Поиск кандидатов</h3>
+                    <ul>
+                        <li>Быстрый импорт резюме</li>
+                        <li>Поиск с помощью AI</li>
+                        <li>Защита от дублей</li>
+                    </ul>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="step-number">3</div>
+                    <h3>Первичный отбор</h3>
+                    <ul>
+                        <li>Настраиваемая воронка</li>
+                        <li>Шаблоны сообщений</li>
+                        <li>Согласие на ПД</li>
+                    </ul>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="step-number">4</div>
+                    <h3>Собеседование</h3>
+                    <ul>
+                        <li>Канбан-доска</li>
+                        <li>Встроенный календарь</li>
+                        <li>Яндекс.Телемост</li>
+                        <li>IP-телефония</li>
+                    </ul>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="step-number">5</div>
+                    <h3>Оценка</h3>
+                    <ul>
+                        <li>Обратная связь</li>
+                        <li>Формы оценки</li>
+                        <li>Автоуведомления</li>
+                    </ul>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step highlight">
+                    <div class="step-number">6</div>
+                    <h3>Оффер</h3>
+                    <ul>
+                        <li>Корпоративные стандарты</li>
+                        <li>КЭДО</li>
+                        <li>Трекинг закрытия</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">04 / 11</div>
+    </section>
+
+    <!-- Slide 5: Возможности -->
+    <section class="slide slide-5" data-slide="4">
+        <div class="slide-content">
+            <h2 class="section-title">С WorkHere всё становится на свои места</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50">
+                            <rect x="5" y="10" width="40" height="30" rx="3" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="25" cy="25" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M22 25 L24 27 L28 23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Интеграции</h3>
+                    <p>HH.ru, Авито, SuperJob, Работа.ру</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50">
+                            <rect x="12" y="5" width="26" height="40" rx="3" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <line x1="18" y1="12" x2="32" y2="12" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="25" cy="38" r="3" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Мобильное приложение</h3>
+                    <p>Работайте откуда угодно</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50">
+                            <circle cx="25" cy="20" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M15 42 C15 34 19 28 25 28 C31 28 35 34 35 42" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M30 30 L38 38 M38 30 L30 38" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Перенос базы</h3>
+                    <p>Автоматизированный импорт</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50">
+                            <path d="M10 35 L10 15 L25 8 L40 15 L40 35 L25 42 Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M10 15 L25 22 L40 15 M25 22 L25 42" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Открытый API</h3>
+                    <p>Для ваших задач</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50">
+                            <circle cx="25" cy="25" r="18" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M25 12 L25 25 L35 30" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Быстрый старт</h3>
+                    <p>Работа в CRM через 15 минут</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50">
+                            <circle cx="25" cy="18" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M12 42 C12 32 18 26 25 26 C32 26 38 32 38 42" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="25" cy="18" r="3" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Персональное обучение</h3>
+                    <p>И первичная настройка</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">05 / 11</div>
+    </section>
+
+    <!-- Slide 6: Метрики -->
+    <section class="slide slide-6" data-slide="5">
+        <div class="slide-content">
+            <h2 class="section-title">Выводите рекрутинг на новый уровень</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">
+                        <span class="metric-number">40</span>
+                        <span class="metric-percent">%</span>
+                    </div>
+                    <div class="metric-label">снижение расходов<br>на найм</div>
+                    <div class="metric-bar"><div class="metric-fill" style="width: 40%"></div></div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">
+                        <span class="metric-prefix">×</span>
+                        <span class="metric-number">4</span>
+                    </div>
+                    <div class="metric-label">производительность<br>рекрутера</div>
+                    <div class="metric-bar"><div class="metric-fill" style="width: 80%"></div></div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">
+                        <span class="metric-number">60</span>
+                        <span class="metric-percent">%</span>
+                    </div>
+                    <div class="metric-label">сокращение срока<br>закрытия вакансии</div>
+                    <div class="metric-bar"><div class="metric-fill" style="width: 60%"></div></div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">
+                        <span class="metric-number">98</span>
+                        <span class="metric-percent">%</span>
+                    </div>
+                    <div class="metric-label">индекс вежливости<br>на hh.ru</div>
+                    <div class="metric-bar"><div class="metric-fill" style="width: 98%"></div></div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">
+                        <span class="metric-prefix">×</span>
+                        <span class="metric-number">3</span>
+                    </div>
+                    <div class="metric-label">конверсия от отклика<br>до оффера</div>
+                    <div class="metric-bar"><div class="metric-fill" style="width: 75%"></div></div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">
+                        <span class="metric-prefix">×</span>
+                        <span class="metric-number">2</span>
+                    </div>
+                    <div class="metric-label">качество релевантных<br>кандидатов</div>
+                    <div class="metric-bar"><div class="metric-fill" style="width: 50%"></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">06 / 11</div>
+    </section>
+
+    <!-- Slide 7: Функционал -->
+    <section class="slide slide-7" data-slide="6">
+        <div class="slide-content">
+            <h2 class="section-title">Работайте на победу с HRM WorkHere</h2>
+            <div class="capabilities-list">
+                <div class="capability-item">
+                    <div class="capability-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32">
+                            <rect x="4" y="4" width="24" height="24" rx="4" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M10 16 L14 20 L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="capability-text">
+                        <h4>Единая защищённая база кандидатов</h4>
+                        <p>Все комментарии и история взаимодействия в одном месте</p>
+                    </div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32">
+                            <circle cx="16" cy="12" r="6" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M6 28 C6 22 10 18 16 18 C22 18 26 22 26 28" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="capability-text">
+                        <h4>Кадровый резерв компании</h4>
+                        <p>Поиск тёплых кандидатов по тексту резюме, этапам, вакансиям</p>
+                    </div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32">
+                            <rect x="4" y="8" width="24" height="16" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M4 12 L16 18 L28 12" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="capability-text">
+                        <h4>Встроенные мессенджеры</h4>
+                        <p>Чаты Авито и HH прямо в WorkHere</p>
+                    </div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32">
+                            <path d="M4 24 L10 16 L16 20 L22 10 L28 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+                            <circle cx="10" cy="16" r="2" fill="currentColor"/>
+                            <circle cx="16" cy="20" r="2" fill="currentColor"/>
+                            <circle cx="22" cy="10" r="2" fill="currentColor"/>
+                            <circle cx="28" cy="14" r="2" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="capability-text">
+                        <h4>Аналитика и отчёты</h4>
+                        <p>Быстрое выявление и устранение узких мест в подборе</p>
+                    </div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32">
+                            <rect x="6" y="4" width="20" height="24" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <line x1="10" y1="10" x2="22" y2="10" stroke="currentColor" stroke-width="2"/>
+                            <line x1="10" y1="16" x2="22" y2="16" stroke="currentColor" stroke-width="2"/>
+                            <line x1="10" y1="22" x2="18" y2="22" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="capability-text">
+                        <h4>Конструктор отчётов</h4>
+                        <p>Под любые задачи в найме</p>
+                    </div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32">
+                            <path d="M8 8 L8 24 L24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="20" cy="12" r="6" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M20 10 L20 14 L22 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="capability-text">
+                        <h4>Персональные уведомления</h4>
+                        <p>О важных событиях на почту или в мессенджер</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">07 / 11</div>
+    </section>
+
+    <!-- Slide 8: Клиенты -->
+    <section class="slide slide-8" data-slide="7">
+        <div class="slide-content">
+            <h2 class="section-title">С нами уже побеждают</h2>
+            <div class="geography">
+                <div class="geo-stat">
+                    <span class="geo-number">350+</span>
+                    <span class="geo-label">городов РФ</span>
+                </div>
+            </div>
+            <div class="formula-block">
+                <div class="formula">
+                    <span class="formula-item">Технологии</span>
+                    <span class="formula-op">+</span>
+                    <span class="formula-item">Скорость</span>
+                    <span class="formula-op">+</span>
+                    <span class="formula-item">Надёжность</span>
+                    <span class="formula-op">=</span>
+                    <span class="formula-result">WorkHere</span>
+                </div>
+            </div>
+            <div class="clients-grid">
+                <div class="client-logo">
+                    <svg width="80" height="40" viewBox="0 0 80 40">
+                        <rect x="5" y="10" width="70" height="20" rx="4" fill="#e5e7eb"/>
+                        <text x="40" y="24" text-anchor="middle" fill="#9ca3af" font-size="10">Логотип</text>
+                    </svg>
+                </div>
+                <div class="client-logo">
+                    <svg width="80" height="40" viewBox="0 0 80 40">
+                        <rect x="5" y="10" width="70" height="20" rx="4" fill="#e5e7eb"/>
+                        <text x="40" y="24" text-anchor="middle" fill="#9ca3af" font-size="10">Логотип</text>
+                    </svg>
+                </div>
+                <div class="client-logo">
+                    <svg width="80" height="40" viewBox="0 0 80 40">
+                        <rect x="5" y="10" width="70" height="20" rx="4" fill="#e5e7eb"/>
+                        <text x="40" y="24" text-anchor="middle" fill="#9ca3af" font-size="10">Логотип</text>
+                    </svg>
+                </div>
+                <div class="client-logo">
+                    <svg width="80" height="40" viewBox="0 0 80 40">
+                        <rect x="5" y="10" width="70" height="20" rx="4" fill="#e5e7eb"/>
+                        <text x="40" y="24" text-anchor="middle" fill="#9ca3af" font-size="10">Логотип</text>
+                    </svg>
+                </div>
+                <div class="client-logo">
+                    <svg width="80" height="40" viewBox="0 0 80 40">
+                        <rect x="5" y="10" width="70" height="20" rx="4" fill="#e5e7eb"/>
+                        <text x="40" y="24" text-anchor="middle" fill="#9ca3af" font-size="10">Логотип</text>
+                    </svg>
+                </div>
+                <div class="client-logo">
+                    <svg width="80" height="40" viewBox="0 0 80 40">
+                        <rect x="5" y="10" width="70" height="20" rx="4" fill="#e5e7eb"/>
+                        <text x="40" y="24" text-anchor="middle" fill="#9ca3af" font-size="10">Логотип</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">08 / 11</div>
+    </section>
+
+    <!-- Slide 9: Тарифы -->
+    <section class="slide slide-9" data-slide="8">
+        <div class="slide-content">
+            <h2 class="section-title">Тарифы для чемпионов найма</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card bronze">
+                    <div class="trophy">
+                        <svg width="60" height="70" viewBox="0 0 60 70">
+                            <ellipse cx="30" cy="60" rx="18" ry="6" fill="#CD7F32"/>
+                            <rect x="22" y="48" width="16" height="14" fill="#CD7F32"/>
+                            <path d="M10 10 L10 30 Q10 45 30 48 Q50 45 50 30 L50 10 Z" fill="#CD7F32"/>
+                            <path d="M0 10 Q0 25 10 25 L10 10 Z" fill="#CD7F32"/>
+                            <path d="M60 10 Q60 25 50 25 L50 10 Z" fill="#CD7F32"/>
+                            <text x="30" y="32" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold">3</text>
+                        </svg>
+                    </div>
+                    <h3>Старт</h3>
+                    <div class="price">от <span>5 000</span> ₽/мес</div>
+                    <ul class="pricing-features">
+                        <li>До 3 пользователей</li>
+                        <li>Базовые интеграции</li>
+                        <li>Email-поддержка</li>
+                    </ul>
+                    <button class="pricing-btn">Выбрать</button>
+                </div>
+                <div class="pricing-card silver">
+                    <div class="trophy">
+                        <svg width="70" height="80" viewBox="0 0 60 70">
+                            <ellipse cx="30" cy="60" rx="18" ry="6" fill="#C0C0C0"/>
+                            <rect x="22" y="48" width="16" height="14" fill="#C0C0C0"/>
+                            <path d="M10 10 L10 30 Q10 45 30 48 Q50 45 50 30 L50 10 Z" fill="#C0C0C0"/>
+                            <path d="M0 10 Q0 25 10 25 L10 10 Z" fill="#C0C0C0"/>
+                            <path d="M60 10 Q60 25 50 25 L50 10 Z" fill="#C0C0C0"/>
+                            <text x="30" y="32" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold">2</text>
+                        </svg>
+                    </div>
+                    <h3>Бизнес</h3>
+                    <div class="price">от <span>15 000</span> ₽/мес</div>
+                    <ul class="pricing-features">
+                        <li>До 10 пользователей</li>
+                        <li>Все интеграции</li>
+                        <li>Приоритетная поддержка</li>
+                        <li>Аналитика</li>
+                    </ul>
+                    <button class="pricing-btn">Выбрать</button>
+                </div>
+                <div class="pricing-card gold featured">
+                    <div class="popular-badge">Популярный</div>
+                    <div class="trophy">
+                        <svg width="80" height="90" viewBox="0 0 60 70">
+                            <ellipse cx="30" cy="60" rx="18" ry="6" fill="#FFD700"/>
+                            <rect x="22" y="48" width="16" height="14" fill="#FFD700"/>
+                            <path d="M10 10 L10 30 Q10 45 30 48 Q50 45 50 30 L50 10 Z" fill="#FFD700"/>
+                            <path d="M0 10 Q0 25 10 25 L10 10 Z" fill="#FFD700"/>
+                            <path d="M60 10 Q60 25 50 25 L50 10 Z" fill="#FFD700"/>
+                            <text x="30" y="32" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold">1</text>
+                        </svg>
+                    </div>
+                    <h3>Корпорация</h3>
+                    <div class="price">от <span>50 000</span> ₽/мес</div>
+                    <ul class="pricing-features">
+                        <li>Безлимит пользователей</li>
+                        <li>Все интеграции + API</li>
+                        <li>Поддержка 24/7</li>
+                        <li>Персональный менеджер</li>
+                        <li>Кастомизация</li>
+                    </ul>
+                    <button class="pricing-btn primary">Выбрать</button>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">09 / 11</div>
+    </section>
+
+    <!-- Slide 10: Контакты -->
+    <section class="slide slide-10" data-slide="9">
+        <div class="slide-content">
+            <h2 class="section-title">Одержи победу в найме!</h2>
+            <div class="contact-card">
+                <div class="contact-photo">
+                    <svg width="120" height="120" viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="58" fill="#e5e7eb" stroke="#6366f1" stroke-width="3"/>
+                        <circle cx="60" cy="45" r="20" fill="#9ca3af"/>
+                        <path d="M25 100 Q25 75 60 75 Q95 75 95 100" fill="#9ca3af"/>
+                    </svg>
+                </div>
+                <div class="contact-info">
+                    <h3>Ваш персональный менеджер</h3>
+                    <div class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 20 20">
+                            <path d="M3 5 L10 10 L17 5 M3 5 L3 15 L17 15 L17 5 L3 5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                        </svg>
+                        <span>manager@workhere.ru</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 20 20">
+                            <path d="M4 4 L8 4 L9 8 L7 10 C8 12 10 14 12 15 L14 13 L18 14 L18 18 C10 18 2 10 4 4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                        </svg>
+                        <span>+7 (800) 000-00-00</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 20 20">
+                            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <path d="M6 10 L14 10 M10 6 L10 14" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        <span>Telegram: @workhere</span>
+                    </div>
+                </div>
+            </div>
+            <a href="https://workhere.ru/human-resources" class="cta-button">
+                <span>Начать бесплатно</span>
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M5 12 L19 12 M14 7 L19 12 L14 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+            </a>
+        </div>
+        <div class="slide-number">10 / 11</div>
+    </section>
+
+    <!-- Slide 11: Финал -->
+    <section class="slide slide-11" data-slide="10">
+        <div class="slide-content">
+            <div class="final-message">
+                <h2>HRM-систем много,<br>но вершину найма покоряет<br><span class="accent">лишь одна</span></h2>
+            </div>
+            <div class="final-mascot">
+                <svg width="280" height="300" viewBox="0 0 280 300">
+                    <!-- Гора -->
+                    <path d="M20 280 L140 80 L260 280 Z" fill="url(#mountainGrad)"/>
+                    <path d="M80 280 L140 160 L200 280 Z" fill="url(#mountainGrad2)"/>
+                    <!-- Снег на вершине -->
+                    <path d="M120 100 L140 80 L160 100 L150 110 L140 105 L130 110 Z" fill="#fff"/>
+                    
+                    <!-- Котик на вершине -->
+                    <g transform="translate(100, 20)">
+                        <!-- Тело -->
+                        <ellipse cx="40" cy="50" rx="20" ry="25" fill="#FFD93D"/>
+                        <!-- Голова -->
+                        <circle cx="40" cy="25" r="20" fill="#FFD93D"/>
+                        <!-- Уши -->
+                        <path d="M25 15 L22 0 L33 12 Z" fill="#FFD93D"/>
+                        <path d="M55 15 L58 0 L47 12 Z" fill="#FFD93D"/>
+                        <path d="M27 14 L25 4 L32 12 Z" fill="#FFB347"/>
+                        <path d="M53 14 L55 4 L48 12 Z" fill="#FFB347"/>
+                        <!-- Глаза (закрытые, счастливые) -->
+                        <path d="M30 22 Q35 28 40 22" stroke="#333" stroke-width="2" fill="none"/>
+                        <path d="M40 22 Q45 28 50 22" stroke="#333" stroke-width="2" fill="none"/>
+                        <!-- Нос -->
+                        <ellipse cx="40" cy="32" rx="3" ry="2" fill="#FF6B6B"/>
+                        <!-- Рот (улыбка) -->
+                        <path d="M35 36 Q40 42 45 36" stroke="#333" stroke-width="2" fill="none"/>
+                        <!-- Лапки с кубком -->
+                        <ellipse cx="25" cy="65" rx="8" ry="5" fill="#FFD93D"/>
+                        <ellipse cx="55" cy="65" rx="8" ry="5" fill="#FFD93D"/>
+                        <!-- Золотой кубок -->
+                        <g transform="translate(25, -10)">
+                            <ellipse cx="15" cy="50" rx="10" ry="4" fill="#FFD700"/>
+                            <rect x="10" y="42" width="10" height="10" fill="#FFD700"/>
+                            <path d="M0 20 L0 35 Q0 42 15 45 Q30 42 30 35 L30 20 Z" fill="#FFD700"/>
+                            <path d="M-8 20 Q-8 32 2 32 L2 20 Z" fill="#FFD700"/>
+                            <path d="M38 20 Q38 32 28 32 L28 20 Z" fill="#FFD700"/>
+                            <text x="15" y="34" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">★</text>
+                        </g>
+                    </g>
+                    
+                    <defs>
+                        <linearGradient id="mountainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#6366f1"/>
+                            <stop offset="100%" style="stop-color:#4f46e5"/>
+                        </linearGradient>
+                        <linearGradient id="mountainGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#818cf8"/>
+                            <stop offset="100%" style="stop-color:#6366f1"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="logo final-logo">
+                <svg class="logo-icon" width="50" height="50" viewBox="0 0 60 60">
+                    <circle cx="30" cy="30" r="28" fill="url(#logoGrad2)" stroke="#fff" stroke-width="2"/>
+                    <path d="M20 35 L30 25 L40 35" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    <defs>
+                        <linearGradient id="logoGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#6366f1"/>
+                            <stop offset="100%" style="stop-color:#8b5cf6"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="logo-text">WorkHere</span>
+            </div>
+        </div>
+        <div class="slide-number">11 / 11</div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
