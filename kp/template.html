@@ -393,57 +393,105 @@
         
         .p4-mascot-area {
             position: absolute;
-            bottom: 30px;
-            right: 40px;
+            bottom: 20px;
+            left: 50px;
+            right: 50px;
             display: flex;
             align-items: flex-end;
-            gap: 10px;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .p4-mascot {
+            flex-shrink: 0;
+        }
+        
+        .p4-mascot img {
+            height: 220px;
+            filter: drop-shadow(0 15px 35px rgba(89,127,255,0.3));
         }
         
         .p4-speech-bubble {
             position: relative;
             background: white;
-            border-radius: 24px;
-            padding: 18px 24px;
-            max-width: 240px;
-            box-shadow: 0 8px 30px rgba(89,127,255,0.2);
-            border: 3px solid #597FFF;
+            border-radius: 50px;
+            padding: 28px 38px;
+            max-width: 320px;
+            box-shadow: 
+                0 15px 50px rgba(89,127,255,0.2),
+                0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+        
+        /* Красивый хвостик облачка */
+        .p4-speech-bubble::before {
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            left: 60px;
+            width: 50px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 8px 20px rgba(89,127,255,0.15);
         }
         
         .p4-speech-bubble::after {
             content: '';
             position: absolute;
-            right: -15px;
-            bottom: 25px;
-            border-width: 15px 0 15px 20px;
-            border-style: solid;
-            border-color: transparent transparent transparent white;
+            bottom: -45px;
+            left: 45px;
+            width: 28px;
+            height: 28px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(89,127,255,0.12);
         }
         
-        .p4-speech-bubble::before {
-            content: '';
+        /* Декоративные пузырьки на облачке */
+        .p4-bubble-decor {
             position: absolute;
-            right: -22px;
-            bottom: 22px;
-            border-width: 18px 0 18px 24px;
-            border-style: solid;
-            border-color: transparent transparent transparent #597FFF;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(89,127,255,0.1) 0%, rgba(89,127,255,0.05) 100%);
+        }
+        
+        .p4-bubble-d1 {
+            width: 60px;
+            height: 60px;
+            top: -15px;
+            right: -10px;
+        }
+        
+        .p4-bubble-d2 {
+            width: 35px;
+            height: 35px;
+            top: -25px;
+            right: 40px;
+        }
+        
+        .p4-bubble-d3 {
+            width: 45px;
+            height: 45px;
+            top: -10px;
+            left: -12px;
         }
         
         .p4-speech-text {
-            font-size: 15px;
-            font-weight: 600;
+            position: relative;
+            z-index: 5;
+            font-size: 20px;
+            font-weight: 700;
             color: #1a1a2e;
-            line-height: 1.4;
+            line-height: 1.5;
+            text-align: center;
         }
         
         .p4-speech-text span {
             color: #597FFF;
         }
         
-        .p4-mascot img {
-            height: 140px;
-            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.15));
+        .p4-speech-text .emoji {
+            font-size: 26px;
         }
 
         /* =========================================
@@ -837,11 +885,14 @@
     </div>
     
     <div class="p4-mascot-area">
-        <div class="p4-speech-bubble">
-            <div class="p4-speech-text">Найду <span>лучших</span> кандидатов, пока вы пьёте кофе! ☕</div>
-        </div>
         <div class="p4-mascot">
             <img src="assets/mascot/workhere_mascot_08_transparent.svg" alt="WorkHere Mascot">
+        </div>
+        <div class="p4-speech-bubble">
+            <div class="p4-bubble-decor p4-bubble-d1"></div>
+            <div class="p4-bubble-decor p4-bubble-d2"></div>
+            <div class="p4-bubble-decor p4-bubble-d3"></div>
+            <div class="p4-speech-text">Найду <span>лучших</span><br>кандидатов, пока вы<br>пьёте кофе! <span class="emoji">☕</span></div>
         </div>
     </div>
 </div>
