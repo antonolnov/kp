@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>WorkHere — Коммерческое предложение</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
         
         @page {
             size: A4;
@@ -18,130 +18,188 @@
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 11pt;
             line-height: 1.5;
-            color: #1f2937;
+            color: #1a1a2e;
             background: white;
         }
         
-        /* ===== PAGES ===== */
         .page {
             width: 210mm;
-            min-height: 297mm;
-            padding: 0;
-            page-break-after: always;
+            height: 297mm;
             position: relative;
             overflow: hidden;
+            page-break-after: always;
         }
         
         .page:last-child {
             page-break-after: avoid;
         }
-        
-        /* ===== COLORS ===== */
-        :root {
-            --primary: #597FFF;
-            --primary-dark: #3D5FE3;
-            --primary-light: #7B9AFF;
-            --primary-pale: #E8EDFF;
-            --primary-ghost: #F5F7FF;
-            --accent-green: #10B981;
-            --accent-orange: #F59E0B;
-            --gray-50: #F9FAFB;
-            --gray-100: #F3F4F6;
-            --gray-200: #E5E7EB;
-            --gray-500: #6B7280;
-            --gray-600: #4B5563;
-            --gray-800: #1F2937;
-            --gray-900: #111827;
+
+        /* ===== ABSTRACT SHAPES ===== */
+        .blob {
+            position: absolute;
+            border-radius: 50% 40% 60% 50%;
+            filter: blur(0px);
         }
         
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #597FFF 0%, #8BA4FF 50%, #B8C9FF 100%);
+            top: -150px;
+            right: -150px;
+            opacity: 0.9;
+        }
+        
+        .blob-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, #597FFF 0%, #3D5FE3 100%);
+            bottom: -100px;
+            left: -100px;
+            opacity: 0.15;
+            border-radius: 60% 40% 50% 60%;
+        }
+        
+        .blob-3 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(180deg, #FFE066 0%, #FFB347 100%);
+            opacity: 0.8;
+        }
+        
+        .wave {
+            position: absolute;
+            width: 150%;
+            height: 400px;
+            left: -25%;
+        }
+        
+        .circle-outline {
+            position: absolute;
+            border: 2px solid rgba(89, 127, 255, 0.2);
+            border-radius: 50%;
+        }
+        
+        .dot-pattern {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: radial-gradient(circle, #597FFF 1.5px, transparent 1.5px);
+            background-size: 12px 12px;
+            opacity: 0.3;
+        }
+
         /* ===== PAGE 1: COVER ===== */
         .page-cover {
-            background: linear-gradient(135deg, #597FFF 0%, #3D5FE3 100%);
-            color: white;
-            display: flex;
-            flex-direction: column;
+            background: #FAFBFF;
         }
         
-        .cover-header {
-            padding: 40px 50px;
+        .cover-blob-main {
+            width: 700px;
+            height: 700px;
+            background: linear-gradient(135deg, #597FFF 0%, #7B9AFF 40%, #A8BFFF 100%);
+            top: -200px;
+            right: -250px;
+            border-radius: 50% 30% 60% 40%;
+        }
+        
+        .cover-blob-accent {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #FFE066 0%, #FFCC00 100%);
+            bottom: 180px;
+            right: 80px;
+            border-radius: 60% 40% 50% 60%;
+        }
+        
+        .cover-circle {
+            width: 400px;
+            height: 400px;
+            border: 3px solid rgba(89, 127, 255, 0.1);
+            bottom: -200px;
+            left: -100px;
+        }
+        
+        .cover-content {
+            position: relative;
+            z-index: 10;
+            padding: 60px;
+            height: 100%;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
+            margin-bottom: auto;
         }
         
-        .logo-icon {
-            width: 44px;
-            height: 44px;
-            background: white;
-            border-radius: 10px;
+        .logo-mark {
+            width: 48px;
+            height: 48px;
+            background: #597FFF;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         
-        .logo-icon svg {
-            width: 28px;
-            height: 28px;
-        }
-        
         .logo-text {
-            font-size: 22px;
-            font-weight: 700;
-        }
-        
-        .cover-date {
-            font-size: 13px;
-            opacity: 0.8;
+            font-size: 26px;
+            font-weight: 800;
+            color: #1a1a2e;
+            letter-spacing: -0.5px;
         }
         
         .cover-main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 60px 50px;
+            margin-top: auto;
+            margin-bottom: auto;
+            max-width: 500px;
         }
         
         .cover-tag {
             display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 8px 16px;
-            border-radius: 20px;
+            background: rgba(89, 127, 255, 0.1);
+            color: #597FFF;
+            padding: 10px 20px;
+            border-radius: 30px;
             font-size: 12px;
-            font-weight: 500;
-            margin-bottom: 24px;
-            width: fit-content;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
         }
         
         .cover-title {
-            font-size: 48px;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            max-width: 500px;
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1.0;
+            color: #1a1a2e;
+            margin-bottom: 30px;
+            letter-spacing: -3px;
+        }
+        
+        .cover-title span {
+            color: #597FFF;
         }
         
         .cover-subtitle {
             font-size: 18px;
-            opacity: 0.9;
-            max-width: 450px;
-            line-height: 1.6;
+            color: #666;
+            line-height: 1.7;
+            max-width: 400px;
         }
         
-        .cover-footer {
-            padding: 40px 50px;
-            background: rgba(0,0,0,0.1);
+        .cover-stats {
             display: flex;
-            gap: 60px;
+            gap: 50px;
+            margin-top: auto;
+            padding-top: 60px;
         }
         
         .cover-stat {
@@ -150,1091 +208,889 @@
         }
         
         .cover-stat-value {
-            font-size: 36px;
-            font-weight: 800;
+            font-size: 48px;
+            font-weight: 900;
+            color: #597FFF;
+            line-height: 1;
+            letter-spacing: -2px;
         }
         
         .cover-stat-label {
             font-size: 13px;
-            opacity: 0.8;
+            color: #888;
+            margin-top: 8px;
         }
-        
+
         /* ===== PAGE 2: ABOUT ===== */
-        .page-content {
-            padding: 50px;
+        .page-about {
+            background: linear-gradient(180deg, #597FFF 0%, #3D5FE3 100%);
+            color: white;
         }
         
-        .page-header {
+        .about-blob {
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.1);
+            top: -150px;
+            left: -200px;
+            border-radius: 40% 60% 50% 50%;
+        }
+        
+        .about-blob-2 {
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.08);
+            bottom: -100px;
+            right: -50px;
+            border-radius: 50% 40% 60% 40%;
+        }
+        
+        .about-content {
+            position: relative;
+            z-index: 10;
+            padding: 70px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .page-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            opacity: 0.6;
+            margin-bottom: 20px;
+        }
+        
+        .about-title {
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            max-width: 500px;
             margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid var(--primary-pale);
         }
         
-        .page-num {
-            font-size: 12px;
-            color: var(--gray-500);
-            margin-bottom: 8px;
+        .about-text {
+            font-size: 17px;
+            line-height: 1.8;
+            opacity: 0.9;
+            max-width: 500px;
+            margin-bottom: 50px;
         }
         
-        .page-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--gray-900);
+        .about-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px 60px;
+            margin-top: auto;
         }
         
-        .section {
-            margin-bottom: 32px;
-        }
-        
-        .section-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 12px;
+        .about-feature {
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-        
-        .section-title::before {
-            content: '';
-            width: 4px;
-            height: 20px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-        
-        .lead-text {
-            font-size: 15px;
-            line-height: 1.7;
-            color: var(--gray-700);
-            margin-bottom: 24px;
-        }
-        
-        .highlight-box {
-            background: var(--primary-ghost);
-            border-left: 4px solid var(--primary);
-            padding: 20px 24px;
-            border-radius: 0 12px 12px 0;
-            margin: 24px 0;
-        }
-        
-        .highlight-box p {
-            font-size: 14px;
-            color: var(--gray-700);
-            line-height: 1.6;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
             gap: 16px;
-            margin-top: 20px;
         }
         
-        .feature-item {
-            background: var(--gray-50);
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid var(--gray-100);
-        }
-        
-        .feature-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary-pale);
-            border-radius: 10px;
+        .about-feature-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 12px;
-            font-size: 20px;
+            font-size: 26px;
         }
         
-        .feature-title {
-            font-size: 14px;
+        .about-feature-text {
+            font-size: 15px;
             font-weight: 600;
-            color: var(--gray-900);
-            margin-bottom: 4px;
         }
         
-        .feature-desc {
-            font-size: 12px;
-            color: var(--gray-500);
-            line-height: 1.5;
-        }
-        
-        /* ===== STATS BAR ===== */
-        .stats-bar {
+        .about-metrics {
             display: flex;
-            gap: 24px;
-            margin: 30px 0;
+            gap: 40px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.2);
         }
         
-        .stat-item {
-            flex: 1;
+        .about-metric {
             text-align: center;
-            padding: 20px;
-            background: var(--primary);
-            color: white;
-            border-radius: 12px;
         }
         
-        .stat-item:nth-child(2) {
-            background: var(--primary-dark);
-        }
-        
-        .stat-item:nth-child(3) {
-            background: var(--primary-light);
-        }
-        
-        .stat-value {
-            font-size: 32px;
-            font-weight: 800;
+        .about-metric-value {
+            font-size: 56px;
+            font-weight: 900;
             line-height: 1;
+            letter-spacing: -2px;
         }
         
-        .stat-label {
-            font-size: 11px;
-            opacity: 0.9;
-            margin-top: 6px;
+        .about-metric-label {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+
+        /* ===== PAGE 3: PIPELINE ===== */
+        .page-pipeline {
+            background: #FAFBFF;
         }
         
-        /* ===== PIPELINE ===== */
-        .pipeline {
+        .pipeline-blob {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(89,127,255,0.08) 0%, rgba(89,127,255,0.02) 100%);
+            bottom: -300px;
+            right: -200px;
+            border-radius: 50% 40% 60% 50%;
+        }
+        
+        .pipeline-content {
+            position: relative;
+            z-index: 10;
+            padding: 70px;
+            height: 100%;
+        }
+        
+        .section-title {
+            font-size: 48px;
+            font-weight: 900;
+            color: #1a1a2e;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 50px;
+        }
+        
+        .section-title span {
+            color: #597FFF;
+        }
+        
+        .pipeline-visual {
             display: flex;
-            gap: 8px;
-            margin: 24px 0;
+            align-items: center;
+            gap: 20px;
+            margin: 40px 0;
         }
         
         .pipeline-step {
             flex: 1;
-            background: var(--gray-50);
-            border-radius: 8px;
-            padding: 16px 12px;
             text-align: center;
-            position: relative;
         }
         
-        .pipeline-step::after {
-            content: '→';
+        .pipeline-dot {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #597FFF 0%, #3D5FE3 100%);
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 800;
+            box-shadow: 0 10px 30px rgba(89,127,255,0.3);
+        }
+        
+        .pipeline-step:nth-child(odd) .pipeline-dot {
+            background: linear-gradient(135deg, #FFE066 0%, #FFCC00 100%);
+            color: #1a1a2e;
+            box-shadow: 0 10px 30px rgba(255,204,0,0.3);
+        }
+        
+        .pipeline-line {
+            flex: 0.3;
+            height: 3px;
+            background: linear-gradient(90deg, #597FFF, #B8C9FF);
+            border-radius: 2px;
+        }
+        
+        .pipeline-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+        
+        .pipeline-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px 60px;
+            margin-top: 60px;
+        }
+        
+        .pipeline-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        
+        .pipeline-feature-bullet {
+            width: 8px;
+            height: 8px;
+            background: #597FFF;
+            border-radius: 50%;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+        
+        .pipeline-feature-text {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.6;
+        }
+        
+        .pipeline-feature-text strong {
+            color: #1a1a2e;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* ===== PAGE 4: CAPABILITIES ===== */
+        .page-capabilities {
+            background: white;
+        }
+        
+        .cap-accent {
             position: absolute;
-            right: -12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--primary);
-            font-weight: bold;
+            width: 100%;
+            height: 200px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(89,127,255,0.05) 100%);
         }
         
-        .pipeline-step:last-child::after {
-            display: none;
+        .cap-content {
+            position: relative;
+            z-index: 10;
+            padding: 70px;
+            height: 100%;
         }
         
-        .pipeline-step:last-child {
-            background: var(--primary);
+        .cap-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .cap-item {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .cap-num {
+            font-size: 64px;
+            font-weight: 900;
+            color: rgba(89,127,255,0.15);
+            line-height: 1;
+            letter-spacing: -4px;
+        }
+        
+        .cap-text h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+        
+        .cap-text p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* ===== PAGE 5: AI ===== */
+        .page-ai {
+            background: #0D0D1A;
             color: white;
         }
         
-        .pipeline-num {
+        .ai-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(89,127,255,0.4) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .ai-grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(89,127,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(89,127,255,0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.5;
+        }
+        
+        .ai-content {
+            position: relative;
+            z-index: 10;
+            padding: 70px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .ai-title {
+            font-size: 52px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        
+        .ai-title span {
+            background: linear-gradient(90deg, #597FFF, #A8BFFF, #FFE066);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .ai-subtitle {
+            font-size: 17px;
+            color: rgba(255,255,255,0.7);
+            max-width: 450px;
+            line-height: 1.7;
+            margin-bottom: 50px;
+        }
+        
+        .ai-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: auto;
+        }
+        
+        .ai-feature {
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .ai-feature-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+        
+        .ai-feature h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .ai-feature p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+        }
+
+        /* ===== PAGE 6: INTEGRATIONS ===== */
+        .page-integrations {
+            background: linear-gradient(135deg, #FAFBFF 0%, #E8EDFF 100%);
+        }
+        
+        .int-blob {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #597FFF 0%, #8BA4FF 100%);
+            top: -150px;
+            right: -100px;
+            border-radius: 50% 40% 60% 50%;
+            opacity: 0.1;
+        }
+        
+        .int-content {
+            position: relative;
+            z-index: 10;
+            padding: 70px;
+            height: 100%;
+        }
+        
+        .int-logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 40px 0;
+        }
+        
+        .int-logo {
+            padding: 14px 24px;
+            background: white;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a2e;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        .int-two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 50px;
+        }
+        
+        .int-col-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #597FFF;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .int-col-title::before {
+            content: '';
+            width: 30px;
+            height: 4px;
+            background: #597FFF;
+            border-radius: 2px;
+        }
+        
+        .int-list {
+            list-style: none;
+        }
+        
+        .int-list li {
+            padding: 12px 0;
+            font-size: 14px;
+            color: #444;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-bottom: 1px solid rgba(89,127,255,0.1);
+        }
+        
+        .int-list li::before {
+            content: '✓';
             width: 24px;
             height: 24px;
-            background: var(--primary-pale);
-            color: var(--primary);
+            background: linear-gradient(135deg, #597FFF 0%, #3D5FE3 100%);
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 12px;
-            font-weight: 700;
-            margin: 0 auto 8px;
-        }
-        
-        .pipeline-step:last-child .pipeline-num {
-            background: rgba(255,255,255,0.3);
-            color: white;
-        }
-        
-        .pipeline-label {
-            font-size: 10px;
-            font-weight: 600;
-        }
-        
-        /* ===== VALUES GRID ===== */
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-        
-        .value-card {
-            background: white;
-            border: 1px solid var(--gray-200);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .value-icon {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        
-        .value-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--gray-900);
-            margin-bottom: 4px;
-        }
-        
-        .value-desc {
-            font-size: 11px;
-            color: var(--gray-500);
-        }
-        
-        /* ===== CAPABILITY LIST ===== */
-        .capability-list {
-            margin: 20px 0;
-        }
-        
-        .capability-item {
-            display: flex;
-            gap: 16px;
-            padding: 16px 0;
-            border-bottom: 1px solid var(--gray-100);
-        }
-        
-        .capability-item:last-child {
-            border-bottom: none;
-        }
-        
-        .capability-num {
-            width: 32px;
-            height: 32px;
-            background: var(--primary-pale);
-            color: var(--primary);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: 700;
             flex-shrink: 0;
         }
         
-        .capability-content h4 {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--gray-900);
-            margin-bottom: 4px;
+        .int-bottom {
+            display: flex;
+            gap: 30px;
+            margin-top: 50px;
         }
         
-        .capability-content p {
-            font-size: 12px;
-            color: var(--gray-500);
-            line-height: 1.5;
-        }
-        
-        /* ===== METRICS ===== */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin: 24px 0;
-        }
-        
-        .metric-card {
-            background: var(--gray-50);
-            border-radius: 12px;
-            padding: 24px 20px;
-            text-align: center;
-        }
-        
-        .metric-value {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--primary);
-            line-height: 1;
-        }
-        
-        .metric-label {
-            font-size: 11px;
-            color: var(--gray-500);
-            margin-top: 8px;
-        }
-        
-        /* ===== PRICING ===== */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin: 24px 0;
-        }
-        
-        .pricing-card {
-            border: 2px solid var(--gray-200);
+        .int-badge {
+            flex: 1;
+            padding: 24px;
+            background: white;
             border-radius: 16px;
-            padding: 24px 20px;
             text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
         
-        .pricing-card.featured {
-            border-color: var(--primary);
-            background: var(--primary-ghost);
-            position: relative;
-        }
-        
-        .pricing-badge {
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary);
-            color: white;
-            font-size: 10px;
-            font-weight: 600;
-            padding: 4px 12px;
-            border-radius: 10px;
-        }
-        
-        .pricing-icon {
+        .int-badge-icon {
             font-size: 32px;
             margin-bottom: 12px;
         }
         
-        .pricing-name {
-            font-size: 16px;
+        .int-badge-title {
+            font-size: 15px;
             font-weight: 700;
-            color: var(--gray-900);
-            margin-bottom: 8px;
+            color: #1a1a2e;
         }
         
-        .pricing-price {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 16px;
-        }
-        
-        .pricing-price span {
-            font-size: 13px;
-            font-weight: 400;
-            color: var(--gray-500);
-        }
-        
-        .pricing-features {
-            list-style: none;
-            text-align: left;
+        .int-badge-text {
             font-size: 12px;
-            color: var(--gray-600);
+            color: #888;
+            margin-top: 4px;
         }
-        
-        .pricing-features li {
-            padding: 6px 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .pricing-features li::before {
-            content: '✓';
-            color: var(--accent-green);
-            font-weight: bold;
-        }
-        
-        /* ===== INTEGRATIONS ===== */
-        .integrations-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 20px 0;
-        }
-        
-        .integration-item {
-            background: var(--gray-50);
-            border: 1px solid var(--gray-100);
-            border-radius: 8px;
-            padding: 10px 16px;
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--gray-700);
-        }
-        
-        /* ===== CONTACT PAGE ===== */
-        .page-contact {
-            background: linear-gradient(180deg, white 60%, var(--primary-ghost) 100%);
-        }
-        
-        .contact-card {
-            background: white;
-            border: 2px solid var(--primary);
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-            margin: 40px 0;
-        }
-        
-        .contact-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--gray-900);
-            margin-bottom: 24px;
-        }
-        
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 24px;
-        }
-        
-        .contact-item {
-            text-align: center;
-        }
-        
-        .contact-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-        
-        .contact-label {
-            font-size: 11px;
-            color: var(--gray-500);
-            margin-bottom: 4px;
-        }
-        
-        .contact-value {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--gray-900);
-        }
-        
-        .contact-cta {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 14px 36px;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-        }
-        
-        .final-message {
-            text-align: center;
-            padding: 40px;
-        }
-        
-        .final-title {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--gray-900);
-            line-height: 1.3;
-            margin-bottom: 20px;
-        }
-        
-        .final-title span {
-            color: var(--primary);
-        }
-        
-        .final-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 30px;
-        }
-        
-        .final-logo-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .final-logo-text {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--gray-900);
-        }
-        
-        /* ===== AI SECTION ===== */
-        .ai-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin: 20px 0;
-        }
-        
-        .ai-card {
-            background: linear-gradient(135deg, var(--primary-ghost) 0%, white 100%);
-            border: 1px solid var(--primary-pale);
-            border-radius: 12px;
-            padding: 20px;
-        }
-        
-        .ai-icon {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        
-        .ai-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--gray-900);
-            margin-bottom: 6px;
-        }
-        
-        .ai-desc {
-            font-size: 12px;
-            color: var(--gray-500);
-            line-height: 1.5;
-        }
-        
-        /* ===== TWO COLUMNS ===== */
-        .two-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-        
-        .column-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 16px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--primary-pale);
-        }
-        
-        .checklist {
-            list-style: none;
-        }
-        
-        .checklist li {
-            padding: 8px 0;
-            font-size: 12px;
-            color: var(--gray-600);
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            line-height: 1.5;
-        }
-        
-        .checklist li::before {
-            content: '✓';
-            color: var(--accent-green);
-            font-weight: bold;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-        
-        /* ===== FOOTER ===== */
-        .page-footer {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 10px;
-            color: var(--gray-400);
-            border-top: 1px solid var(--gray-100);
-        }
+
     </style>
 </head>
 <body>
 
 <!-- PAGE 1: COVER -->
 <div class="page page-cover">
-    <div class="cover-header">
+    <div class="blob cover-blob-main"></div>
+    <div class="blob cover-blob-accent"></div>
+    <div class="circle-outline cover-circle"></div>
+    <div class="dot-pattern" style="top: 200px; right: 100px;"></div>
+    
+    <div class="cover-content">
         <div class="logo">
-            <div class="logo-icon">
-                <svg viewBox="0 0 28 28" fill="none">
-                    <path d="M4 18L10 12L16 18L24 10" stroke="#597FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="24" cy="10" r="3" fill="#597FFF"/>
-                </svg>
-            </div>
-            <span class="logo-text">WorkHere</span>
-        </div>
-        <div class="cover-date">Коммерческое предложение • 2026</div>
-    </div>
-    
-    <div class="cover-main">
-        <div class="cover-tag">ATS + Recruiting CRM + HRM</div>
-        <h1 class="cover-title">Гонка за кандидатами начинается здесь</h1>
-        <p class="cover-subtitle">Современная платформа для управления наймом: от поиска кандидатов до выхода на работу — всё в одной системе</p>
-    </div>
-    
-    <div class="cover-footer">
-        <div class="cover-stat">
-            <div class="cover-stat-value">8 500+</div>
-            <div class="cover-stat-label">компаний используют WorkHere</div>
-        </div>
-        <div class="cover-stat">
-            <div class="cover-stat-value">350+</div>
-            <div class="cover-stat-label">городов России</div>
-        </div>
-        <div class="cover-stat">
-            <div class="cover-stat-value">×3</div>
-            <div class="cover-stat-label">быстрее закрытие вакансий</div>
-        </div>
-    </div>
-</div>
-
-<!-- PAGE 2: ABOUT -->
-<div class="page page-content">
-    <div class="page-header">
-        <div class="page-num">02</div>
-        <h2 class="page-title">О платформе WorkHere</h2>
-    </div>
-    
-    <p class="lead-text">
-        <strong>WorkHere</strong> — это SaaS-платформа класса ATS + Recruiting CRM, которая помогает компаниям нанимать быстрее и управляемо. Система объединяет все этапы рекрутинга: сбор откликов, ведение кандидатов по воронке, автоматизацию рутины, работу с нанимающими менеджерами и аналитику найма.
-    </p>
-    
-    <div class="highlight-box">
-        <p>💡 <strong>В основе системы:</strong> единая база кандидатов, гибкие воронки, интеграции с job-бордами, автоматизация процессов и ИИ-инструменты для ускорения работы рекрутера.</p>
-    </div>
-    
-    <div class="section-title">Ключевые преимущества</div>
-    
-    <div class="features-grid">
-        <div class="feature-item">
-            <div class="feature-icon">🚀</div>
-            <div class="feature-title">Быстрый старт</div>
-            <div class="feature-desc">Работа в системе через 15 минут. Автоматический перенос базы кандидатов.</div>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">🔗</div>
-            <div class="feature-title">Все интеграции</div>
-            <div class="feature-desc">HH.ru, Авито, SuperJob, Работа.ру, мессенджеры, телефония, 1С.</div>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">🤖</div>
-            <div class="feature-title">ИИ-помощник</div>
-            <div class="feature-desc">Семантический поиск, генерация текстов, анализ резюме, скоринг кандидатов.</div>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">🛡️</div>
-            <div class="feature-title">Безопасность</div>
-            <div class="feature-desc">Работа по ФЗ-152, разграничение доступов, аудит действий, КЭДО.</div>
-        </div>
-    </div>
-    
-    <div class="stats-bar">
-        <div class="stat-item">
-            <div class="stat-value">-40%</div>
-            <div class="stat-label">расходы на найм</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-value">×4</div>
-            <div class="stat-label">производительность</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-value">-60%</div>
-            <div class="stat-label">время закрытия</div>
-        </div>
-    </div>
-    
-    <div class="page-footer">
-        <span>WorkHere • Коммерческое предложение</span>
-        <span>workhere.ru</span>
-    </div>
-</div>
-
-<!-- PAGE 3: PIPELINE -->
-<div class="page page-content">
-    <div class="page-header">
-        <div class="page-num">03</div>
-        <h2 class="page-title">Полный цикл найма в одной системе</h2>
-    </div>
-    
-    <p class="lead-text">
-        WorkHere покрывает все этапы рекрутинга — от получения заявки на подбор до выхода сотрудника. Гибкие воронки адаптируются под любой тип вакансий: массовый найм, IT, топ-позиции.
-    </p>
-    
-    <div class="pipeline">
-        <div class="pipeline-step">
-            <div class="pipeline-num">1</div>
-            <div class="pipeline-label">Заявка</div>
-        </div>
-        <div class="pipeline-step">
-            <div class="pipeline-num">2</div>
-            <div class="pipeline-label">Поиск</div>
-        </div>
-        <div class="pipeline-step">
-            <div class="pipeline-num">3</div>
-            <div class="pipeline-label">Скрининг</div>
-        </div>
-        <div class="pipeline-step">
-            <div class="pipeline-num">4</div>
-            <div class="pipeline-label">Интервью</div>
-        </div>
-        <div class="pipeline-step">
-            <div class="pipeline-num">5</div>
-            <div class="pipeline-label">Оценка</div>
-        </div>
-        <div class="pipeline-step">
-            <div class="pipeline-num">6</div>
-            <div class="pipeline-label">Оффер</div>
-        </div>
-    </div>
-    
-    <div class="two-columns">
-        <div>
-            <div class="column-title">Сбор кандидатов</div>
-            <ul class="checklist">
-                <li>Автоподхват откликов с job-бордов</li>
-                <li>Парсинг резюме в структурированные данные</li>
-                <li>Импорт из CSV, Excel, почты</li>
-                <li>Форма отклика на карьерном сайте</li>
-                <li>Защита от дублей с умным мержем</li>
-                <li>Талант-пул (кадровый резерв)</li>
-            </ul>
-        </div>
-        <div>
-            <div class="column-title">Работа с воронкой</div>
-            <ul class="checklist">
-                <li>Гибкие этапы под каждый тип вакансий</li>
-                <li>Канбан, список, таблица — на выбор</li>
-                <li>Обязательные поля и причины отказа</li>
-                <li>SLA на этапах (контроль сроков)</li>
-                <li>Быстрые действия: написать, позвонить</li>
-                <li>Один кандидат — много вакансий</li>
-            </ul>
-        </div>
-    </div>
-    
-    <div class="highlight-box">
-        <p>📊 <strong>Прозрачность для бизнеса:</strong> нанимающие менеджеры видят статус вакансий, оценивают кандидатов, согласуют офферы — всё в системе, без писем и созвонов.</p>
-    </div>
-    
-    <div class="page-footer">
-        <span>WorkHere • Коммерческое предложение</span>
-        <span>workhere.ru</span>
-    </div>
-</div>
-
-<!-- PAGE 4: CAPABILITIES -->
-<div class="page page-content">
-    <div class="page-header">
-        <div class="page-num">04</div>
-        <h2 class="page-title">Возможности платформы</h2>
-    </div>
-    
-    <div class="capability-list">
-        <div class="capability-item">
-            <div class="capability-num">01</div>
-            <div class="capability-content">
-                <h4>Единая база кандидатов</h4>
-                <p>Все кандидаты, комментарии, история взаимодействий в одном месте. Поиск по резюме, этапам, вакансиям, причинам отказа. Полная история по каждому контакту.</p>
-            </div>
-        </div>
-        <div class="capability-item">
-            <div class="capability-num">02</div>
-            <div class="capability-content">
-                <h4>Коммуникации в системе</h4>
-                <p>Встроенные чаты Авито и HH, переписка в мессенджерах (WhatsApp, Telegram), IP-телефония с записью звонков. Единый инбокс для всех каналов.</p>
-            </div>
-        </div>
-        <div class="capability-item">
-            <div class="capability-num">03</div>
-            <div class="capability-content">
-                <h4>Календарь и интервью</h4>
-                <p>Планирование встреч, интеграция с Google/Outlook, создание ссылок на видеозвонки (Яндекс.Телемост), автонапоминания участникам.</p>
-            </div>
-        </div>
-        <div class="capability-item">
-            <div class="capability-num">04</div>
-            <div class="capability-content">
-                <h4>Автоматизация рутины</h4>
-                <p>Триггеры и правила: автоназначение, авторассылки, напоминания, обязательные действия. Задачи с дедлайнами и чек-листы для рекрутеров.</p>
-            </div>
-        </div>
-        <div class="capability-item">
-            <div class="capability-num">05</div>
-            <div class="capability-content">
-                <h4>Аналитика и отчёты</h4>
-                <p>Воронка конверсий, time-to-hire, эффективность источников, нагрузка на команду. Конструктор отчётов под любые задачи. Дашборды по ролям.</p>
-            </div>
-        </div>
-        <div class="capability-item">
-            <div class="capability-num">06</div>
-            <div class="capability-content">
-                <h4>Документы и оффер</h4>
-                <p>Шаблоны офферов, согласование условий, сбор документов кандидата, КЭДО, передача в HR/кадры, базовые онбординг-задачи.</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="page-footer">
-        <span>WorkHere • Коммерческое предложение</span>
-        <span>workhere.ru</span>
-    </div>
-</div>
-
-<!-- PAGE 5: AI -->
-<div class="page page-content">
-    <div class="page-header">
-        <div class="page-num">05</div>
-        <h2 class="page-title">ИИ-возможности</h2>
-    </div>
-    
-    <p class="lead-text">
-        Искусственный интеллект встроен в ключевые процессы WorkHere — от поиска кандидатов до подготовки к интервью. Это не отдельный модуль, а слой над всеми данными системы.
-    </p>
-    
-    <div class="ai-grid">
-        <div class="ai-card">
-            <div class="ai-icon">🔍</div>
-            <div class="ai-title">Семантический поиск</div>
-            <div class="ai-desc">Поиск по смыслу, а не только по ключевым словам. «Менеджер по продажам B2B стройка» → находит релевантных даже без точных совпадений.</div>
-        </div>
-        <div class="ai-card">
-            <div class="ai-icon">📊</div>
-            <div class="ai-title">Скоринг кандидатов</div>
-            <div class="ai-desc">Ранжирование по соответствию вакансии с объяснениями: какие требования совпали, где пробелы, на что обратить внимание.</div>
-        </div>
-        <div class="ai-card">
-            <div class="ai-icon">📝</div>
-            <div class="ai-title">Анализ резюме</div>
-            <div class="ai-desc">Автовыделение навыков, стажа, ключевых проектов. Краткое резюме «в 5 строк» для нанимающего менеджера.</div>
-        </div>
-        <div class="ai-card">
-            <div class="ai-icon">✍️</div>
-            <div class="ai-title">Генерация текстов</div>
-            <div class="ai-desc">Создание вакансий по брифу, персонализированные сообщения кандидатам, вопросы для интервью под конкретное резюме.</div>
-        </div>
-        <div class="ai-card">
-            <div class="ai-icon">🎙️</div>
-            <div class="ai-title">Анализ звонков</div>
-            <div class="ai-desc">Транскрибация, саммари, извлечение фактов (зарплата, сроки выхода, мотивация). Подсказки по качеству контакта.</div>
-        </div>
-        <div class="ai-card">
-            <div class="ai-icon">⚡</div>
-            <div class="ai-title">Умные подсказки</div>
-            <div class="ai-desc">Рекомендации следующих действий, напоминания о «зависших» кандидатах, прогноз времени закрытия вакансии.</div>
-        </div>
-    </div>
-    
-    <div class="highlight-box">
-        <p>🤖 <strong>ИИ как помощник, не судья:</strong> система помогает рекрутеру работать быстрее и качественнее, но все решения остаются за человеком.</p>
-    </div>
-    
-    <div class="page-footer">
-        <span>WorkHere • Коммерческое предложение</span>
-        <span>workhere.ru</span>
-    </div>
-</div>
-
-<!-- PAGE 6: INTEGRATIONS -->
-<div class="page page-content">
-    <div class="page-header">
-        <div class="page-num">06</div>
-        <h2 class="page-title">Интеграции и безопасность</h2>
-    </div>
-    
-    <div class="section-title">Подключённые сервисы</div>
-    
-    <div class="integrations-grid">
-        <div class="integration-item">HH.ru</div>
-        <div class="integration-item">Авито Работа</div>
-        <div class="integration-item">SuperJob</div>
-        <div class="integration-item">Работа.ру</div>
-        <div class="integration-item">VK Работа</div>
-        <div class="integration-item">Яндекс.Телемост</div>
-        <div class="integration-item">Google Calendar</div>
-        <div class="integration-item">Outlook</div>
-        <div class="integration-item">WhatsApp</div>
-        <div class="integration-item">Telegram</div>
-        <div class="integration-item">IP-телефония</div>
-        <div class="integration-item">1С</div>
-        <div class="integration-item">Open API</div>
-        <div class="integration-item">Webhooks</div>
-        <div class="integration-item">n8n / Make / Zapier</div>
-    </div>
-    
-    <div class="two-columns" style="margin-top: 30px;">
-        <div>
-            <div class="column-title">Безопасность данных</div>
-            <ul class="checklist">
-                <li>Соответствие ФЗ-152 о персональных данных</li>
-                <li>Разграничение доступа по ролям (RBAC)</li>
-                <li>Ограничения по подразделениям и вакансиям</li>
-                <li>Журнал действий (audit log)</li>
-                <li>Политики хранения и удаления данных</li>
-                <li>Резервное копирование</li>
-            </ul>
-        </div>
-        <div>
-            <div class="column-title">Внедрение и поддержка</div>
-            <ul class="checklist">
-                <li>Быстрый старт за 15 минут</li>
-                <li>Автоперенос базы из Excel / другой ATS</li>
-                <li>Персональное обучение команды</li>
-                <li>База знаний и Academy</li>
-                <li>Техподдержка 24/7</li>
-                <li>Персональный менеджер</li>
-            </ul>
-        </div>
-    </div>
-    
-    <div class="values-grid" style="margin-top: 30px;">
-        <div class="value-card">
-            <div class="value-icon">🇷🇺</div>
-            <div class="value-title">Российское ПО</div>
-            <div class="value-desc">Не боится санкций, данные в РФ</div>
-        </div>
-        <div class="value-card">
-            <div class="value-icon">📱</div>
-            <div class="value-title">Мобильное приложение</div>
-            <div class="value-desc">Работайте откуда угодно</div>
-        </div>
-        <div class="value-card">
-            <div class="value-icon">⚙️</div>
-            <div class="value-title">Кастомизация</div>
-            <div class="value-desc">Персональные доработки под вас</div>
-        </div>
-    </div>
-    
-    <div class="page-footer">
-        <span>WorkHere • Коммерческое предложение</span>
-        <span>workhere.ru</span>
-    </div>
-</div>
-
-<!-- PAGE 7: PRICING -->
-<div class="page page-content">
-    <div class="page-header">
-        <div class="page-num">07</div>
-        <h2 class="page-title">Тарифы</h2>
-    </div>
-    
-    <p class="lead-text">
-        Выберите тариф под размер вашей команды. Все тарифы включают базовый функционал ATS, интеграции с job-бордами и техническую поддержку.
-    </p>
-    
-    <div class="pricing-grid">
-        <div class="pricing-card">
-            <div class="pricing-icon">🥉</div>
-            <div class="pricing-name">Старт</div>
-            <div class="pricing-price">от 5 000 ₽<span>/мес</span></div>
-            <ul class="pricing-features">
-                <li>До 3 пользователей</li>
-                <li>Базовые интеграции</li>
-                <li>Email-поддержка</li>
-                <li>База кандидатов</li>
-                <li>Воронки и этапы</li>
-            </ul>
-        </div>
-        <div class="pricing-card">
-            <div class="pricing-icon">🥈</div>
-            <div class="pricing-name">Бизнес</div>
-            <div class="pricing-price">от 15 000 ₽<span>/мес</span></div>
-            <ul class="pricing-features">
-                <li>До 10 пользователей</li>
-                <li>Все интеграции</li>
-                <li>Приоритетная поддержка</li>
-                <li>Расширенная аналитика</li>
-                <li>Автоматизация</li>
-            </ul>
-        </div>
-        <div class="pricing-card featured">
-            <div class="pricing-badge">Популярный</div>
-            <div class="pricing-icon">🥇</div>
-            <div class="pricing-name">Корпорация</div>
-            <div class="pricing-price">от 50 000 ₽<span>/мес</span></div>
-            <ul class="pricing-features">
-                <li>Безлимит пользователей</li>
-                <li>Все интеграции + API</li>
-                <li>Поддержка 24/7</li>
-                <li>Персональный менеджер</li>
-                <li>ИИ-функции</li>
-                <li>Кастомизация</li>
-            </ul>
-        </div>
-    </div>
-    
-    <div class="highlight-box">
-        <p>🎁 <strong>Бесплатный тестовый период:</strong> попробуйте WorkHere 14 дней без ограничений. Перенесём вашу базу кандидатов и поможем настроить систему.</p>
-    </div>
-    
-    <div class="metrics-grid">
-        <div class="metric-card">
-            <div class="metric-value">98%</div>
-            <div class="metric-label">клиентов продлевают подписку</div>
-        </div>
-        <div class="metric-card">
-            <div class="metric-value">100+</div>
-            <div class="metric-label">компаний приходят по рекомендации ежемесячно</div>
-        </div>
-        <div class="metric-card">
-            <div class="metric-value">24/7</div>
-            <div class="metric-label">техническая поддержка</div>
-        </div>
-    </div>
-    
-    <div class="page-footer">
-        <span>WorkHere • Коммерческое предложение</span>
-        <span>workhere.ru</span>
-    </div>
-</div>
-
-<!-- PAGE 8: CONTACT -->
-<div class="page page-content page-contact">
-    <div class="page-header">
-        <div class="page-num">08</div>
-        <h2 class="page-title">Начните нанимать эффективнее</h2>
-    </div>
-    
-    <div class="contact-card">
-        <div class="contact-title">Свяжитесь с нами</div>
-        <div class="contact-info">
-            <div class="contact-item">
-                <div class="contact-icon">📞</div>
-                <div class="contact-label">Телефон</div>
-                <div class="contact-value">+7 (800) 000-00-00</div>
-            </div>
-            <div class="contact-item">
-                <div class="contact-icon">✉️</div>
-                <div class="contact-label">Email</div>
-                <div class="contact-value">sales@workhere.ru</div>
-            </div>
-            <div class="contact-item">
-                <div class="contact-icon">💬</div>
-                <div class="contact-label">Telegram</div>
-                <div class="contact-value">@workhere</div>
-            </div>
-        </div>
-        <a href="https://workhere.ru" class="contact-cta">Попробовать бесплатно →</a>
-    </div>
-    
-    <div class="final-message">
-        <div class="final-title">
-            HRM-систем много,<br>
-            но вершину найма покоряет<br>
-            <span>лишь одна</span>
-        </div>
-        
-        <div class="final-logo">
-            <div class="final-logo-icon">
+            <div class="logo-mark">
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                     <path d="M4 18L10 12L16 18L24 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                     <circle cx="24" cy="10" r="3" fill="white"/>
                 </svg>
             </div>
-            <span class="final-logo-text">WorkHere</span>
+            <span class="logo-text">WorkHere</span>
+        </div>
+        
+        <div class="cover-main">
+            <div class="cover-tag">ATS + Recruiting CRM</div>
+            <h1 class="cover-title">
+                Гонка за<br>
+                кандидатами<br>
+                <span>начинается</span><br>
+                <span>здесь</span>
+            </h1>
+            <p class="cover-subtitle">
+                Современная платформа для управления наймом. От поиска до выхода на работу — всё в одной системе.
+            </p>
+        </div>
+        
+        <div class="cover-stats">
+            <div class="cover-stat">
+                <div class="cover-stat-value">8 500+</div>
+                <div class="cover-stat-label">компаний</div>
+            </div>
+            <div class="cover-stat">
+                <div class="cover-stat-value">350+</div>
+                <div class="cover-stat-label">городов</div>
+            </div>
+            <div class="cover-stat">
+                <div class="cover-stat-value">×3</div>
+                <div class="cover-stat-label">быстрее</div>
+            </div>
         </div>
     </div>
+</div>
+
+<!-- PAGE 2: ABOUT -->
+<div class="page page-about">
+    <div class="blob about-blob"></div>
+    <div class="blob about-blob-2"></div>
     
-    <div class="page-footer">
-        <span>WorkHere • Коммерческое предложение</span>
-        <span>workhere.ru</span>
+    <div class="about-content">
+        <div class="page-label">О платформе</div>
+        
+        <h2 class="about-title">
+            Нанимайте<br>
+            быстрее и<br>
+            управляемо
+        </h2>
+        
+        <p class="about-text">
+            WorkHere объединяет все этапы рекрутинга: сбор откликов из разных источников, ведение кандидатов по воронке, автоматизация рутины, прозрачная работа с нанимающими менеджерами и глубокая аналитика.
+        </p>
+        
+        <div class="about-features">
+            <div class="about-feature">
+                <div class="about-feature-icon">🔗</div>
+                <div class="about-feature-text">Все job-борды<br>в одном окне</div>
+            </div>
+            <div class="about-feature">
+                <div class="about-feature-icon">🤖</div>
+                <div class="about-feature-text">ИИ для поиска<br>и скоринга</div>
+            </div>
+            <div class="about-feature">
+                <div class="about-feature-icon">📊</div>
+                <div class="about-feature-text">Аналитика<br>в реальном времени</div>
+            </div>
+            <div class="about-feature">
+                <div class="about-feature-icon">🛡️</div>
+                <div class="about-feature-text">ФЗ-152<br>из коробки</div>
+            </div>
+        </div>
+        
+        <div class="about-metrics">
+            <div class="about-metric">
+                <div class="about-metric-value">−40%</div>
+                <div class="about-metric-label">расходы на найм</div>
+            </div>
+            <div class="about-metric">
+                <div class="about-metric-value">×4</div>
+                <div class="about-metric-label">производительность</div>
+            </div>
+            <div class="about-metric">
+                <div class="about-metric-value">−60%</div>
+                <div class="about-metric-label">время закрытия</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 3: PIPELINE -->
+<div class="page page-pipeline">
+    <div class="blob pipeline-blob"></div>
+    <div class="dot-pattern" style="bottom: 100px; left: 60px;"></div>
+    
+    <div class="pipeline-content">
+        <h2 class="section-title">
+            Полный цикл<br>
+            <span>найма</span> в системе
+        </h2>
+        
+        <div class="pipeline-visual">
+            <div class="pipeline-step">
+                <div class="pipeline-dot">1</div>
+                <div class="pipeline-label">Заявка</div>
+            </div>
+            <div class="pipeline-line"></div>
+            <div class="pipeline-step">
+                <div class="pipeline-dot">2</div>
+                <div class="pipeline-label">Поиск</div>
+            </div>
+            <div class="pipeline-line"></div>
+            <div class="pipeline-step">
+                <div class="pipeline-dot">3</div>
+                <div class="pipeline-label">Скрининг</div>
+            </div>
+            <div class="pipeline-line"></div>
+            <div class="pipeline-step">
+                <div class="pipeline-dot">4</div>
+                <div class="pipeline-label">Интервью</div>
+            </div>
+            <div class="pipeline-line"></div>
+            <div class="pipeline-step">
+                <div class="pipeline-dot">5</div>
+                <div class="pipeline-label">Оценка</div>
+            </div>
+            <div class="pipeline-line"></div>
+            <div class="pipeline-step">
+                <div class="pipeline-dot">6</div>
+                <div class="pipeline-label">Оффер</div>
+            </div>
+        </div>
+        
+        <div class="pipeline-features">
+            <div class="pipeline-feature">
+                <div class="pipeline-feature-bullet"></div>
+                <div class="pipeline-feature-text">
+                    <strong>Автоподхват откликов</strong>
+                    Резюме с job-бордов сразу в системе
+                </div>
+            </div>
+            <div class="pipeline-feature">
+                <div class="pipeline-feature-bullet"></div>
+                <div class="pipeline-feature-text">
+                    <strong>Гибкие воронки</strong>
+                    Свои этапы под каждый тип вакансий
+                </div>
+            </div>
+            <div class="pipeline-feature">
+                <div class="pipeline-feature-bullet"></div>
+                <div class="pipeline-feature-text">
+                    <strong>Защита от дублей</strong>
+                    Умный мерж карточек кандидатов
+                </div>
+            </div>
+            <div class="pipeline-feature">
+                <div class="pipeline-feature-bullet"></div>
+                <div class="pipeline-feature-text">
+                    <strong>Канбан и таблицы</strong>
+                    Работайте как удобно
+                </div>
+            </div>
+            <div class="pipeline-feature">
+                <div class="pipeline-feature-bullet"></div>
+                <div class="pipeline-feature-text">
+                    <strong>Талант-пул</strong>
+                    Кадровый резерв всегда под рукой
+                </div>
+            </div>
+            <div class="pipeline-feature">
+                <div class="pipeline-feature-bullet"></div>
+                <div class="pipeline-feature-text">
+                    <strong>SLA на этапах</strong>
+                    Контроль сроков автоматически
+                </div>
+            </div>
+            <div class="pipeline-feature">
+                <div class="pipeline-feature-bullet"></div>
+                <div class="pipeline-feature-text">
+                    <strong>Причины отказа</strong>
+                    Структурированная аналитика
+                </div>
+            </div>
+            <div class="pipeline-feature">
+                <div class="pipeline-feature-bullet"></div>
+                <div class="pipeline-feature-text">
+                    <strong>Согласование офферов</strong>
+                    Нанимающие менеджеры в системе
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 4: CAPABILITIES -->
+<div class="page page-capabilities">
+    <div class="cap-accent"></div>
+    <div class="circle-outline" style="width: 300px; height: 300px; top: -100px; right: -100px;"></div>
+    
+    <div class="cap-content">
+        <h2 class="section-title">
+            <span>Возможности</span><br>
+            платформы
+        </h2>
+        
+        <div class="cap-grid">
+            <div class="cap-item">
+                <div class="cap-num">01</div>
+                <div class="cap-text">
+                    <h4>Единая база кандидатов</h4>
+                    <p>Все контакты, комментарии, история взаимодействий. Поиск по резюме, этапам, вакансиям. Полная картина по каждому кандидату.</p>
+                </div>
+            </div>
+            <div class="cap-item">
+                <div class="cap-num">02</div>
+                <div class="cap-text">
+                    <h4>Коммуникации внутри</h4>
+                    <p>Чаты Авито и HH, мессенджеры, IP-телефония с записью. Единый инбокс для всех каналов связи с кандидатами.</p>
+                </div>
+            </div>
+            <div class="cap-item">
+                <div class="cap-num">03</div>
+                <div class="cap-text">
+                    <h4>Календарь и интервью</h4>
+                    <p>Планирование встреч, синхронизация с Google и Outlook, видеозвонки через Телемост, автонапоминания.</p>
+                </div>
+            </div>
+            <div class="cap-item">
+                <div class="cap-num">04</div>
+                <div class="cap-text">
+                    <h4>Автоматизация рутины</h4>
+                    <p>Триггеры и правила: автоназначение, авторассылки, напоминания. Задачи с дедлайнами и чек-листы.</p>
+                </div>
+            </div>
+            <div class="cap-item">
+                <div class="cap-num">05</div>
+                <div class="cap-text">
+                    <h4>Глубокая аналитика</h4>
+                    <p>Воронка конверсий, time-to-hire, эффективность источников. Конструктор отчётов. Дашборды по ролям.</p>
+                </div>
+            </div>
+            <div class="cap-item">
+                <div class="cap-num">06</div>
+                <div class="cap-text">
+                    <h4>Документы и оффер</h4>
+                    <p>Шаблоны офферов, согласование, сбор документов, КЭДО, передача в HR, базовый онбординг.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 5: AI -->
+<div class="page page-ai">
+    <div class="ai-glow"></div>
+    <div class="ai-grid-bg"></div>
+    
+    <div class="ai-content">
+        <div class="page-label">Технологии</div>
+        
+        <h2 class="ai-title">
+            <span>ИИ</span> встроен<br>
+            в каждый процесс
+        </h2>
+        
+        <p class="ai-subtitle">
+            Искусственный интеллект — не отдельный модуль, а слой над всеми данными. Помогает работать быстрее, но решения остаются за человеком.
+        </p>
+        
+        <div class="ai-features">
+            <div class="ai-feature">
+                <div class="ai-feature-icon">🔍</div>
+                <h4>Семантический поиск</h4>
+                <p>Поиск по смыслу, а не только словам. Находит релевантных даже без точных совпадений.</p>
+            </div>
+            <div class="ai-feature">
+                <div class="ai-feature-icon">📊</div>
+                <h4>Скоринг кандидатов</h4>
+                <p>Ранжирование по соответствию вакансии с объяснениями совпадений и пробелов.</p>
+            </div>
+            <div class="ai-feature">
+                <div class="ai-feature-icon">✍️</div>
+                <h4>Генерация текстов</h4>
+                <p>Создание вакансий, персональные сообщения, вопросы для интервью под резюме.</p>
+            </div>
+            <div class="ai-feature">
+                <div class="ai-feature-icon">🎙️</div>
+                <h4>Анализ звонков</h4>
+                <p>Транскрибация, саммари, извлечение фактов: зарплата, сроки, мотивация.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 6: INTEGRATIONS -->
+<div class="page page-integrations">
+    <div class="blob int-blob"></div>
+    
+    <div class="int-content">
+        <h2 class="section-title">
+            <span>Интеграции</span><br>
+            и безопасность
+        </h2>
+        
+        <div class="int-logos">
+            <div class="int-logo">HH.ru</div>
+            <div class="int-logo">Авито</div>
+            <div class="int-logo">SuperJob</div>
+            <div class="int-logo">Работа.ру</div>
+            <div class="int-logo">VK Работа</div>
+            <div class="int-logo">Телемост</div>
+            <div class="int-logo">Google</div>
+            <div class="int-logo">Outlook</div>
+            <div class="int-logo">WhatsApp</div>
+            <div class="int-logo">Telegram</div>
+            <div class="int-logo">1С</div>
+            <div class="int-logo">Open API</div>
+        </div>
+        
+        <div class="int-two-col">
+            <div>
+                <div class="int-col-title">Безопасность</div>
+                <ul class="int-list">
+                    <li>Соответствие ФЗ-152</li>
+                    <li>Разграничение по ролям (RBAC)</li>
+                    <li>Журнал действий</li>
+                    <li>Политики хранения данных</li>
+                </ul>
+            </div>
+            <div>
+                <div class="int-col-title">Внедрение</div>
+                <ul class="int-list">
+                    <li>Старт за 15 минут</li>
+                    <li>Автоперенос базы</li>
+                    <li>Обучение команды</li>
+                    <li>Поддержка 24/7</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="int-bottom">
+            <div class="int-badge">
+                <div class="int-badge-icon">🇷🇺</div>
+                <div class="int-badge-title">Российское ПО</div>
+                <div class="int-badge-text">Данные в РФ</div>
+            </div>
+            <div class="int-badge">
+                <div class="int-badge-icon">📱</div>
+                <div class="int-badge-title">Мобильное приложение</div>
+                <div class="int-badge-text">iOS и Android</div>
+            </div>
+            <div class="int-badge">
+                <div class="int-badge-icon">⚙️</div>
+                <div class="int-badge-title">Кастомизация</div>
+                <div class="int-badge-text">Доработки под вас</div>
+            </div>
+        </div>
     </div>
 </div>
 
