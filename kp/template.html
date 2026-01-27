@@ -22,7 +22,6 @@
             font-size: 11pt;
             line-height: 1.5;
             color: #1a1a2e;
-            background: white;
         }
         
         .page {
@@ -31,198 +30,80 @@
             position: relative;
             overflow: hidden;
             page-break-after: always;
+            background: linear-gradient(180deg, #597FFF 0%, #7B9AFF 30%, #B8C9FF 60%, #E8EDFF 85%, #FFFFFF 100%);
         }
         
         .page:last-child {
             page-break-after: avoid;
         }
 
-        /* ===== GLASSMORPHISM ===== */
-        .glass {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 24px;
-        }
-        
-        .glass-dark {
-            background: rgba(30, 30, 60, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            color: white;
-        }
-        
-        .glass-blue {
-            background: rgba(89, 127, 255, 0.15);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(89, 127, 255, 0.3);
-            border-radius: 24px;
-        }
-
-        /* ===== DIAGONAL BACKGROUNDS ===== */
-        .bg-diagonal {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #597FFF 0%, #3D5FE3 50%, #2A4AD0 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 65%, 0 85%);
-        }
-        
-        .bg-diagonal-reverse {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #597FFF 0%, #3D5FE3 50%, #2A4AD0 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 65%);
-        }
-        
-        .bg-diagonal-bottom {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #0D0D1A 0%, #1a1a3a 100%);
-            clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
-        }
-        
-        .bg-mesh {
+        /* ===== MESH GRADIENT ===== */
+        .mesh {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(ellipse at 20% 20%, rgba(89, 127, 255, 0.4) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
-                radial-gradient(ellipse at 60% 30%, rgba(255, 200, 100, 0.2) 0%, transparent 40%);
+                radial-gradient(ellipse 80% 50% at 20% 20%, rgba(255,255,255,0.5) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 30%, rgba(255,255,255,0.4) 0%, transparent 45%),
+                radial-gradient(ellipse 50% 50% at 40% 80%, rgba(255,255,255,0.6) 0%, transparent 50%),
+                radial-gradient(ellipse 70% 60% at 90% 90%, rgba(255,255,255,0.5) 0%, transparent 50%);
         }
         
-        .bg-white {
+        .mesh-alt {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: #FAFBFF;
+            background: 
+                radial-gradient(ellipse 60% 40% at 10% 10%, rgba(89,127,255,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 50% at 90% 20%, rgba(89,127,255,0.1) 0%, transparent 45%),
+                radial-gradient(ellipse 70% 50% at 30% 90%, rgba(89,127,255,0.12) 0%, transparent 50%),
+                radial-gradient(ellipse 40% 40% at 70% 70%, rgba(139,164,255,0.15) 0%, transparent 50%);
         }
 
-        /* ===== FLOATING SHAPES ===== */
-        .float-circle {
+        /* ===== BIG DECORATIVE NUMBERS ===== */
+        .big-num {
             position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .float-square {
-            position: absolute;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 20px;
-            transform: rotate(15deg);
-        }
-
-        /* ===== PAGE 1: COVER ===== */
-        .page-cover {
-            background: #FAFBFF;
-        }
-        
-        .cover-diagonal {
-            clip-path: polygon(0 0, 100% 0, 100% 55%, 0 75%);
-        }
-        
-        .cover-content {
-            position: relative;
-            z-index: 10;
-            padding: 50px 60px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .logo {
-            margin-bottom: 60px;
-        }
-        
-        .logo img {
-            height: 44px;
-        }
-        
-        .cover-hero {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .cover-title {
-            font-size: 54px;
+            font-size: 400px;
             font-weight: 900;
-            line-height: 1.05;
-            color: white;
-            margin-bottom: 24px;
-            letter-spacing: -2px;
-            max-width: 480px;
-        }
-        
-        .cover-subtitle {
-            font-size: 17px;
-            color: rgba(255,255,255,0.85);
-            line-height: 1.7;
-            max-width: 380px;
-            margin-bottom: 40px;
-        }
-        
-        .cover-glass-card {
-            position: absolute;
-            bottom: 60px;
-            left: 60px;
-            right: 60px;
-            padding: 36px 44px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .cover-stat {
-            text-align: center;
-        }
-        
-        .cover-stat-value {
-            font-size: 42px;
-            font-weight: 900;
-            color: #597FFF;
             line-height: 1;
-            letter-spacing: -1px;
+            letter-spacing: -20px;
+            color: rgba(255,255,255,0.15);
+            pointer-events: none;
+            user-select: none;
         }
         
-        .cover-stat-label {
-            font-size: 13px;
-            color: #666;
-            margin-top: 8px;
+        .big-num-dark {
+            color: rgba(89,127,255,0.08);
         }
         
-        .cover-stat-divider {
-            width: 1px;
-            height: 50px;
-            background: linear-gradient(180deg, transparent, #ddd, transparent);
+        .big-num-white {
+            color: rgba(255,255,255,0.2);
         }
 
-        /* ===== PAGE 2: ABOUT ===== */
-        .page-about {
-            background: #FAFBFF;
+        /* ===== GLASS CARDS ===== */
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(89, 127, 255, 0.1);
         }
         
-        .about-content {
+        .glass-soft {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 16px;
+        }
+
+        /* ===== COMMON ===== */
+        .content {
             position: relative;
             z-index: 10;
             padding: 60px;
@@ -236,50 +117,135 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 3px;
+            color: white;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .section-label-dark {
             color: #597FFF;
-            margin-bottom: 16px;
+            text-shadow: none;
         }
         
         .section-title {
-            font-size: 44px;
+            font-size: 46px;
             font-weight: 900;
-            color: #1a1a2e;
+            color: white;
             line-height: 1.1;
             letter-spacing: -2px;
             margin-bottom: 24px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .section-title-dark {
+            color: #1a1a2e;
+            text-shadow: none;
         }
         
         .section-title span {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .section-title-dark span {
             color: #597FFF;
+        }
+
+        /* ===== PAGE 1: COVER ===== */
+        .logo {
+            margin-bottom: 40px;
+        }
+        
+        .logo img {
+            height: 48px;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
+        }
+        
+        .cover-hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 500px;
+        }
+        
+        .cover-title {
+            font-size: 58px;
+            font-weight: 900;
+            line-height: 1.0;
+            color: white;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.15);
+        }
+        
+        .cover-subtitle {
+            font-size: 17px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.7;
+            max-width: 400px;
+        }
+        
+        .cover-stats {
+            position: absolute;
+            bottom: 50px;
+            left: 60px;
+            right: 60px;
+            padding: 32px 40px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .cover-stat {
+            text-align: center;
+        }
+        
+        .cover-stat-value {
+            font-size: 44px;
+            font-weight: 900;
+            color: #597FFF;
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+        
+        .cover-stat-label {
+            font-size: 13px;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        /* ===== PAGE 2: ABOUT ===== */
+        .page-light {
+            background: linear-gradient(180deg, #FFFFFF 0%, #F5F7FF 50%, #E8EDFF 100%);
         }
         
         .about-text {
             font-size: 16px;
             color: #555;
             line-height: 1.8;
-            max-width: 500px;
+            max-width: 480px;
             margin-bottom: 40px;
         }
         
         .about-features {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 16px;
             margin-bottom: 40px;
         }
         
         .about-feature {
-            padding: 24px;
+            padding: 20px 24px;
             display: flex;
             align-items: center;
             gap: 16px;
         }
         
         .about-feature-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #597FFF 0%, #3D5FE3 100%);
-            border-radius: 14px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #597FFF 0%, #7B9AFF 100%);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -295,56 +261,38 @@
         
         .about-metrics {
             margin-top: auto;
-            padding: 32px 40px;
             display: flex;
-            justify-content: space-around;
+            gap: 20px;
         }
         
         .about-metric {
+            flex: 1;
+            padding: 28px;
             text-align: center;
+            background: linear-gradient(135deg, #597FFF 0%, #7B9AFF 100%);
+            border-radius: 16px;
         }
         
         .about-metric-value {
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 900;
             color: white;
             line-height: 1;
-            letter-spacing: -2px;
         }
         
         .about-metric-label {
             font-size: 12px;
-            color: rgba(255,255,255,0.8);
+            color: rgba(255,255,255,0.85);
             margin-top: 8px;
         }
 
         /* ===== PAGE 3: PIPELINE ===== */
-        .page-pipeline {
-            background: linear-gradient(180deg, #597FFF 0%, #3D5FE3 100%);
-        }
-        
-        .pipeline-content {
-            position: relative;
-            z-index: 10;
-            padding: 60px;
-            height: 100%;
-            color: white;
-        }
-        
-        .pipeline-title {
-            font-size: 44px;
-            font-weight: 900;
-            line-height: 1.1;
-            letter-spacing: -2px;
-            margin-bottom: 50px;
-        }
-        
         .pipeline-flow {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 50px;
-            padding: 0 20px;
+            margin: 40px 0;
+            padding: 30px 20px;
         }
         
         .pipeline-step {
@@ -352,30 +300,34 @@
             flex: 1;
         }
         
-        .pipeline-dot {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 14px;
+        .pipeline-num {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 12px;
+            background: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 22px;
             font-weight: 800;
+            color: #597FFF;
+            box-shadow: 0 8px 24px rgba(89,127,255,0.25);
         }
         
         .pipeline-label {
             font-size: 12px;
             font-weight: 600;
-            opacity: 0.9;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
         .pipeline-arrow {
-            font-size: 20px;
-            opacity: 0.5;
-            margin: 0 -10px;
+            color: rgba(255,255,255,0.5);
+            font-size: 18px;
         }
         
-        .pipeline-grid {
+        .pipeline-cards {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 16px;
@@ -388,55 +340,45 @@
         .pipeline-card-title {
             font-size: 15px;
             font-weight: 700;
+            color: #1a1a2e;
             margin-bottom: 8px;
         }
         
         .pipeline-card-text {
             font-size: 13px;
-            opacity: 0.8;
+            color: #666;
             line-height: 1.6;
         }
 
         /* ===== PAGE 4: CAPABILITIES ===== */
-        .page-capabilities {
-            background: #FAFBFF;
-        }
-        
-        .cap-content {
-            position: relative;
-            z-index: 10;
-            padding: 60px;
-            height: 100%;
-        }
-        
         .cap-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            margin-top: 40px;
+            gap: 20px;
+            margin-top: 30px;
         }
         
         .cap-card {
-            padding: 32px;
+            padding: 28px;
             position: relative;
             overflow: hidden;
         }
         
-        .cap-num {
+        .cap-card-num {
             position: absolute;
-            top: 20px;
-            right: 24px;
-            font-size: 72px;
+            top: -10px;
+            right: 10px;
+            font-size: 100px;
             font-weight: 900;
-            color: rgba(89, 127, 255, 0.1);
+            color: rgba(89,127,255,0.1);
             line-height: 1;
         }
         
         .cap-card-title {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
             color: #1a1a2e;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             position: relative;
         }
         
@@ -448,78 +390,23 @@
         }
 
         /* ===== PAGE 5: AI ===== */
-        .page-ai {
-            background: #0D0D1A;
-            color: white;
-        }
-        
-        .ai-diagonal {
-            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
-            background: linear-gradient(135deg, #1a1a3a 0%, #0D0D1A 100%);
-        }
-        
-        .ai-glow {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(89,127,255,0.5) 0%, transparent 70%);
-            top: 30%;
-            right: 10%;
-            filter: blur(60px);
-        }
-        
-        .ai-glow-2 {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(168,127,255,0.4) 0%, transparent 70%);
-            bottom: 20%;
-            left: 5%;
-            filter: blur(50px);
-        }
-        
-        .ai-content {
-            position: relative;
-            z-index: 10;
-            padding: 60px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .ai-title {
-            font-size: 48px;
-            font-weight: 900;
-            letter-spacing: -2px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            margin-top: 40px;
-        }
-        
-        .ai-title span {
-            background: linear-gradient(90deg, #597FFF, #A78BFA, #FFD700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
         .ai-subtitle {
             font-size: 16px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.85);
             max-width: 420px;
             line-height: 1.7;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
         
         .ai-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 16px;
             margin-top: auto;
         }
         
         .ai-card {
-            padding: 28px;
+            padding: 26px;
         }
         
         .ai-card-icon {
@@ -530,84 +417,47 @@
         .ai-card-title {
             font-size: 16px;
             font-weight: 700;
+            color: #1a1a2e;
             margin-bottom: 8px;
         }
         
         .ai-card-text {
             font-size: 13px;
-            color: rgba(255,255,255,0.6);
+            color: #666;
             line-height: 1.6;
         }
 
         /* ===== PAGE 6: INTEGRATIONS ===== */
-        .page-integrations {
-            background: #FAFBFF;
-        }
-        
-        .int-diagonal {
-            clip-path: polygon(0 0, 100% 0, 100% 75%, 0 95%);
-        }
-        
-        .int-content {
-            position: relative;
-            z-index: 10;
-            padding: 60px;
-            height: 100%;
-        }
-        
-        .int-header {
-            color: white;
-            margin-bottom: 40px;
-        }
-        
         .int-logos {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-            margin-bottom: 30px;
+            margin: 30px 0;
         }
         
         .int-logo {
             padding: 12px 20px;
             font-size: 13px;
             font-weight: 600;
-            color: white;
-        }
-        
-        .int-bottom {
-            position: absolute;
-            bottom: 50px;
-            left: 60px;
-            right: 60px;
+            color: #597FFF;
         }
         
         .int-two-col {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-bottom: 30px;
+            gap: 20px;
+            margin-top: 30px;
         }
         
         .int-col {
-            padding: 28px;
+            padding: 24px;
         }
         
         .int-col-title {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 800;
             color: #597FFF;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .int-col-title::before {
-            content: '';
-            width: 24px;
-            height: 3px;
-            background: #597FFF;
-            border-radius: 2px;
+            margin-bottom: 16px;
         }
         
         .int-list {
@@ -615,31 +465,24 @@
         }
         
         .int-list li {
-            padding: 10px 0;
+            padding: 8px 0;
             font-size: 13px;
             color: #555;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
         
         .int-list li::before {
             content: '✓';
-            width: 22px;
-            height: 22px;
-            background: #597FFF;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            flex-shrink: 0;
+            color: #597FFF;
+            font-weight: bold;
         }
         
         .int-badges {
             display: flex;
-            gap: 20px;
+            gap: 16px;
+            margin-top: auto;
         }
         
         .int-badge {
@@ -670,15 +513,11 @@
 <body>
 
 <!-- PAGE 1: COVER -->
-<div class="page page-cover">
-    <div class="bg-diagonal cover-diagonal"></div>
-    <div class="bg-mesh"></div>
+<div class="page">
+    <div class="mesh"></div>
+    <div class="big-num big-num-white" style="top: -80px; right: -60px;">01</div>
     
-    <div class="float-circle" style="width: 200px; height: 200px; top: 80px; right: 100px;"></div>
-    <div class="float-circle" style="width: 80px; height: 80px; top: 300px; right: 50px;"></div>
-    <div class="float-square" style="width: 120px; height: 120px; top: 150px; right: 250px;"></div>
-    
-    <div class="cover-content">
+    <div class="content">
         <div class="logo">
             <img src="assets/logo.png" alt="WorkHere">
         </div>
@@ -692,17 +531,15 @@
             </p>
         </div>
         
-        <div class="cover-glass-card glass">
+        <div class="cover-stats glass">
             <div class="cover-stat">
                 <div class="cover-stat-value">1500+</div>
                 <div class="cover-stat-label">компаний</div>
             </div>
-            <div class="cover-stat-divider"></div>
             <div class="cover-stat">
                 <div class="cover-stat-value">AI</div>
                 <div class="cover-stat-label">технологии</div>
             </div>
-            <div class="cover-stat-divider"></div>
             <div class="cover-stat">
                 <div class="cover-stat-value">×3</div>
                 <div class="cover-stat-label">быстрее</div>
@@ -712,12 +549,13 @@
 </div>
 
 <!-- PAGE 2: ABOUT -->
-<div class="page page-about">
-    <div class="bg-white"></div>
+<div class="page page-light">
+    <div class="mesh-alt"></div>
+    <div class="big-num big-num-dark" style="top: -60px; right: -40px;">02</div>
     
-    <div class="about-content">
-        <div class="section-label">О платформе</div>
-        <h2 class="section-title">
+    <div class="content">
+        <div class="section-label section-label-dark">О платформе</div>
+        <h2 class="section-title section-title-dark">
             Нанимайте быстрее<br>
             <span>и управляемо</span>
         </h2>
@@ -727,25 +565,25 @@
         </p>
         
         <div class="about-features">
-            <div class="about-feature glass-blue">
+            <div class="about-feature glass-soft">
                 <div class="about-feature-icon">🔗</div>
                 <div class="about-feature-text">Все job-борды в одном окне</div>
             </div>
-            <div class="about-feature glass-blue">
+            <div class="about-feature glass-soft">
                 <div class="about-feature-icon">🤖</div>
                 <div class="about-feature-text">ИИ для поиска и скоринга</div>
             </div>
-            <div class="about-feature glass-blue">
+            <div class="about-feature glass-soft">
                 <div class="about-feature-icon">📊</div>
                 <div class="about-feature-text">Аналитика в реальном времени</div>
             </div>
-            <div class="about-feature glass-blue">
+            <div class="about-feature glass-soft">
                 <div class="about-feature-icon">🛡️</div>
                 <div class="about-feature-text">ФЗ-152 из коробки</div>
             </div>
         </div>
         
-        <div class="about-metrics glass-dark">
+        <div class="about-metrics">
             <div class="about-metric">
                 <div class="about-metric-value">−40%</div>
                 <div class="about-metric-label">расходы на найм</div>
@@ -763,49 +601,50 @@
 </div>
 
 <!-- PAGE 3: PIPELINE -->
-<div class="page page-pipeline">
-    <div class="float-circle" style="width: 300px; height: 300px; top: -100px; right: -100px; opacity: 0.3;"></div>
-    <div class="float-circle" style="width: 150px; height: 150px; bottom: 100px; left: -50px; opacity: 0.2;"></div>
+<div class="page">
+    <div class="mesh"></div>
+    <div class="big-num big-num-white" style="top: -80px; left: -60px;">03</div>
     
-    <div class="pipeline-content">
-        <div class="section-label" style="color: rgba(255,255,255,0.6);">Процесс</div>
-        <h2 class="pipeline-title">
-            Полный цикл найма<br>в одной системе
+    <div class="content">
+        <div class="section-label">Процесс</div>
+        <h2 class="section-title">
+            Полный цикл найма<br>
+            <span>в одной системе</span>
         </h2>
         
-        <div class="pipeline-flow">
+        <div class="pipeline-flow glass-soft">
             <div class="pipeline-step">
-                <div class="pipeline-dot glass">1</div>
+                <div class="pipeline-num">1</div>
                 <div class="pipeline-label">Заявка</div>
             </div>
             <div class="pipeline-arrow">→</div>
             <div class="pipeline-step">
-                <div class="pipeline-dot glass">2</div>
+                <div class="pipeline-num">2</div>
                 <div class="pipeline-label">Поиск</div>
             </div>
             <div class="pipeline-arrow">→</div>
             <div class="pipeline-step">
-                <div class="pipeline-dot glass">3</div>
+                <div class="pipeline-num">3</div>
                 <div class="pipeline-label">Скрининг</div>
             </div>
             <div class="pipeline-arrow">→</div>
             <div class="pipeline-step">
-                <div class="pipeline-dot glass">4</div>
+                <div class="pipeline-num">4</div>
                 <div class="pipeline-label">Интервью</div>
             </div>
             <div class="pipeline-arrow">→</div>
             <div class="pipeline-step">
-                <div class="pipeline-dot glass">5</div>
+                <div class="pipeline-num">5</div>
                 <div class="pipeline-label">Оценка</div>
             </div>
             <div class="pipeline-arrow">→</div>
             <div class="pipeline-step">
-                <div class="pipeline-dot glass">6</div>
+                <div class="pipeline-num">6</div>
                 <div class="pipeline-label">Оффер</div>
             </div>
         </div>
         
-        <div class="pipeline-grid">
+        <div class="pipeline-cards">
             <div class="pipeline-card glass">
                 <div class="pipeline-card-title">Автоподхват откликов</div>
                 <div class="pipeline-card-text">Резюме с job-бордов автоматически попадают в систему</div>
@@ -827,43 +666,44 @@
 </div>
 
 <!-- PAGE 4: CAPABILITIES -->
-<div class="page page-capabilities">
-    <div class="bg-white"></div>
+<div class="page page-light">
+    <div class="mesh-alt"></div>
+    <div class="big-num big-num-dark" style="bottom: -100px; right: -80px;">04</div>
     
-    <div class="cap-content">
-        <div class="section-label">Возможности</div>
-        <h2 class="section-title">
+    <div class="content">
+        <div class="section-label section-label-dark">Возможности</div>
+        <h2 class="section-title section-title-dark">
             <span>Всё</span> для эффективного<br>рекрутинга
         </h2>
         
         <div class="cap-grid">
             <div class="cap-card glass">
-                <div class="cap-num">01</div>
+                <div class="cap-card-num">01</div>
                 <h4 class="cap-card-title">Единая база кандидатов</h4>
                 <p class="cap-card-text">Все контакты, комментарии, история взаимодействий. Поиск по резюме, этапам, вакансиям.</p>
             </div>
             <div class="cap-card glass">
-                <div class="cap-num">02</div>
+                <div class="cap-card-num">02</div>
                 <h4 class="cap-card-title">Коммуникации внутри</h4>
                 <p class="cap-card-text">Чаты Авито и HH, мессенджеры, IP-телефония с записью. Единый инбокс.</p>
             </div>
             <div class="cap-card glass">
-                <div class="cap-num">03</div>
+                <div class="cap-card-num">03</div>
                 <h4 class="cap-card-title">Календарь и интервью</h4>
                 <p class="cap-card-text">Планирование встреч, видеозвонки через Телемост, автонапоминания участникам.</p>
             </div>
             <div class="cap-card glass">
-                <div class="cap-num">04</div>
+                <div class="cap-card-num">04</div>
                 <h4 class="cap-card-title">Автоматизация рутины</h4>
                 <p class="cap-card-text">Триггеры и правила: автоназначение, авторассылки, напоминания. Чек-листы.</p>
             </div>
             <div class="cap-card glass">
-                <div class="cap-num">05</div>
+                <div class="cap-card-num">05</div>
                 <h4 class="cap-card-title">Глубокая аналитика</h4>
                 <p class="cap-card-text">Воронка конверсий, time-to-hire, эффективность источников. Дашборды по ролям.</p>
             </div>
             <div class="cap-card glass">
-                <div class="cap-num">06</div>
+                <div class="cap-card-num">06</div>
                 <h4 class="cap-card-title">Документы и оффер</h4>
                 <p class="cap-card-text">Согласование условий, сбор документов, КЭДО, передача в HR.</p>
             </div>
@@ -872,17 +712,15 @@
 </div>
 
 <!-- PAGE 5: AI -->
-<div class="page page-ai">
-    <div class="ai-diagonal"></div>
-    <div class="ai-glow"></div>
-    <div class="ai-glow-2"></div>
+<div class="page">
+    <div class="mesh"></div>
+    <div class="big-num big-num-white" style="top: -60px; right: -100px;">05</div>
     
-    <div class="ai-content">
-        <div class="section-label" style="color: rgba(255,255,255,0.5);">Технологии</div>
-        
-        <h2 class="ai-title">
-            <span>ИИ</span> встроен<br>
-            в каждый процесс
+    <div class="content">
+        <div class="section-label">Технологии</div>
+        <h2 class="section-title">
+            ИИ встроен<br>
+            <span>в каждый процесс</span>
         </h2>
         
         <p class="ai-subtitle">
@@ -890,22 +728,22 @@
         </p>
         
         <div class="ai-grid">
-            <div class="ai-card glass-dark">
+            <div class="ai-card glass">
                 <div class="ai-card-icon">🔍</div>
                 <h4 class="ai-card-title">Семантический поиск</h4>
                 <p class="ai-card-text">Поиск по смыслу, а не только словам. Находит релевантных без точных совпадений.</p>
             </div>
-            <div class="ai-card glass-dark">
+            <div class="ai-card glass">
                 <div class="ai-card-icon">📊</div>
                 <h4 class="ai-card-title">Скоринг кандидатов</h4>
                 <p class="ai-card-text">Ранжирование по соответствию вакансии с объяснениями.</p>
             </div>
-            <div class="ai-card glass-dark">
+            <div class="ai-card glass">
                 <div class="ai-card-icon">✍️</div>
                 <h4 class="ai-card-title">Генерация текстов</h4>
                 <p class="ai-card-text">Создание вакансий, персональные сообщения, вопросы для интервью.</p>
             </div>
-            <div class="ai-card glass-dark">
+            <div class="ai-card glass">
                 <div class="ai-card-icon">🎙️</div>
                 <h4 class="ai-card-title">Анализ звонков</h4>
                 <p class="ai-card-text">Транскрибация, саммари, извлечение фактов: зарплата, сроки, мотивация.</p>
@@ -915,68 +753,65 @@
 </div>
 
 <!-- PAGE 6: INTEGRATIONS -->
-<div class="page page-integrations">
-    <div class="bg-diagonal int-diagonal"></div>
+<div class="page page-light">
+    <div class="mesh-alt"></div>
+    <div class="big-num big-num-dark" style="bottom: -80px; left: -80px;">06</div>
     
-    <div class="int-content">
-        <div class="int-header">
-            <div class="section-label" style="color: rgba(255,255,255,0.6);">Экосистема</div>
-            <h2 class="section-title" style="color: white;">
-                Интеграции<br>
-                <span style="color: rgba(255,255,255,0.7);">и безопасность</span>
-            </h2>
-        </div>
+    <div class="content">
+        <div class="section-label section-label-dark">Экосистема</div>
+        <h2 class="section-title section-title-dark">
+            Интеграции<br>
+            <span>и безопасность</span>
+        </h2>
         
         <div class="int-logos">
-            <div class="int-logo glass">HH.ru</div>
-            <div class="int-logo glass">Авито</div>
-            <div class="int-logo glass">SuperJob</div>
-            <div class="int-logo glass">Работа.ру</div>
-            <div class="int-logo glass">Телемост</div>
-            <div class="int-logo glass">WhatsApp</div>
-            <div class="int-logo glass">Telegram</div>
-            <div class="int-logo glass">1С</div>
-            <div class="int-logo glass">Open API</div>
+            <div class="int-logo glass-soft">HH.ru</div>
+            <div class="int-logo glass-soft">Авито</div>
+            <div class="int-logo glass-soft">SuperJob</div>
+            <div class="int-logo glass-soft">Работа.ру</div>
+            <div class="int-logo glass-soft">Телемост</div>
+            <div class="int-logo glass-soft">WhatsApp</div>
+            <div class="int-logo glass-soft">Telegram</div>
+            <div class="int-logo glass-soft">1С</div>
+            <div class="int-logo glass-soft">Open API</div>
         </div>
         
-        <div class="int-bottom">
-            <div class="int-two-col">
-                <div class="int-col glass">
-                    <div class="int-col-title">Безопасность</div>
-                    <ul class="int-list">
-                        <li>Соответствие ФЗ-152</li>
-                        <li>Разграничение по ролям</li>
-                        <li>Журнал действий</li>
-                        <li>Политики хранения данных</li>
-                    </ul>
-                </div>
-                <div class="int-col glass">
-                    <div class="int-col-title">Внедрение</div>
-                    <ul class="int-list">
-                        <li>Старт за 15 минут</li>
-                        <li>Автоперенос базы</li>
-                        <li>Обучение команды</li>
-                        <li>Поддержка 24/7</li>
-                    </ul>
-                </div>
+        <div class="int-two-col">
+            <div class="int-col glass">
+                <div class="int-col-title">Безопасность</div>
+                <ul class="int-list">
+                    <li>Соответствие ФЗ-152</li>
+                    <li>Разграничение по ролям</li>
+                    <li>Журнал действий</li>
+                    <li>Политики хранения данных</li>
+                </ul>
             </div>
-            
-            <div class="int-badges">
-                <div class="int-badge glass">
-                    <div class="int-badge-icon">🇷🇺</div>
-                    <div class="int-badge-title">Российское ПО</div>
-                    <div class="int-badge-text">Данные в РФ</div>
-                </div>
-                <div class="int-badge glass">
-                    <div class="int-badge-icon">📱</div>
-                    <div class="int-badge-title">Мобильное приложение</div>
-                    <div class="int-badge-text">iOS и Android</div>
-                </div>
-                <div class="int-badge glass">
-                    <div class="int-badge-icon">⚙️</div>
-                    <div class="int-badge-title">Кастомизация</div>
-                    <div class="int-badge-text">Доработки под вас</div>
-                </div>
+            <div class="int-col glass">
+                <div class="int-col-title">Внедрение</div>
+                <ul class="int-list">
+                    <li>Старт за 15 минут</li>
+                    <li>Автоперенос базы</li>
+                    <li>Обучение команды</li>
+                    <li>Поддержка 24/7</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="int-badges">
+            <div class="int-badge glass">
+                <div class="int-badge-icon">🇷🇺</div>
+                <div class="int-badge-title">Российское ПО</div>
+                <div class="int-badge-text">Данные в РФ</div>
+            </div>
+            <div class="int-badge glass">
+                <div class="int-badge-icon">📱</div>
+                <div class="int-badge-title">Мобильное приложение</div>
+                <div class="int-badge-text">iOS и Android</div>
+            </div>
+            <div class="int-badge glass">
+                <div class="int-badge-icon">⚙️</div>
+                <div class="int-badge-title">Кастомизация</div>
+                <div class="int-badge-text">Доработки под вас</div>
             </div>
         </div>
     </div>
