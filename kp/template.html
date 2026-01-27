@@ -390,6 +390,61 @@
         .p4-c4 { top: 430px; left: 80px; transform: rotate(1.5deg); }
         .p4-c5 { top: 450px; left: 320px; transform: rotate(-1deg); }
         .p4-c6 { top: 420px; right: 60px; transform: rotate(2deg); }
+        
+        .p4-mascot-area {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        
+        .p4-speech-bubble {
+            position: relative;
+            background: white;
+            border-radius: 24px;
+            padding: 18px 24px;
+            max-width: 240px;
+            box-shadow: 0 8px 30px rgba(89,127,255,0.2);
+            border: 3px solid #597FFF;
+        }
+        
+        .p4-speech-bubble::after {
+            content: '';
+            position: absolute;
+            right: -15px;
+            bottom: 25px;
+            border-width: 15px 0 15px 20px;
+            border-style: solid;
+            border-color: transparent transparent transparent white;
+        }
+        
+        .p4-speech-bubble::before {
+            content: '';
+            position: absolute;
+            right: -22px;
+            bottom: 22px;
+            border-width: 18px 0 18px 24px;
+            border-style: solid;
+            border-color: transparent transparent transparent #597FFF;
+        }
+        
+        .p4-speech-text {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a2e;
+            line-height: 1.4;
+        }
+        
+        .p4-speech-text span {
+            color: #597FFF;
+        }
+        
+        .p4-mascot img {
+            height: 140px;
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.15));
+        }
 
         /* =========================================
            PAGE 5: AI (улучшенный дизайн)
@@ -779,6 +834,15 @@
         <div class="p4-card-num">06</div>
         <div class="p4-card-title">Документы</div>
         <div class="p4-card-text">Офферы, КЭДО, передача в HR</div>
+    </div>
+    
+    <div class="p4-mascot-area">
+        <div class="p4-speech-bubble">
+            <div class="p4-speech-text">Найду <span>лучших</span> кандидатов, пока вы пьёте кофе! ☕</div>
+        </div>
+        <div class="p4-mascot">
+            <img src="assets/mascot/workhere_mascot_08_transparent.svg" alt="WorkHere Mascot">
+        </div>
     </div>
 </div>
 
