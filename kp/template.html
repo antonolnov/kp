@@ -272,49 +272,40 @@
         }
         
         .p3-step-circle {
-            width: 105px;
-            height: 105px;
+            width: 115px;
+            height: 115px;
             border-radius: 50%;
             background: white;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+            gap: 2px;
+        }
+        
+        .p3-step-num {
+            font-size: 28px;
+            font-weight: 900;
+            color: #597FFF;
+            line-height: 1;
         }
         
         .p3-step-label {
-            font-size: 13px;
-            font-weight: 800;
-            color: #597FFF;
+            font-size: 12px;
+            font-weight: 700;
+            color: #333;
             text-align: center;
             line-height: 1.2;
         }
         
-        /* Позиции кругов — органичный разброс */
-        .p3-s1 { top: 145px; left: 60px; }
-        .p3-s2 { top: 190px; left: 210px; }
-        .p3-s3 { top: 150px; left: 380px; }
-        .p3-s4 { top: 290px; left: 480px; }
-        .p3-s5 { top: 360px; left: 300px; }
-        .p3-s6 { top: 320px; left: 110px; }
-        
-        /* SVG линии-стрелки */
-        .p3-paths {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-        }
-        
-        .p3-path-line {
-            fill: none;
-            stroke: rgba(255,255,255,0.5);
-            stroke-width: 3;
-            stroke-linecap: round;
-            stroke-dasharray: 8 6;
-        }
+        /* Позиции кругов — органичный художественный разброс */
+        .p3-s1 { top: 130px; left: 55px; }
+        .p3-s2 { top: 165px; left: 220px; }
+        .p3-s3 { top: 125px; right: 100px; }
+        .p3-s4 { top: 280px; right: 55px; }
+        .p3-s5 { top: 320px; left: 280px; }
+        .p3-s6 { top: 275px; left: 80px; }
         
         .p3-cards {
             position: absolute;
@@ -809,43 +800,40 @@
         <span>От заявки до выхода на работу</span>
     </div>
     
-    <!-- Пунктирные линии между кругами -->
-    <svg class="p3-paths" viewBox="0 0 595 842" preserveAspectRatio="none">
-        <path class="p3-path-line" d="M 115,200 Q 180,230 265,245" />
-        <path class="p3-path-line" d="M 320,245 Q 380,220 430,200" />
-        <path class="p3-path-line" d="M 485,210 Q 520,280 530,340" />
-        <path class="p3-path-line" d="M 530,350 Q 480,400 355,410" />
-        <path class="p3-path-line" d="M 350,410 Q 250,400 165,370" />
-    </svg>
-    
-    <!-- Абстрактно расположенные круги -->
+    <!-- Абстрактно расположенные круги с номерами -->
     <div class="p3-step p3-s1">
         <div class="p3-step-circle">
+            <div class="p3-step-num">1</div>
             <div class="p3-step-label">Заявка</div>
         </div>
     </div>
     <div class="p3-step p3-s2">
         <div class="p3-step-circle">
+            <div class="p3-step-num">2</div>
             <div class="p3-step-label">Поиск</div>
         </div>
     </div>
     <div class="p3-step p3-s3">
         <div class="p3-step-circle">
+            <div class="p3-step-num">3</div>
             <div class="p3-step-label">Скрининг</div>
         </div>
     </div>
     <div class="p3-step p3-s4">
         <div class="p3-step-circle">
+            <div class="p3-step-num">4</div>
             <div class="p3-step-label">Интервью</div>
         </div>
     </div>
     <div class="p3-step p3-s5">
         <div class="p3-step-circle">
+            <div class="p3-step-num">5</div>
             <div class="p3-step-label">Оценка</div>
         </div>
     </div>
     <div class="p3-step p3-s6">
         <div class="p3-step-circle">
+            <div class="p3-step-num">6</div>
             <div class="p3-step-label">Оффер</div>
         </div>
     </div>
