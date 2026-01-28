@@ -235,89 +235,23 @@
         }
 
         /* =========================================
-           PAGE 3: ВОРОНКА (диагональная лента)
+           PAGE 3: ВОРОНКА (изгибающийся путь)
            ========================================= */
         .p3 {
             background: linear-gradient(135deg, #597FFF 0%, #3D5FE3 100%);
             overflow: hidden;
         }
         
-        .p3-ribbon {
-            position: absolute;
-            top: 50%;
-            left: -100px;
-            right: -100px;
-            transform: rotate(-8deg) translateY(-50%);
-            background: rgba(255,255,255,0.12);
-            padding: 40px 0;
-        }
-        
-        .p3-ribbon-inner {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 40px;
-        }
-        
-        .p3-step {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        
-        .p3-step-circle {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            padding: 10px;
-        }
-        
-        .p3-step-label {
-            font-size: 11px;
-            font-weight: 700;
-            color: #597FFF;
-            text-align: center;
-            line-height: 1.2;
-        }
-        
-        .p3-arrow {
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-            width: 35px;
-            justify-content: center;
-        }
-        
-        .p3-arrow-line {
-            width: 20px;
-            height: 3px;
-            background: rgba(255,255,255,0.7);
-        }
-        
-        .p3-arrow-head {
-            width: 0;
-            height: 0;
-            border-top: 6px solid transparent;
-            border-bottom: 6px solid transparent;
-            border-left: 9px solid rgba(255,255,255,0.7);
-        }
-        
         .p3-title {
             position: absolute;
-            top: 50px;
+            top: 45px;
             left: 50px;
             color: white;
             z-index: 10;
         }
         
         .p3-title h2 {
-            font-size: 52px;
+            font-size: 48px;
             font-weight: 900;
             letter-spacing: -2px;
             line-height: 1;
@@ -325,15 +259,119 @@
         
         .p3-title span {
             display: block;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 400;
             opacity: 0.7;
-            margin-top: 15px;
+            margin-top: 12px;
+        }
+        
+        .p3-path {
+            position: absolute;
+            top: 150px;
+            left: 50px;
+            right: 50px;
+        }
+        
+        .p3-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .p3-row-reverse {
+            flex-direction: row-reverse;
+        }
+        
+        .p3-step {
+            flex-shrink: 0;
+        }
+        
+        .p3-step-circle {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+        }
+        
+        .p3-step-label {
+            font-size: 14px;
+            font-weight: 800;
+            color: #597FFF;
+            text-align: center;
+            line-height: 1.2;
+        }
+        
+        /* Горизонтальные стрелки */
+        .p3-arrow-h {
+            display: flex;
+            align-items: center;
+            width: 50px;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .p3-arrow-h .p3-arrow-line {
+            width: 30px;
+            height: 4px;
+            background: rgba(255,255,255,0.8);
+        }
+        
+        .p3-arrow-h .p3-arrow-head {
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 12px solid rgba(255,255,255,0.8);
+        }
+        
+        /* Стрелка влево */
+        .p3-arrow-h.left {
+            flex-direction: row-reverse;
+        }
+        
+        .p3-arrow-h.left .p3-arrow-head {
+            border-left: none;
+            border-right: 12px solid rgba(255,255,255,0.8);
+        }
+        
+        /* Вертикальный переход (изгиб) */
+        .p3-bend {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 55px;
+            margin-bottom: 20px;
+        }
+        
+        .p3-arrow-v {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 40px;
+            justify-content: center;
+        }
+        
+        .p3-arrow-v .p3-arrow-line {
+            width: 4px;
+            height: 20px;
+            background: rgba(255,255,255,0.8);
+        }
+        
+        .p3-arrow-v .p3-arrow-head {
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 12px solid rgba(255,255,255,0.8);
         }
         
         .p3-cards {
             position: absolute;
-            bottom: 40px;
+            bottom: 35px;
             left: 50px;
             right: 50px;
             display: grid;
@@ -345,18 +383,18 @@
         .p3-card {
             background: rgba(255,255,255,0.95);
             border-radius: 14px;
-            padding: 22px;
+            padding: 20px;
         }
         
         .p3-card-title {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             color: #1a1a2e;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         
         .p3-card-text {
-            font-size: 12px;
+            font-size: 11px;
             color: #666;
             line-height: 1.5;
         }
@@ -824,14 +862,15 @@
         <span>От заявки до выхода на работу</span>
     </div>
     
-    <div class="p3-ribbon">
-        <div class="p3-ribbon-inner">
+    <div class="p3-path">
+        <!-- Первый ряд: слева направо -->
+        <div class="p3-row">
             <div class="p3-step">
                 <div class="p3-step-circle">
                     <div class="p3-step-label">Заявка</div>
                 </div>
             </div>
-            <div class="p3-arrow">
+            <div class="p3-arrow-h">
                 <div class="p3-arrow-line"></div>
                 <div class="p3-arrow-head"></div>
             </div>
@@ -840,7 +879,7 @@
                     <div class="p3-step-label">Поиск</div>
                 </div>
             </div>
-            <div class="p3-arrow">
+            <div class="p3-arrow-h">
                 <div class="p3-arrow-line"></div>
                 <div class="p3-arrow-head"></div>
             </div>
@@ -849,16 +888,24 @@
                     <div class="p3-step-label">Скрининг</div>
                 </div>
             </div>
-            <div class="p3-arrow">
+        </div>
+        
+        <!-- Изгиб вниз -->
+        <div class="p3-bend">
+            <div class="p3-arrow-v">
                 <div class="p3-arrow-line"></div>
                 <div class="p3-arrow-head"></div>
             </div>
+        </div>
+        
+        <!-- Второй ряд: справа налево -->
+        <div class="p3-row p3-row-reverse">
             <div class="p3-step">
                 <div class="p3-step-circle">
                     <div class="p3-step-label">Интервью</div>
                 </div>
             </div>
-            <div class="p3-arrow">
+            <div class="p3-arrow-h left">
                 <div class="p3-arrow-line"></div>
                 <div class="p3-arrow-head"></div>
             </div>
@@ -867,7 +914,7 @@
                     <div class="p3-step-label">Оценка</div>
                 </div>
             </div>
-            <div class="p3-arrow">
+            <div class="p3-arrow-h left">
                 <div class="p3-arrow-line"></div>
                 <div class="p3-arrow-head"></div>
             </div>
