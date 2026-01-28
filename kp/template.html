@@ -235,7 +235,7 @@
         }
 
         /* =========================================
-           PAGE 3: ВОРОНКА (художественный путь)
+           PAGE 3: ВОРОНКА (диагональная лента)
            ========================================= */
         .p3 {
             background: linear-gradient(135deg, #597FFF 0%, #3D5FE3 100%);
@@ -244,14 +244,14 @@
         
         .p3-title {
             position: absolute;
-            top: 40px;
+            top: 50px;
             left: 50px;
             color: white;
             z-index: 10;
         }
         
         .p3-title h2 {
-            font-size: 44px;
+            font-size: 52px;
             font-weight: 900;
             letter-spacing: -2px;
             line-height: 1;
@@ -259,152 +259,90 @@
         
         .p3-title span {
             display: block;
-            font-size: 15px;
+            font-size: 18px;
             font-weight: 400;
             opacity: 0.7;
-            margin-top: 10px;
+            margin-top: 15px;
         }
         
-        /* Круги этапов */
-        .p3-step {
+        .p3-ribbon {
             position: absolute;
-            z-index: 5;
+            top: 50%;
+            left: -50px;
+            right: -50px;
+            transform: rotate(-8deg) translateY(-50%);
+            background: rgba(255,255,255,0.12);
+            padding: 35px 0;
+        }
+        
+        .p3-ribbon-inner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            padding: 0 80px;
+        }
+        
+        .p3-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
         
         .p3-step-circle {
-            width: 130px;
-            height: 130px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             background: white;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.25);
-            gap: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            gap: 2px;
         }
         
         .p3-step-num {
-            font-size: 36px;
+            font-size: 28px;
             font-weight: 900;
             color: #597FFF;
             line-height: 1;
         }
         
         .p3-step-label {
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 700;
             color: #333;
             text-align: center;
-            line-height: 1.2;
         }
-        
-        /* Позиции — S-образный путь */
-        .p3-s1 { top: 120px; left: 40px; }
-        .p3-s2 { top: 115px; left: 195px; }
-        .p3-s3 { top: 120px; left: 355px; }
-        .p3-s4 { top: 275px; left: 380px; }
-        .p3-s5 { top: 290px; left: 195px; }
-        .p3-s6 { top: 280px; left: 40px; }
-        
-        /* Соединительные линии */
-        .p3-conn {
-            position: absolute;
-            z-index: 1;
-            border: 2px solid rgba(255,255,255,0.5);
-        }
-        
-        /* 1→2 */
-        .p3-c1 {
-            top: 188px;
-            left: 155px;
-            width: 60px;
-            height: 30px;
-            border-top: none;
-            border-left: none;
-            border-radius: 0 0 40px 0;
-        }
-        
-        /* 2→3 */
-        .p3-c2 {
-            top: 165px;
-            left: 310px;
-            width: 65px;
-            height: 25px;
-            border-bottom: none;
-            border-left: none;
-            border-radius: 0 35px 0 0;
-        }
-        
-        /* 3→4 */
-        .p3-c3 {
-            top: 235px;
-            left: 455px;
-            width: 35px;
-            height: 60px;
-            border-top: none;
-            border-left: none;
-            border-radius: 0 0 30px 0;
-        }
-        
-        /* 4→5 */
-        .p3-c4 {
-            top: 340px;
-            left: 310px;
-            width: 90px;
-            height: 30px;
-            border-bottom: none;
-            border-right: none;
-            border-radius: 35px 0 0 0;
-        }
-        
-        /* 5→6 */
-        .p3-c5 {
-            top: 355px;
-            left: 155px;
-            width: 60px;
-            height: 25px;
-            border-bottom: none;
-            border-right: none;
-            border-radius: 30px 0 0 0;
-        }
-        
-        /* Декоративные элементы */
-        .p3-decor {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.08);
-        }
-        .p3-d1 { width: 200px; height: 200px; top: 350px; right: 30px; }
-        .p3-d2 { width: 80px; height: 80px; top: 80px; right: 60px; }
-        .p3-d3 { width: 50px; height: 50px; top: 420px; left: 180px; }
         
         .p3-cards {
             position: absolute;
-            bottom: 30px;
-            left: 40px;
-            right: 40px;
+            bottom: 40px;
+            left: 50px;
+            right: 50px;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
+            gap: 14px;
             z-index: 10;
         }
         
         .p3-card {
             background: rgba(255,255,255,0.95);
-            border-radius: 12px;
-            padding: 18px;
+            border-radius: 14px;
+            padding: 22px;
         }
         
         .p3-card-title {
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 700;
             color: #1a1a2e;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
         
         .p3-card-text {
-            font-size: 10px;
+            font-size: 12px;
             color: #666;
             line-height: 1.5;
         }
@@ -872,53 +810,44 @@
         <span>От заявки до выхода на работу</span>
     </div>
     
-    <!-- Декоративные круги фона -->
-    <div class="p3-decor p3-d1"></div>
-    <div class="p3-decor p3-d2"></div>
-    <div class="p3-decor p3-d3"></div>
-    
-    <!-- Соединительные линии -->
-    <div class="p3-conn p3-c1"></div>
-    <div class="p3-conn p3-c2"></div>
-    <div class="p3-conn p3-c3"></div>
-    <div class="p3-conn p3-c4"></div>
-    <div class="p3-conn p3-c5"></div>
-    
-    <!-- Круги этапов -->
-    <div class="p3-step p3-s1">
-        <div class="p3-step-circle">
-            <div class="p3-step-num">1</div>
-            <div class="p3-step-label">Заявка</div>
-        </div>
-    </div>
-    <div class="p3-step p3-s2">
-        <div class="p3-step-circle">
-            <div class="p3-step-num">2</div>
-            <div class="p3-step-label">Поиск</div>
-        </div>
-    </div>
-    <div class="p3-step p3-s3">
-        <div class="p3-step-circle">
-            <div class="p3-step-num">3</div>
-            <div class="p3-step-label">Скрининг</div>
-        </div>
-    </div>
-    <div class="p3-step p3-s4">
-        <div class="p3-step-circle">
-            <div class="p3-step-num">4</div>
-            <div class="p3-step-label">Интервью</div>
-        </div>
-    </div>
-    <div class="p3-step p3-s5">
-        <div class="p3-step-circle">
-            <div class="p3-step-num">5</div>
-            <div class="p3-step-label">Оценка</div>
-        </div>
-    </div>
-    <div class="p3-step p3-s6">
-        <div class="p3-step-circle">
-            <div class="p3-step-num">6</div>
-            <div class="p3-step-label">Оффер</div>
+    <div class="p3-ribbon">
+        <div class="p3-ribbon-inner">
+            <div class="p3-step">
+                <div class="p3-step-circle">
+                    <div class="p3-step-num">1</div>
+                    <div class="p3-step-label">Заявка</div>
+                </div>
+            </div>
+            <div class="p3-step">
+                <div class="p3-step-circle">
+                    <div class="p3-step-num">2</div>
+                    <div class="p3-step-label">Поиск</div>
+                </div>
+            </div>
+            <div class="p3-step">
+                <div class="p3-step-circle">
+                    <div class="p3-step-num">3</div>
+                    <div class="p3-step-label">Скрининг</div>
+                </div>
+            </div>
+            <div class="p3-step">
+                <div class="p3-step-circle">
+                    <div class="p3-step-num">4</div>
+                    <div class="p3-step-label">Интервью</div>
+                </div>
+            </div>
+            <div class="p3-step">
+                <div class="p3-step-circle">
+                    <div class="p3-step-num">5</div>
+                    <div class="p3-step-label">Оценка</div>
+                </div>
+            </div>
+            <div class="p3-step">
+                <div class="p3-step-circle">
+                    <div class="p3-step-num">6</div>
+                    <div class="p3-step-label">Оффер</div>
+                </div>
+            </div>
         </div>
     </div>
     
