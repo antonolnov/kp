@@ -299,13 +299,71 @@
             line-height: 1.2;
         }
         
-        /* Позиции кругов — органичный художественный разброс */
-        .p3-s1 { top: 130px; left: 55px; }
-        .p3-s2 { top: 165px; left: 220px; }
-        .p3-s3 { top: 125px; right: 100px; }
-        .p3-s4 { top: 280px; right: 55px; }
-        .p3-s5 { top: 320px; left: 280px; }
-        .p3-s6 { top: 275px; left: 80px; }
+        /* Позиции кругов — плавный путь слева направо, потом вниз и обратно */
+        .p3-s1 { top: 135px; left: 50px; }
+        .p3-s2 { top: 150px; left: 200px; }
+        .p3-s3 { top: 135px; left: 360px; }
+        .p3-s4 { top: 270px; left: 420px; }
+        .p3-s5 { top: 310px; left: 230px; }
+        .p3-s6 { top: 280px; left: 50px; }
+        
+        /* Соединительные линии-дуги */
+        .p3-connector {
+            position: absolute;
+            z-index: 1;
+        }
+        
+        /* Линия 1→2: лёгкий изгиб вниз */
+        .p3-c1 {
+            top: 195px;
+            left: 145px;
+            width: 80px;
+            height: 40px;
+            border-bottom: 3px dashed rgba(255,255,255,0.6);
+            border-radius: 0 0 50% 50%;
+        }
+        
+        /* Линия 2→3: лёгкий изгиб вверх */
+        .p3-c2 {
+            top: 170px;
+            left: 300px;
+            width: 85px;
+            height: 35px;
+            border-top: 3px dashed rgba(255,255,255,0.6);
+            border-radius: 50% 50% 0 0;
+        }
+        
+        /* Линия 3→4: изгиб вниз-вправо */
+        .p3-c3 {
+            top: 230px;
+            left: 440px;
+            width: 50px;
+            height: 60px;
+            border-right: 3px dashed rgba(255,255,255,0.6);
+            border-bottom: 3px dashed rgba(255,255,255,0.6);
+            border-radius: 0 0 60% 0;
+        }
+        
+        /* Линия 4→5: изгиб влево */
+        .p3-c4 {
+            top: 330px;
+            left: 330px;
+            width: 110px;
+            height: 45px;
+            border-top: 3px dashed rgba(255,255,255,0.6);
+            border-radius: 50% 50% 0 0;
+        }
+        
+        /* Линия 5→6: изгиб влево-вверх */
+        .p3-c5 {
+            top: 320px;
+            left: 145px;
+            width: 100px;
+            height: 50px;
+            border-top: 3px dashed rgba(255,255,255,0.6);
+            border-left: 3px dashed rgba(255,255,255,0.6);
+            border-radius: 60% 0 0 0;
+        }
         
         .p3-cards {
             position: absolute;
@@ -799,6 +857,13 @@
         <h2>Воронка</h2>
         <span>От заявки до выхода на работу</span>
     </div>
+    
+    <!-- Соединительные линии-дуги -->
+    <div class="p3-connector p3-c1"></div>
+    <div class="p3-connector p3-c2"></div>
+    <div class="p3-connector p3-c3"></div>
+    <div class="p3-connector p3-c4"></div>
+    <div class="p3-connector p3-c5"></div>
     
     <!-- Абстрактно расположенные круги с номерами -->
     <div class="p3-step p3-s1">
