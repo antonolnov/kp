@@ -235,7 +235,7 @@
         }
 
         /* =========================================
-           PAGE 3: ВОРОНКА (изгибающийся путь)
+           PAGE 3: ВОРОНКА (абстрактный художественный путь)
            ========================================= */
         .p3 {
             background: linear-gradient(135deg, #597FFF 0%, #3D5FE3 100%);
@@ -265,108 +265,55 @@
             margin-top: 12px;
         }
         
-        .p3-path {
-            position: absolute;
-            top: 150px;
-            left: 50px;
-            right: 50px;
-        }
-        
-        .p3-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        
-        .p3-row-reverse {
-            flex-direction: row-reverse;
-        }
-        
+        /* Абстрактно расположенные круги */
         .p3-step {
-            flex-shrink: 0;
+            position: absolute;
+            z-index: 5;
         }
         
         .p3-step-circle {
-            width: 110px;
-            height: 110px;
+            width: 105px;
+            height: 105px;
             border-radius: 50%;
             background: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
         }
         
         .p3-step-label {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 800;
             color: #597FFF;
             text-align: center;
             line-height: 1.2;
         }
         
-        /* Горизонтальные стрелки */
-        .p3-arrow-h {
-            display: flex;
-            align-items: center;
-            width: 50px;
-            justify-content: center;
-            flex-shrink: 0;
+        /* Позиции кругов — органичный разброс */
+        .p3-s1 { top: 145px; left: 60px; }
+        .p3-s2 { top: 190px; left: 210px; }
+        .p3-s3 { top: 150px; left: 380px; }
+        .p3-s4 { top: 290px; left: 480px; }
+        .p3-s5 { top: 360px; left: 300px; }
+        .p3-s6 { top: 320px; left: 110px; }
+        
+        /* SVG линии-стрелки */
+        .p3-paths {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
         }
         
-        .p3-arrow-h .p3-arrow-line {
-            width: 30px;
-            height: 4px;
-            background: rgba(255,255,255,0.8);
-        }
-        
-        .p3-arrow-h .p3-arrow-head {
-            width: 0;
-            height: 0;
-            border-top: 8px solid transparent;
-            border-bottom: 8px solid transparent;
-            border-left: 12px solid rgba(255,255,255,0.8);
-        }
-        
-        /* Стрелка влево */
-        .p3-arrow-h.left {
-            flex-direction: row-reverse;
-        }
-        
-        .p3-arrow-h.left .p3-arrow-head {
-            border-left: none;
-            border-right: 12px solid rgba(255,255,255,0.8);
-        }
-        
-        /* Вертикальный переход (изгиб) */
-        .p3-bend {
-            display: flex;
-            justify-content: flex-end;
-            padding-right: 55px;
-            margin-bottom: 20px;
-        }
-        
-        .p3-arrow-v {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 40px;
-            justify-content: center;
-        }
-        
-        .p3-arrow-v .p3-arrow-line {
-            width: 4px;
-            height: 20px;
-            background: rgba(255,255,255,0.8);
-        }
-        
-        .p3-arrow-v .p3-arrow-head {
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-top: 12px solid rgba(255,255,255,0.8);
+        .p3-path-line {
+            fill: none;
+            stroke: rgba(255,255,255,0.5);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-dasharray: 8 6;
         }
         
         .p3-cards {
@@ -862,67 +809,44 @@
         <span>От заявки до выхода на работу</span>
     </div>
     
-    <div class="p3-path">
-        <!-- Первый ряд: слева направо -->
-        <div class="p3-row">
-            <div class="p3-step">
-                <div class="p3-step-circle">
-                    <div class="p3-step-label">Заявка</div>
-                </div>
-            </div>
-            <div class="p3-arrow-h">
-                <div class="p3-arrow-line"></div>
-                <div class="p3-arrow-head"></div>
-            </div>
-            <div class="p3-step">
-                <div class="p3-step-circle">
-                    <div class="p3-step-label">Поиск</div>
-                </div>
-            </div>
-            <div class="p3-arrow-h">
-                <div class="p3-arrow-line"></div>
-                <div class="p3-arrow-head"></div>
-            </div>
-            <div class="p3-step">
-                <div class="p3-step-circle">
-                    <div class="p3-step-label">Скрининг</div>
-                </div>
-            </div>
+    <!-- Пунктирные линии между кругами -->
+    <svg class="p3-paths" viewBox="0 0 595 842" preserveAspectRatio="none">
+        <path class="p3-path-line" d="M 115,200 Q 180,230 265,245" />
+        <path class="p3-path-line" d="M 320,245 Q 380,220 430,200" />
+        <path class="p3-path-line" d="M 485,210 Q 520,280 530,340" />
+        <path class="p3-path-line" d="M 530,350 Q 480,400 355,410" />
+        <path class="p3-path-line" d="M 350,410 Q 250,400 165,370" />
+    </svg>
+    
+    <!-- Абстрактно расположенные круги -->
+    <div class="p3-step p3-s1">
+        <div class="p3-step-circle">
+            <div class="p3-step-label">Заявка</div>
         </div>
-        
-        <!-- Изгиб вниз -->
-        <div class="p3-bend">
-            <div class="p3-arrow-v">
-                <div class="p3-arrow-line"></div>
-                <div class="p3-arrow-head"></div>
-            </div>
+    </div>
+    <div class="p3-step p3-s2">
+        <div class="p3-step-circle">
+            <div class="p3-step-label">Поиск</div>
         </div>
-        
-        <!-- Второй ряд: справа налево -->
-        <div class="p3-row p3-row-reverse">
-            <div class="p3-step">
-                <div class="p3-step-circle">
-                    <div class="p3-step-label">Интервью</div>
-                </div>
-            </div>
-            <div class="p3-arrow-h left">
-                <div class="p3-arrow-line"></div>
-                <div class="p3-arrow-head"></div>
-            </div>
-            <div class="p3-step">
-                <div class="p3-step-circle">
-                    <div class="p3-step-label">Оценка</div>
-                </div>
-            </div>
-            <div class="p3-arrow-h left">
-                <div class="p3-arrow-line"></div>
-                <div class="p3-arrow-head"></div>
-            </div>
-            <div class="p3-step">
-                <div class="p3-step-circle">
-                    <div class="p3-step-label">Оффер</div>
-                </div>
-            </div>
+    </div>
+    <div class="p3-step p3-s3">
+        <div class="p3-step-circle">
+            <div class="p3-step-label">Скрининг</div>
+        </div>
+    </div>
+    <div class="p3-step p3-s4">
+        <div class="p3-step-circle">
+            <div class="p3-step-label">Интервью</div>
+        </div>
+    </div>
+    <div class="p3-step p3-s5">
+        <div class="p3-step-circle">
+            <div class="p3-step-label">Оценка</div>
+        </div>
+    </div>
+    <div class="p3-step p3-s6">
+        <div class="p3-step-circle">
+            <div class="p3-step-label">Оффер</div>
         </div>
     </div>
     
