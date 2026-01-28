@@ -248,33 +248,71 @@
             left: -100px;
             right: -100px;
             transform: rotate(-8deg) translateY(-50%);
-            background: rgba(255,255,255,0.15);
-            padding: 50px 0;
+            background: rgba(255,255,255,0.12);
+            padding: 40px 0;
         }
         
         .p3-ribbon-inner {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
+            gap: 8px;
+            padding: 0 120px;
         }
         
         .p3-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
             color: white;
         }
         
+        .p3-step-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
         .p3-step-num {
-            font-size: 72px;
+            font-size: 28px;
             font-weight: 900;
+            color: #597FFF;
             line-height: 1;
-            opacity: 0.9;
         }
         
         .p3-step-label {
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 600;
             margin-top: 10px;
-            opacity: 0.8;
+            opacity: 0.95;
+            white-space: nowrap;
+        }
+        
+        .p3-arrow {
+            display: flex;
+            align-items: center;
+            margin: 0 4px;
+            margin-bottom: 22px;
+        }
+        
+        .p3-arrow-line {
+            width: 25px;
+            height: 3px;
+            background: rgba(255,255,255,0.6);
+        }
+        
+        .p3-arrow-head {
+            width: 0;
+            height: 0;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-left: 10px solid rgba(255,255,255,0.6);
         }
         
         .p3-title {
@@ -796,27 +834,59 @@
     <div class="p3-ribbon">
         <div class="p3-ribbon-inner">
             <div class="p3-step">
-                <div class="p3-step-num">1</div>
+                <div class="p3-step-circle">
+                    <div class="p3-step-num">1</div>
+                </div>
                 <div class="p3-step-label">Заявка</div>
             </div>
+            <div class="p3-arrow">
+                <div class="p3-arrow-line"></div>
+                <div class="p3-arrow-head"></div>
+            </div>
             <div class="p3-step">
-                <div class="p3-step-num">2</div>
+                <div class="p3-step-circle">
+                    <div class="p3-step-num">2</div>
+                </div>
                 <div class="p3-step-label">Поиск</div>
             </div>
+            <div class="p3-arrow">
+                <div class="p3-arrow-line"></div>
+                <div class="p3-arrow-head"></div>
+            </div>
             <div class="p3-step">
-                <div class="p3-step-num">3</div>
+                <div class="p3-step-circle">
+                    <div class="p3-step-num">3</div>
+                </div>
                 <div class="p3-step-label">Скрининг</div>
             </div>
+            <div class="p3-arrow">
+                <div class="p3-arrow-line"></div>
+                <div class="p3-arrow-head"></div>
+            </div>
             <div class="p3-step">
-                <div class="p3-step-num">4</div>
+                <div class="p3-step-circle">
+                    <div class="p3-step-num">4</div>
+                </div>
                 <div class="p3-step-label">Интервью</div>
             </div>
-            <div class="p3-step">
-                <div class="p3-step-num">5</div>
-                <div class="p3-step-label">Оценка</div>
+            <div class="p3-arrow">
+                <div class="p3-arrow-line"></div>
+                <div class="p3-arrow-head"></div>
             </div>
             <div class="p3-step">
-                <div class="p3-step-num">6</div>
+                <div class="p3-step-circle">
+                    <div class="p3-step-num">5</div>
+                </div>
+                <div class="p3-step-label">Оценка</div>
+            </div>
+            <div class="p3-arrow">
+                <div class="p3-arrow-line"></div>
+                <div class="p3-arrow-head"></div>
+            </div>
+            <div class="p3-step">
+                <div class="p3-step-circle">
+                    <div class="p3-step-num">6</div>
+                </div>
                 <div class="p3-step-label">Оффер</div>
             </div>
         </div>
