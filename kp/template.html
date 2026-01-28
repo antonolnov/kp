@@ -279,8 +279,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 25px;
-            padding: 0 80px;
+            gap: 8px;
+            padding: 0 60px;
         }
         
         .p3-step {
@@ -315,6 +315,26 @@
             font-weight: 700;
             color: #333;
             text-align: center;
+        }
+        
+        .p3-arrow {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        
+        .p3-arrow-line {
+            width: 20px;
+            height: 3px;
+            background: rgba(255,255,255,0.7);
+        }
+        
+        .p3-arrow-head {
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 10px solid rgba(255,255,255,0.7);
         }
         
         .p3-cards {
@@ -818,11 +838,19 @@
                     <div class="p3-step-label">Заявка</div>
                 </div>
             </div>
+            <div class="p3-arrow">
+                <div class="p3-arrow-line"></div>
+                <div class="p3-arrow-head"></div>
+            </div>
             <div class="p3-step">
                 <div class="p3-step-circle">
                     <div class="p3-step-num">2</div>
                     <div class="p3-step-label">Поиск</div>
                 </div>
+            </div>
+            <div class="p3-arrow">
+                <div class="p3-arrow-line"></div>
+                <div class="p3-arrow-head"></div>
             </div>
             <div class="p3-step">
                 <div class="p3-step-circle">
@@ -830,17 +858,29 @@
                     <div class="p3-step-label">Скрининг</div>
                 </div>
             </div>
+            <div class="p3-arrow">
+                <div class="p3-arrow-line"></div>
+                <div class="p3-arrow-head"></div>
+            </div>
             <div class="p3-step">
                 <div class="p3-step-circle">
                     <div class="p3-step-num">4</div>
                     <div class="p3-step-label">Интервью</div>
                 </div>
             </div>
+            <div class="p3-arrow">
+                <div class="p3-arrow-line"></div>
+                <div class="p3-arrow-head"></div>
+            </div>
             <div class="p3-step">
                 <div class="p3-step-circle">
                     <div class="p3-step-num">5</div>
                     <div class="p3-step-label">Оценка</div>
                 </div>
+            </div>
+            <div class="p3-arrow">
+                <div class="p3-arrow-line"></div>
+                <div class="p3-arrow-head"></div>
             </div>
             <div class="p3-step">
                 <div class="p3-step-circle">
