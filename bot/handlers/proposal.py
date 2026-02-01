@@ -271,7 +271,8 @@ async def handle_ai_option(callback: CallbackQuery, state: FSMContext):
 
 
 async def generate_proposal(message: Message, state: FSMContext):
-    """Generate the proposal PDF with quality review"""
+    """Generate the proposal PDF - GPT-4o acts as designer"""
+    from services.html_generator import generate_html_proposal
     from services.page_reviewer import full_review, format_review_report
     from config import OPENAI_API_KEY
     
@@ -280,45 +281,40 @@ async def generate_proposal(message: Message, state: FSMContext):
     tariff = data.get("tariff", "standard")
     ai_option = data.get("ai_option", False)
     
-    status_msg = await message.edit_text("⏳ Анализирую встречу (GPT-4o)...")
+    status_msg = await message.edit_text("🎨 GPT-4o создаёт КП как дизайнер...")
     
     try:
-        # 1. Analyze transcript with GPT-4o
-        analysis = await analyze_transcript(transcript)
-        
-        await status_msg.edit_text("📊 Генерирую PDF...")
-        
-        # Configure proposal
-        config = ProposalConfig(
-            show_standard=tariff in ["standard", "both"],
-            show_premium=tariff in ["premium", "both"],
-            show_ai_option=ai_option if tariff == "standard" else False,
-            num_recruiters=analysis.num_recruiters
-        )
-        
-        # 2. Generate PDF
+        # 1. GPT-4o generates full HTML (acts as designer)
         proposal_id = str(uuid.uuid4())[:8]
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        company_slug = (analysis.company_name or "company").replace(" ", "_")[:20]
         
-        pdf_filename = f"КП_{company_slug}_{timestamp}.pdf"
+        pdf_filename = f"КП_{timestamp}.pdf"
         pdf_path = STORAGE_DIR / pdf_filename
         
-        generate_proposal_pdf(analysis, config, pdf_path)
+        # Определяем количество рекрутеров из транскрибации (простой поиск)
+        num_recruiters = 3  # default
+        for word in ["4 рекрутер", "четыре рекрутер", "5 рекрутер", "пять рекрутер"]:
+            if word in transcript.lower():
+                num_recruiters = int(word[0]) if word[0].isdigit() else 5
+                break
         
-        # 3. Review PDF with GPT-4o vision (each page + final)
+        await generate_html_proposal(
+            transcript=transcript,
+            tariff=tariff,
+            num_recruiters=num_recruiters,
+            output_path=pdf_path
+        )
+        
+        # 2. Review PDF with GPT-4o vision
         review_info = ""
         if OPENAI_API_KEY:
             await status_msg.edit_text("🔍 Проверяю качество...")
             
             review = await full_review(pdf_path, OPENAI_API_KEY)
-            
-            # Log review report
             report = format_review_report(review)
             logger.info(report)
             
             if not review.is_ok:
-                # Собираем проблемы
                 all_issues = []
                 for pr in review.page_reviews:
                     if pr.issues:
@@ -341,12 +337,12 @@ async def generate_proposal(message: Message, state: FSMContext):
             id=proposal_id,
             user_id=message.chat.id,
             username=None,
-            company_name=analysis.company_name,
+            company_name="",  # GPT extracts it inside HTML
             tariff=tariff_label,
-            num_recruiters=analysis.num_recruiters,
+            num_recruiters=num_recruiters,
             created_at=datetime.now().isoformat(),
             pdf_path=str(pdf_path),
-            summary=analysis.summary
+            summary=""
         )
         await history_storage.add_record(record)
         
@@ -354,9 +350,7 @@ async def generate_proposal(message: Message, state: FSMContext):
         await status_msg.delete()
         
         caption = f"✅ **КП готово!**\n\n"
-        if analysis.company_name:
-            caption += f"🏢 Компания: {analysis.company_name}\n"
-        caption += f"👥 Рекрутеров: {analysis.num_recruiters}\n"
+        caption += f"👥 Рекрутеров: {num_recruiters}\n"
         caption += f"📦 Тариф: {tariff_label}"
         caption += review_info
         
