@@ -52,14 +52,8 @@ systemctl restart workhere-bot
 - **Token:** 8289166080:AAEKdsZJpCH4X6YNhGod3_AUs4oOEFQvWK0
 - **Username:** найти в @BotFather
 
-## Для работы AI-анализа
+## API ключи
 
-Добавьте ключ Anthropic в `/opt/workhere-bot/.env`:
-```
-ANTHROPIC_API_KEY=ваш_ключ
-```
+**Cursor API:** `key_d1032ba22d13ba165c7fd0278cfa3708b7ffff9131b97fbc5aae73b4d3187376`
 
-Затем перезапустите бот:
-```bash
-systemctl restart workhere-bot
-```
+Ключ уже добавлен в `/opt/workhere-bot/.env`

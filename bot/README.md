@@ -49,7 +49,7 @@ cp .env.example .env
 Содержимое `.env`:
 ```
 TELEGRAM_BOT_TOKEN=ваш_токен_бота
-ANTHROPIC_API_KEY=ваш_ключ_anthropic
+CURSOR_API_KEY=ваш_ключ_cursor
 ```
 
 ## Запуск

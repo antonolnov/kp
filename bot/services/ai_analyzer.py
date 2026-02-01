@@ -1,14 +1,13 @@
 """
-AI-powered meeting transcript analyzer using Claude
+AI-powered meeting transcript analyzer using Cursor API (OpenAI-compatible)
 """
 import json
 import logging
 from dataclasses import dataclass, field
 from typing import Optional
+import aiohttp
 
-import anthropic
-
-from config import ANTHROPIC_API_KEY
+from config import CURSOR_API_KEY
 
 logger = logging.getLogger(__name__)
 
@@ -66,7 +65,7 @@ ANALYSIS_PROMPT = """Проанализируй транскрибацию вс�
 
 async def analyze_transcript(transcript: str) -> MeetingAnalysis:
     """
-    Analyze meeting transcript using Claude AI
+    Analyze meeting transcript using Cursor API
     
     Args:
         transcript: Meeting transcript text
@@ -74,46 +73,77 @@ async def analyze_transcript(transcript: str) -> MeetingAnalysis:
     Returns:
         MeetingAnalysis with extracted information
     """
-    if not ANTHROPIC_API_KEY:
-        logger.warning("ANTHROPIC_API_KEY not set, using mock analysis")
+    if not CURSOR_API_KEY:
+        logger.warning("CURSOR_API_KEY not set, using mock analysis")
         return _mock_analysis(transcript)
     
     try:
-        client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+        # Cursor uses OpenAI-compatible API
+        headers = {
+            "Authorization": f"Bearer {CURSOR_API_KEY}",
+            "Content-Type": "application/json"
+        }
         
-        message = client.messages.create(
-            model="claude-sonnet-4-20250514",
-            max_tokens=2000,
-            messages=[
+        payload = {
+            "model": "gpt-4o-mini",
+            "messages": [
                 {
                     "role": "user",
                     "content": ANALYSIS_PROMPT.format(transcript=transcript)
                 }
-            ]
-        )
+            ],
+            "max_tokens": 2000,
+            "temperature": 0.3
+        }
         
-        response_text = message.content[0].text
+        async with aiohttp.ClientSession() as session:
+            async with session.post(
+                "https://api.cursor.com/v1/chat/completions",
+                headers=headers,
+                json=payload,
+                timeout=aiohttp.ClientTimeout(total=60)
+            ) as response:
+                if response.status != 200:
+                    error_text = await response.text()
+                    logger.error(f"Cursor API error {response.status}: {error_text}")
+                    return _mock_analysis(transcript)
+                
+                result = await response.json()
+                response_text = result["choices"][0]["message"]["content"]
+        
+        # Clean up response - remove markdown code blocks if present
+        response_text = response_text.strip()
+        if response_text.startswith("```json"):
+            response_text = response_text[7:]
+        if response_text.startswith("```"):
+            response_text = response_text[3:]
+        if response_text.endswith("```"):
+            response_text = response_text[:-3]
+        response_text = response_text.strip()
         
         # Parse JSON response
         data = json.loads(response_text)
         
         return MeetingAnalysis(
-            company_name=data.get("company_name", ""),
-            contact_name=data.get("contact_name", ""),
-            num_recruiters=data.get("num_recruiters", 1),
-            current_pain_points=data.get("current_pain_points", []),
-            needs=data.get("needs", []),
-            discussed_features=data.get("discussed_features", []),
+            company_name=data.get("company_name", "") or "",
+            contact_name=data.get("contact_name", "") or "",
+            num_recruiters=data.get("num_recruiters", 1) or 1,
+            current_pain_points=data.get("current_pain_points", []) or [],
+            needs=data.get("needs", []) or [],
+            discussed_features=data.get("discussed_features", []) or [],
             specific_request=data.get("specific_request"),
             hiring_situation=data.get("hiring_situation"),
-            summary=data.get("summary", "")
+            summary=data.get("summary", "") or ""
         )
         
     except json.JSONDecodeError as e:
         logger.error(f"Failed to parse AI response as JSON: {e}")
         return _mock_analysis(transcript)
-    except anthropic.APIError as e:
-        logger.error(f"Anthropic API error: {e}")
+    except aiohttp.ClientError as e:
+        logger.error(f"Cursor API request error: {e}")
+        return _mock_analysis(transcript)
+    except Exception as e:
+        logger.error(f"Unexpected error in AI analysis: {e}")
         return _mock_analysis(transcript)
 
 
