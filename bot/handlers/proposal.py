@@ -307,10 +307,10 @@ async def handle_ai_option(callback: CallbackQuery, state: FSMContext):
 
 
 async def ask_bonus(message: Message, state: FSMContext):
-    """Ask about bonus option for 2-year payment"""
+    """Ask about bonus option"""
     await message.edit_text(
-        "🎁 **Добавить специальное предложение при оплате на 2 года?**\n\n"
-        "Выбери бонус для клиента:",
+        "🎁 **Добавить бонус для клиента?**\n\n"
+        "Лицензии или месяцы в подарок:",
         parse_mode="Markdown",
         reply_markup=get_bonus_keyboard()
     )
