@@ -54,6 +54,16 @@ systemctl restart workhere-bot
 
 ## API ключи
 
-**Cursor API:** `key_d1032ba22d13ba165c7fd0278cfa3708b7ffff9131b97fbc5aae73b4d3187376`
+Для AI-анализа транскрибаций нужен OpenAI API ключ.
 
-Ключ уже добавлен в `/opt/workhere-bot/.env`
+Добавьте в `/opt/workhere-bot/.env`:
+```
+OPENAI_API_KEY=sk-ваш_ключ_openai
+```
+
+Затем перезапустите:
+```bash
+systemctl restart workhere-bot
+```
+
+Без ключа бот использует базовый анализ (извлекает данные из текста без AI).

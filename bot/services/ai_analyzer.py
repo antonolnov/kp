@@ -8,7 +8,7 @@ from typing import Optional
 
 from openai import OpenAI
 
-from config import CURSOR_API_KEY
+from config import OPENAI_API_KEY
 
 logger = logging.getLogger(__name__)
 
@@ -77,16 +77,13 @@ async def analyze_transcript(transcript: str) -> MeetingAnalysis:
     Returns:
         MeetingAnalysis with extracted information
     """
-    if not CURSOR_API_KEY:
-        logger.warning("CURSOR_API_KEY not set, using mock analysis")
+    if not OPENAI_API_KEY:
+        logger.warning("OPENAI_API_KEY not set, using mock analysis")
         return _mock_analysis(transcript)
     
     try:
-        # Use OpenAI SDK with custom base URL for Cursor
-        client = OpenAI(
-            api_key=CURSOR_API_KEY,
-            base_url="https://api.cursor.com/v1"
-        )
+        # Use OpenAI API
+        client = OpenAI(api_key=OPENAI_API_KEY)
         
         # Truncate transcript if too long (keep first 15000 chars)
         if len(transcript) > 15000:

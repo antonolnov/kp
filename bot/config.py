@@ -9,7 +9,7 @@ load_dotenv()
 
 # Bot settings
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "8289166080:AAEKdsZJpCH4X6YNhGod3_AUs4oOEFQvWK0")
-CURSOR_API_KEY = os.getenv("CURSOR_API_KEY", "")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
 # Paths
 BOT_DIR = Path(__file__).parent
