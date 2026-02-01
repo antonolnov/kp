@@ -12,6 +12,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
+from aiogram.types import BotCommand
 
 # Add bot directory to path
 sys.path.insert(0, str(Path(__file__).parent))
@@ -50,6 +51,13 @@ async def main():
     logger.info("Starting WorkHere КП Bot...")
     
     try:
+        # Set bot commands menu
+        await bot.set_my_commands([
+            BotCommand(command="new", description="📝 Создать КП"),
+            BotCommand(command="history", description="📋 История КП"),
+            BotCommand(command="help", description="❓ Справка"),
+        ])
+        
         # Delete webhook and start polling
         await bot.delete_webhook(drop_pending_updates=True)
         await dp.start_polling(bot)
