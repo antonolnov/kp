@@ -273,7 +273,7 @@ async def handle_ai_option(callback: CallbackQuery, state: FSMContext):
 async def generate_proposal(message: Message, state: FSMContext):
     """Generate the proposal PDF with quality review"""
     from services.page_reviewer import full_review, format_review_report
-    from config import ANTHROPIC_API_KEY
+    from config import OPENAI_API_KEY
     
     data = await state.get_data()
     transcript = data.get("transcript", "")
@@ -306,12 +306,12 @@ async def generate_proposal(message: Message, state: FSMContext):
         
         generate_proposal_pdf(analysis, config, pdf_path)
         
-        # 3. Review PDF with Claude (each page + final)
+        # 3. Review PDF with GPT-4o vision (each page + final)
         review_info = ""
-        if ANTHROPIC_API_KEY:
-            await status_msg.edit_text("🔍 Проверяю качество (Cursor)...")
+        if OPENAI_API_KEY:
+            await status_msg.edit_text("🔍 Проверяю качество...")
             
-            review = await full_review(pdf_path, ANTHROPIC_API_KEY)
+            review = await full_review(pdf_path, OPENAI_API_KEY)
             
             # Log review report
             report = format_review_report(review)

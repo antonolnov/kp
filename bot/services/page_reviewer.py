@@ -1,5 +1,5 @@
 """
-Проверка страниц PDF через Claude API (Cursor)
+Проверка страниц PDF через Cursor API (Claude)
 Каждая страница проверяется отдельным запросом
 """
 import base64
@@ -9,14 +9,14 @@ from pathlib import Path
 from dataclasses import dataclass
 from typing import Optional
 
-from anthropic import Anthropic
+from openai import OpenAI
 
 from config import BOT_DIR
 
 logger = logging.getLogger(__name__)
 
-# Anthropic API key (Claude)
-ANTHROPIC_API_KEY = ""  # Будет загружен из .env
+# Cursor API endpoint
+CURSOR_API_BASE = "https://api.cursor.com/v1"
 
 
 @dataclass
@@ -110,26 +110,24 @@ def image_to_base64(image_path: Path) -> str:
         return base64.standard_b64encode(f.read()).decode("utf-8")
 
 
-async def review_page(client: Anthropic, image_path: Path, page_num: int) -> PageReview:
-    """Проверяет одну страницу через Claude"""
+async def review_page(client: OpenAI, image_path: Path, page_num: int) -> PageReview:
+    """Проверяет одну страницу через Cursor API"""
     import json
     
     try:
         image_data = image_to_base64(image_path)
         
-        response = client.messages.create(
-            model="claude-sonnet-4-20250514",
+        response = client.chat.completions.create(
+            model="gpt-4o",
             max_tokens=1000,
             messages=[
                 {
                     "role": "user",
                     "content": [
                         {
-                            "type": "image",
-                            "source": {
-                                "type": "base64",
-                                "media_type": "image/png",
-                                "data": image_data
+                            "type": "image_url",
+                            "image_url": {
+                                "url": f"data:image/png;base64,{image_data}"
                             }
                         },
                         {
@@ -141,7 +139,7 @@ async def review_page(client: Anthropic, image_path: Path, page_num: int) -> Pag
             ]
         )
         
-        response_text = response.content[0].text.strip()
+        response_text = response.choices[0].message.content.strip()
         
         # Очистка от markdown
         if response_text.startswith("```json"):
@@ -170,7 +168,7 @@ async def review_page(client: Anthropic, image_path: Path, page_num: int) -> Pag
         )
 
 
-async def review_document(client: Anthropic, image_paths: list[Path]) -> PageReview:
+async def review_document(client: OpenAI, image_paths: list[Path]) -> PageReview:
     """Финальная проверка всего документа"""
     import json
     
@@ -180,11 +178,9 @@ async def review_document(client: Anthropic, image_paths: list[Path]) -> PageRev
         for i, image_path in enumerate(image_paths, 1):
             image_data = image_to_base64(image_path)
             content.append({
-                "type": "image",
-                "source": {
-                    "type": "base64",
-                    "media_type": "image/png",
-                    "data": image_data
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/png;base64,{image_data}"
                 }
             })
             content.append({
@@ -197,13 +193,13 @@ async def review_document(client: Anthropic, image_paths: list[Path]) -> PageRev
             "text": f"\n\n{FINAL_REVIEW_PROMPT}"
         })
         
-        response = client.messages.create(
-            model="claude-sonnet-4-20250514",
+        response = client.chat.completions.create(
+            model="gpt-4o",
             max_tokens=1500,
             messages=[{"role": "user", "content": content}]
         )
         
-        response_text = response.content[0].text.strip()
+        response_text = response.choices[0].message.content.strip()
         
         if response_text.startswith("```json"):
             response_text = response_text[7:]
@@ -226,15 +222,15 @@ async def review_document(client: Anthropic, image_paths: list[Path]) -> PageRev
         return PageReview(page_num=0, is_ok=True, issues=[], suggestions=[])
 
 
-async def full_review(pdf_path: Path, anthropic_key: str) -> DocumentReview:
+async def full_review(pdf_path: Path, openai_key: str) -> DocumentReview:
     """
-    Полная проверка PDF:
+    Полная проверка PDF через GPT-4o vision:
     1. Конвертация в изображения
     2. Проверка каждой страницы отдельно
     3. Финальная проверка всего документа
     """
-    if not anthropic_key:
-        logger.warning("ANTHROPIC_API_KEY not set, skipping review")
+    if not openai_key:
+        logger.warning("API key not set, skipping review")
         return DocumentReview(
             is_ok=True,
             page_reviews=[],
@@ -242,7 +238,7 @@ async def full_review(pdf_path: Path, anthropic_key: str) -> DocumentReview:
             final_suggestions=[]
         )
     
-    client = Anthropic(api_key=anthropic_key)
+    client = OpenAI(api_key=openai_key)
     
     # 1. Конвертируем PDF в изображения
     images = pdf_to_images(pdf_path)

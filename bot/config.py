@@ -12,7 +12,7 @@ load_dotenv(BOT_DIR / ".env")
 # Bot settings
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "8289166080:AAEKdsZJpCH4X6YNhGod3_AUs4oOEFQvWK0")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")  # Для проверки страниц через Claude
+CURSOR_API_KEY = os.getenv("CURSOR_API_KEY", "")  # Для проверки страниц через Cursor (Claude)
 
 # Paths
 TEMPLATES_DIR = BOT_DIR / "templates"
