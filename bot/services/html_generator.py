@@ -381,20 +381,22 @@ async def generate_html_proposal(
         logo_path=logo_path
     )
     
-    logger.info(f"Generating HTML proposal via o1-preview ({len(transcript)} chars transcript)...")
-    
-    # o1-preview: самая думающая модель OpenAI
-    full_prompt = "Ты — дизайнер коммерческих предложений. Генерируй качественный HTML. Отвечай ТОЛЬКО HTML-кодом.\n\n" + prompt
+    logger.info(f"Generating HTML proposal via gpt-5.1 ({len(transcript)} chars transcript)...")
     
     response = client.chat.completions.create(
-        model="o1-preview",
+        model="gpt-5.1",
         messages=[
             {
+                "role": "system",
+                "content": "Ты — дизайнер коммерческих предложений. Генерируй качественный HTML. Отвечай ТОЛЬКО HTML-кодом."
+            },
+            {
                 "role": "user", 
-                "content": full_prompt
+                "content": prompt
             }
         ],
-        max_completion_tokens=16000
+        max_tokens=16000,
+        temperature=0.7
     )
     
     html_content = response.choices[0].message.content.strip()
