@@ -47,17 +47,13 @@ async def cmd_start(message: Message, state: FSMContext):
     """Handle /start command"""
     await state.clear()
     
+    user_name = message.from_user.first_name or "друг"
+    
     await message.answer(
-        "👋 Привет! Я помогу создать персонализированное коммерческое предложение WorkHere.\n\n"
-        "📝 **Как это работает:**\n"
-        "1. Отправь мне транскрибацию встречи (текст, .txt или .docx файл)\n"
-        "2. Выбери тариф для КП\n"
-        "3. Получи готовый PDF\n\n"
-        "📋 **Команды:**\n"
-        "/new — создать новое КП\n"
-        "/history — история КП (хранится 3 дня)\n"
-        "/help — справка\n\n"
-        "Отправь транскрибацию, чтобы начать!",
+        f"👋 Привет, {user_name}!\n\n"
+        "Я помогу создать персонализированное КП для клиента на основе записи встречи.\n\n"
+        "📎 **Просто отправь мне файл с транскрибацией** (.txt или .docx)\n\n"
+        "Я проанализирую диалог и создам красивый PDF с предложением под конкретного клиента ✨",
         parse_mode="Markdown"
     )
     await state.set_state(ProposalStates.waiting_for_transcript)
@@ -68,11 +64,8 @@ async def cmd_new(message: Message, state: FSMContext):
     """Start new proposal"""
     await state.clear()
     await message.answer(
-        "📝 Отправь транскрибацию встречи.\n\n"
-        "Можно отправить:\n"
-        "• Текст сообщением\n"
-        "• Файл .txt\n"
-        "• Файл .docx"
+        "📎 Отправь файл с транскрибацией встречи\n\n"
+        "Поддерживаю .txt и .docx"
     )
     await state.set_state(ProposalStates.waiting_for_transcript)
 
@@ -164,6 +157,35 @@ async def handle_download(callback: CallbackQuery):
     )
 
 
+# Валидация что это встреча
+def validate_transcript(text: str) -> tuple[bool, str]:
+    """Проверяет что текст — это транскрибация встречи про рекрутинг/HR"""
+    text_lower = text.lower()
+    
+    # Ключевые слова встречи
+    meeting_keywords = ["здравствуйте", "добрый день", "привет", "давайте", "расскажите", 
+                       "встреча", "созвон", "обсудить", "вопрос", "спасибо", "до свидания"]
+    
+    # Ключевые слова HR/рекрутинга
+    hr_keywords = ["рекрутер", "подбор", "кандидат", "вакансия", "резюме", "hr", "найм", 
+                   "hh", "headhunter", "авито", "отклик", "собеседование", "персонал",
+                   "ats", "crm", "система", "workhere", "интеграция", "воронка"]
+    
+    has_meeting = any(kw in text_lower for kw in meeting_keywords)
+    has_hr = any(kw in text_lower for kw in hr_keywords)
+    
+    if len(text) < 200:
+        return False, "Текст слишком короткий. Нужна полная транскрибация встречи 😊"
+    
+    if not has_meeting:
+        return False, "Похоже, это не транскрибация встречи. Отправь, пожалуйста, запись диалога с клиентом 🎙"
+    
+    if not has_hr:
+        return False, "Не нашла обсуждения рекрутинга или HR-системы. Отправь транскрибацию встречи про WorkHere 💼"
+    
+    return True, ""
+
+
 # Handle transcript - text message
 @router.message(StateFilter(ProposalStates.waiting_for_transcript), F.text)
 async def handle_transcript_text(message: Message, state: FSMContext):
@@ -173,14 +195,16 @@ async def handle_transcript_text(message: Message, state: FSMContext):
     
     transcript = message.text
     
-    if len(transcript) < 50:
-        await message.answer("⚠️ Текст слишком короткий. Отправь полную транскрибацию встречи.")
+    # Валидация
+    is_valid, error_msg = validate_transcript(transcript)
+    if not is_valid:
+        await message.answer(error_msg)
         return
     
     await state.update_data(transcript=transcript)
     
     await message.answer(
-        "📊 Выбери тариф для коммерческого предложения:",
+        "✨ Отлично! Теперь выбери тариф:",
         reply_markup=get_tariff_keyboard()
     )
     await state.set_state(ProposalStates.waiting_for_tariff)
@@ -197,15 +221,15 @@ async def handle_transcript_file(message: Message, state: FSMContext):
     suffix = Path(filename).suffix.lower()
     
     if suffix not in [".txt", ".docx"]:
-        await message.answer("⚠️ Поддерживаются только файлы .txt и .docx")
+        await message.answer("📎 Поддерживаю только .txt и .docx файлы. Попробуй в другом формате!")
         return
     
     # Check file size (max 10MB)
     if doc.file_size > 10 * 1024 * 1024:
-        await message.answer("⚠️ Файл слишком большой. Максимум 10 МБ.")
+        await message.answer("📦 Файл великоват! Максимум 10 МБ, пожалуйста.")
         return
     
-    status_msg = await message.answer("⏳ Читаю файл...")
+    status_msg = await message.answer("📖 Читаю файл...")
     
     try:
         # Download file
@@ -216,22 +240,24 @@ async def handle_transcript_file(message: Message, state: FSMContext):
         # Parse document
         transcript = await parse_document(content_bytes, filename)
         
-        if len(transcript) < 50:
-            await status_msg.edit_text("⚠️ Файл пустой или содержит слишком мало текста.")
+        # Валидация содержимого
+        is_valid, error_msg = validate_transcript(transcript)
+        if not is_valid:
+            await status_msg.edit_text(error_msg)
             return
         
         await state.update_data(transcript=transcript)
         
         await status_msg.edit_text(
-            f"✅ Файл прочитан ({len(transcript)} символов)\n\n"
-            "📊 Выбери тариф для коммерческого предложения:",
+            f"✅ Готово! Прочитала {len(transcript)} символов\n\n"
+            "✨ Теперь выбери тариф:",
             reply_markup=get_tariff_keyboard()
         )
         await state.set_state(ProposalStates.waiting_for_tariff)
         
     except Exception as e:
         logger.error(f"Failed to parse file: {e}")
-        await status_msg.edit_text(f"❌ Ошибка чтения файла: {e}")
+        await status_msg.edit_text(f"😔 Не получилось прочитать файл. Попробуй другой?")
 
 
 # Handle tariff selection
@@ -271,7 +297,8 @@ async def handle_ai_option(callback: CallbackQuery, state: FSMContext):
 
 
 async def generate_proposal(message: Message, state: FSMContext):
-    """Generate the proposal PDF - GPT-4o acts as designer"""
+    """Generate the proposal PDF"""
+    import asyncio
     from services.html_generator import generate_html_proposal
     from services.page_reviewer import full_review, format_review_report
     from config import OPENAI_API_KEY
@@ -281,48 +308,63 @@ async def generate_proposal(message: Message, state: FSMContext):
     tariff = data.get("tariff", "standard")
     ai_option = data.get("ai_option", False)
     
-    status_msg = await message.edit_text("🎨 GPT-4o создаёт КП как дизайнер...")
+    # Статусные сообщения с анимацией
+    status_messages = [
+        "✨ Анализирую встречу...",
+        "🎨 Создаю дизайн КП...",
+        "📝 Пишу персонализированный текст...",
+        "🔧 Собираю документ...",
+    ]
+    
+    status_msg = await message.edit_text(status_messages[0])
     
     try:
-        # 1. GPT-4o generates full HTML (acts as designer)
         proposal_id = str(uuid.uuid4())[:8]
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         
         pdf_filename = f"КП_{timestamp}.pdf"
         pdf_path = STORAGE_DIR / pdf_filename
         
-        # Определяем количество рекрутеров из транскрибации (простой поиск)
-        num_recruiters = 3  # default
+        # Определяем количество рекрутеров
+        num_recruiters = 3
         for word in ["4 рекрутер", "четыре рекрутер", "5 рекрутер", "пять рекрутер"]:
             if word in transcript.lower():
                 num_recruiters = int(word[0]) if word[0].isdigit() else 5
                 break
         
-        await generate_html_proposal(
-            transcript=transcript,
-            tariff=tariff,
-            num_recruiters=num_recruiters,
-            output_path=pdf_path
-        )
+        # Обновляем статус пока генерируется
+        async def update_status():
+            for i, msg in enumerate(status_messages[1:], 1):
+                await asyncio.sleep(8)
+                try:
+                    await status_msg.edit_text(msg)
+                except:
+                    pass
         
-        # 2. Review PDF with GPT-4o vision
+        # Запускаем обновление статуса параллельно
+        status_task = asyncio.create_task(update_status())
+        
+        try:
+            await generate_html_proposal(
+                transcript=transcript,
+                tariff=tariff,
+                num_recruiters=num_recruiters,
+                output_path=pdf_path
+            )
+        finally:
+            status_task.cancel()
+        
+        # Финальная проверка
+        await status_msg.edit_text("✅ Почти готово! Проверяю результат...")
+        
         review_info = ""
         if OPENAI_API_KEY:
-            await status_msg.edit_text("🔍 Проверяю качество...")
-            
-            review = await full_review(pdf_path, OPENAI_API_KEY)
-            report = format_review_report(review)
-            logger.info(report)
-            
-            if not review.is_ok:
-                all_issues = []
-                for pr in review.page_reviews:
-                    if pr.issues:
-                        all_issues.extend([f"Стр.{pr.page_num}: {i}" for i in pr.issues])
-                all_issues.extend(review.final_issues)
-                
-                if all_issues:
-                    review_info = "\n\n⚠️ Замечания:\n" + "\n".join(f"• {i}" for i in all_issues[:3])
+            try:
+                review = await full_review(pdf_path, OPENAI_API_KEY)
+                report = format_review_report(review)
+                logger.info(report)
+            except Exception as e:
+                logger.warning(f"Review failed: {e}")
         
         # Determine tariff label
         if tariff == "both":
@@ -337,7 +379,7 @@ async def generate_proposal(message: Message, state: FSMContext):
             id=proposal_id,
             user_id=message.chat.id,
             username=None,
-            company_name="",  # GPT extracts it inside HTML
+            company_name="",
             tariff=tariff_label,
             num_recruiters=num_recruiters,
             created_at=datetime.now().isoformat(),
@@ -349,10 +391,9 @@ async def generate_proposal(message: Message, state: FSMContext):
         # Send PDF
         await status_msg.delete()
         
-        caption = f"✅ **КП готово!**\n\n"
+        caption = f"🎉 **Готово!**\n\n"
         caption += f"👥 Рекрутеров: {num_recruiters}\n"
         caption += f"💼 Тариф: {tariff_label}"
-        caption += review_info
         
         await message.answer_document(
             FSInputFile(pdf_path, filename=pdf_filename),
@@ -361,13 +402,17 @@ async def generate_proposal(message: Message, state: FSMContext):
         )
         
         await message.answer(
-            "💡 Используй /new чтобы создать ещё одно КП\n"
-            "📋 /history — посмотреть историю"
+            "Хочешь создать ещё одно КП? Жми /new 🚀\n"
+            "Посмотреть историю: /history"
         )
         
     except Exception as e:
         logger.exception(f"Failed to generate proposal: {e}")
-        await status_msg.edit_text(f"❌ Ошибка генерации: {e}\n\nПопробуй ещё раз: /new")
+        await status_msg.edit_text(
+            "😔 Что-то пошло не так...\n\n"
+            "Попробуй ещё раз: /new\n"
+            "Если проблема повторится — напиши в поддержку."
+        )
     
     finally:
         await state.clear()
@@ -378,7 +423,7 @@ async def generate_proposal(message: Message, state: FSMContext):
 async def handle_waiting_tariff(message: Message):
     """Handle message when waiting for tariff"""
     await message.answer(
-        "👆 Выбери тариф, нажав на одну из кнопок выше.",
+        "☝️ Нажми на одну из кнопок выше, чтобы выбрать тариф",
         reply_markup=get_tariff_keyboard()
     )
 
@@ -387,6 +432,28 @@ async def handle_waiting_tariff(message: Message):
 async def handle_waiting_ai(message: Message):
     """Handle message when waiting for AI option"""
     await message.answer(
-        "👆 Выбери, нужен ли ИИ-поиск:",
+        "☝️ Выбери вариант кнопкой выше",
         reply_markup=get_ai_option_keyboard()
     )
+
+
+# Handle any other message outside of expected flow
+@router.message(StateFilter(ProposalStates.waiting_for_transcript))
+async def handle_unexpected_in_transcript(message: Message):
+    """Handle non-file message when waiting for transcript"""
+    await message.answer(
+        "📎 Жду файл с транскрибацией встречи (.txt или .docx)\n\n"
+        "Если хочешь начать заново — /new"
+    )
+
+
+@router.message()
+async def handle_any_message(message: Message, state: FSMContext):
+    """Handle any message outside of flow"""
+    current_state = await state.get_state()
+    
+    if current_state is None:
+        await message.answer(
+            "👋 Привет! Я создаю КП на основе транскрибаций встреч.\n\n"
+            "Отправь /new чтобы начать"
+        )
