@@ -211,26 +211,58 @@
             border-radius: 0 6px 6px 0;
         }
         
-        /* Mascot */
+        /* Mascot with speech bubble */
         .mascot-block {
             text-align: center;
             margin: 20px 0;
             page-break-inside: avoid;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 10px;
         }
         
         .mascot-block img {
-            height: 120px;
-            opacity: 0.9;
+            height: 100px;
         }
         
         .mascot-inline {
             float: right;
             margin: 0 0 10px 15px;
+            position: relative;
         }
         
         .mascot-inline img {
-            height: 80px;
-            opacity: 0.85;
+            height: 70px;
+        }
+        
+        .speech-bubble {
+            background: #F0F4FF;
+            border: 2px solid #597FFF;
+            border-radius: 12px;
+            padding: 8px 12px;
+            font-size: 9pt;
+            color: #374151;
+            max-width: 180px;
+            position: relative;
+            font-style: italic;
+        }
+        
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            right: -10px;
+            border-width: 8px;
+            border-style: solid;
+            border-color: transparent transparent transparent #597FFF;
+        }
+        
+        .speech-bubble-left::after {
+            left: -10px;
+            right: auto;
+            border-color: transparent #597FFF transparent transparent;
         }
 
     </style>
@@ -314,6 +346,7 @@
     </div>
     
     <div class="mascot-inline">
+        <div class="speech-bubble speech-bubble-left">Все отклики в одном месте — красота!</div>
         <img src="{{ mascot_path }}" alt="">
     </div>
     
@@ -449,6 +482,7 @@
     </ul>
     
     <div class="mascot-block">
+        <div class="speech-bubble">Будем рады видеть вас в WorkHere! 🐾</div>
         <img src="{{ mascot_path }}" alt="">
     </div>
 </div>
