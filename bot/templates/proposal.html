@@ -161,32 +161,22 @@
         
         .col-title { font-weight: 600; font-size: 9.5pt; margin-bottom: 6px; }
         
-        /* Steps */
-        .steps { counter-reset: step; }
-        
-        .step {
-            padding: 6px 0 6px 28px;
-            position: relative;
-            border-bottom: 1px solid #F1F5F9;
+        /* Steps - другой стиль, не синие кружки */
+        .steps-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
         }
         
-        .step:last-child { border-bottom: none; }
+        .step-item {
+            background: #F8FAFC;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border-left: 3px solid #597FFF;
+        }
         
-        .step::before {
-            counter-increment: step;
-            content: counter(step);
-            position: absolute;
-            left: 0;
-            top: 6px;
-            width: 18px;
-            height: 18px;
-            background: #597FFF;
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 18px;
-            font-size: 9pt;
-            font-weight: 600;
+        .step-item strong {
+            color: #597FFF;
         }
         
         /* Footer */
@@ -212,29 +202,21 @@
         }
         
         /* Mascot with speech bubble */
-        .mascot-block {
-            text-align: center;
-            margin: 20px 0;
-            page-break-inside: avoid;
-            position: relative;
+        .mascot-row {
             display: flex;
+            align-items: center;
             justify-content: center;
-            align-items: flex-end;
-            gap: 10px;
+            gap: 12px;
+            margin: 15px 0;
+            page-break-inside: avoid;
         }
         
-        .mascot-block img {
-            height: 100px;
-        }
-        
-        .mascot-inline {
-            float: right;
-            margin: 0 0 10px 15px;
-            position: relative;
-        }
-        
-        .mascot-inline img {
+        .mascot-row img {
             height: 70px;
+        }
+        
+        .mascot-row.flip img {
+            transform: scaleX(-1);
         }
         
         .speech-bubble {
@@ -244,7 +226,7 @@
             padding: 8px 12px;
             font-size: 9pt;
             color: #374151;
-            max-width: 180px;
+            max-width: 200px;
             position: relative;
             font-style: italic;
         }
@@ -252,17 +234,25 @@
         .speech-bubble::after {
             content: '';
             position: absolute;
-            bottom: 10px;
-            right: -10px;
-            border-width: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 6px;
             border-style: solid;
+        }
+        
+        .bubble-left::after {
+            right: -12px;
             border-color: transparent transparent transparent #597FFF;
         }
         
-        .speech-bubble-left::after {
-            left: -10px;
-            right: auto;
+        .bubble-right::after {
+            left: -12px;
             border-color: transparent #597FFF transparent transparent;
+        }
+        
+        /* Filler for empty space */
+        .page-filler {
+            margin-top: auto;
         }
 
     </style>
@@ -300,6 +290,12 @@
         <li>{{ feature }}</li>
         {% endfor %}
     </ul>
+</div>
+
+<!-- MASCOT 1 -->
+<div class="mascot-row">
+    <div class="speech-bubble bubble-left">Разберёмся с рутиной — будет время на важное!</div>
+    <img src="{{ mascot_path }}" alt="">
 </div>
 
 <!-- SECTION 2 -->
@@ -341,52 +337,40 @@
         <ul>
             <li>Карточка заявки со статусами и согласованиями</li>
             <li>Руководители видят кандидатов и дают фидбек</li>
-            <li>История изменений и комментарии</li>
         </ul>
-    </div>
-    
-    <div class="mascot-inline">
-        <div class="speech-bubble speech-bubble-left">Все отклики в одном месте — красота!</div>
-        <img src="{{ mascot_path }}" alt="">
     </div>
     
     <div class="subsection">
         <div class="subsection-title">2.5. Уведомления</div>
         <ul>
             <li>Telegram-бот: напоминания о собеседованиях</li>
-            <li>Уведомления о новых откликах и событиях</li>
             <li>Импорт кандидатов через бота</li>
         </ul>
     </div>
     
     <div class="subsection">
-        <div class="subsection-title">2.6. Календарь</div>
-        <ul>
-            <li>Интеграция с Яндекс Телемост</li>
-            <li>Автоприглашения кандидатам</li>
-            <li>Подтверждение через SMS</li>
-        </ul>
-    </div>
-    
-    <div class="subsection">
-        <div class="subsection-title">2.7. Безопасность</div>
+        <div class="subsection-title">2.6. Безопасность</div>
         <ul>
             <li>Запрос согласия на обработку ПД (152-ФЗ)</li>
-            <li>Российское ПО, данные в РФ</li>
-            <li>Роли и права доступа</li>
+            <li>Российское ПО, роли и права доступа</li>
         </ul>
     </div>
     
     {% if show_ai_option or show_premium %}
     <div class="subsection">
-        <div class="subsection-title">2.8. AI-модуль {% if show_premium %}(в Премиум){% endif %}</div>
+        <div class="subsection-title">2.7. AI-модуль {% if show_premium %}(в Премиум){% endif %}</div>
         <ul>
             <li>Умный поиск: семантика, синонимы</li>
             <li>Матчинг кандидат ↔ вакансия</li>
-            <li>Ранжирование и краткое резюме</li>
         </ul>
     </div>
     {% endif %}
+</div>
+
+<!-- MASCOT 2 -->
+<div class="mascot-row flip">
+    <img src="{{ mascot_path }}" alt="">
+    <div class="speech-bubble bubble-right">Все отклики в одном месте — красота! 🐾</div>
 </div>
 
 <!-- SECTION 3 -->
@@ -435,11 +419,11 @@
 <div class="section">
     <div class="section-title"><span class="num">4</span>Внедрение</div>
     
-    <div class="steps">
-        <div class="step"><strong>Настройка</strong> — воронки, статусы, роли под ваши процессы</div>
-        <div class="step"><strong>Интеграции</strong> — HH, Авито, мессенджеры, телефония</div>
-        <div class="step"><strong>Импорт</strong> — загрузка базы кандидатов из Excel</div>
-        <div class="step"><strong>Обучение</strong> — рекрутеры и заказчики + сопровождение</div>
+    <div class="steps-list">
+        <div class="step-item"><strong>Настройка</strong> — воронки, статусы, роли</div>
+        <div class="step-item"><strong>Интеграции</strong> — HH, Авито, мессенджеры</div>
+        <div class="step-item"><strong>Импорт</strong> — база кандидатов из Excel</div>
+        <div class="step-item"><strong>Обучение</strong> — команда + сопровождение</div>
     </div>
 </div>
 
@@ -467,7 +451,7 @@
     </div>
     
     <div class="results-box">
-        <strong>Результаты клиентов:</strong> закрытие вакансий быстрее на 40-60%, рост конверсии на 25-35%, экономия 2-3 часа в день
+        <strong>Результаты клиентов:</strong> закрытие вакансий быстрее на 40-60%, рост конверсии на 25-35%
     </div>
 </div>
 
@@ -475,16 +459,14 @@
 <div class="section">
     <div class="section-title"><span class="num">6</span>Следующие шаги</div>
     <ul>
-        <li>Согласование условий</li>
-        <li>Подписание договора (счёт-оферта)</li>
-        <li>Доступ к системе за 1 рабочий день</li>
-        <li>Старт с персональным менеджером</li>
+        <li>Согласование условий → Договор → Доступ за 1 день → Старт с менеджером</li>
     </ul>
-    
-    <div class="mascot-block">
-        <div class="speech-bubble">Будем рады видеть вас в WorkHere! 🐾</div>
-        <img src="{{ mascot_path }}" alt="">
-    </div>
+</div>
+
+<!-- MASCOT 3 - финальный -->
+<div class="mascot-row">
+    <div class="speech-bubble bubble-left">Будем рады видеть вас в WorkHere! 😺</div>
+    <img src="{{ mascot_path }}" alt="">
 </div>
 
 <!-- FOOTER -->
