@@ -6,10 +6,10 @@
     <style>
         @page {
             size: A4;
-            margin: 25px 30px 35px 30px;
+            margin: 20px 25px 25px 25px;
             @bottom-right {
                 content: "Страница " counter(page);
-                font-size: 9pt;
+                font-size: 8pt;
                 color: #999;
             }
         }
@@ -20,69 +20,90 @@
             font-family: Arial, Helvetica, sans-serif;
             color: #1a1a2e;
             background: #fff;
-            font-size: 11pt;
-            line-height: 1.6;
+            font-size: 10pt;
+            line-height: 1.5;
+        }
+        
+        /* ПРАВИЛО: Никогда не разрывать блоки */
+        .section,
+        .mascot-section,
+        .diagnosis-box,
+        .highlight-box,
+        .results-box,
+        .key-message-box,
+        .price-total-box,
+        .steps-table,
+        .cols-table,
+        ul {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        
+        /* ПРАВИЛО: Заголовок всегда с контентом */
+        .section-title {
+            page-break-after: avoid !important;
+            break-after: avoid !important;
         }
         
         /* HEADER */
         .header-table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
             border-bottom: 3px solid #597FFF;
         }
-        .header-table td { padding: 0 0 15px 0; vertical-align: middle; }
-        .header-table img { height: 36px; }
-        .header-right { text-align: right; font-size: 10pt; color: #666; }
-        .header-right strong { color: #1a1a2e; font-size: 12pt; }
+        .header-table td { padding: 0 0 10px 0; vertical-align: middle; }
+        .header-table img { height: 32px; }
+        .header-right { text-align: right; font-size: 9pt; color: #666; }
+        .header-right strong { color: #1a1a2e; font-size: 11pt; }
         
         /* TITLE */
         .doc-title {
             text-align: center;
-            margin-bottom: 25px;
-            padding: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
             background: #597FFF;
-            border-radius: 12px;
+            border-radius: 10px;
             color: white;
         }
-        .doc-title h1 { font-size: 20pt; font-weight: bold; margin-bottom: 5px; }
-        .doc-title p { font-size: 10pt; }
+        .doc-title h1 { font-size: 18pt; font-weight: bold; margin-bottom: 3px; }
+        .doc-title p { font-size: 9pt; }
         
         /* SECTIONS */
-        .section { margin-bottom: 25px; page-break-inside: avoid; }
+        .section { margin-bottom: 18px; }
         .section-title {
-            font-size: 13pt;
+            font-size: 12pt;
             font-weight: bold;
             color: #1a1a2e;
-            margin-bottom: 12px;
-            padding-bottom: 6px;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
             border-bottom: 2px solid #E2E8F0;
         }
         .num {
             display: inline-block;
-            width: 24px; height: 24px;
+            width: 22px; height: 22px;
             background: #597FFF;
             color: white;
             border-radius: 50%;
             text-align: center;
-            line-height: 24px;
-            font-size: 12pt;
+            line-height: 22px;
+            font-size: 11pt;
             font-weight: bold;
-            margin-right: 8px;
+            margin-right: 6px;
         }
         .subsection-title {
-            font-size: 10.5pt;
+            font-size: 10pt;
             font-weight: bold;
             color: #597FFF;
-            margin: 12px 0 6px 0;
-            padding-left: 10px;
+            margin: 10px 0 5px 0;
+            padding-left: 8px;
             border-left: 3px solid #597FFF;
         }
         
         /* LISTS */
         ul { list-style: none; margin: 0; padding: 0; }
-        ul li { padding: 5px 0 5px 18px; position: relative; }
+        ul li { padding: 4px 0 4px 16px; position: relative; font-size: 10pt; }
         ul li::before {
             content: '→';
             position: absolute;
@@ -96,134 +117,124 @@
         .highlight-box {
             background: #F0F4FF;
             border-left: 4px solid #597FFF;
-            padding: 12px 15px;
-            margin: 12px 0;
-            border-radius: 0 8px 8px 0;
+            padding: 10px 12px;
+            margin: 10px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 10pt;
         }
         .highlight-box strong { color: #597FFF; }
         
         .diagnosis-box {
             background: #FEF3C7;
             border-left: 4px solid #F59E0B;
-            padding: 12px 15px;
-            margin: 12px 0;
-            border-radius: 0 8px 8px 0;
+            padding: 10px 12px;
+            margin: 10px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 10pt;
         }
         .diagnosis-box strong { color: #D97706; }
         
         .results-box {
             background: #ECFDF5;
             border-left: 4px solid #10B981;
-            padding: 12px 15px;
-            margin: 12px 0;
-            border-radius: 0 8px 8px 0;
+            padding: 10px 12px;
+            margin: 10px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 10pt;
         }
         .results-box strong { color: #059669; }
         
         .key-message-box {
             background: #597FFF;
             color: white;
-            padding: 15px 20px;
-            margin: 15px 0;
-            border-radius: 10px;
+            padding: 12px 15px;
+            margin: 12px 0;
+            border-radius: 8px;
             text-align: center;
-            font-size: 12pt;
+            font-size: 10pt;
         }
         
         /* PRICE */
         .price-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 12px 0;
+            margin: 10px 0;
         }
         .price-table th, .price-table td {
-            padding: 10px 12px;
+            padding: 8px 10px;
             text-align: left;
             border-bottom: 1px solid #E2E8F0;
+            font-size: 10pt;
         }
-        .price-table th { background: #597FFF; color: white; font-weight: bold; font-size: 10pt; }
-        .price-table td:last-child { text-align: right; font-weight: bold; color: #597FFF; font-size: 11pt; }
+        .price-table th { background: #597FFF; color: white; font-weight: bold; font-size: 9pt; }
+        .price-table td:last-child { text-align: right; font-weight: bold; color: #597FFF; }
         
         .price-total-box {
             background: #597FFF;
             color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            margin-top: 12px;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-top: 10px;
             text-align: center;
         }
-        .price-total-label { font-size: 10pt; margin-bottom: 3px; }
-        .price-total-value { font-size: 16pt; font-weight: bold; }
+        .price-total-label { font-size: 9pt; margin-bottom: 2px; }
+        .price-total-value { font-size: 14pt; font-weight: bold; }
         
         /* STEPS */
         .steps-table {
             width: 100%;
             border-collapse: separate;
-            border-spacing: 8px 0;
-            margin: 12px 0;
+            border-spacing: 6px 0;
+            margin: 10px 0;
         }
         .steps-table td {
             width: 25%;
             background: #F8FAFC;
-            border: 2px solid #E2E8F0;
-            border-radius: 8px;
-            padding: 12px 8px;
+            border: 1px solid #E2E8F0;
+            border-radius: 6px;
+            padding: 10px 6px;
             text-align: center;
             vertical-align: top;
         }
-        .step-num { font-size: 14pt; font-weight: bold; color: #597FFF; }
-        .step-title { display: block; font-weight: bold; font-size: 10pt; margin: 5px 0 3px 0; }
-        .step-desc { font-size: 9pt; color: #666; }
+        .step-num { font-size: 12pt; font-weight: bold; color: #597FFF; }
+        .step-title { display: block; font-weight: bold; font-size: 9pt; margin: 4px 0 2px 0; }
+        .step-desc { font-size: 8pt; color: #666; }
         
         /* COLUMNS */
         .cols-table {
             width: 100%;
             border-collapse: separate;
-            border-spacing: 12px 0;
-            margin: 12px 0;
+            border-spacing: 10px 0;
+            margin: 10px 0;
         }
         .cols-table td {
             width: 50%;
             background: #F8FAFC;
-            border: 2px solid #E2E8F0;
-            border-radius: 8px;
-            padding: 12px;
+            border: 1px solid #E2E8F0;
+            border-radius: 6px;
+            padding: 10px;
             vertical-align: top;
         }
-        .col-title { font-weight: bold; font-size: 10pt; margin-bottom: 8px; color: #597FFF; }
+        .col-title { font-weight: bold; font-size: 9pt; margin-bottom: 6px; color: #597FFF; }
         
-        /* FOOTER */
-        .footer-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 25px;
-            padding: 15px;
-            background: #F8FAFC;
-            border-radius: 8px;
-        }
-        .footer-table td { padding: 12px; vertical-align: top; }
-        .footer-table td:last-child { text-align: right; }
-        .footer-table strong { color: #597FFF; font-size: 10pt; display: block; margin-bottom: 4px; }
-        
-        /* MASCOT */
+        /* MASCOT — компактный */
         .mascot-section {
             text-align: center;
-            margin: 20px 0;
-            page-break-inside: avoid;
+            margin: 12px 0;
         }
         .mascot-section img { vertical-align: middle; }
         .speech-bubble {
             display: inline-block;
             background: #F0F4FF;
             border: 2px solid #597FFF;
-            border-radius: 12px;
-            padding: 10px 16px;
-            font-size: 10pt;
+            border-radius: 10px;
+            padding: 8px 12px;
+            font-size: 9pt;
             color: #1a1a2e;
             font-weight: 500;
-            margin: 0 15px;
+            margin: 0 10px;
             vertical-align: middle;
-            max-width: 200px;
+            max-width: 180px;
         }
     </style>
 </head>
@@ -257,7 +268,7 @@
     {% endif %}
     
     {% if diagnosis_pains %}
-    <p style="margin: 10px 0 5px 0; font-weight: bold;">Основные сложности:</p>
+    <p style="margin: 8px 0 4px 0; font-weight: bold; font-size: 10pt;">Основные сложности:</p>
     <ul>
         {% for pain in diagnosis_pains %}
         <li>{{ pain }}</li>
@@ -272,7 +283,7 @@
     <img src="{{ mascot_path_1 }}" alt="" style="height: {{ mascot_size_1 }}px;">
 </div>
 
-<!-- SECTION 2: РЕШЕНИЕ (персонализированное) -->
+<!-- SECTION 2: РЕШЕНИЕ -->
 <div class="section">
     <div class="section-title"><span class="num">2</span> Как WorkHere решит эти задачи</div>
     
@@ -353,7 +364,7 @@
     </table>
     
     <div class="highlight-box">
-        <strong>Расчёт для вашей команды ({{ num_recruiters }} рекрутер{{ 'а' if num_recruiters in [2,3,4] else 'ов' if num_recruiters >= 5 else '' }}):</strong><br>
+        <strong>Расчёт для команды ({{ num_recruiters }} рекрутер{{ 'а' if num_recruiters in [2,3,4] else 'ов' if num_recruiters >= 5 else '' }}):</strong><br>
         {% for calc in calculations %}
         {{ calc.name }}: <strong>{{ calc.value }}</strong><br>
         {% endfor %}
@@ -374,12 +385,12 @@
             <td>
                 <span class="step-num">01</span>
                 <span class="step-title">Настройка</span>
-                <span class="step-desc">воронки, статусы, роли</span>
+                <span class="step-desc">воронки, статусы</span>
             </td>
             <td>
                 <span class="step-num">02</span>
                 <span class="step-title">Интеграции</span>
-                <span class="step-desc">HH, Авито, мессенджеры</span>
+                <span class="step-desc">HH, Авито</span>
             </td>
             <td>
                 <span class="step-num">03</span>
@@ -389,7 +400,7 @@
             <td>
                 <span class="step-num">04</span>
                 <span class="step-title">Обучение</span>
-                <span class="step-desc">команда + поддержка</span>
+                <span class="step-desc">команда</span>
             </td>
         </tr>
     </table>
@@ -401,7 +412,7 @@
     <img src="{{ mascot_path_3 }}" alt="" style="height: {{ mascot_size_3 }}px;">
 </div>
 
-<!-- SECTION 5: ПОЧЕМУ WORKHERE (персонализированное) -->
+<!-- SECTION 5: ПОЧЕМУ WORKHERE -->
 <div class="section">
     <div class="section-title"><span class="num">5</span> Что получит ваша команда</div>
     
@@ -427,8 +438,7 @@
     </table>
     
     <div class="results-box">
-        <strong>Результаты клиентов:</strong>
-        Закрытие вакансий быстрее на 40-60%, экономия 2-3 часа в день
+        <strong>Результаты клиентов:</strong> Закрытие вакансий быстрее на 40-60%
     </div>
 </div>
 
@@ -450,27 +460,11 @@
     </ul>
 </div>
 
-<!-- MASCOT 4 -->
+<!-- MASCOT 4 (финальный) -->
 <div class="mascot-section">
     <img src="{{ mascot_path_4 }}" alt="" style="height: {{ mascot_size_4 }}px;">
     <span class="speech-bubble">{{ mascot_phrase_4 }}</span>
 </div>
-
-<!-- FOOTER -->
-<table class="footer-table">
-    <tr>
-        <td>
-            <strong>Контакты</strong>
-            +7 (800) 000-00-00<br>
-            sales@workhere.ru
-        </td>
-        <td>
-            <strong>WorkHere</strong>
-            workhere.ru<br>
-            @workhere
-        </td>
-    </tr>
-</table>
 
 </body>
 </html>

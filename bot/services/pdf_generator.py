@@ -85,52 +85,38 @@ def calculate_mascot_sizes(
     show_ai: bool
 ) -> dict:
     """
-    ПРАВИЛО ДИЗАЙНЕРА:
-    Маскоты должны ЗАПОЛНЯТЬ пустое пространство.
-    Чем меньше контента — тем БОЛЬШЕ маскоты.
-    
-    4 маскота в документе:
-    1. После раздела "Что обсуждали"
-    2. После раздела "Решение WorkHere"  
-    3. После раздела "Внедрение"
-    4. В конце перед футером
+    ПРАВИЛО: Маскоты компактные, не мешают контенту.
+    Размеры уменьшены для стабильной вёрстки на 3-4 страницы.
     """
     # Оценка контента
     features_count = len(discussed_features) if discussed_features else 0
     situation_len = len(hiring_situation) if hiring_situation else 0
     
-    # Базовый размер — БОЛЬШОЙ
-    # Уменьшаем только если много контента
+    # Базовый размер — КОМПАКТНЫЙ
+    base_size = 100
     
-    base_size = 180  # Большой по умолчанию
+    # Если мало контента — можно чуть больше
+    if features_count < 4:
+        base_size += 20
     
-    # Корректировка на контент
-    if features_count >= 7:
-        base_size -= 40
-    elif features_count >= 5:
-        base_size -= 20
+    if situation_len < 150:
+        base_size += 10
     
-    if situation_len > 200:
-        base_size -= 20
-    elif situation_len > 100:
+    # Если много контента — меньше
+    if features_count >= 6:
         base_size -= 10
     
     if show_both_tariffs:
         base_size -= 10
     
-    if show_ai:
-        base_size -= 10
+    # Границы: 80-130px
+    base_size = max(80, min(base_size, 130))
     
-    # Минимум 120px
-    base_size = max(base_size, 120)
-    
-    # Разные размеры для разных позиций
-    # Финальный маскот всегда самый большой
     return {
         'size_1': base_size,
-        'size_2': base_size + 10,
-        'size_3': base_size + 20,
-        'size_4': base_size + 40,  # Финальный — самый большой
+        'size_2': base_size,
+        'size_3': base_size + 10,
+        'size_4': base_size + 20,  # Финальный чуть больше
     }
 
 
