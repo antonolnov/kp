@@ -14,11 +14,11 @@ from config import OPENAI_API_KEY, ASSETS_DIR
 logger = logging.getLogger(__name__)
 
 
-# CSS стили для документа
+# CSS стили для документа — ЖЕЛЕЗОБЕТОННЫЕ, без шансов на наложение
 CSS_STYLES = """
 @page {
     size: A4;
-    margin: 20px 25px 40px 25px;
+    margin: 25px 30px 45px 30px;
     @bottom-left {
         content: "WorkHere";
         font-size: 9pt;
@@ -32,367 +32,357 @@ CSS_STYLES = """
     }
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { 
+    margin: 0 !important; 
+    padding: 0 !important; 
+    box-sizing: border-box !important;
+    position: static !important;  /* ЗАПРЕТ absolute/relative */
+}
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #1a1a2e;
-    background: #fff;
-    font-size: 10pt;
-    line-height: 1.5;
+    font-family: Arial, Helvetica, sans-serif !important;
+    color: #1a1a2e !important;
+    background: #fff !important;
+    font-size: 10pt !important;
+    line-height: 1.6 !important;
+    padding: 0 !important;
 }
 
+/* Заголовок */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-    border-bottom: 3px solid #597FFF;
+    display: table !important;
+    width: 100% !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 20px !important;
+    border-bottom: 3px solid #597FFF !important;
 }
-.header img { height: 32px; }
-.header-right { text-align: right; font-size: 9pt; color: #666; }
-.header-right strong { color: #1a1a2e; font-size: 11pt; }
-
-.title {
-    text-align: center;
-    margin-bottom: 20px;
-    padding: 15px;
-    background: #597FFF;
-    border-radius: 10px;
-    color: white;
+.header-left, .header-right {
+    display: table-cell !important;
+    vertical-align: middle !important;
 }
-.title h1 { font-size: 18pt; font-weight: bold; margin-bottom: 3px; }
-.title p { font-size: 9pt; }
+.header-left { width: 50% !important; }
+.header-right { 
+    width: 50% !important; 
+    text-align: right !important; 
+    font-size: 9pt !important; 
+    color: #666 !important; 
+}
+.header img { height: 32px !important; }
 
-.section { margin-bottom: 25px; page-break-inside: avoid; }
+/* Основной заголовок */
+h1 {
+    font-size: 16pt !important;
+    font-weight: bold !important;
+    color: #1a1a2e !important;
+    text-align: center !important;
+    margin: 15px 0 20px 0 !important;
+}
+h1 small {
+    display: block !important;
+    font-size: 10pt !important;
+    font-weight: normal !important;
+    color: #666 !important;
+    margin-top: 5px !important;
+}
+
+/* Секции — ОБЯЗАТЕЛЬНЫЕ отступы */
+.section {
+    margin-bottom: 30px !important;
+    padding-bottom: 10px !important;
+    page-break-inside: avoid !important;
+}
+
 .section-title {
-    font-size: 12pt;
-    font-weight: bold;
-    color: #1a1a2e;
-    margin-bottom: 12px;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #E2E8F0;
-}
-.num {
-    display: inline-block;
-    width: 22px; height: 22px;
-    background: #597FFF;
-    color: white;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 22px;
-    font-size: 11pt;
-    font-weight: bold;
-    margin-right: 6px;
+    font-size: 12pt !important;
+    font-weight: bold !important;
+    color: #1a1a2e !important;
+    margin-bottom: 15px !important;
+    padding: 8px 12px !important;
+    background: #F0F4FF !important;
+    border-left: 4px solid #597FFF !important;
 }
 
-.subsection { 
-    font-size: 10pt; 
-    font-weight: bold; 
-    color: #597FFF; 
-    margin: 18px 0 8px 0;
-    padding-left: 8px;
-    border-left: 3px solid #597FFF;
+/* Подразделы */
+.subsection {
+    font-size: 10pt !important;
+    font-weight: bold !important;
+    color: #597FFF !important;
+    margin: 20px 0 10px 0 !important;
+    padding-left: 10px !important;
+    border-left: 3px solid #597FFF !important;
 }
 
-.subsection-block {
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #F0F0F0;
+/* СПИСКИ — БЕЗ POSITION, ТАБЛИЧНАЯ ВЁРСТКА */
+ul, ol {
+    list-style: none !important;
+    margin: 10px 0 !important;
+    padding: 0 !important;
 }
 
-ul { list-style: none; margin: 0; padding: 0; }
-ul li { padding: 6px 0 6px 16px; position: relative; font-size: 10pt; line-height: 1.4; }
-ul li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: #597FFF;
-    font-weight: bold;
+li {
+    display: table !important;
+    width: 100% !important;
+    margin: 6px 0 !important;
+    padding: 0 !important;
+    font-size: 10pt !important;
+    line-height: 1.5 !important;
 }
-ul.check li::before { content: '✓'; color: #10B981; }
 
+li::before {
+    content: '→' !important;
+    display: table-cell !important;
+    width: 20px !important;
+    color: #597FFF !important;
+    font-weight: bold !important;
+    vertical-align: top !important;
+    padding-right: 8px !important;
+}
+
+li span, li div {
+    display: table-cell !important;
+    vertical-align: top !important;
+}
+
+/* Альтернатива — чек-маркер */
+.check li::before {
+    content: '✓' !important;
+    color: #10B981 !important;
+}
+
+/* Блоки-цитаты */
 .box {
-    background: #F0F4FF;
-    border-left: 4px solid #597FFF;
-    padding: 10px 12px;
-    margin: 10px 0;
-    border-radius: 0 6px 6px 0;
-    font-size: 10pt;
+    background: #F0F4FF !important;
+    border-left: 4px solid #597FFF !important;
+    padding: 12px 15px !important;
+    margin: 15px 0 !important;
+    font-size: 10pt !important;
 }
 
-.box-green {
-    background: #ECFDF5;
-    border-left: 4px solid #10B981;
-    padding: 10px 12px;
-    margin: 10px 0;
-    border-radius: 0 6px 6px 0;
-}
-.box-green strong { color: #059669; }
-
-.key-message {
-    background: #597FFF;
-    color: white;
-    padding: 12px 15px;
-    margin: 12px 0;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 10pt;
-}
-
+/* Таблица цен */
 .price-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 10px 0;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 15px 0 !important;
 }
 .price-table th, .price-table td {
-    padding: 8px 10px;
-    text-align: left;
-    border-bottom: 1px solid #E2E8F0;
-    font-size: 10pt;
+    padding: 10px 12px !important;
+    text-align: left !important;
+    border: 1px solid #E2E8F0 !important;
+    font-size: 10pt !important;
 }
-.price-table th { background: #597FFF; color: white; font-size: 9pt; }
-.price-table td:last-child { text-align: right; font-weight: bold; color: #597FFF; }
+.price-table th { 
+    background: #597FFF !important; 
+    color: white !important; 
+}
+.price-table td:last-child { 
+    text-align: right !important; 
+    font-weight: bold !important; 
+    color: #597FFF !important; 
+}
 
-.price-total {
-    background: #597FFF;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 6px;
-    margin-top: 10px;
-    text-align: center;
+/* ШАГИ — ТОЛЬКО ТАБЛИЦА, НИКАКОГО FLEXBOX */
+.steps-table {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 8px !important;
+    margin: 15px 0 !important;
 }
-.price-total-label { font-size: 9pt; }
-.price-total-value { font-size: 14pt; font-weight: bold; }
+.steps-table td {
+    background: #F8FAFC !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 6px !important;
+    padding: 12px 8px !important;
+    text-align: center !important;
+    vertical-align: top !important;
+    width: 16.66% !important;
+}
+.step-num {
+    font-size: 14pt !important;
+    font-weight: bold !important;
+    color: #597FFF !important;
+    display: block !important;
+    margin-bottom: 5px !important;
+}
+.step-title {
+    font-weight: bold !important;
+    font-size: 9pt !important;
+    display: block !important;
+    margin-bottom: 3px !important;
+}
+.step-desc {
+    font-size: 8pt !important;
+    color: #666 !important;
+}
 
-.steps {
-    display: flex;
-    gap: 8px;
-    margin: 10px 0;
-}
-.step {
-    flex: 1;
-    background: #F8FAFC;
-    border: 1px solid #E2E8F0;
-    border-radius: 6px;
-    padding: 10px 6px;
-    text-align: center;
-}
-.step-num { font-size: 12pt; font-weight: bold; color: #597FFF; }
-.step-title { font-weight: bold; font-size: 9pt; margin: 4px 0 2px 0; }
-.step-desc { font-size: 8pt; color: #666; }
-
-.columns {
-    display: flex;
-    gap: 12px;
-    margin: 10px 0;
-}
-.column {
-    flex: 1;
-    background: #F8FAFC;
-    border: 1px solid #E2E8F0;
-    border-radius: 6px;
-    padding: 12px;
-}
-.column-title { font-weight: bold; font-size: 9pt; margin-bottom: 8px; color: #597FFF; }
-.column ul li { padding: 6px 0 6px 16px; font-size: 9pt; }
-
+/* Маскот */
 .mascot {
-    text-align: center;
-    margin: 15px 0;
+    text-align: center !important;
+    margin: 30px 0 !important;
+    padding: 20px 0 !important;
 }
-.mascot img { height: 100px; vertical-align: middle; }
+.mascot img { 
+    height: 150px !important; 
+}
 .speech-bubble {
-    display: inline-block;
-    background: #F0F4FF;
-    border: 2px solid #597FFF;
-    border-radius: 10px;
-    padding: 8px 12px;
-    font-size: 9pt;
-    margin: 0 10px;
-    vertical-align: middle;
-    max-width: 180px;
+    display: inline-block !important;
+    background: #F0F4FF !important;
+    border: 2px solid #597FFF !important;
+    border-radius: 12px !important;
+    padding: 10px 15px !important;
+    font-size: 10pt !important;
+    margin-left: 15px !important;
+    max-width: 200px !important;
+    vertical-align: middle !important;
+}
+
+/* Бонус */
+.bonus-box {
+    background: #ECFDF5 !important;
+    border: 2px solid #10B981 !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
+    margin: 15px 0 !important;
+    text-align: center !important;
+}
+.bonus-box strong {
+    color: #059669 !important;
 }
 """
 
 
-# Промпт для генерации HTML
-GENERATION_PROMPT = """Ты — опытный B2B копирайтер. Создай ДЕТАЛЬНОЕ коммерческое предложение на основе транскрибации встречи.
+# Промпт для генерации HTML — СТРОГИЙ ШАБЛОН
+GENERATION_PROMPT = """Создай HTML коммерческого предложения. КОПИРУЙ СТРУКТУРУ ТОЧНО!
 
-## ЭТАЛОН КП (следуй этому стилю!)
-
-### Раздел 1. Что обсуждали на встрече
-Должен содержать 5-7 КОНКРЕТНЫХ пунктов со встречи:
-• Роли пользователей: рекрутеры работают в системе ежедневно, руководители выступают заказчиками и могут оставлять комментарии/менять статусы.
-• Инструменты внутри карточек: комментарии, напоминания, история изменений, вложения.
-• Интеграции с работными сайтами и коммуникации с кандидатами (мессенджеры, шаблоны).
-• Отчетность и выгрузки (в том числе в Excel).
-• Запрос согласия на обработку персональных данных (152-ФЗ).
-
-### Раздел 2. Предлагаемое решение WorkHere (ДЕТАЛЬНО!)
-Разбей на подразделы 2.1, 2.2, 2.3 и т.д. Каждый подраздел — отдельная тема:
-
-**2.1. Базовый функционал ATS/CRM**
-• Комментарии и внутренний «диалог» внутри карточек (рекрутер ↔ заказчик), история изменений, вложения.
-• Напоминания и ежедневник: постановка задач/напоминаний по кандидатам и заявкам.
-• Настраиваемые статусы и несколько воронок (например: линейный персонал и топ-менеджмент).
-• Аналитика и отчеты по движению кандидатов, причинам отказов, источникам и др., с выгрузкой в Excel.
-
-**2.2. Заявки и согласование**
-Модуль «Заявки» добавляется по запросу (без доплаты) и позволяет вести карточку заявки на подбор: статусы, сроки, документы, согласующие лица.
-
-**2.3. Уведомления и Telegram-бот**
-• Уведомления на события (например, смена статуса) с доставкой в Telegram и/или на почту.
-• Telegram-бот: напоминания за 15 минут до собеседования и доступ к расписанию.
-
-**2.4. Интеграции и коммуникации**
-• Интеграции с работными сайтами: Avito, HeadHunter, SuperJob, Rabota.ru.
-• Коммуникации с кандидатами через мессенджеры (Telegram, WhatsApp) с использованием шаблонов.
-
-И т.д. — добавляй подразделы по темам, которые обсуждались на встрече!
-
-## ФУНКЦИОНАЛ WORKHERE (используй при написании раздела 2)
-
-- Единая база кандидатов с историей
-- Интеграции: HH.ru, Авито, SuperJob, Rabota.ru
-- Мессенджеры: Telegram, WhatsApp, Viber + шаблоны
-- Настраиваемые воронки и статусы
-- Аналитика и отчёты с выгрузкой в Excel
-- Telegram-бот: уведомления, расписание, импорт резюме
-- Модуль заявок и согласований
-- Запрос согласия 152-ФЗ
-- Мобильное приложение iOS/Android
-- Открытый API
-- AI-поиск кандидатов (Премиум)
-
-## ТАРИФЫ
-
-- Стандартный: 20 000 ₽/лицензия/год
-- Премиум (с AI): 42 000 ₽/лицензия/год
-- Руководители: бесплатно
-
-## СТРУКТУРА КП
-
-1. **Что обсуждали на встрече** — 5-7 конкретных пунктов из транскрибации
-2. **Предлагаемое решение WorkHere** — подразделы 2.1, 2.2, 2.3... с детальным описанием
-3. **Коммерческие условия** — таблица с ценами (без суммирования!)
-4. **Внедрение и запуск** — 5-6 шагов
-5. **Следующие шаги** — что делать дальше
-
-## ПРАВИЛА ДИЗАЙНА
-
-1. Документ 2-3 страницы A4
-2. КАЖДАЯ страница должна быть заполнена минимум на 70%! Пустота более 30% — ЗАПРЕЩЕНО
-3. В НАЧАЛЕ документа — только логотип и простой заголовок, БЕЗ больших цветных блоков!
-4. ЗАПРЕЩЕНО: несколько синих/цветных блоков подряд
-5. Минималистичный дизайн — белый фон, акценты только в заголовках
-6. Если контента мало — добавь БОЛЬШОГО маскота (150-200px) чтобы заполнить пустоту
-
-## ПРАВИЛА ДЛЯ МАСКОТОВ (КРИТИЧНО!)
-
-1. Если на странице есть пустота внизу — ОБЯЗАТЕЛЬНО большой маскот!
-2. Маскот должен быть БОЛЬШИМ (минимум 150-200px высотой) чтобы заполнить пустоту
-3. Маскот размещается В НИЖНЕЙ ЧАСТИ пустого пространства, не вверху!
-4. Используй CSS: margin-top: auto; чтобы маскот был внизу пустоты
-5. ЗАПРЕЩЕНО: маленький маскот вверху при пустой странице внизу
-6. ЗАПРЕЩЕНО вставлять маскотов между разделами в середине контента!
-7. Каждый маскот с фразой в облачке
-
-Пример HTML для маскота внизу пустоты:
-<div style="margin-top: auto; text-align: center; padding: 40px 0;">
-  <img src="mascot.svg" style="height: 180px;">
-  <div class="speech-bubble">Фраза!</div>
-</div>
-
-## ПРАВИЛА ОТСТУПОВ И ВЁРСТКИ (КРИТИЧНО!)
-
-1. Между разделами — отступ минимум 25px margin-bottom
-2. Между подразделами (2.1, 2.2...) — отступ минимум 15px
-3. ЗАПРЕЩЕНО наложение элементов друг на друга!
-4. Шаги внедрения (1,2,3,4,5,6) — использовать таблицу или flexbox, НЕ position:absolute
-5. Цифры в шагах — внутри своих ячеек, не поверх текста
-6. Каждый блок — page-break-inside: avoid
-7. Если контент не влезает — СОКРАЩАЙ, не наезжай на соседние блоки
-
-## ПРАВИЛА ДЛЯ РАЗДЕЛА 2 (КРИТИЧНО!)
-
-1. Раздел 2 ОБЯЗАН уместиться на ОДНОЙ странице! Это главное правило!
-2. Максимум 4-5 подразделов (2.1, 2.2, 2.3, 2.4, 2.5)
-3. Каждый подраздел — максимум 2 коротких пункта (не 3!)
-4. Каждый пункт — максимум 1 строка текста
-5. Если не влезает — СОКРАЩАЙ, не переноси на следующую страницу!
-
-## ПРАВИЛА ДЛЯ ФУТЕРА
-
-1. В конце КАЖДОЙ страницы — аккуратный футер
-2. Текст футера: "WorkHere © 2026"
-3. Маленький логотип рядом с текстом (высота 16px)
-4. Цвет текста: серый (#999)
-5. Размер: 8pt
-6. НЕ писать техническую информацию типа "транскрибация" или "по итогам встречи"
-
-## ПРАВИЛА ДЛЯ ЦЕНЫ (ВАЖНО!)
-
-- НЕ суммировать тарифы! Клиент сам посчитает
-- Показывать ТОЛЬКО цену за 1 лицензию в год
-- Таблица: Тариф | Цена за лицензию
-- Стандартный: 20 000 ₽/год
-- Премиум (с AI): 42 000 ₽/год  
-- Руководители: бесплатно
-- ЗАПРЕЩЕНО: колонка "Количество", колонка "Итого", блок с общей суммой
-
-## ПРАВИЛА ДЛЯ НАЗВАНИЯ КОМПАНИИ (ВАЖНО!)
-
-- Если в транскрибации есть ЧЁТКОЕ название — используй
-- Если названия НЕТ — НЕ выдумывай! Не пиши "ООО Клиент"
-- В шапке справа: пусто если названия нет
-- В тексте: "ваша компания", "вашей команде" вместо выдуманного названия
-
-## CSS СТИЛИ (используй эти классы)
-
+## CSS (ВСТАВЬ В <style>)
 {css_styles}
 
-## МАСКОТЫ ДЛЯ ЗАПОЛНЕНИЯ ПУСТОТЫ
+## ШАБЛОН HTML (КОПИРУЙ И ЗАПОЛНЯЙ!)
 
-Используй маскотов чтобы заполнить пустое пространство внизу страниц:
-- Размещай ПОСЕРЕДИНЕ пустого пространства (не прилеплять к тексту или низу!)
-- Можно несколько маскотов — по одному на каждую страницу где есть пустота
-- НЕ вставляй между разделами в середине текста!
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+[ВСТАВЬ CSS СЮДА]
+</style>
+</head>
+<body>
 
-Пути к изображениям: {mascot_paths}
+<!-- ШАПКА -->
+<div class="header">
+  <div class="header-left"><img src="{logo_path}"></div>
+  <div class="header-right">[Название компании или пусто]</div>
+</div>
+<h1>Коммерческое предложение<small>ATS/CRM WorkHere для подбора персонала</small></h1>
 
-Фразы для маскотов (чередуй):
-- "Меньше рутины, больше результата!"
-- "Все отклики в одном месте — красота!"
-- "Рекрутинг может быть простым!"
-- "Подбор без хаоса — это реально!"
+<!-- РАЗДЕЛ 1 -->
+<div class="section">
+  <div class="section-title">1. Что обсуждали на встрече</div>
+  <ul>
+    <li><span>[Пункт из транскрибации]</span></li>
+    <li><span>[Пункт из транскрибации]</span></li>
+    <li><span>[Пункт из транскрибации]</span></li>
+    <li><span>[Пункт из транскрибации]</span></li>
+    <li><span>[Пункт из транскрибации]</span></li>
+  </ul>
+</div>
 
-## ДАННЫЕ КЛИЕНТА
+<!-- РАЗДЕЛ 2 — КОМПАКТНЫЙ! -->
+<div class="section">
+  <div class="section-title">2. Предлагаемое решение WorkHere</div>
+  
+  <div class="subsection">2.1. [Тема]</div>
+  <ul>
+    <li><span>[Короткий пункт]</span></li>
+    <li><span>[Короткий пункт]</span></li>
+  </ul>
+  
+  <div class="subsection">2.2. [Тема]</div>
+  <ul>
+    <li><span>[Короткий пункт]</span></li>
+    <li><span>[Короткий пункт]</span></li>
+  </ul>
+  
+  <div class="subsection">2.3. [Тема]</div>
+  <ul>
+    <li><span>[Короткий пункт]</span></li>
+    <li><span>[Короткий пункт]</span></li>
+  </ul>
+  
+  <div class="subsection">2.4. [Тема]</div>
+  <ul>
+    <li><span>[Короткий пункт]</span></li>
+    <li><span>[Короткий пункт]</span></li>
+  </ul>
+</div>
+
+<!-- РАЗДЕЛ 3 -->
+<div class="section">
+  <div class="section-title">3. Коммерческие условия</div>
+  <table class="price-table">
+    <tr><th>Тариф</th><th>Цена за лицензию/год</th></tr>
+    <tr><td>Стандартный</td><td>20 000 ₽</td></tr>
+    <tr><td>Премиум (с AI)</td><td>42 000 ₽</td></tr>
+    <tr><td>Руководители</td><td>Бесплатно</td></tr>
+  </table>
+  [БОНУС ЕСЛИ ЕСТЬ]
+</div>
+
+<!-- РАЗДЕЛ 4 — ТОЛЬКО ТАБЛИЦА! -->
+<div class="section">
+  <div class="section-title">4. Внедрение и запуск</div>
+  <table class="steps-table">
+    <tr>
+      <td><span class="step-num">1</span><span class="step-title">Демо</span><span class="step-desc">30 мин</span></td>
+      <td><span class="step-num">2</span><span class="step-title">Договор</span><span class="step-desc">1 день</span></td>
+      <td><span class="step-num">3</span><span class="step-title">Настройка</span><span class="step-desc">2-3 дня</span></td>
+      <td><span class="step-num">4</span><span class="step-title">Обучение</span><span class="step-desc">1 час</span></td>
+      <td><span class="step-num">5</span><span class="step-title">Запуск</span><span class="step-desc">1 день</span></td>
+      <td><span class="step-num">6</span><span class="step-title">Поддержка</span><span class="step-desc">24/7</span></td>
+    </tr>
+  </table>
+</div>
+
+<!-- РАЗДЕЛ 5 -->
+<div class="section">
+  <div class="section-title">5. Следующие шаги</div>
+  <ul>
+    <li><span>Назначить демо-презентацию</span></li>
+    <li><span>Подписать договор и выставить счёт</span></li>
+    <li><span>Начать работу в системе</span></li>
+  </ul>
+</div>
+
+<!-- МАСКОТ В КОНЦЕ -->
+<div class="mascot">
+  <img src="[ПУТЬ К МАСКОТУ]">
+  <div class="speech-bubble">Меньше рутины, больше результата!</div>
+</div>
+
+</body>
+</html>
+
+## ДАННЫЕ ДЛЯ ЗАПОЛНЕНИЯ
 
 Тариф: {tariff}
-Количество рекрутеров: {num_recruiters}
+Рекрутеров: {num_recruiters}
 {bonus_info}
 
-## ТРАНСКРИБАЦИЯ ВСТРЕЧИ
+Маскоты: {mascot_paths}
 
+## ТРАНСКРИБАЦИЯ
 {transcript}
 
----
+## КРИТИЧЕСКИЕ ПРАВИЛА
 
-Сгенерируй ПОЛНЫЙ HTML-документ. Начни с <!DOCTYPE html> и закончи </html>.
+1. СПИСКИ: Всегда <li><span>текст</span></li> — НИКОГДА без <span>!
+2. ШАГИ: ТОЛЬКО <table class="steps-table"> — ЗАПРЕЩЕНО div/flexbox/position!
+3. ФУТЕР: НЕ добавляй! Он в CSS автоматически!
+4. КОМПАНИЯ: Нет названия = пустая строка, НЕ выдумывай!
+5. РАЗДЕЛ 2: Максимум 4 подраздела по 2 пункта = 8 пунктов всего!
+6. ОТСТУПЫ: class="section" имеет margin — НЕ добавляй лишние div!
 
-Включи:
-- <style> с CSS внутри <head>
-- Логотип в header: <img src="{logo_path}">
-- Все разделы
-- Персонализированный контент на основе транскрибации
-- Если есть бонус — добавь его в блок "Коммерческие условия"
-
-КРИТИЧЕСКИ ВАЖНО:
-1. НЕ добавляй футер в HTML! Футер "WorkHere © 2026" уже есть в CSS (@page), он добавится автоматически
-2. На КАЖДОЙ странице с пустотой внизу — ОБЯЗАТЕЛЬНО маскот посередине пустого пространства
-3. Возвращай ТОЛЬКО HTML, без ```html``` обёртки"""
+Возвращай ТОЛЬКО готовый HTML без ```."""
 
 
 def get_mascot_paths() -> list[str]:
@@ -403,6 +393,45 @@ def get_mascot_paths() -> list[str]:
         if mascots:
             return [str(m) for m in mascots[:5]]
     return []
+
+
+def sanitize_html(html: str) -> str:
+    """
+    Пост-обработка HTML для исправления типичных ошибок GPT.
+    Удаляет опасные стили, исправляет структуру.
+    """
+    import re
+    
+    # 1. Удаляем position:absolute и position:relative из inline стилей
+    html = re.sub(r'position\s*:\s*(absolute|relative)\s*;?', '', html, flags=re.IGNORECASE)
+    
+    # 2. Удаляем left/right/top/bottom позиционирование
+    html = re.sub(r'(left|right|top|bottom)\s*:\s*-?\d+[^;]*;?', '', html, flags=re.IGNORECASE)
+    
+    # 3. Убираем z-index
+    html = re.sub(r'z-index\s*:\s*\d+\s*;?', '', html, flags=re.IGNORECASE)
+    
+    # 4. Исправляем <li> без <span> — добавляем span
+    # Паттерн: <li> за которым НЕ следует <span
+    html = re.sub(r'<li>(?!\s*<span)', '<li><span>', html)
+    html = re.sub(r'(?<!</span>)</li>', '</span></li>', html)
+    # Убираем двойные span если GPT уже добавил
+    html = re.sub(r'<span>\s*<span>', '<span>', html)
+    html = re.sub(r'</span>\s*</span>', '</span>', html)
+    
+    # 5. Убираем пустые стили
+    html = re.sub(r'style="\s*"', '', html)
+    
+    # 6. Убираем дублирование футера если GPT добавил
+    # Ищем паттерны типа "WorkHere © 2026" или "© 2026" в body
+    html = re.sub(r'<footer[^>]*>.*?</footer>', '', html, flags=re.IGNORECASE | re.DOTALL)
+    html = re.sub(r'<div[^>]*class="[^"]*footer[^"]*"[^>]*>.*?</div>', '', html, flags=re.IGNORECASE | re.DOTALL)
+    
+    # 7. Убираем transform
+    html = re.sub(r'transform\s*:\s*[^;]+;?', '', html, flags=re.IGNORECASE)
+    
+    logger.info("HTML sanitized")
+    return html
 
 
 async def generate_html_proposal(
@@ -483,6 +512,9 @@ async def generate_html_proposal(
     html_content = html_content.strip()
     
     logger.info(f"Generated HTML: {len(html_content)} chars")
+    
+    # Санитизация HTML — исправляем типичные ошибки GPT
+    html_content = sanitize_html(html_content)
     
     # Генерируем PDF
     html = HTML(string=html_content, base_url=str(ASSETS_DIR))
