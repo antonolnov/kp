@@ -30,66 +30,64 @@ class MeetingAnalysis:
     summary: str = ""
 
 
-ANALYSIS_PROMPT = """Ты — эксперт по продажам ATS-систем. Проанализируй транскрибацию встречи с потенциальным клиентом WorkHere и извлеки ключевую информацию для персонализированного коммерческого предложения.
+ANALYSIS_PROMPT = """Проанализируй транскрибацию встречи с клиентом по продукту WorkHere (ATS-система).
 
-WorkHere — это современная ATS-система (система управления подбором персонала) с функциями:
-- Единая база кандидатов
-- Интеграции с HH.ru, Авито, SuperJob, Работа.ру
-- Воронка подбора с этапами
-- Коммуникации в одном окне (чаты job-сайтов, WhatsApp, Telegram, Viber)
-- IP-телефония с записью звонков
-- Календарь собеседований с интеграцией Телемост
-- Автоматизация (триггеры, авторассылки, напоминания)
-- Telegram-бот для уведомлений
-- Аналитика и отчёты
-- AI-поиск кандидатов (семантический поиск, скоринг)
-- Запрос согласия на обработку ПД (ФЗ-152)
-- Работа с внутренними заказчиками
-- Мобильное приложение
+Твоя задача — извлечь информацию для раздела "Что обсуждали на встрече" в коммерческом предложении.
 
-Извлеки информацию в формате JSON:
+Пример хорошего формата для discussed_features:
+- "Роли пользователей: рекрутеры работают в системе ежедневно, руководители выступают заказчиками и могут оставлять комментарии/менять статусы"
+- "Интеграции с работными сайтами HH.ru и Авито для автоматического сбора откликов"
+- "Инструменты внутри карточек: комментарии, напоминания, история изменений, вложения"
+- "Коммуникации с кандидатами через мессенджеры (Telegram, WhatsApp) с шаблонами сообщений"
+- "Отчётность и выгрузки данных в Excel"
+- "Запрос согласия на обработку персональных данных (152-ФЗ)"
+- "Уведомления и Telegram-бот: напоминания о собеседованиях, расписание"
+
+Верни JSON:
 
 {
-    "company_name": "Название компании клиента (если не упоминается — пустая строка)",
-    "contact_name": "Имя контактного лица клиента",
-    "contact_role": "Должность контактного лица (HR-директор, рекрутер и т.д.)",
-    "num_recruiters": целое число рекрутеров (если упоминается 3 рекрутера + HR директор, то 4),
-    "industry": "Сфера деятельности компании (общепит, IT, ритейл и т.д.)",
-    "current_tools": "Какие инструменты сейчас используют (Битрикс, Excel, Телеграм и т.д.)",
+    "company_name": "Название компании",
+    "contact_name": "Имя контактного лица",
+    "contact_role": "Должность",
+    "num_recruiters": число_рекрутеров,
+    "industry": "Сфера деятельности",
+    "current_tools": "Текущие инструменты",
+    "hiring_situation": "Описание ситуации с наймом — 2-3 предложения",
+    "discussed_features": [
+        "Развёрнутый пункт 1 — что именно обсуждали, с деталями",
+        "Развёрнутый пункт 2",
+        "Развёрнутый пункт 3",
+        "Развёрнутый пункт 4",
+        "Развёрнутый пункт 5",
+        "Развёрнутый пункт 6",
+        "Развёрнутый пункт 7",
+        "Развёрнутый пункт 8"
+    ],
     "current_pain_points": [
-        "Конкретная проблема 1 из разговора (своими словами, кратко)",
-        "Конкретная проблема 2",
-        "Конкретная проблема 3"
+        "Проблема 1 — конкретно из слов клиента",
+        "Проблема 2",
+        "Проблема 3"
     ],
     "needs": [
-        "Потребность 1 — что хотят получить",
+        "Потребность 1",
         "Потребность 2",
         "Потребность 3"
     ],
-    "discussed_features": [
-        "Функция WorkHere 1, которая заинтересовала",
-        "Функция 2",
-        "Функция 3",
-        "Функция 4",
-        "Функция 5",
-        "Функция 6"
-    ],
-    "specific_request": "Конкретный запрос клиента, если был озвучен (иначе null)",
-    "hiring_situation": "Описание текущей ситуации с наймом в компании (2-3 предложения)",
-    "summary": "Краткое резюме для первой страницы КП (1-2 предложения, подчеркивающие ценность для этого клиента)"
+    "summary": "Краткое резюме"
 }
 
-ВАЖНО:
-- Извлекай РЕАЛЬНУЮ информацию из разговора, не выдумывай
-- Боли и потребности формулируй конкретно на основе слов клиента
-- Для discussed_features выбирай только те функции, которые РЕАЛЬНО обсуждались и заинтересовали
-- Если информация не упоминалась — оставляй пустую строку или null
-- Верни ТОЛЬКО валидный JSON, без markdown
+КРИТИЧЕСКИ ВАЖНО для discussed_features:
+1. Минимум 6-8 пунктов
+2. Каждый пункт — развёрнутое предложение, не 2-3 слова
+3. Включай детали из разговора (какие мессенджеры, какие сайты, какие роли)
+4. Формат: "Тема: детали и конкретика из разговора"
 
-Транскрибация встречи:
+Транскрибация:
 ---
 {transcript}
----"""
+---
+
+Верни ТОЛЬКО JSON."""
 
 
 async def analyze_transcript(transcript: str) -> MeetingAnalysis:
@@ -103,9 +101,9 @@ async def analyze_transcript(transcript: str) -> MeetingAnalysis:
     try:
         client = OpenAI(api_key=OPENAI_API_KEY)
         
-        # Truncate transcript if too long (keep first 20000 chars)
-        if len(transcript) > 20000:
-            transcript = transcript[:20000] + "\n\n[...транскрибация обрезана...]"
+        # Truncate transcript if too long (keep first 25000 chars)
+        if len(transcript) > 25000:
+            transcript = transcript[:25000] + "\n\n[...транскрибация обрезана...]"
         
         logger.info(f"Analyzing transcript with OpenAI ({len(transcript)} chars)")
         
@@ -114,14 +112,14 @@ async def analyze_transcript(transcript: str) -> MeetingAnalysis:
             messages=[
                 {
                     "role": "system",
-                    "content": "Ты — эксперт по анализу B2B встреч. Извлекай структурированную информацию из транскрибаций. Отвечай только валидным JSON без markdown разметки."
+                    "content": "Ты — эксперт по B2B продажам. Твоя задача — извлечь максимум конкретной информации из транскрибации для коммерческого предложения. Каждый пункт discussed_features должен быть развёрнутым предложением с деталями. Отвечай только валидным JSON."
                 },
                 {
                     "role": "user",
                     "content": ANALYSIS_PROMPT.format(transcript=transcript)
                 }
             ],
-            max_tokens=2000,
+            max_tokens=2500,
             temperature=0.2
         )
         
@@ -188,29 +186,45 @@ def _mock_analysis(transcript: str) -> MeetingAnalysis:
     if "общепит" in transcript_lower or "официант" in transcript_lower or "бариста" in transcript_lower or "повар" in transcript_lower:
         industry = "Общепит / HoReCa"
     
-    # Check discussed features
+    # Build detailed discussed features
     discussed = []
-    if "интеграц" in transcript_lower or "хедхантер" in transcript_lower or "авито" in transcript_lower:
-        discussed.append("Интеграции с job-сайтами (HH, Авито)")
-    if "воронк" in transcript_lower:
-        discussed.append("Воронка подбора")
-    if "аналитик" in transcript_lower or "отчёт" in transcript_lower or "статистик" in transcript_lower:
-        discussed.append("Аналитика и отчёты")
-    if "телефон" in transcript_lower or "звон" in transcript_lower:
-        discussed.append("IP-телефония с записью звонков")
-    if "whatsapp" in transcript_lower or "ватсап" in transcript_lower or "мессендж" in transcript_lower:
-        discussed.append("Мессенджеры (WhatsApp, Telegram)")
-    if "календар" in transcript_lower or "телемост" in transcript_lower:
-        discussed.append("Календарь с интеграцией Телемост")
-    if "заказчик" in transcript_lower or "шеф" in transcript_lower:
-        discussed.append("Работа с внутренними заказчиками")
-    if "персональн" in transcript_lower or "152" in transcript_lower:
-        discussed.append("Соответствие ФЗ-152")
+    if "интеграц" in transcript_lower or "хедхантер" in transcript_lower or "авито" in transcript_lower or "hh" in transcript_lower:
+        discussed.append("Интеграции с работными сайтами: подключение HH.ru, Авито — автоматический сбор откликов в единую систему")
+    if "воронк" in transcript_lower or "статус" in transcript_lower:
+        discussed.append("Настраиваемые воронки и статусы: возможность создавать несколько воронок под разные типы подбора (массовый, точечный)")
+    if "аналитик" in transcript_lower or "отчёт" in transcript_lower or "статистик" in transcript_lower or "excel" in transcript_lower:
+        discussed.append("Аналитика и отчёты: конверсии воронки, Time-to-Hire, эффективность источников, выгрузка в Excel")
+    if "телефон" in transcript_lower or "звон" in transcript_lower or "телефони" in transcript_lower:
+        discussed.append("IP-телефония: звонки из карточки кандидата, запись разговоров, автоматическое создание задач")
+    if "whatsapp" in transcript_lower or "ватсап" in transcript_lower or "мессендж" in transcript_lower or "telegram" in transcript_lower:
+        discussed.append("Коммуникации через мессенджеры: Telegram, WhatsApp — переписка в карточке кандидата, шаблоны сообщений")
+    if "календар" in transcript_lower or "телемост" in transcript_lower or "собеседован" in transcript_lower:
+        discussed.append("Календарь собеседований: интеграция с Яндекс Телемост, автоматические приглашения кандидатам")
+    if "заказчик" in transcript_lower or "руководител" in transcript_lower or "шеф" in transcript_lower:
+        discussed.append("Работа с заказчиками: руководители видят кандидатов, оставляют комментарии и фидбек")
+    if "персональн" in transcript_lower or "152" in transcript_lower or "фз" in transcript_lower:
+        discussed.append("Соответствие 152-ФЗ: запрос согласия на обработку персональных данных, фиксация статуса в системе")
     if "уведомлен" in transcript_lower or "напоминан" in transcript_lower or "бот" in transcript_lower:
-        discussed.append("Telegram-бот для уведомлений")
+        discussed.append("Telegram-бот: уведомления о новых откликах, напоминания за 15 минут до собеседования, расписание")
+    if "коммент" in transcript_lower or "истор" in transcript_lower:
+        discussed.append("Инструменты внутри карточек: комментарии, напоминания, история изменений, вложения файлов")
+    if "мобильн" in transcript_lower or "приложен" in transcript_lower:
+        discussed.append("Мобильное приложение: работа с кандидатами с телефона, push-уведомления")
+    if "заявк" in transcript_lower:
+        discussed.append("Модуль заявок на подбор: карточка заявки со статусами, сроками, согласующими лицами")
     
-    if not discussed:
-        discussed = ["Интеграции с job-сайтами", "Воронка подбора", "Аналитика"]
+    if len(discussed) < 6:
+        defaults = [
+            "Единая база кандидатов: все контакты, резюме и история взаимодействий в одном месте",
+            "Интеграции с работными сайтами: HH.ru, Авито, SuperJob — автоматический сбор откликов",
+            "Настраиваемые воронки и статусы под ваши процессы",
+            "Аналитика и отчёты: конверсии, источники, Time-to-Hire",
+            "Коммуникации с кандидатами через мессенджеры (WhatsApp, Telegram) с шаблонами",
+            "Telegram-бот для уведомлений и напоминаний о собеседованиях"
+        ]
+        for d in defaults:
+            if d not in discussed and len(discussed) < 8:
+                discussed.append(d)
     
     return MeetingAnalysis(
         company_name="",
@@ -220,16 +234,16 @@ def _mock_analysis(transcript: str) -> MeetingAnalysis:
         industry=industry,
         current_tools="Битрикс" if "битрикс" in transcript_lower else "",
         current_pain_points=[
-            "Текущая CRM-система не используется в полной мере",
-            "Работа ведётся в разных инструментах (Телеграм, Битрикс)",
-            "Нет единой системы для всех этапов подбора"
+            "Работа ведётся в нескольких инструментах, нет единой системы",
+            "Ручной перенос данных между площадками и таблицами",
+            "Отсутствие прозрачной аналитики по процессу подбора"
         ],
         needs=[
             "Сократить время на рутинные операции",
-            "Объединить все коммуникации в одном месте",
-            "Получить прозрачную аналитику по подбору"
+            "Объединить все коммуникации и источники кандидатов в одном месте",
+            "Получить прозрачную аналитику по эффективности подбора"
         ],
-        discussed_features=discussed[:6],
-        hiring_situation=f"Компания из сферы {industry or 'услуг'} ищет способы оптимизировать процесс подбора. Команда из {num_recruiters} рекрутеров работает с несколькими площадками.",
-        summary=f"Решение для автоматизации подбора персонала в сфере {industry or 'услуг'}, объединяющее все инструменты в одной системе."
+        discussed_features=discussed[:8],
+        hiring_situation=f"Компания из сферы {industry or 'услуг'} ищет способы оптимизировать процесс подбора. Команда из {num_recruiters} рекрутеров работает с несколькими площадками и инструментами.",
+        summary=f"Решение для автоматизации подбора персонала, объединяющее все инструменты в одной системе."
     )
