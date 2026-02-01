@@ -28,9 +28,9 @@ router = Router()
 def get_tariff_keyboard() -> InlineKeyboardMarkup:
     """Keyboard for tariff selection"""
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="📦 Стандартный (20 000 ₽/год)", callback_data="tariff_standard")],
+        [InlineKeyboardButton(text="💼 Стандартный (20 000 ₽/год)", callback_data="tariff_standard")],
         [InlineKeyboardButton(text="⭐ Премиум (42 000 ₽/год)", callback_data="tariff_premium")],
-        [InlineKeyboardButton(text="📦+⭐ Оба варианта", callback_data="tariff_both")],
+        [InlineKeyboardButton(text="💼+⭐ Оба варианта", callback_data="tariff_both")],
     ])
 
 
@@ -351,7 +351,7 @@ async def generate_proposal(message: Message, state: FSMContext):
         
         caption = f"✅ **КП готово!**\n\n"
         caption += f"👥 Рекрутеров: {num_recruiters}\n"
-        caption += f"📦 Тариф: {tariff_label}"
+        caption += f"💼 Тариф: {tariff_label}"
         caption += review_info
         
         await message.answer_document(
