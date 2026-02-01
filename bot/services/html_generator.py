@@ -59,12 +59,12 @@ body {
 .title h1 { font-size: 18pt; font-weight: bold; margin-bottom: 3px; }
 .title p { font-size: 9pt; }
 
-.section { margin-bottom: 18px; page-break-inside: avoid; }
+.section { margin-bottom: 25px; page-break-inside: avoid; }
 .section-title {
     font-size: 12pt;
     font-weight: bold;
     color: #1a1a2e;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     padding-bottom: 5px;
     border-bottom: 2px solid #E2E8F0;
 }
@@ -85,13 +85,19 @@ body {
     font-size: 10pt; 
     font-weight: bold; 
     color: #597FFF; 
-    margin: 10px 0 5px 0;
+    margin: 18px 0 8px 0;
     padding-left: 8px;
     border-left: 3px solid #597FFF;
 }
 
+.subsection-block {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #F0F0F0;
+}
+
 ul { list-style: none; margin: 0; padding: 0; }
-ul li { padding: 4px 0 4px 16px; position: relative; font-size: 10pt; }
+ul li { padding: 6px 0 6px 16px; position: relative; font-size: 10pt; line-height: 1.4; }
 ul li::before {
     content: '→';
     position: absolute;
@@ -273,8 +279,16 @@ GENERATION_PROMPT = """Ты — опытный B2B копирайтер. Соз�
 1. Документ 2-3 страницы A4
 2. Маскот ТОЛЬКО ОДИН раз в самом конце документа
 3. В НАЧАЛЕ документа — только логотип и простой заголовок, БЕЗ больших цветных блоков!
-4. ЗАПРЕЩЕНО: несколько синих/цветных блоков подряд в начале
-5. Минималистичный дизайн — белый фон, акценты только в заголовках разделов
+4. ЗАПРЕЩЕНО: несколько синих/цветных блоков подряд
+5. Минималистичный дизайн — белый фон, акценты только в заголовках
+
+## ПРАВИЛА ОТСТУПОВ (КРИТИЧНО!)
+
+1. Между подразделами (2.1, 2.2, 2.3...) — отступ минимум 15px margin-bottom
+2. Между пунктами списка — padding 8px
+3. Каждый подраздел должен визуально отделяться от соседнего
+4. НЕ СЛИПАТЬ блоки! Пустое пространство между элементами обязательно
+5. После заголовка подраздела — отступ 10px перед списком
 
 ## ПРАВИЛА ДЛЯ РАЗДЕЛА 2 (ВАЖНО!)
 
