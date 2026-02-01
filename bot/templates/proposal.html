@@ -320,12 +320,7 @@
         }
         
         .mascot-section img {
-            height: 130px;
             vertical-align: middle;
-        }
-        
-        .mascot-section.large img {
-            height: 200px;
         }
         
         .speech-bubble {
@@ -383,7 +378,7 @@
 <!-- ===== MASCOT 1 ===== -->
 <div class="mascot-section">
     <span class="speech-bubble">{{ mascot_phrase_1 }}</span>
-    <img src="{{ mascot_path_1 }}" alt="">
+    <img src="{{ mascot_path_1 }}" alt="" style="height: {{ mascot_size_1 }}px;">
 </div>
 
 <!-- ===== SECTION 2 ===== -->
@@ -477,7 +472,7 @@
 
 <!-- ===== MASCOT 2 ===== -->
 <div class="mascot-section">
-    <img src="{{ mascot_path_2 }}" alt="">
+    <img src="{{ mascot_path_2 }}" alt="" style="height: {{ mascot_size_2 }}px;">
     <span class="speech-bubble">{{ mascot_phrase_2 }}</span>
 </div>
 
@@ -544,9 +539,9 @@
 </div>
 
 <!-- ===== MASCOT 3 ===== -->
-<div class="mascot-section large">
+<div class="mascot-section">
     <span class="speech-bubble">{{ mascot_phrase_3 }}</span>
-    <img src="{{ mascot_path_3 }}" alt="">
+    <img src="{{ mascot_path_3 }}" alt="" style="height: {{ mascot_size_3 }}px;">
 </div>
 
 <!-- ===== FOOTER ===== -->

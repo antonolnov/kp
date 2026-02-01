@@ -79,6 +79,82 @@ def get_random_phrases(count: int = 3) -> list[str]:
     return phrases
 
 
+def calculate_mascot_sizes(
+    discussed_features: list[str],
+    hiring_situation: str,
+    show_both_tariffs: bool,
+    show_ai: bool
+) -> dict:
+    """
+    Рассчитать размеры маскотов на основе количества контента.
+    
+    Правило: чем меньше контента, тем больше маскоты (заполняют пустоту).
+    
+    Returns:
+        dict с ключами: size_1, size_2, size_3 (в пикселях)
+    """
+    # Базовая оценка "плотности" контента (0-100)
+    content_score = 0
+    
+    # Количество пунктов обсуждения (основной фактор)
+    features_count = len(discussed_features)
+    if features_count <= 3:
+        content_score += 10
+    elif features_count <= 5:
+        content_score += 30
+    elif features_count <= 7:
+        content_score += 50
+    else:
+        content_score += 70
+    
+    # Длина ситуации
+    situation_len = len(hiring_situation) if hiring_situation else 0
+    if situation_len > 150:
+        content_score += 15
+    elif situation_len > 80:
+        content_score += 10
+    
+    # Два тарифа = больше контента в таблице
+    if show_both_tariffs:
+        content_score += 10
+    
+    # AI-модуль = дополнительный раздел
+    if show_ai:
+        content_score += 10
+    
+    # Определяем размеры на основе score
+    # Чем МЕНЬШЕ score, тем БОЛЬШЕ маскоты
+    
+    if content_score <= 30:
+        # Мало контента — большие маскоты
+        return {
+            'size_1': 160,  # После раздела 1
+            'size_2': 180,  # После раздела 2
+            'size_3': 220,  # Финальный (самый большой)
+        }
+    elif content_score <= 50:
+        # Средний контент — средние маскоты
+        return {
+            'size_1': 130,
+            'size_2': 150,
+            'size_3': 180,
+        }
+    elif content_score <= 70:
+        # Много контента — маленькие маскоты
+        return {
+            'size_1': 100,
+            'size_2': 110,
+            'size_3': 140,
+        }
+    else:
+        # Очень много контента — минимальные маскоты
+        return {
+            'size_1': 80,
+            'size_2': 90,
+            'size_3': 120,
+        }
+
+
 def generate_proposal_pdf(
     analysis: MeetingAnalysis,
     config: ProposalConfig,
@@ -168,6 +244,16 @@ def generate_proposal_pdf(
     mascot_paths = get_random_mascots(3)
     mascot_phrases = get_random_phrases(3)
     
+    # Calculate mascot sizes based on content density
+    mascot_sizes = calculate_mascot_sizes(
+        discussed_features=discussed,
+        hiring_situation=analysis.hiring_situation or "",
+        show_both_tariffs=config.show_standard and config.show_premium,
+        show_ai=config.show_ai_option or config.show_premium
+    )
+    
+    logger.info(f"Content density -> mascot sizes: {mascot_sizes}")
+    
     # Render HTML
     html_content = template.render(
         logo_path=str(ASSETS_DIR / "logo.png"),
@@ -177,6 +263,9 @@ def generate_proposal_pdf(
         mascot_phrase_1=mascot_phrases[0],
         mascot_phrase_2=mascot_phrases[1],
         mascot_phrase_3=mascot_phrases[2],
+        mascot_size_1=mascot_sizes['size_1'],
+        mascot_size_2=mascot_sizes['size_2'],
+        mascot_size_3=mascot_sizes['size_3'],
         company_name=analysis.company_name or "",
         contact_name=analysis.contact_name or "",
         contact_role=analysis.contact_role or "",
