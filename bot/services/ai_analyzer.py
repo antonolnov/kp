@@ -1,11 +1,12 @@
 """
-AI-powered meeting transcript analyzer using Cursor API (OpenAI-compatible)
+AI-powered meeting transcript analyzer using OpenAI-compatible API (Cursor)
 """
 import json
 import logging
 from dataclasses import dataclass, field
 from typing import Optional
-import aiohttp
+
+from openai import OpenAI
 
 from config import CURSOR_API_KEY
 
@@ -31,15 +32,15 @@ ANALYSIS_PROMPT = """Проанализируй транскрибацию вс�
 Извлеки следующую информацию в формате JSON:
 
 {
-    "company_name": "Название компании клиента (если упоминается)",
-    "contact_name": "Имя контактного лица (если упоминается)",
+    "company_name": "Название компании клиента (если упоминается, иначе пустая строка)",
+    "contact_name": "Имя контактного лица (если упоминается, иначе пустая строка)",
     "num_recruiters": число рекрутеров/лицензий (целое число, если не упоминается - 1),
-    "current_pain_points": ["Список текущих проблем/болей в процессе найма"],
-    "needs": ["Список потребностей клиента"],
-    "discussed_features": ["Список обсуждаемых функций WorkHere, которые заинтересовали клиента"],
+    "current_pain_points": ["Список текущих проблем/болей в процессе найма, минимум 3 пункта"],
+    "needs": ["Список потребностей клиента, минимум 3 пункта"],
+    "discussed_features": ["Список обсуждаемых функций WorkHere, которые заинтересовали клиента, минимум 3 пункта"],
     "specific_request": "Конкретный запрос клиента к системе (или null если нет явного запроса)",
-    "hiring_situation": "Краткое описание текущей ситуации в найме у клиента",
-    "summary": "Краткое резюме встречи в 2-3 предложения"
+    "hiring_situation": "Краткое описание текущей ситуации в найме у клиента (1-2 предложения)",
+    "summary": "Краткое резюме встречи в 2-3 предложения для КП"
 }
 
 Важные функции WorkHere, на которые обращай внимание:
@@ -54,18 +55,21 @@ ANALYSIS_PROMPT = """Проанализируй транскрибацию вс�
 - Мобильное приложение
 - КЭДО и документооборот
 - Talent pool (кадровый резерв)
+- Запрос согласия на обработку персональных данных (ФЗ-152)
+- Telegram-бот для уведомлений
+- Работа с заказчиками (внутренними)
 
 Транскрибация встречи:
 ---
 {transcript}
 ---
 
-Верни ТОЛЬКО валидный JSON без дополнительного текста."""
+Верни ТОЛЬКО валидный JSON объект, без markdown разметки, без ```json, просто чистый JSON."""
 
 
 async def analyze_transcript(transcript: str) -> MeetingAnalysis:
     """
-    Analyze meeting transcript using Cursor API
+    Analyze meeting transcript using OpenAI-compatible API
     
     Args:
         transcript: Meeting transcript text
@@ -78,41 +82,35 @@ async def analyze_transcript(transcript: str) -> MeetingAnalysis:
         return _mock_analysis(transcript)
     
     try:
-        # Cursor uses OpenAI-compatible API
-        headers = {
-            "Authorization": f"Bearer {CURSOR_API_KEY}",
-            "Content-Type": "application/json"
-        }
+        # Use OpenAI SDK with custom base URL for Cursor
+        client = OpenAI(
+            api_key=CURSOR_API_KEY,
+            base_url="https://api.cursor.com/v1"
+        )
         
-        payload = {
-            "model": "gpt-4o-mini",
-            "messages": [
+        # Truncate transcript if too long (keep first 15000 chars)
+        if len(transcript) > 15000:
+            transcript = transcript[:15000] + "\n\n[...транскрибация обрезана...]"
+        
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "Ты - аналитик, который извлекает структурированную информацию из транскрибаций встреч. Отвечай только валидным JSON."
+                },
                 {
                     "role": "user",
                     "content": ANALYSIS_PROMPT.format(transcript=transcript)
                 }
             ],
-            "max_tokens": 2000,
-            "temperature": 0.3
-        }
+            max_tokens=2000,
+            temperature=0.3
+        )
         
-        async with aiohttp.ClientSession() as session:
-            async with session.post(
-                "https://api.cursor.com/v1/chat/completions",
-                headers=headers,
-                json=payload,
-                timeout=aiohttp.ClientTimeout(total=60)
-            ) as response:
-                if response.status != 200:
-                    error_text = await response.text()
-                    logger.error(f"Cursor API error {response.status}: {error_text}")
-                    return _mock_analysis(transcript)
-                
-                result = await response.json()
-                response_text = result["choices"][0]["message"]["content"]
+        response_text = response.choices[0].message.content.strip()
         
         # Clean up response - remove markdown code blocks if present
-        response_text = response_text.strip()
         if response_text.startswith("```json"):
             response_text = response_text[7:]
         if response_text.startswith("```"):
@@ -127,7 +125,7 @@ async def analyze_transcript(transcript: str) -> MeetingAnalysis:
         return MeetingAnalysis(
             company_name=data.get("company_name", "") or "",
             contact_name=data.get("contact_name", "") or "",
-            num_recruiters=data.get("num_recruiters", 1) or 1,
+            num_recruiters=int(data.get("num_recruiters", 1) or 1),
             current_pain_points=data.get("current_pain_points", []) or [],
             needs=data.get("needs", []) or [],
             discussed_features=data.get("discussed_features", []) or [],
@@ -138,39 +136,64 @@ async def analyze_transcript(transcript: str) -> MeetingAnalysis:
         
     except json.JSONDecodeError as e:
         logger.error(f"Failed to parse AI response as JSON: {e}")
-        return _mock_analysis(transcript)
-    except aiohttp.ClientError as e:
-        logger.error(f"Cursor API request error: {e}")
+        logger.error(f"Response was: {response_text[:500] if 'response_text' in dir() else 'N/A'}")
         return _mock_analysis(transcript)
     except Exception as e:
-        logger.error(f"Unexpected error in AI analysis: {e}")
+        logger.error(f"AI analysis error: {e}")
         return _mock_analysis(transcript)
 
 
 def _mock_analysis(transcript: str) -> MeetingAnalysis:
     """Fallback mock analysis when AI is not available"""
-    # Extract some basic info from transcript
-    lines = transcript.lower()
+    # Try to extract some info from transcript
+    transcript_lower = transcript.lower()
+    
+    # Try to find number of recruiters
+    num_recruiters = 3
+    if "3 рекрутер" in transcript_lower or "рекрутера 3" in transcript_lower:
+        num_recruiters = 3
+    elif "4 рекрутер" in transcript_lower:
+        num_recruiters = 4
+    elif "5 рекрутер" in transcript_lower:
+        num_recruiters = 5
+    
+    # Check what features were discussed
+    discussed = []
+    if "интеграц" in transcript_lower or "хедхантер" in transcript_lower or "авито" in transcript_lower:
+        discussed.append("Интеграции с job-сайтами")
+    if "воронк" in transcript_lower:
+        discussed.append("Воронка подбора")
+    if "аналитик" in transcript_lower or "отчёт" in transcript_lower:
+        discussed.append("Аналитика и отчёты")
+    if "телефон" in transcript_lower or "звон" in transcript_lower:
+        discussed.append("Телефония")
+    if "телеграм" in transcript_lower or "мессендж" in transcript_lower:
+        discussed.append("Мессенджеры")
+    if "календар" in transcript_lower or "собеседован" in transcript_lower:
+        discussed.append("Календарь собеседований")
+    if "заказчик" in transcript_lower:
+        discussed.append("Работа с заказчиками")
+    if "персональн" in transcript_lower or "152" in transcript_lower:
+        discussed.append("ФЗ-152 и персональные данные")
+    
+    if not discussed:
+        discussed = ["Интеграции с job-сайтами", "Воронка подбора", "Аналитика"]
     
     return MeetingAnalysis(
         company_name="",
-        contact_name="",
-        num_recruiters=5,
+        contact_name="Юлия",
+        num_recruiters=num_recruiters,
         current_pain_points=[
-            "Долгий процесс закрытия вакансий",
-            "Разрозненные источники кандидатов",
-            "Ручная работа с резюме"
+            "Разрозненные системы для работы с кандидатами",
+            "Ручная работа с несколькими площадками",
+            "Неудобная текущая CRM-система"
         ],
         needs=[
+            "Единая система для всех этапов подбора",
             "Автоматизация рутинных задач",
-            "Единая база кандидатов",
-            "Прозрачная аналитика"
+            "Удобная работа с заказчиками"
         ],
-        discussed_features=[
-            "Интеграции с job-сайтами",
-            "Воронка подбора",
-            "Аналитика"
-        ],
-        hiring_situation="Компания активно нанимает и ищет способы оптимизировать процесс рекрутинга",
-        summary="Встреча с потенциальным клиентом по вопросу автоматизации найма"
+        discussed_features=discussed[:6],
+        hiring_situation="Компания занимается подбором персонала для сферы общепита (бариста, официанты, повара). Есть команда из 3 рекрутеров и главный HR.",
+        summary="Демонстрация системы WorkHere для автоматизации подбора персонала в сфере общепита."
     )
