@@ -200,11 +200,11 @@
         .step-title { display: block; font-weight: bold; font-size: 9pt; margin: 4px 0 2px 0; }
         .step-desc { font-size: 8pt; color: #666; }
         
-        /* COLUMNS */
+        /* COLUMNS — больше воздуха */
         .cols-table {
             width: 100%;
             border-collapse: separate;
-            border-spacing: 10px 0;
+            border-spacing: 12px 0;
             margin: 10px 0;
         }
         .cols-table td {
@@ -212,10 +212,15 @@
             background: #F8FAFC;
             border: 1px solid #E2E8F0;
             border-radius: 6px;
-            padding: 10px;
+            padding: 12px;
             vertical-align: top;
         }
-        .col-title { font-weight: bold; font-size: 9pt; margin-bottom: 6px; color: #597FFF; }
+        .cols-table ul li {
+            padding: 6px 0 6px 16px;  /* Больше отступы между пунктами */
+            font-size: 9pt;  /* Чуть меньше шрифт */
+            line-height: 1.4;
+        }
+        .col-title { font-weight: bold; font-size: 9pt; margin-bottom: 8px; color: #597FFF; }
         
         /* MASCOT — компактный */
         .mascot-section {
@@ -458,12 +463,6 @@
         <li>Доступ к системе за 1 рабочий день</li>
         <li>Запуск с персональным менеджером</li>
     </ul>
-</div>
-
-<!-- MASCOT 4 (финальный) -->
-<div class="mascot-section">
-    <img src="{{ mascot_path_4 }}" alt="" style="height: {{ mascot_size_4 }}px;">
-    <span class="speech-bubble">{{ mascot_phrase_4 }}</span>
 </div>
 
 </body>
