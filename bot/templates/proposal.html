@@ -6,7 +6,7 @@
     <style>
         @page {
             size: A4;
-            margin: 20px 25px 30px 25px;
+            margin: 25px 30px 35px 30px;
             
             @bottom-right {
                 content: "Страница " counter(page);
@@ -21,90 +21,90 @@
             font-family: Arial, Helvetica, sans-serif;
             color: #1a1a2e;
             background: #fff;
-            font-size: 10pt;
-            line-height: 1.45;
+            font-size: 11pt;
+            line-height: 1.6;
         }
         
-        /* ===== HEADER (таблица) ===== */
+        /* ===== HEADER ===== */
         .header-table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
             border-bottom: 3px solid #597FFF;
-            padding-bottom: 10px;
         }
         
         .header-table td {
-            padding: 0 0 10px 0;
+            padding: 0 0 15px 0;
             vertical-align: middle;
         }
         
-        .header-table img { height: 30px; }
+        .header-table img { height: 36px; }
         
         .header-right {
             text-align: right;
-            font-size: 9pt;
+            font-size: 10pt;
             color: #666;
         }
         
         .header-right strong { 
             color: #1a1a2e; 
-            font-size: 10pt;
+            font-size: 12pt;
         }
         
         /* ===== TITLE ===== */
         .doc-title {
             text-align: center;
-            margin-bottom: 15px;
-            padding: 15px;
+            margin-bottom: 30px;
+            padding: 25px;
             background: #597FFF;
-            border-radius: 8px;
+            border-radius: 12px;
             color: white;
         }
         
         .doc-title h1 {
-            font-size: 18pt;
+            font-size: 22pt;
             font-weight: bold;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
         }
         
-        .doc-title p { font-size: 9pt; }
+        .doc-title p { font-size: 11pt; }
         
         /* ===== SECTIONS ===== */
         .section {
-            margin-bottom: 12px;
+            margin-bottom: 30px;
             page-break-inside: avoid;
         }
         
         .section-title {
-            font-size: 12pt;
+            font-size: 14pt;
             font-weight: bold;
             color: #1a1a2e;
-            margin-bottom: 8px;
-            padding-bottom: 5px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
             border-bottom: 2px solid #E2E8F0;
         }
         
         .num {
             display: inline-block;
-            width: 22px;
-            height: 22px;
+            width: 26px;
+            height: 26px;
             background: #597FFF;
             color: white;
             border-radius: 50%;
             text-align: center;
-            line-height: 22px;
-            font-size: 11pt;
+            line-height: 26px;
+            font-size: 13pt;
             font-weight: bold;
-            margin-right: 6px;
+            margin-right: 10px;
         }
         
         .subsection-title {
-            font-size: 10pt;
+            font-size: 11pt;
             font-weight: bold;
             color: #597FFF;
-            margin: 8px 0 4px 0;
-            padding-left: 8px;
+            margin: 15px 0 8px 0;
+            padding-left: 12px;
             border-left: 3px solid #597FFF;
         }
         
@@ -112,9 +112,9 @@
         ul { list-style: none; margin: 0; padding: 0; }
         
         ul li {
-            padding: 2px 0 2px 15px;
+            padding: 6px 0 6px 20px;
             position: relative;
-            font-size: 9.5pt;
+            font-size: 10.5pt;
         }
         
         ul li::before {
@@ -130,42 +130,33 @@
         /* ===== BOXES ===== */
         .highlight-box {
             background: #F0F4FF;
-            border-left: 3px solid #597FFF;
-            padding: 10px 12px;
-            margin: 8px 0;
-            border-radius: 0 6px 6px 0;
-            font-size: 9.5pt;
+            border-left: 4px solid #597FFF;
+            padding: 15px 18px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
         }
         
         .highlight-box strong { color: #597FFF; }
         
         .results-box {
             background: #ECFDF5;
-            border-left: 3px solid #10B981;
-            padding: 10px 12px;
-            margin: 8px 0;
-            border-radius: 0 6px 6px 0;
-            font-size: 9.5pt;
+            border-left: 4px solid #10B981;
+            padding: 15px 18px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
         }
         
         .results-box strong { color: #059669; }
         
         /* ===== PRICE TABLE ===== */
-        .price-section {
-            background: #F8FAFC;
-            border-radius: 8px;
-            padding: 12px;
-            margin: 8px 0;
-        }
-        
         .price-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 9.5pt;
+            margin: 15px 0;
         }
         
         .price-table th, .price-table td {
-            padding: 8px 10px;
+            padding: 12px 15px;
             text-align: left;
             border-bottom: 1px solid #E2E8F0;
         }
@@ -174,119 +165,114 @@
             background: #597FFF;
             color: white;
             font-weight: bold;
+            font-size: 10pt;
         }
         
         .price-table td:last-child { 
             text-align: right; 
             font-weight: bold; 
             color: #597FFF;
+            font-size: 12pt;
         }
         
-        .price-total {
+        /* ИТОГО - отдельный блок, не в строку */
+        .price-total-box {
             background: #597FFF;
             color: white;
-            padding: 10px 12px;
-            border-radius: 6px;
-            margin-top: 10px;
-            font-size: 9.5pt;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            text-align: center;
         }
         
-        .price-total-table {
-            width: 100%;
-            border-collapse: collapse;
+        .price-total-label {
+            font-size: 11pt;
+            margin-bottom: 5px;
         }
         
-        .price-total-table td {
-            padding: 0;
-            color: white;
-        }
-        
-        .price-total-table td:last-child {
-            text-align: right;
-            font-size: 14pt;
+        .price-total-value {
+            font-size: 24pt;
             font-weight: bold;
         }
         
-        /* ===== STEPS (таблица) ===== */
+        /* ===== STEPS ===== */
         .steps-table {
             width: 100%;
             border-collapse: separate;
-            border-spacing: 8px 0;
-            margin: 8px 0;
+            border-spacing: 10px 0;
+            margin: 15px 0;
         }
         
         .steps-table td {
             width: 25%;
             background: #F8FAFC;
-            border: 1px solid #E2E8F0;
-            border-radius: 6px;
-            padding: 10px 8px;
+            border: 2px solid #E2E8F0;
+            border-radius: 10px;
+            padding: 15px 10px;
             text-align: center;
             vertical-align: top;
         }
         
         .step-num {
             display: inline-block;
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             background: #597FFF;
             color: white;
             border-radius: 50%;
-            line-height: 20px;
-            font-size: 9pt;
+            line-height: 24px;
+            font-size: 11pt;
             font-weight: bold;
         }
         
         .step-title { 
             display: block;
             font-weight: bold;
-            font-size: 9pt;
-            margin: 5px 0 2px 0;
+            font-size: 10pt;
+            margin: 8px 0 4px 0;
         }
         
         .step-desc { 
-            font-size: 8pt;
+            font-size: 9pt;
             color: #666;
         }
         
-        /* ===== TWO COLUMNS (таблица) ===== */
+        /* ===== TWO COLUMNS ===== */
         .cols-table {
             width: 100%;
             border-collapse: separate;
-            border-spacing: 10px 0;
-            margin: 8px 0;
+            border-spacing: 15px 0;
+            margin: 15px 0;
         }
         
         .cols-table td {
             width: 50%;
             background: #F8FAFC;
-            border: 1px solid #E2E8F0;
-            border-radius: 6px;
-            padding: 10px;
+            border: 2px solid #E2E8F0;
+            border-radius: 10px;
+            padding: 15px;
             vertical-align: top;
         }
         
         .col-title { 
             font-weight: bold; 
-            font-size: 9.5pt; 
-            margin-bottom: 6px;
+            font-size: 11pt; 
+            margin-bottom: 10px;
             color: #597FFF;
         }
         
-        /* ===== FOOTER (таблица) ===== */
+        /* ===== FOOTER ===== */
         .footer-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
-            padding: 12px;
+            margin-top: 30px;
+            padding: 20px;
             background: #F8FAFC;
-            border-radius: 8px;
-            font-size: 9pt;
-            color: #666;
+            border-radius: 10px;
         }
         
         .footer-table td {
-            padding: 10px;
+            padding: 15px;
             vertical-align: top;
         }
         
@@ -294,15 +280,15 @@
         
         .footer-table strong { 
             color: #597FFF; 
-            font-size: 9.5pt;
+            font-size: 11pt;
             display: block;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
         }
         
         /* ===== MASCOT ===== */
         .mascot-section {
             text-align: center;
-            margin: 15px 0;
+            margin: 30px 0;
             page-break-inside: avoid;
         }
         
@@ -314,14 +300,14 @@
             display: inline-block;
             background: #F0F4FF;
             border: 2px solid #597FFF;
-            border-radius: 12px;
-            padding: 10px 14px;
-            font-size: 10pt;
+            border-radius: 15px;
+            padding: 12px 20px;
+            font-size: 11pt;
             color: #1a1a2e;
             font-weight: 500;
-            margin: 0 15px;
+            margin: 0 20px;
             vertical-align: middle;
-            max-width: 200px;
+            max-width: 220px;
         }
 
     </style>
@@ -374,25 +360,28 @@
     
     <div class="subsection-title">Базовый функционал</div>
     <ul>
-        <li>Единая база кандидатов с резюме и историей</li>
-        <li>Воронки, аналитика, импорт/экспорт Excel, мобильное приложение</li>
+        <li>Единая база кандидатов с резюме, историей и комментариями</li>
+        <li>Настраиваемые воронки и статусы под ваши процессы</li>
+        <li>Аналитика: конверсии, Time-to-Hire, источники, отчёты в Excel</li>
     </ul>
     
-    <div class="subsection-title">Интеграции и коммуникации</div>
+    <div class="subsection-title">Интеграции</div>
     <ul>
-        <li>HH.ru, Avito, SuperJob — отклики автоматически в системе</li>
-        <li>Telegram, WhatsApp, IP-телефония — всё в карточке кандидата</li>
+        <li>HH.ru, Avito, SuperJob, Работа.ру — отклики автоматически в системе</li>
+        <li>Telegram, WhatsApp, IP-телефония — коммуникации в карточке кандидата</li>
     </ul>
     
-    <div class="subsection-title">Заявки и безопасность</div>
+    <div class="subsection-title">Автоматизация</div>
     <ul>
-        <li>Заявки на подбор, Telegram-бот, 152-ФЗ, права доступа</li>
+        <li>Заявки на подбор с согласованием у руководителей</li>
+        <li>Telegram-бот: уведомления, напоминания, импорт резюме</li>
+        <li>152-ФЗ: согласия на обработку ПД, права доступа</li>
     </ul>
     
     {% if show_ai_option or show_premium %}
     <div class="subsection-title">AI-модуль</div>
     <ul>
-        <li>Умный поиск, матчинг кандидат ↔ вакансия, ранжирование</li>
+        <li>Умный поиск, матчинг кандидат-вакансия, ранжирование</li>
     </ul>
     {% endif %}
 </div>
@@ -401,51 +390,45 @@
 <div class="section">
     <div class="section-title"><span class="num">3</span> Стоимость</div>
     
-    <div class="price-section">
-        <table class="price-table">
-            <tr>
-                <th>Позиция</th>
-                <th>Цена</th>
-            </tr>
-            {% if show_standard %}
-            <tr>
-                <td>Лицензия рекрутера (Стандарт)</td>
-                <td>20 000 ₽/год</td>
-            </tr>
-            {% endif %}
-            {% if show_premium %}
-            <tr>
-                <td>Лицензия рекрутера (Премиум + AI)</td>
-                <td>42 000 ₽/год</td>
-            </tr>
-            {% endif %}
-            <tr>
-                <td>Руководители-заказчики</td>
-                <td>Бесплатно</td>
-            </tr>
-            {% if show_ai_option %}
-            <tr>
-                <td>AI-модуль (дополнительно)</td>
-                <td>5 000 ₽/мес</td>
-            </tr>
-            {% endif %}
-        </table>
-        
-        <div class="highlight-box" style="margin-bottom: 0;">
-            <strong>Ваша команда ({{ num_recruiters }} рек.):</strong>
-            {% for calc in calculations %}
-            {{ calc.name }}: <strong>{{ calc.value }}</strong>
-            {% endfor %}
-        </div>
-        
-        <div class="price-total">
-            <table class="price-total-table">
-                <tr>
-                    <td>Итого в год:</td>
-                    <td>{{ total_price }} ₽</td>
-                </tr>
-            </table>
-        </div>
+    <table class="price-table">
+        <tr>
+            <th>Позиция</th>
+            <th>Цена</th>
+        </tr>
+        {% if show_standard %}
+        <tr>
+            <td>Лицензия рекрутера (Стандарт)</td>
+            <td>20 000 ₽/год</td>
+        </tr>
+        {% endif %}
+        {% if show_premium %}
+        <tr>
+            <td>Лицензия рекрутера (Премиум + AI)</td>
+            <td>42 000 ₽/год</td>
+        </tr>
+        {% endif %}
+        <tr>
+            <td>Руководители-заказчики</td>
+            <td>Бесплатно</td>
+        </tr>
+        {% if show_ai_option %}
+        <tr>
+            <td>AI-модуль (дополнительно)</td>
+            <td>5 000 ₽/мес</td>
+        </tr>
+        {% endif %}
+    </table>
+    
+    <div class="highlight-box">
+        <strong>Расчёт для вашей команды ({{ num_recruiters }} рекрутер{{ 'а' if num_recruiters in [2,3,4] else 'ов' if num_recruiters >= 5 else '' }}):</strong><br><br>
+        {% for calc in calculations %}
+        {{ calc.name }}: <strong>{{ calc.value }}</strong><br>
+        {% endfor %}
+    </div>
+    
+    <div class="price-total-box">
+        <div class="price-total-label">Итого в год</div>
+        <div class="price-total-value">{{ total_price }} ₽</div>
     </div>
 </div>
 
@@ -464,22 +447,22 @@
             <td>
                 <span class="step-num">1</span>
                 <span class="step-title">Настройка</span>
-                <span class="step-desc">воронки, роли</span>
+                <span class="step-desc">воронки, статусы, роли</span>
             </td>
             <td>
                 <span class="step-num">2</span>
                 <span class="step-title">Интеграции</span>
-                <span class="step-desc">HH, мессенджеры</span>
+                <span class="step-desc">HH, Авито, мессенджеры</span>
             </td>
             <td>
                 <span class="step-num">3</span>
                 <span class="step-title">Импорт</span>
-                <span class="step-desc">база из Excel</span>
+                <span class="step-desc">база кандидатов</span>
             </td>
             <td>
                 <span class="step-num">4</span>
                 <span class="step-title">Обучение</span>
-                <span class="step-desc">+ поддержка</span>
+                <span class="step-desc">команда + поддержка</span>
             </td>
         </tr>
     </table>
@@ -495,13 +478,15 @@
                 <div class="col-title">Для рекрутеров</div>
                 <ul class="check">
                     <li>Все отклики в одном месте</li>
+                    <li>Коммуникации без переключений</li>
                     <li>Автоматизация рутины</li>
                 </ul>
             </td>
             <td>
                 <div class="col-title">Для руководителей</div>
                 <ul class="check">
-                    <li>Прозрачность и контроль</li>
+                    <li>Прозрачность процесса</li>
+                    <li>Контроль сроков и SLA</li>
                     <li>Аналитика и отчёты</li>
                 </ul>
             </td>
@@ -509,7 +494,8 @@
     </table>
     
     <div class="results-box">
-        <strong>Результаты клиентов:</strong> закрытие вакансий быстрее на 40-60%, экономия 2-3 часа в день
+        <strong>Результаты клиентов:</strong><br>
+        Закрытие вакансий быстрее на 40-60%, экономия 2-3 часа в день на рутине
     </div>
 </div>
 
@@ -517,7 +503,10 @@
 <div class="section">
     <div class="section-title"><span class="num">6</span> Следующие шаги</div>
     <ul>
-        <li>Согласование → Договор → Доступ за 1 день → Запуск с менеджером</li>
+        <li>Согласование условий</li>
+        <li>Подписание договора</li>
+        <li>Доступ к системе за 1 рабочий день</li>
+        <li>Запуск с персональным менеджером</li>
     </ul>
 </div>
 
