@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <title>WorkHere — Коммерческое предложение</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-        
         @page {
             size: A4;
             margin: 25px 30px 35px 30px;
             
             @bottom-right {
                 content: "Страница " counter(page);
-                font-family: 'Inter', sans-serif;
                 font-size: 9pt;
                 color: #999;
             }
@@ -21,29 +18,29 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             color: #1a1a2e;
             background: #fff;
-            font-size: 11pt;
-            line-height: 1.55;
+            font-size: 10.5pt;
+            line-height: 1.5;
         }
         
         /* ===== HEADER ===== */
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
             border-bottom: 3px solid #597FFF;
-            background: linear-gradient(90deg, #F0F4FF 0%, #fff 100%);
-            margin: -25px -30px 20px -30px;
-            padding: 20px 30px 15px 30px;
+            overflow: hidden;
         }
         
-        .logo img { height: 36px; }
+        .header-logo {
+            float: left;
+        }
+        
+        .header-logo img { height: 32px; }
         
         .header-info {
+            float: right;
             text-align: right;
             font-size: 10pt;
             color: #666;
@@ -51,83 +48,88 @@
         
         .header-info strong { 
             color: #1a1a2e; 
-            font-size: 12pt;
-            display: block;
-            margin-bottom: 2px;
+            font-size: 11pt;
+        }
+        
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
         }
         
         /* ===== TITLE ===== */
         .doc-title {
             text-align: center;
-            margin-bottom: 25px;
-            padding: 20px;
-            background: linear-gradient(135deg, #597FFF 0%, #7C9FFF 100%);
-            border-radius: 12px;
+            margin-bottom: 20px;
+            padding: 18px 20px;
+            background: #597FFF;
+            border-radius: 10px;
             color: white;
         }
         
         .doc-title h1 {
-            font-size: 22pt;
-            font-weight: 800;
-            margin-bottom: 5px;
+            font-size: 20pt;
+            font-weight: bold;
+            margin-bottom: 4px;
         }
         
         .doc-title p { 
-            font-size: 11pt; 
+            font-size: 10pt; 
             opacity: 0.9;
         }
         
         /* ===== SECTIONS ===== */
         .section {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             page-break-inside: avoid;
         }
         
         .section-title {
-            font-size: 14pt;
-            font-weight: 700;
+            font-size: 13pt;
+            font-weight: bold;
             color: #1a1a2e;
-            margin-bottom: 12px;
-            padding-bottom: 8px;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
             border-bottom: 2px solid #E2E8F0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
         
-        .section-title .num {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(135deg, #597FFF 0%, #7C9FFF 100%);
+        .section-num {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: #597FFF;
             color: white;
             border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
             font-size: 12pt;
-            font-weight: 700;
-            box-shadow: 0 2px 8px rgba(89, 127, 255, 0.3);
+            font-weight: bold;
+            margin-right: 8px;
         }
         
         .subsection {
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             page-break-inside: avoid;
         }
         
         .subsection-title {
-            font-size: 11pt;
-            font-weight: 600;
+            font-size: 10.5pt;
+            font-weight: bold;
             color: #597FFF;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             padding-left: 10px;
             border-left: 3px solid #597FFF;
         }
         
         /* ===== LISTS ===== */
-        ul { list-style: none; }
+        ul { 
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
         
         ul li {
-            padding: 4px 0 4px 20px;
+            padding: 3px 0 3px 18px;
             position: relative;
         }
         
@@ -144,26 +146,35 @@
             color: #10B981; 
         }
         
-        /* ===== HIGHLIGHT BOX ===== */
+        /* ===== BOXES ===== */
         .highlight-box {
-            background: linear-gradient(135deg, #F0F4FF 0%, #E8EEFF 100%);
+            background: #F0F4FF;
             border-left: 4px solid #597FFF;
-            padding: 15px 20px;
-            margin: 15px 0;
-            border-radius: 0 12px 12px 0;
-            box-shadow: 0 2px 10px rgba(89, 127, 255, 0.1);
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
         }
         
         .highlight-box strong {
             color: #597FFF;
         }
         
-        /* ===== PRICE TABLE ===== */
+        .results-box {
+            background: #ECFDF5;
+            border-left: 4px solid #10B981;
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .results-box strong { color: #059669; }
+        
+        /* ===== PRICE ===== */
         .price-section {
             background: #F8FAFC;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 15px 0;
+            border-radius: 10px;
+            padding: 16px;
+            margin: 12px 0;
         }
         
         .price-table {
@@ -172,7 +183,7 @@
         }
         
         .price-table th, .price-table td {
-            padding: 12px 15px;
+            padding: 10px 12px;
             text-align: left;
             border-bottom: 1px solid #E2E8F0;
         }
@@ -180,188 +191,158 @@
         .price-table th { 
             background: #597FFF;
             color: white;
-            font-weight: 600;
-            font-size: 10pt;
+            font-weight: bold;
+            font-size: 9pt;
         }
-        
-        .price-table th:first-child { border-radius: 8px 0 0 0; }
-        .price-table th:last-child { border-radius: 0 8px 0 0; }
         
         .price-table td:last-child { 
             text-align: right; 
-            font-weight: 700; 
+            font-weight: bold; 
             color: #597FFF;
-            font-size: 12pt;
+            font-size: 11pt;
         }
         
         .price-table tr:nth-child(even) { background: #F0F4FF; }
         
         .price-total {
-            background: linear-gradient(135deg, #597FFF 0%, #7C9FFF 100%);
+            background: #597FFF;
             color: white;
-            padding: 15px 20px;
+            padding: 12px 16px;
             border-radius: 8px;
-            margin-top: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            margin-top: 12px;
+            overflow: hidden;
         }
         
-        .price-total .label { font-size: 12pt; }
-        .price-total .value { font-size: 18pt; font-weight: 800; }
+        .price-total-label { 
+            float: left;
+            font-size: 11pt; 
+            line-height: 28px;
+        }
+        .price-total-value { 
+            float: right;
+            font-size: 16pt; 
+            font-weight: bold; 
+        }
         
-        /* ===== TWO COLUMNS ===== */
-        .two-cols { 
-            display: flex; 
-            gap: 15px;
-            margin: 15px 0;
+        /* ===== COLUMNS ===== */
+        .two-cols {
+            overflow: hidden;
+            margin: 12px 0;
         }
         
         .col {
-            flex: 1;
-            background: linear-gradient(135deg, #F8FAFC 0%, #F0F4FF 100%);
-            padding: 15px;
-            border-radius: 12px;
+            width: 48%;
+            float: left;
+            background: #F8FAFC;
+            padding: 12px;
+            border-radius: 8px;
             border: 1px solid #E2E8F0;
         }
         
-        .col-title { 
-            font-weight: 700; 
-            font-size: 11pt; 
-            margin-bottom: 10px;
-            color: #597FFF;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+        .col:first-child { margin-right: 4%; }
         
-        .col-title::before {
-            content: '●';
-            font-size: 8pt;
+        .col-title { 
+            font-weight: bold; 
+            font-size: 10pt; 
+            margin-bottom: 8px;
+            color: #597FFF;
         }
         
         /* ===== STEPS ===== */
-        .steps-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin: 15px 0;
+        .steps-row {
+            overflow: hidden;
+            margin: 12px 0;
         }
         
         .step-card {
+            width: 23%;
+            float: left;
+            margin-right: 2.66%;
             background: white;
             border: 2px solid #E2E8F0;
-            border-radius: 10px;
-            padding: 12px 15px;
-            transition: all 0.2s;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
         }
         
-        .step-card:hover {
-            border-color: #597FFF;
-        }
+        .step-card:last-child { margin-right: 0; }
         
-        .step-card .step-num {
+        .step-num {
             display: inline-block;
             width: 22px;
             height: 22px;
             background: #597FFF;
             color: white;
             border-radius: 50%;
-            text-align: center;
             line-height: 22px;
             font-size: 10pt;
-            font-weight: 600;
-            margin-right: 8px;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
         
-        .step-card strong { color: #1a1a2e; }
-        .step-card span { color: #666; font-size: 10pt; }
-        
-        /* ===== RESULTS ===== */
-        .results-box {
-            background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
-            border-left: 4px solid #10B981;
-            padding: 15px 20px;
-            margin: 15px 0;
-            border-radius: 0 12px 12px 0;
+        .step-card strong { 
+            display: block;
+            color: #1a1a2e; 
+            font-size: 9.5pt;
         }
-        
-        .results-box strong { color: #059669; }
+        .step-card span { 
+            color: #666; 
+            font-size: 8.5pt; 
+        }
         
         /* ===== FOOTER ===== */
         .footer {
-            margin-top: 25px;
-            padding: 20px;
-            background: linear-gradient(135deg, #F8FAFC 0%, #F0F4FF 100%);
-            border-radius: 12px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 10pt;
+            margin-top: 20px;
+            padding: 15px;
+            background: #F8FAFC;
+            border-radius: 10px;
+            overflow: hidden;
+            font-size: 9pt;
             color: #666;
         }
         
+        .footer-left { float: left; }
+        .footer-right { float: right; text-align: right; }
+        
         .footer strong { 
             color: #597FFF; 
-            font-size: 11pt;
+            font-size: 10pt;
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
         
         /* ===== MASCOT ===== */
         .mascot-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin: 25px 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #FEFCE8 0%, #FEF9C3 100%);
-            border-radius: 16px;
-            border: 2px dashed #EAB308;
+            text-align: center;
+            margin: 20px 0;
+            padding: 16px;
+            background: #FFFBEB;
+            border-radius: 12px;
+            border: 2px dashed #F59E0B;
+            page-break-inside: avoid;
         }
         
         .mascot-section img {
-            height: 120px;
+            height: 100px;
+            vertical-align: middle;
         }
         
         .mascot-section.large img {
-            height: 180px;
-        }
-        
-        .mascot-section.flip img {
-            transform: scaleX(-1);
+            height: 150px;
         }
         
         .speech-bubble {
+            display: inline-block;
             background: white;
             border: 2px solid #597FFF;
-            border-radius: 16px;
-            padding: 12px 18px;
-            font-size: 11pt;
+            border-radius: 12px;
+            padding: 10px 16px;
+            font-size: 10pt;
             color: #374151;
-            max-width: 220px;
-            position: relative;
             font-weight: 500;
-            box-shadow: 0 4px 15px rgba(89, 127, 255, 0.15);
-        }
-        
-        .speech-bubble::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            border-width: 10px;
-            border-style: solid;
-        }
-        
-        .bubble-left::after {
-            right: -20px;
-            border-color: transparent transparent transparent #597FFF;
-        }
-        
-        .bubble-right::after {
-            left: -20px;
-            border-color: transparent #597FFF transparent transparent;
+            margin: 0 15px;
+            vertical-align: middle;
+            max-width: 200px;
         }
 
     </style>
@@ -369,8 +350,8 @@
 <body>
 
 <!-- ===== HEADER ===== -->
-<div class="header">
-    <div class="logo">
+<div class="header clearfix">
+    <div class="header-logo">
         <img src="{{ logo_path }}" alt="WorkHere">
     </div>
     <div class="header-info">
@@ -387,7 +368,7 @@
 
 <!-- ===== SECTION 1 ===== -->
 <div class="section">
-    <div class="section-title"><span class="num">1</span>Что обсуждали на встрече</div>
+    <div class="section-title"><span class="section-num">1</span> Что обсуждали на встрече</div>
     
     {% if hiring_situation %}
     <div class="highlight-box">
@@ -396,7 +377,7 @@
     {% endif %}
     
     <ul>
-        {% for feature in discussed_features %}
+        {% for feature in discussed_features[:6] %}
         <li>{{ feature }}</li>
         {% endfor %}
     </ul>
@@ -404,62 +385,54 @@
 
 <!-- ===== MASCOT 1 ===== -->
 <div class="mascot-section">
-    <div class="speech-bubble bubble-left">{{ mascot_phrase_1 }}</div>
+    <span class="speech-bubble">{{ mascot_phrase_1 }}</span>
     <img src="{{ mascot_path_1 }}" alt="">
 </div>
 
 <!-- ===== SECTION 2 ===== -->
 <div class="section">
-    <div class="section-title"><span class="num">2</span>Решение WorkHere</div>
+    <div class="section-title"><span class="section-num">2</span> Решение WorkHere</div>
     
     <div class="subsection">
         <div class="subsection-title">Базовый функционал</div>
         <ul>
-            <li>Единая база кандидатов с резюме, историей и комментариями</li>
-            <li>Настраиваемые воронки под разные типы подбора</li>
-            <li>Аналитика: конверсии, Time-to-Hire, источники</li>
-            <li>Выгрузка и импорт Excel, мобильное приложение</li>
+            <li>Единая база кандидатов с резюме и историей</li>
+            <li>Воронки, аналитика, импорт/экспорт Excel</li>
+            <li>Мобильное приложение iOS/Android</li>
         </ul>
     </div>
     
     <div class="subsection">
         <div class="subsection-title">Интеграции и коммуникации</div>
         <ul>
-            <li>HH.ru, Avito, SuperJob — отклики автоматически в системе</li>
-            <li>Telegram, WhatsApp, Viber — переписка в карточке кандидата</li>
-            <li>IP-телефония с записью, шаблоны сообщений</li>
+            <li>HH.ru, Avito, SuperJob — отклики автоматически</li>
+            <li>Telegram, WhatsApp — переписка в карточке</li>
+            <li>IP-телефония с записью звонков</li>
         </ul>
     </div>
     
     <div class="subsection">
-        <div class="subsection-title">Заявки, уведомления, безопасность</div>
+        <div class="subsection-title">Заявки и безопасность</div>
         <ul>
-            <li>Заявки на подбор с согласованием у руководителей</li>
-            <li>Telegram-бот для напоминаний и импорта резюме</li>
-            <li>152-ФЗ: согласия на обработку ПД, права доступа</li>
+            <li>Заявки на подбор с согласованием</li>
+            <li>Telegram-бот для уведомлений</li>
+            <li>152-ФЗ, права доступа</li>
         </ul>
     </div>
     
     {% if show_ai_option or show_premium %}
     <div class="subsection">
-        <div class="subsection-title">AI-модуль {% if show_premium %}(включён в Премиум){% endif %}</div>
+        <div class="subsection-title">AI-модуль</div>
         <ul>
-            <li>Умный поиск: семантика, матчинг кандидат ↔ вакансия</li>
-            <li>Ранжирование и краткое резюме кандидата</li>
+            <li>Умный поиск и матчинг кандидатов</li>
         </ul>
     </div>
     {% endif %}
 </div>
 
-<!-- ===== MASCOT 2 ===== -->
-<div class="mascot-section flip">
-    <img src="{{ mascot_path_2 }}" alt="">
-    <div class="speech-bubble bubble-right">{{ mascot_phrase_2 }}</div>
-</div>
-
 <!-- ===== SECTION 3 ===== -->
 <div class="section">
-    <div class="section-title"><span class="num">3</span>Стоимость</div>
+    <div class="section-title"><span class="section-num">3</span> Стоимость</div>
     
     <div class="price-section">
         <table class="price-table">
@@ -491,121 +464,103 @@
             {% endif %}
         </table>
         
-        <div class="highlight-box" style="margin-top: 15px; margin-bottom: 0;">
-            <strong>Расчёт для вашей команды ({{ num_recruiters }} рекрутер{{ 'а' if num_recruiters < 5 and num_recruiters > 1 else 'ов' if num_recruiters >= 5 else '' }}):</strong><br>
+        <div class="highlight-box" style="margin-bottom: 0;">
+            <strong>Ваша команда ({{ num_recruiters }} рек.):</strong>
             {% for calc in calculations %}
-            {{ calc.name }}: <strong>{{ calc.value }}</strong><br>
+            {{ calc.name }}: <strong>{{ calc.value }}</strong>
             {% endfor %}
         </div>
         
-        <div class="price-total">
-            <span class="label">Итого в год:</span>
-            <span class="value">{{ total_price }} ₽</span>
+        <div class="price-total clearfix">
+            <span class="price-total-label">Итого в год:</span>
+            <span class="price-total-value">{{ total_price }} ₽</span>
         </div>
     </div>
 </div>
 
+<!-- ===== MASCOT 2 ===== -->
+<div class="mascot-section">
+    <img src="{{ mascot_path_2 }}" alt="">
+    <span class="speech-bubble">{{ mascot_phrase_2 }}</span>
+</div>
+
 <!-- ===== SECTION 4 ===== -->
 <div class="section">
-    <div class="section-title"><span class="num">4</span>Внедрение</div>
+    <div class="section-title"><span class="section-num">4</span> Внедрение</div>
     
-    <div class="steps-grid">
+    <div class="steps-row clearfix">
         <div class="step-card">
             <span class="step-num">1</span>
-            <strong>Настройка</strong><br>
-            <span>воронки, статусы, роли</span>
+            <strong>Настройка</strong>
+            <span>воронки, роли</span>
         </div>
         <div class="step-card">
             <span class="step-num">2</span>
-            <strong>Интеграции</strong><br>
-            <span>HH, Авито, мессенджеры</span>
+            <strong>Интеграции</strong>
+            <span>HH, мессенджеры</span>
         </div>
         <div class="step-card">
             <span class="step-num">3</span>
-            <strong>Импорт</strong><br>
-            <span>база кандидатов из Excel</span>
+            <strong>Импорт</strong>
+            <span>база из Excel</span>
         </div>
         <div class="step-card">
             <span class="step-num">4</span>
-            <strong>Обучение</strong><br>
-            <span>команда + сопровождение</span>
+            <strong>Обучение</strong>
+            <span>+ поддержка</span>
         </div>
     </div>
 </div>
 
 <!-- ===== SECTION 5 ===== -->
 <div class="section">
-    <div class="section-title"><span class="num">5</span>Почему WorkHere</div>
+    <div class="section-title"><span class="section-num">5</span> Почему WorkHere</div>
     
-    <div class="two-cols">
+    <div class="two-cols clearfix">
         <div class="col">
-            <div class="col-title">Для рекрутеров</div>
+            <div class="col-title">✓ Для рекрутеров</div>
             <ul class="check">
                 <li>Все отклики в одном месте</li>
-                <li>Коммуникации без переключений</li>
                 <li>Автоматизация рутины</li>
             </ul>
         </div>
         <div class="col">
-            <div class="col-title">Для руководителей</div>
+            <div class="col-title">✓ Для руководителей</div>
             <ul class="check">
-                <li>Прозрачность процесса</li>
-                <li>Контроль сроков и SLA</li>
+                <li>Прозрачность и контроль</li>
                 <li>Аналитика и отчёты</li>
             </ul>
         </div>
     </div>
     
     <div class="results-box">
-        <strong>📈 Результаты клиентов:</strong> закрытие вакансий быстрее на 40-60%, рост конверсии на 25-35%, экономия 2-3 часа в день
+        <strong>📈 Результаты:</strong> закрытие вакансий быстрее на 40-60%, экономия 2-3 часа в день
     </div>
 </div>
 
 <!-- ===== SECTION 6 ===== -->
 <div class="section">
-    <div class="section-title"><span class="num">6</span>Следующие шаги</div>
-    
-    <div class="steps-grid">
-        <div class="step-card">
-            <span class="step-num">→</span>
-            <strong>Согласование</strong><br>
-            <span>обсуждаем условия</span>
-        </div>
-        <div class="step-card">
-            <span class="step-num">→</span>
-            <strong>Договор</strong><br>
-            <span>счёт-оферта</span>
-        </div>
-        <div class="step-card">
-            <span class="step-num">→</span>
-            <strong>Доступ</strong><br>
-            <span>за 1 рабочий день</span>
-        </div>
-        <div class="step-card">
-            <span class="step-num">→</span>
-            <strong>Запуск</strong><br>
-            <span>с персональным менеджером</span>
-        </div>
-    </div>
+    <div class="section-title"><span class="section-num">6</span> Следующие шаги</div>
+    <ul>
+        <li>Согласование → Договор → Доступ за 1 день → Запуск с менеджером</li>
+    </ul>
 </div>
 
-<!-- ===== MASCOT 3 (большой, финальный) ===== -->
+<!-- ===== MASCOT 3 ===== -->
 <div class="mascot-section large">
-    <div class="speech-bubble bubble-left">{{ mascot_phrase_3 }}</div>
+    <span class="speech-bubble">{{ mascot_phrase_3 }}</span>
     <img src="{{ mascot_path_3 }}" alt="">
 </div>
 
 <!-- ===== FOOTER ===== -->
-<div class="footer">
-    <div>
+<div class="footer clearfix">
+    <div class="footer-left">
         <strong>Контакты</strong>
-        +7 (800) 000-00-00<br>
-        sales@workhere.ru
+        +7 (800) 000-00-00 · sales@workhere.ru
     </div>
-    <div style="text-align: right;">
+    <div class="footer-right">
         <strong>WorkHere</strong>
-        workhere.ru<br>
-        Telegram: @workhere
+        workhere.ru · @workhere
     </div>
 </div>
 
