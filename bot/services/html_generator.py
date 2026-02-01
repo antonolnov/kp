@@ -399,11 +399,13 @@ async def generate_html_proposal(
     tariff: str,
     num_recruiters: int,
     output_path: Path,
-    bonus: str = None
+    bonus: str = None,
+    previous_issues: list[str] = None
 ) -> Path:
     """
     Генерация КП через GPT-5.2.
     GPT сам создаёт HTML, выступая как дизайнер.
+    Если previous_issues передан — это перегенерация для исправления ошибок.
     """
     
     if not OPENAI_API_KEY:
@@ -421,6 +423,11 @@ async def generate_html_proposal(
         "premium": "Премиум (42 000 ₽/год)",
         "both": "Оба варианта"
     }.get(tariff, "Стандартный")
+    
+    # Если есть ошибки от предыдущей генерации — добавляем в промпт
+    issues_text = ""
+    if previous_issues:
+        issues_text = "\n\n⚠️ ИСПРАВЬ ЭТИ ОШИБКИ ИЗ ПРЕДЫДУЩЕЙ ВЕРСИИ:\n" + "\n".join(f"- {i}" for i in previous_issues)
     
     # Бонус при оплате на 2 года
     bonus_text = ""
@@ -441,10 +448,11 @@ async def generate_html_proposal(
         logo_path=logo_path
     )
     
-    logger.info(f"Generating HTML proposal via gpt-5.2 ({len(transcript)} chars transcript)...")
+    is_retry = bool(previous_issues)
+    logger.info(f"Generating HTML proposal via gpt-5.2 ({len(transcript)} chars, retry={is_retry})...")
     
     # GPT-5.2 uses new Responses API
-    full_prompt = "Ты — дизайнер коммерческих предложений. Генерируй качественный HTML. Отвечай ТОЛЬКО HTML-кодом.\n\n" + prompt
+    full_prompt = "Ты — дизайнер коммерческих предложений. Генерируй качественный HTML. Отвечай ТОЛЬКО HTML-кодом.\n\n" + prompt + issues_text
     
     response = client.responses.create(
         model="gpt-5.2",

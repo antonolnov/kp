@@ -382,31 +382,58 @@ async def generate_proposal(message: Message, state: FSMContext):
                 except:
                     pass
         
-        # Запускаем обновление статуса параллельно
-        status_task = asyncio.create_task(update_status())
+        # Цикл генерации с проверкой и перегенерацией при ошибках
+        max_attempts = 2
+        previous_issues = None
         
-        try:
-            await generate_html_proposal(
-                transcript=transcript,
-                tariff=tariff,
-                num_recruiters=num_recruiters,
-                output_path=pdf_path,
-                bonus=bonus
-            )
-        finally:
-            status_task.cancel()
-        
-        # Финальная проверка
-        await status_msg.edit_text("✅ Почти готово! Проверяю результат...")
-        
-        review_info = ""
-        if OPENAI_API_KEY:
+        for attempt in range(max_attempts):
+            if attempt > 0:
+                await status_msg.edit_text(f"🔄 Исправляю ошибки (попытка {attempt + 1})...")
+            else:
+                # Запускаем обновление статуса параллельно для первой попытки
+                status_task = asyncio.create_task(update_status())
+            
             try:
-                review = await full_review(pdf_path, OPENAI_API_KEY)
-                report = format_review_report(review)
-                logger.info(report)
-            except Exception as e:
-                logger.warning(f"Review failed: {e}")
+                await generate_html_proposal(
+                    transcript=transcript,
+                    tariff=tariff,
+                    num_recruiters=num_recruiters,
+                    output_path=pdf_path,
+                    bonus=bonus,
+                    previous_issues=previous_issues
+                )
+            finally:
+                if attempt == 0:
+                    status_task.cancel()
+            
+            # Проверяем результат
+            await status_msg.edit_text("🔍 Проверяю качество...")
+            
+            if OPENAI_API_KEY:
+                try:
+                    review = await full_review(pdf_path, OPENAI_API_KEY)
+                    report = format_review_report(review)
+                    logger.info(report)
+                    
+                    if review.is_ok:
+                        logger.info(f"Document OK on attempt {attempt + 1}")
+                        break
+                    else:
+                        # Собираем ошибки для перегенерации
+                        all_issues = []
+                        for pr in review.page_reviews:
+                            if pr.issues:
+                                all_issues.extend([f"Стр.{pr.page_num}: {i}" for i in pr.issues])
+                        all_issues.extend(review.final_issues)
+                        
+                        if attempt < max_attempts - 1:
+                            previous_issues = all_issues[:5]  # Максимум 5 ошибок
+                            logger.info(f"Regenerating to fix: {previous_issues}")
+                        else:
+                            logger.warning(f"Max attempts reached, sending with issues")
+                except Exception as e:
+                    logger.warning(f"Review failed: {e}")
+                    break
         
         # Determine tariff label
         if tariff == "both":
