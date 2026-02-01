@@ -271,19 +271,22 @@ async def handle_ai_option(callback: CallbackQuery, state: FSMContext):
 
 
 async def generate_proposal(message: Message, state: FSMContext):
-    """Generate the proposal PDF"""
+    """Generate the proposal PDF with quality review"""
+    from services.page_reviewer import full_review, format_review_report
+    from config import ANTHROPIC_API_KEY
+    
     data = await state.get_data()
     transcript = data.get("transcript", "")
     tariff = data.get("tariff", "standard")
     ai_option = data.get("ai_option", False)
     
-    status_msg = await message.edit_text("⏳ Анализирую встречу...")
+    status_msg = await message.edit_text("⏳ Анализирую встречу (GPT-4o)...")
     
     try:
-        # Analyze transcript
+        # 1. Analyze transcript with GPT-4o
         analysis = await analyze_transcript(transcript)
         
-        await status_msg.edit_text("📊 Генерирую персонализированное КП...")
+        await status_msg.edit_text("📊 Генерирую PDF...")
         
         # Configure proposal
         config = ProposalConfig(
@@ -293,7 +296,7 @@ async def generate_proposal(message: Message, state: FSMContext):
             num_recruiters=analysis.num_recruiters
         )
         
-        # Generate PDF
+        # 2. Generate PDF
         proposal_id = str(uuid.uuid4())[:8]
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         company_slug = (analysis.company_name or "company").replace(" ", "_")[:20]
@@ -302,6 +305,28 @@ async def generate_proposal(message: Message, state: FSMContext):
         pdf_path = STORAGE_DIR / pdf_filename
         
         generate_proposal_pdf(analysis, config, pdf_path)
+        
+        # 3. Review PDF with Claude (each page + final)
+        review_info = ""
+        if ANTHROPIC_API_KEY:
+            await status_msg.edit_text("🔍 Проверяю качество (Cursor)...")
+            
+            review = await full_review(pdf_path, ANTHROPIC_API_KEY)
+            
+            # Log review report
+            report = format_review_report(review)
+            logger.info(report)
+            
+            if not review.is_ok:
+                # Собираем проблемы
+                all_issues = []
+                for pr in review.page_reviews:
+                    if pr.issues:
+                        all_issues.extend([f"Стр.{pr.page_num}: {i}" for i in pr.issues])
+                all_issues.extend(review.final_issues)
+                
+                if all_issues:
+                    review_info = "\n\n⚠️ Замечания:\n" + "\n".join(f"• {i}" for i in all_issues[:3])
         
         # Determine tariff label
         if tariff == "both":
@@ -332,10 +357,8 @@ async def generate_proposal(message: Message, state: FSMContext):
         if analysis.company_name:
             caption += f"🏢 Компания: {analysis.company_name}\n"
         caption += f"👥 Рекрутеров: {analysis.num_recruiters}\n"
-        caption += f"📦 Тариф: {tariff_label}\n"
-        
-        if analysis.discussed_features:
-            caption += f"\n🎯 Акцент на: {', '.join(analysis.discussed_features[:3])}"
+        caption += f"📦 Тариф: {tariff_label}"
+        caption += review_info
         
         await message.answer_document(
             FSInputFile(pdf_path, filename=pdf_filename),
