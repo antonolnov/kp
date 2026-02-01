@@ -383,7 +383,7 @@ async def generate_proposal(message: Message, state: FSMContext):
                     pass
         
         # Цикл генерации с проверкой и перегенерацией при ошибках
-        max_attempts = 2
+        max_attempts = 3  # Увеличено до 3 попыток
         previous_issues = None
         
         for attempt in range(max_attempts):
