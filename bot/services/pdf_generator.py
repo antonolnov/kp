@@ -2,6 +2,7 @@
 PDF Generator for personalized commercial proposals
 """
 import logging
+import random
 from pathlib import Path
 from dataclasses import dataclass
 
@@ -14,6 +15,19 @@ from .ai_analyzer import MeetingAnalysis
 logger = logging.getLogger(__name__)
 
 
+# Фразы для маскота
+MASCOT_PHRASES = [
+    "Разберёмся с рутиной — будет время на важное!",
+    "Все отклики в одном месте — красота!",
+    "Автоматизация — это про нас! 🚀",
+    "Меньше рутины, больше результата!",
+    "Ваша команда скажет спасибо!",
+    "Наконец-то порядок в подборе!",
+    "Рекрутинг может быть простым!",
+    "Будем рады видеть вас в WorkHere! 😺",
+]
+
+
 @dataclass
 class ProposalConfig:
     """Configuration for proposal generation"""
@@ -21,6 +35,46 @@ class ProposalConfig:
     show_premium: bool = False
     show_ai_option: bool = False
     num_recruiters: int = 1
+
+
+def get_mascot_paths() -> list[Path]:
+    """Get all available mascot images"""
+    mascots_dir = ASSETS_DIR / "mascots"
+    if mascots_dir.exists():
+        mascots = list(mascots_dir.glob("*.svg")) + list(mascots_dir.glob("*.png"))
+        if mascots:
+            return mascots
+    
+    # Fallback to single mascot
+    single = ASSETS_DIR / "mascot.svg"
+    if single.exists():
+        return [single]
+    
+    return []
+
+
+def get_random_mascots(count: int = 3) -> list[str]:
+    """Get random mascot paths for the document"""
+    mascots = get_mascot_paths()
+    if not mascots:
+        return [""] * count
+    
+    # If we have fewer mascots than needed, repeat them
+    result = []
+    for i in range(count):
+        mascot = random.choice(mascots)
+        result.append(str(mascot))
+    
+    return result
+
+
+def get_random_phrases(count: int = 3) -> list[str]:
+    """Get random phrases for mascots"""
+    phrases = random.sample(MASCOT_PHRASES, min(count, len(MASCOT_PHRASES)))
+    # Ensure we have enough phrases
+    while len(phrases) < count:
+        phrases.append(random.choice(MASCOT_PHRASES))
+    return phrases
 
 
 def generate_proposal_pdf(
@@ -97,34 +151,36 @@ def generate_proposal_pdf(
     discussed = analysis.discussed_features or []
     if len(discussed) < 6:
         defaults = [
-            "Единая база кандидатов: все контакты, резюме и история взаимодействий в одном месте",
-            "Интеграции с работными сайтами: HH.ru, Авито, SuperJob — автоматический сбор откликов",
+            "Единая база кандидатов: все контакты, резюме и история в одном месте",
+            "Интеграции с работными сайтами: HH.ru, Авито — автоматический сбор откликов",
             "Настраиваемые воронки и статусы под ваши процессы",
             "Аналитика и отчёты: конверсии, источники, Time-to-Hire",
-            "Коммуникации с кандидатами через мессенджеры (WhatsApp, Telegram)",
-            "Telegram-бот для уведомлений и напоминаний о собеседованиях"
+            "Коммуникации с кандидатами через мессенджеры",
+            "Telegram-бот для уведомлений и напоминаний"
         ]
         for d in defaults:
             if d not in discussed and len(discussed) < 8:
                 discussed.append(d)
     
-    pain_points = analysis.current_pain_points or [
-        "Работа ведётся в нескольких инструментах, нет единой системы",
-        "Много времени уходит на ручной перенос данных и рутину",
-        "Отсутствует прозрачная аналитика по процессу подбора"
-    ]
+    # Get mascots and phrases
+    mascot_paths = get_random_mascots(3)
+    mascot_phrases = get_random_phrases(3)
     
     # Render HTML
     html_content = template.render(
         logo_path=str(ASSETS_DIR / "logo.png"),
-        mascot_path=str(ASSETS_DIR / "mascot.svg"),
+        mascot_path_1=mascot_paths[0],
+        mascot_path_2=mascot_paths[1],
+        mascot_path_3=mascot_paths[2],
+        mascot_phrase_1=mascot_phrases[0],
+        mascot_phrase_2=mascot_phrases[1],
+        mascot_phrase_3=mascot_phrases[2],
         company_name=analysis.company_name or "",
         contact_name=analysis.contact_name or "",
         contact_role=analysis.contact_role or "",
         industry=analysis.industry or "",
         summary=analysis.summary or "",
         hiring_situation=analysis.hiring_situation or "",
-        pain_points=pain_points,
         discussed_features=discussed,
         show_standard=config.show_standard,
         show_premium=config.show_premium,
