@@ -228,6 +228,37 @@ def generate_proposal_pdf(
     
     logger.info(f"Mascot sizes calculated: {mascot_sizes}")
     
+    # Дефолты для персонализированных разделов
+    diagnosis_pains = getattr(analysis, 'diagnosis_pains', []) or analysis.current_pain_points or []
+    solution_base = getattr(analysis, 'solution_base', []) or [
+        "Единая база кандидатов — все резюме и история в одном месте",
+        "Воронки подбора — визуальный контроль статусов",
+        "Аналитика — понимание эффективности процесса",
+    ]
+    solution_integrations = getattr(analysis, 'solution_integrations', []) or [
+        "HH.ru, Авито — отклики автоматически в системе",
+        "Мессенджеры — переписка в карточке кандидата",
+    ]
+    solution_automation = getattr(analysis, 'solution_automation', []) or [
+        "Уведомления в Telegram",
+        "Напоминания о собеседованиях",
+    ]
+    solution_ai = getattr(analysis, 'solution_ai', []) or []
+    
+    why_recruiters = getattr(analysis, 'why_recruiters', []) or [
+        "Все отклики в одном месте",
+        "Меньше рутины — больше времени на кандидатов",
+        "Удобная коммуникация без переключений",
+    ]
+    why_managers = getattr(analysis, 'why_managers', []) or [
+        "Прозрачность процесса подбора",
+        "Контроль сроков и эффективности",
+        "Отчёты для руководства",
+    ]
+    
+    diagnosis_situation = getattr(analysis, 'diagnosis_situation', '') or analysis.hiring_situation or ""
+    key_message = getattr(analysis, 'key_message', '') or ""
+    
     # Рендер
     html_content = template.render(
         logo_path=str(ASSETS_DIR / "logo.png"),
@@ -246,10 +277,20 @@ def generate_proposal_pdf(
         company_name=analysis.company_name or "",
         contact_name=analysis.contact_name or "",
         contact_role=analysis.contact_role or "",
-        industry=analysis.industry or "",
-        summary=analysis.summary or "",
-        hiring_situation=analysis.hiring_situation or "",
-        discussed_features=discussed,
+        # Раздел 1: Диагноз
+        diagnosis_situation=diagnosis_situation,
+        diagnosis_pains=diagnosis_pains,
+        # Раздел 2: Решение (персонализированное)
+        solution_base=solution_base,
+        solution_integrations=solution_integrations,
+        solution_automation=solution_automation,
+        solution_ai=solution_ai,
+        # Раздел 5: Почему WorkHere (персонализированное)
+        why_recruiters=why_recruiters,
+        why_managers=why_managers,
+        # Ключевой посыл
+        key_message=key_message,
+        # Цены
         show_standard=config.show_standard,
         show_premium=config.show_premium,
         show_ai_option=config.show_ai_option,

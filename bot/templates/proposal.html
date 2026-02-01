@@ -7,7 +7,6 @@
         @page {
             size: A4;
             margin: 25px 30px 35px 30px;
-            
             @bottom-right {
                 content: "Страница " counter(page);
                 font-size: 9pt;
@@ -25,7 +24,7 @@
             line-height: 1.6;
         }
         
-        /* ===== HEADER ===== */
+        /* HEADER */
         .header-table {
             width: 100%;
             border-collapse: collapse;
@@ -33,26 +32,12 @@
             padding-bottom: 15px;
             border-bottom: 3px solid #597FFF;
         }
-        
-        .header-table td {
-            padding: 0 0 15px 0;
-            vertical-align: middle;
-        }
-        
+        .header-table td { padding: 0 0 15px 0; vertical-align: middle; }
         .header-table img { height: 36px; }
+        .header-right { text-align: right; font-size: 10pt; color: #666; }
+        .header-right strong { color: #1a1a2e; font-size: 12pt; }
         
-        .header-right {
-            text-align: right;
-            font-size: 10pt;
-            color: #666;
-        }
-        
-        .header-right strong { 
-            color: #1a1a2e; 
-            font-size: 12pt;
-        }
-        
-        /* ===== TITLE ===== */
+        /* TITLE */
         .doc-title {
             text-align: center;
             margin-bottom: 25px;
@@ -61,21 +46,11 @@
             border-radius: 12px;
             color: white;
         }
-        
-        .doc-title h1 {
-            font-size: 20pt;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
+        .doc-title h1 { font-size: 20pt; font-weight: bold; margin-bottom: 5px; }
         .doc-title p { font-size: 10pt; }
         
-        /* ===== SECTIONS ===== */
-        .section {
-            margin-bottom: 25px;
-            page-break-inside: avoid;
-        }
-        
+        /* SECTIONS */
+        .section { margin-bottom: 25px; page-break-inside: avoid; }
         .section-title {
             font-size: 13pt;
             font-weight: bold;
@@ -84,11 +59,9 @@
             padding-bottom: 6px;
             border-bottom: 2px solid #E2E8F0;
         }
-        
         .num {
             display: inline-block;
-            width: 24px;
-            height: 24px;
+            width: 24px; height: 24px;
             background: #597FFF;
             color: white;
             border-radius: 50%;
@@ -98,7 +71,6 @@
             font-weight: bold;
             margin-right: 8px;
         }
-        
         .subsection-title {
             font-size: 10.5pt;
             font-weight: bold;
@@ -108,14 +80,9 @@
             border-left: 3px solid #597FFF;
         }
         
-        /* ===== LISTS ===== */
+        /* LISTS */
         ul { list-style: none; margin: 0; padding: 0; }
-        
-        ul li {
-            padding: 5px 0 5px 18px;
-            position: relative;
-        }
-        
+        ul li { padding: 5px 0 5px 18px; position: relative; }
         ul li::before {
             content: '→';
             position: absolute;
@@ -123,10 +90,9 @@
             color: #597FFF;
             font-weight: bold;
         }
-        
         ul.check li::before { content: '✓'; color: #10B981; }
         
-        /* ===== BOXES ===== */
+        /* BOXES */
         .highlight-box {
             background: #F0F4FF;
             border-left: 4px solid #597FFF;
@@ -134,8 +100,16 @@
             margin: 12px 0;
             border-radius: 0 8px 8px 0;
         }
-        
         .highlight-box strong { color: #597FFF; }
+        
+        .diagnosis-box {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 12px 15px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .diagnosis-box strong { color: #D97706; }
         
         .results-box {
             background: #ECFDF5;
@@ -144,37 +118,32 @@
             margin: 12px 0;
             border-radius: 0 8px 8px 0;
         }
-        
         .results-box strong { color: #059669; }
         
-        /* ===== PRICE TABLE ===== */
+        .key-message-box {
+            background: #597FFF;
+            color: white;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 12pt;
+        }
+        
+        /* PRICE */
         .price-table {
             width: 100%;
             border-collapse: collapse;
             margin: 12px 0;
         }
-        
         .price-table th, .price-table td {
             padding: 10px 12px;
             text-align: left;
             border-bottom: 1px solid #E2E8F0;
         }
+        .price-table th { background: #597FFF; color: white; font-weight: bold; font-size: 10pt; }
+        .price-table td:last-child { text-align: right; font-weight: bold; color: #597FFF; font-size: 11pt; }
         
-        .price-table th { 
-            background: #597FFF;
-            color: white;
-            font-weight: bold;
-            font-size: 10pt;
-        }
-        
-        .price-table td:last-child { 
-            text-align: right; 
-            font-weight: bold; 
-            color: #597FFF;
-            font-size: 11pt;
-        }
-        
-        /* ИТОГО - компактный блок */
         .price-total-box {
             background: #597FFF;
             color: white;
@@ -183,25 +152,16 @@
             margin-top: 12px;
             text-align: center;
         }
+        .price-total-label { font-size: 10pt; margin-bottom: 3px; }
+        .price-total-value { font-size: 16pt; font-weight: bold; }
         
-        .price-total-label {
-            font-size: 10pt;
-            margin-bottom: 3px;
-        }
-        
-        .price-total-value {
-            font-size: 16pt;
-            font-weight: bold;
-        }
-        
-        /* ===== STEPS - без кружков внутри ===== */
+        /* STEPS */
         .steps-table {
             width: 100%;
             border-collapse: separate;
             border-spacing: 8px 0;
             margin: 12px 0;
         }
-        
         .steps-table td {
             width: 25%;
             background: #F8FAFC;
@@ -211,33 +171,17 @@
             text-align: center;
             vertical-align: top;
         }
+        .step-num { font-size: 14pt; font-weight: bold; color: #597FFF; }
+        .step-title { display: block; font-weight: bold; font-size: 10pt; margin: 5px 0 3px 0; }
+        .step-desc { font-size: 9pt; color: #666; }
         
-        .step-num {
-            font-size: 14pt;
-            font-weight: bold;
-            color: #597FFF;
-        }
-        
-        .step-title { 
-            display: block;
-            font-weight: bold;
-            font-size: 10pt;
-            margin: 5px 0 3px 0;
-        }
-        
-        .step-desc { 
-            font-size: 9pt;
-            color: #666;
-        }
-        
-        /* ===== TWO COLUMNS ===== */
+        /* COLUMNS */
         .cols-table {
             width: 100%;
             border-collapse: separate;
             border-spacing: 12px 0;
             margin: 12px 0;
         }
-        
         .cols-table td {
             width: 50%;
             background: #F8FAFC;
@@ -246,15 +190,9 @@
             padding: 12px;
             vertical-align: top;
         }
+        .col-title { font-weight: bold; font-size: 10pt; margin-bottom: 8px; color: #597FFF; }
         
-        .col-title { 
-            font-weight: bold; 
-            font-size: 10pt; 
-            margin-bottom: 8px;
-            color: #597FFF;
-        }
-        
-        /* ===== FOOTER ===== */
+        /* FOOTER */
         .footer-table {
             width: 100%;
             border-collapse: collapse;
@@ -263,32 +201,17 @@
             background: #F8FAFC;
             border-radius: 8px;
         }
-        
-        .footer-table td {
-            padding: 12px;
-            vertical-align: top;
-        }
-        
+        .footer-table td { padding: 12px; vertical-align: top; }
         .footer-table td:last-child { text-align: right; }
+        .footer-table strong { color: #597FFF; font-size: 10pt; display: block; margin-bottom: 4px; }
         
-        .footer-table strong { 
-            color: #597FFF; 
-            font-size: 10pt;
-            display: block;
-            margin-bottom: 4px;
-        }
-        
-        /* ===== MASCOT ===== */
+        /* MASCOT */
         .mascot-section {
             text-align: center;
             margin: 20px 0;
             page-break-inside: avoid;
         }
-        
-        .mascot-section img {
-            vertical-align: middle;
-        }
-        
+        .mascot-section img { vertical-align: middle; }
         .speech-bubble {
             display: inline-block;
             background: #F0F4FF;
@@ -302,7 +225,6 @@
             vertical-align: middle;
             max-width: 200px;
         }
-
     </style>
 </head>
 <body>
@@ -324,21 +246,24 @@
     <p>ATS + CRM для управления подбором персонала</p>
 </div>
 
-<!-- SECTION 1 -->
+<!-- SECTION 1: ДИАГНОЗ -->
 <div class="section">
-    <div class="section-title"><span class="num">1</span> Что обсуждали на встрече</div>
+    <div class="section-title"><span class="num">1</span> Текущая ситуация</div>
     
-    {% if hiring_situation %}
-    <div class="highlight-box">
-        <strong>Ситуация:</strong> {{ hiring_situation }}
+    {% if diagnosis_situation %}
+    <div class="diagnosis-box">
+        <strong>Что мы услышали:</strong> {{ diagnosis_situation }}
     </div>
     {% endif %}
     
+    {% if diagnosis_pains %}
+    <p style="margin: 10px 0 5px 0; font-weight: bold;">Основные сложности:</p>
     <ul>
-        {% for feature in discussed_features[:6] %}
-        <li>{{ feature }}</li>
+        {% for pain in diagnosis_pains %}
+        <li>{{ pain }}</li>
         {% endfor %}
     </ul>
+    {% endif %}
 </div>
 
 <!-- MASCOT 1 -->
@@ -347,45 +272,54 @@
     <img src="{{ mascot_path_1 }}" alt="" style="height: {{ mascot_size_1 }}px;">
 </div>
 
-<!-- SECTION 2 -->
+<!-- SECTION 2: РЕШЕНИЕ (персонализированное) -->
 <div class="section">
-    <div class="section-title"><span class="num">2</span> Решение WorkHere</div>
+    <div class="section-title"><span class="num">2</span> Как WorkHere решит эти задачи</div>
     
+    {% if solution_base %}
     <div class="subsection-title">Базовый функционал</div>
     <ul>
-        <li>Единая база кандидатов с резюме, историей и комментариями</li>
-        <li>Настраиваемые воронки и статусы под ваши процессы</li>
-        <li>Аналитика: конверсии, Time-to-Hire, источники, отчёты в Excel</li>
+        {% for item in solution_base %}
+        <li>{{ item }}</li>
+        {% endfor %}
     </ul>
+    {% endif %}
     
+    {% if solution_integrations %}
     <div class="subsection-title">Интеграции</div>
     <ul>
-        <li>HH.ru, Avito, SuperJob, Работа.ру — отклики автоматически в системе</li>
-        <li>Telegram, WhatsApp, IP-телефония — коммуникации в карточке кандидата</li>
+        {% for item in solution_integrations %}
+        <li>{{ item }}</li>
+        {% endfor %}
     </ul>
+    {% endif %}
     
+    {% if solution_automation %}
     <div class="subsection-title">Автоматизация</div>
     <ul>
-        <li>Заявки на подбор с согласованием у руководителей</li>
-        <li>Telegram-бот: уведомления, напоминания, импорт резюме</li>
-        <li>152-ФЗ: согласия на обработку ПД, права доступа</li>
+        {% for item in solution_automation %}
+        <li>{{ item }}</li>
+        {% endfor %}
     </ul>
+    {% endif %}
     
-    {% if show_ai_option or show_premium %}
+    {% if solution_ai and (show_ai_option or show_premium) %}
     <div class="subsection-title">AI-модуль</div>
     <ul>
-        <li>Умный поиск, матчинг кандидат-вакансия, ранжирование</li>
+        {% for item in solution_ai %}
+        <li>{{ item }}</li>
+        {% endfor %}
     </ul>
     {% endif %}
 </div>
 
-<!-- MASCOT 2 - после раздела 2 -->
+<!-- MASCOT 2 -->
 <div class="mascot-section">
     <img src="{{ mascot_path_2 }}" alt="" style="height: {{ mascot_size_2 }}px;">
     <span class="speech-bubble">{{ mascot_phrase_2 }}</span>
 </div>
 
-<!-- SECTION 3 -->
+<!-- SECTION 3: СТОИМОСТЬ -->
 <div class="section">
     <div class="section-title"><span class="num">3</span> Стоимость</div>
     
@@ -431,7 +365,7 @@
     </div>
 </div>
 
-<!-- SECTION 4 -->
+<!-- SECTION 4: ВНЕДРЕНИЕ -->
 <div class="section">
     <div class="section-title"><span class="num">4</span> Внедрение</div>
     
@@ -467,26 +401,26 @@
     <img src="{{ mascot_path_3 }}" alt="" style="height: {{ mascot_size_3 }}px;">
 </div>
 
-<!-- SECTION 5 -->
+<!-- SECTION 5: ПОЧЕМУ WORKHERE (персонализированное) -->
 <div class="section">
-    <div class="section-title"><span class="num">5</span> Почему WorkHere</div>
+    <div class="section-title"><span class="num">5</span> Что получит ваша команда</div>
     
     <table class="cols-table">
         <tr>
             <td>
                 <div class="col-title">Для рекрутеров</div>
                 <ul class="check">
-                    <li>Все отклики в одном месте</li>
-                    <li>Коммуникации без переключений</li>
-                    <li>Автоматизация рутины</li>
+                    {% for item in why_recruiters %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
                 </ul>
             </td>
             <td>
                 <div class="col-title">Для руководителей</div>
                 <ul class="check">
-                    <li>Прозрачность процесса</li>
-                    <li>Контроль сроков и SLA</li>
-                    <li>Аналитика и отчёты</li>
+                    {% for item in why_managers %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
                 </ul>
             </td>
         </tr>
@@ -498,7 +432,14 @@
     </div>
 </div>
 
-<!-- SECTION 6 -->
+<!-- KEY MESSAGE -->
+{% if key_message %}
+<div class="key-message-box">
+    {{ key_message }}
+</div>
+{% endif %}
+
+<!-- SECTION 6: СЛЕДУЮЩИЕ ШАГИ -->
 <div class="section">
     <div class="section-title"><span class="num">6</span> Следующие шаги</div>
     <ul>
@@ -509,7 +450,7 @@
     </ul>
 </div>
 
-<!-- MASCOT 4 - финальный -->
+<!-- MASCOT 4 -->
 <div class="mascot-section">
     <img src="{{ mascot_path_4 }}" alt="" style="height: {{ mascot_size_4 }}px;">
     <span class="speech-bubble">{{ mascot_phrase_4 }}</span>
