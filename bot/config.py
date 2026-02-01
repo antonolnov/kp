@@ -5,17 +5,18 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv()
+# Load .env from the bot directory
+BOT_DIR = Path(__file__).parent
+load_dotenv(BOT_DIR / ".env")
 
 # Bot settings
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "8289166080:AAEKdsZJpCH4X6YNhGod3_AUs4oOEFQvWK0")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
 # Paths
-BOT_DIR = Path(__file__).parent
 TEMPLATES_DIR = BOT_DIR / "templates"
 STORAGE_DIR = BOT_DIR / "storage"
-ASSETS_DIR = BOT_DIR.parent / "kp" / "assets"
+ASSETS_DIR = BOT_DIR / "assets"
 
 # Storage settings
 HISTORY_RETENTION_DAYS = 3

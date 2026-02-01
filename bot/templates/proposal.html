@@ -10,9 +10,11 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Inter', sans-serif;
-            color: #0a0a0a;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1a1a2e;
             background: #fff;
+            font-size: 14px;
+            line-height: 1.6;
         }
         
         .page {
@@ -21,6 +23,7 @@
             position: relative;
             overflow: hidden;
             page-break-after: always;
+            padding: 0;
         }
         
         .page:last-child { page-break-after: avoid; }
@@ -28,575 +31,491 @@
         /* =========================================
            PAGE 1: ОБЛОЖКА
            ========================================= */
-        .p1 {
+        .cover {
             background: linear-gradient(135deg, #597FFF 0%, #4B6FE8 50%, #3D5FE3 100%);
-        }
-        
-        .p1-glass-circle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .p1-circle1 { width: 350px; height: 350px; top: 80px; right: 80px; }
-        .p1-circle2 { width: 180px; height: 180px; top: 60px; right: 350px; }
-        .p1-circle3 { width: 120px; height: 120px; top: 280px; right: 50px; }
-        
-        .p1-glass-square {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            top: 180px;
-            right: 280px;
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 20px;
-            transform: rotate(15deg);
-        }
-        
-        .p1-content {
-            position: relative;
-            z-index: 10;
-            padding: 50px 60px;
+            color: white;
+            padding: 50px;
             height: 100%;
             display: flex;
             flex-direction: column;
-            color: white;
         }
         
-        .p1-logo img {
-            height: 48px;
-            border-radius: 10px;
-            object-fit: contain;
+        .cover-logo img {
+            height: 44px;
+            border-radius: 8px;
         }
         
-        .p1-hero {
+        .cover-main {
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            max-width: 480px;
+            max-width: 500px;
         }
         
-        .p1-for {
-            font-size: 14px;
-            opacity: 0.8;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .p1-title {
-            font-size: 48px;
-            font-weight: 900;
-            line-height: 1.1;
-            letter-spacing: -2px;
+        .cover-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
             margin-bottom: 24px;
         }
         
-        .p1-subtitle {
-            font-size: 17px;
-            opacity: 0.85;
-            line-height: 1.7;
-            max-width: 400px;
-        }
-        
-        .p1-stats {
-            position: absolute;
-            bottom: 50px;
-            left: 60px;
-            right: 60px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.4) 100%);
-            backdrop-filter: blur(40px) saturate(180%);
-            border: 1px solid rgba(255,255,255,0.5);
-            border-radius: 28px;
-            padding: 32px 40px;
-            display: flex;
-            justify-content: space-around;
-            box-shadow: 0 25px 70px rgba(0,0,0,0.12);
-        }
-        
-        .p1-stat { text-align: center; }
-        .p1-stat-val {
-            font-size: 40px;
-            font-weight: 900;
-            color: #597FFF;
-            line-height: 1;
-        }
-        .p1-stat-label {
-            font-size: 12px;
-            color: #666;
-            margin-top: 6px;
-        }
-
-        /* =========================================
-           PAGE 2: БОЛИ И РЕШЕНИЯ
-           ========================================= */
-        .p2 {
-            background: #FAFBFF;
-            padding: 50px;
-        }
-        
-        .p2-header {
-            margin-bottom: 35px;
-        }
-        
-        .p2-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #597FFF;
-            margin-bottom: 12px;
-        }
-        
-        .p2-title {
-            font-size: 36px;
-            font-weight: 900;
-            color: #1a1a2e;
+        .cover-title {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 24px;
             letter-spacing: -1px;
         }
         
-        .p2-situation {
-            background: linear-gradient(135deg, #597FFF 0%, #3D5FE3 100%);
-            border-radius: 20px;
-            padding: 30px;
-            color: white;
+        .cover-subtitle {
+            font-size: 17px;
+            opacity: 0.9;
+            line-height: 1.7;
+            max-width: 420px;
+        }
+        
+        .cover-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .cover-stat-value {
+            font-size: 36px;
+            font-weight: 800;
+        }
+        
+        .cover-stat-label {
+            font-size: 13px;
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+        
+        .cover-contact {
+            position: absolute;
+            bottom: 50px;
+            right: 50px;
+            text-align: right;
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        /* =========================================
+           PAGE 2: ПОНИМАНИЕ СИТУАЦИИ
+           ========================================= */
+        .situation {
+            padding: 50px;
+            background: #FAFBFF;
+            height: 100%;
+        }
+        
+        .section-header {
             margin-bottom: 30px;
         }
         
-        .p2-situation-title {
-            font-size: 14px;
-            opacity: 0.8;
+        .section-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #597FFF;
+            font-weight: 600;
             margin-bottom: 10px;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1a1a2e;
+            letter-spacing: -0.5px;
+        }
+        
+        .context-card {
+            background: linear-gradient(135deg, #597FFF 0%, #4B6FE8 100%);
+            border-radius: 16px;
+            padding: 28px;
+            color: white;
+            margin-bottom: 24px;
+        }
+        
+        .context-label {
+            font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 10px;
         }
         
-        .p2-situation-text {
-            font-size: 17px;
-            line-height: 1.6;
+        .context-text {
+            font-size: 16px;
+            line-height: 1.7;
         }
         
-        .p2-columns {
+        .two-columns {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-bottom: 30px;
+            gap: 20px;
+            margin-bottom: 24px;
         }
         
-        .p2-column {
+        .column-card {
             background: white;
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: 0 4px 20px rgba(89,127,255,0.08);
+            border-radius: 14px;
+            padding: 24px;
+            border: 1px solid #E8ECF5;
         }
         
-        .p2-column-title {
-            font-size: 15px;
-            font-weight: 700;
-            color: #1a1a2e;
-            margin-bottom: 16px;
+        .column-header {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            margin-bottom: 16px;
         }
         
-        .p2-column-icon {
+        .column-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 18px;
         }
         
-        .p2-list {
+        .column-icon.red { background: #FEE2E2; }
+        .column-icon.blue { background: #DBEAFE; }
+        
+        .column-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+        
+        .column-list {
             list-style: none;
         }
         
-        .p2-list li {
-            font-size: 13px;
-            color: #555;
-            line-height: 1.6;
-            padding: 8px 0;
+        .column-list li {
+            padding: 10px 0;
             padding-left: 20px;
             position: relative;
-            border-bottom: 1px solid #f0f0f0;
+            font-size: 13px;
+            color: #444;
+            border-bottom: 1px solid #F3F4F6;
         }
         
-        .p2-list li:last-child {
-            border-bottom: none;
-        }
+        .column-list li:last-child { border-bottom: none; }
         
-        .p2-list li::before {
+        .column-list li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 14px;
+            top: 16px;
             width: 8px;
             height: 8px;
             border-radius: 50%;
         }
         
-        .p2-list.pains li::before {
-            background: #FF6B6B;
-        }
+        .column-list.red li::before { background: #EF4444; }
+        .column-list.blue li::before { background: #597FFF; }
         
-        .p2-list.needs li::before {
-            background: #597FFF;
-        }
-        
-        .p2-features {
+        .features-section {
             background: white;
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: 0 4px 20px rgba(89,127,255,0.08);
+            border-radius: 14px;
+            padding: 24px;
+            border: 1px solid #E8ECF5;
         }
         
-        .p2-features-title {
+        .features-title {
             font-size: 15px;
             font-weight: 700;
             color: #1a1a2e;
             margin-bottom: 16px;
         }
         
-        .p2-features-grid {
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
         }
         
-        .p2-feature {
-            background: linear-gradient(135deg, rgba(89,127,255,0.08) 0%, rgba(89,127,255,0.04) 100%);
+        .feature-tag {
+            background: linear-gradient(135deg, #F0F4FF 0%, #E8EDFF 100%);
             border-radius: 10px;
             padding: 14px;
             text-align: center;
         }
         
-        .p2-feature-icon {
-            font-size: 24px;
+        .feature-tag-icon {
+            font-size: 22px;
             margin-bottom: 6px;
         }
         
-        .p2-feature-name {
+        .feature-tag-name {
             font-size: 11px;
             font-weight: 600;
             color: #1a1a2e;
         }
 
         /* =========================================
-           PAGE 3: ВОЗМОЖНОСТИ СИСТЕМЫ
+           PAGE 3: РЕШЕНИЕ
            ========================================= */
-        .p3 {
-            background: linear-gradient(180deg, #0a0a14 0%, #12122a 100%);
-            color: white;
+        .solution {
             padding: 50px;
-        }
-        
-        .p3-glow {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(89,127,255,0.3) 0%, transparent 60%);
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            filter: blur(60px);
-        }
-        
-        .p3-content {
-            position: relative;
-            z-index: 10;
+            background: linear-gradient(180deg, #0F0F1A 0%, #1A1A2E 100%);
+            color: white;
             height: 100%;
-            display: flex;
-            flex-direction: column;
         }
         
-        .p3-header {
-            margin-bottom: 30px;
-        }
-        
-        .p3-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
+        .solution .section-label {
             color: rgba(255,255,255,0.5);
-            margin-bottom: 12px;
         }
         
-        .p3-title {
-            font-size: 36px;
-            font-weight: 900;
-            letter-spacing: -1px;
+        .solution .section-title {
+            color: white;
         }
         
-        .p3-title span {
+        .solution .section-title span {
             background: linear-gradient(135deg, #597FFF 0%, #A78BFA 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         
-        .p3-grid {
+        .solution-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            flex: 1;
+            gap: 14px;
+            margin-bottom: 24px;
         }
         
-        .p3-card {
+        .solution-card {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 22px;
+            border-radius: 14px;
+            padding: 20px;
         }
         
-        .p3-card.highlighted {
-            background: linear-gradient(135deg, rgba(89,127,255,0.2) 0%, rgba(89,127,255,0.1) 100%);
+        .solution-card.highlight {
+            background: linear-gradient(135deg, rgba(89,127,255,0.15) 0%, rgba(89,127,255,0.05) 100%);
             border-color: rgba(89,127,255,0.3);
         }
         
-        .p3-card-icon {
-            font-size: 28px;
-            margin-bottom: 12px;
+        .solution-card-icon {
+            font-size: 26px;
+            margin-bottom: 10px;
         }
         
-        .p3-card-title {
-            font-size: 15px;
+        .solution-card-title {
+            font-size: 14px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         
-        .p3-card-text {
+        .solution-card-text {
             font-size: 12px;
             color: rgba(255,255,255,0.6);
             line-height: 1.5;
         }
         
-        .p3-integrations {
-            margin-top: 25px;
+        .integrations-bar {
             background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            padding: 20px 25px;
+            border-radius: 12px;
+            padding: 18px 24px;
             display: flex;
             align-items: center;
-            gap: 20px;
-        }
-        
-        .p3-int-label {
-            font-size: 12px;
-            font-weight: 600;
-            color: rgba(255,255,255,0.6);
-            white-space: nowrap;
-        }
-        
-        .p3-int-list {
-            display: flex;
+            gap: 16px;
             flex-wrap: wrap;
-            gap: 8px;
         }
         
-        .p3-int {
-            font-size: 11px;
+        .integrations-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
             font-weight: 600;
+        }
+        
+        .integration-tag {
+            background: rgba(89,127,255,0.15);
             color: #597FFF;
             padding: 6px 12px;
-            background: rgba(89,127,255,0.15);
-            border-radius: 15px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
         }
 
         /* =========================================
            PAGE 4: СТОИМОСТЬ
            ========================================= */
-        .p4 {
-            background: #FAFBFF;
+        .pricing {
             padding: 50px;
+            background: #FAFBFF;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
-        .p4-header {
-            margin-bottom: 30px;
-        }
-        
-        .p4-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #597FFF;
-            margin-bottom: 12px;
-        }
-        
-        .p4-title {
-            font-size: 36px;
-            font-weight: 900;
-            color: #1a1a2e;
-            letter-spacing: -1px;
-        }
-        
-        .p4-pricing {
+        .pricing-cards {
             display: flex;
             gap: 20px;
-            margin-bottom: 25px;
+            margin-bottom: 24px;
         }
         
-        .p4-plan {
+        .pricing-card {
             flex: 1;
             background: white;
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 28px;
-            box-shadow: 0 4px 30px rgba(89,127,255,0.1);
-            border: 2px solid transparent;
+            border: 2px solid #E8ECF5;
         }
         
-        .p4-plan.premium {
+        .pricing-card.featured {
             border-color: #597FFF;
             position: relative;
         }
         
-        .p4-plan.premium::before {
+        .pricing-card.featured::before {
             content: 'Рекомендуем';
             position: absolute;
             top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, #597FFF 0%, #3D5FE3 100%);
+            background: linear-gradient(135deg, #597FFF 0%, #4B6FE8 100%);
             color: white;
             font-size: 10px;
             font-weight: 700;
             padding: 5px 14px;
             border-radius: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
         
-        .p4-plan-name {
-            font-size: 22px;
+        .pricing-name {
+            font-size: 20px;
             font-weight: 800;
-            color: #1a1a2e;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         
-        .p4-plan-desc {
+        .pricing-desc {
             font-size: 12px;
             color: #888;
             margin-bottom: 16px;
         }
         
-        .p4-plan-price {
-            font-size: 36px;
-            font-weight: 900;
+        .pricing-amount {
+            font-size: 32px;
+            font-weight: 800;
             color: #597FFF;
-            margin-bottom: 4px;
         }
         
-        .p4-plan-price span {
+        .pricing-amount span {
             font-size: 14px;
             font-weight: 500;
             color: #888;
         }
         
-        .p4-plan-period {
+        .pricing-period {
             font-size: 12px;
             color: #888;
             margin-bottom: 20px;
         }
         
-        .p4-plan-features {
+        .pricing-features {
             list-style: none;
         }
         
-        .p4-plan-features li {
-            font-size: 12px;
-            color: #555;
+        .pricing-features li {
             padding: 8px 0;
             padding-left: 24px;
             position: relative;
-            border-bottom: 1px solid #f5f5f5;
+            font-size: 13px;
+            color: #555;
+            border-bottom: 1px solid #F3F4F6;
         }
         
-        .p4-plan-features li:last-child {
-            border-bottom: none;
-        }
+        .pricing-features li:last-child { border-bottom: none; }
         
-        .p4-plan-features li::before {
+        .pricing-features li::before {
             content: '✓';
             position: absolute;
             left: 0;
-            color: #4CAF50;
+            color: #10B981;
             font-weight: 700;
         }
         
-        .p4-ai-option {
-            background: linear-gradient(135deg, #0a0a14 0%, #1a1a2e 100%);
-            border-radius: 16px;
+        .ai-addon {
+            background: linear-gradient(135deg, #0F0F1A 0%, #1A1A2E 100%);
+            border-radius: 14px;
             padding: 22px 28px;
             color: white;
-            margin-bottom: 25px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin-bottom: 24px;
         }
         
-        .p4-ai-left {
+        .ai-addon-left {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
         }
         
-        .p4-ai-icon {
-            font-size: 32px;
+        .ai-addon-icon {
+            font-size: 28px;
         }
         
-        .p4-ai-title {
-            font-size: 16px;
+        .ai-addon-title {
+            font-size: 15px;
             font-weight: 700;
-            margin-bottom: 4px;
         }
         
-        .p4-ai-desc {
+        .ai-addon-desc {
             font-size: 12px;
             opacity: 0.7;
         }
         
-        .p4-ai-prices {
+        .ai-addon-prices {
             text-align: right;
+            font-size: 13px;
         }
         
-        .p4-ai-price {
-            font-size: 13px;
+        .ai-addon-price {
             margin-bottom: 4px;
         }
         
-        .p4-ai-price strong {
+        .ai-addon-price strong {
             color: #A78BFA;
         }
         
-        .p4-calculation {
+        .calculation {
             background: white;
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: 0 4px 20px rgba(89,127,255,0.08);
-            margin-bottom: 25px;
+            border-radius: 14px;
+            padding: 24px;
+            border: 1px solid #E8ECF5;
+            margin-bottom: 24px;
         }
         
-        .p4-calc-title {
+        .calculation-title {
             font-size: 15px;
             font-weight: 700;
-            color: #1a1a2e;
             margin-bottom: 16px;
         }
         
-        .p4-calc-row {
+        .calculation-row {
             display: flex;
             justify-content: space-between;
             padding: 10px 0;
             font-size: 13px;
             color: #555;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid #F3F4F6;
         }
         
-        .p4-calc-row:last-child {
-            border-bottom: none;
-        }
+        .calculation-row:last-child { border-bottom: none; }
         
-        .p4-calc-row.total {
+        .calculation-row.total {
             font-size: 16px;
             font-weight: 700;
             color: #1a1a2e;
@@ -606,35 +525,37 @@
             border-bottom: none;
         }
         
-        .p4-calc-row.total .p4-calc-val {
+        .calculation-row.total .calc-value {
             color: #597FFF;
+            font-size: 18px;
         }
         
-        .p4-footer {
+        .footer {
+            margin-top: auto;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
         }
         
-        .p4-contact {
+        .footer-contact {
             font-size: 13px;
             color: #555;
             line-height: 1.8;
         }
         
-        .p4-contact strong {
+        .footer-contact strong {
             font-size: 16px;
             color: #1a1a2e;
             display: block;
             margin-bottom: 6px;
         }
         
-        .p4-cta {
-            background: linear-gradient(135deg, #597FFF 0%, #3D5FE3 100%);
+        .footer-cta {
+            background: linear-gradient(135deg, #597FFF 0%, #4B6FE8 100%);
             color: white;
             padding: 16px 32px;
             border-radius: 12px;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 700;
         }
 
@@ -643,236 +564,215 @@
 <body>
 
 <!-- PAGE 1: ОБЛОЖКА -->
-<div class="page p1">
-    <div class="p1-glass-circle p1-circle1"></div>
-    <div class="p1-glass-circle p1-circle2"></div>
-    <div class="p1-glass-circle p1-circle3"></div>
-    <div class="p1-glass-square"></div>
+<div class="page cover">
+    <div class="cover-logo">
+        <img src="{{ logo_path }}" alt="WorkHere">
+    </div>
     
-    <div class="p1-content">
-        <div class="p1-logo">
-            <img src="{{ logo_path }}" alt="WorkHere">
-        </div>
+    <div class="cover-main">
+        {% if company_name %}
+        <div class="cover-badge">ДЛЯ {{ company_name|upper }}</div>
+        {% elif contact_name %}
+        <div class="cover-badge">ПЕРСОНАЛЬНОЕ ПРЕДЛОЖЕНИЕ</div>
+        {% endif %}
         
-        <div class="p1-hero">
-            {% if company_name %}
-            <div class="p1-for">Для {{ company_name }}</div>
+        <h1 class="cover-title">
+            {% if industry %}
+            Современный рекрутинг для {{ industry }}
+            {% else %}
+            Гонка за кандидатами начинается здесь
             {% endif %}
-            <h1 class="p1-title">
-                Гонка за кандидатами начинается здесь
-            </h1>
-            <p class="p1-subtitle">
-                {% if summary %}
-                {{ summary }}
-                {% else %}
-                Современная платформа для управления наймом. От поиска до выхода на работу — всё в одной системе.
-                {% endif %}
-            </p>
-        </div>
+        </h1>
         
-        <div class="p1-stats">
-            <div class="p1-stat">
-                <div class="p1-stat-val">1500+</div>
-                <div class="p1-stat-label">компаний</div>
+        <p class="cover-subtitle">
+            {{ summary or "Платформа для управления наймом, которая объединяет все инструменты подбора в одной системе. От поиска до выхода на работу." }}
+        </p>
+        
+        <div class="cover-stats">
+            <div class="cover-stat">
+                <div class="cover-stat-value">-60%</div>
+                <div class="cover-stat-label">время закрытия вакансии</div>
             </div>
-            <div class="p1-stat">
-                <div class="p1-stat-val">−60%</div>
-                <div class="p1-stat-label">время найма</div>
+            <div class="cover-stat">
+                <div class="cover-stat-value">1500+</div>
+                <div class="cover-stat-label">компаний</div>
             </div>
-            <div class="p1-stat">
-                <div class="p1-stat-val">×3</div>
-                <div class="p1-stat-label">быстрее</div>
+            <div class="cover-stat">
+                <div class="cover-stat-value">×3</div>
+                <div class="cover-stat-label">эффективность</div>
             </div>
         </div>
+    </div>
+    
+    <div class="cover-contact">
+        {% if contact_name %}
+        Подготовлено для {{ contact_name }}{% if contact_role %}, {{ contact_role }}{% endif %}
+        {% endif %}
     </div>
 </div>
 
-<!-- PAGE 2: БОЛИ И РЕШЕНИЯ -->
-<div class="page p2">
-    <div class="p2-header">
-        <div class="p2-label">Анализ ситуации</div>
-        <div class="p2-title">Понимаем ваши задачи</div>
+<!-- PAGE 2: ПОНИМАНИЕ СИТУАЦИИ -->
+<div class="page situation">
+    <div class="section-header">
+        <div class="section-label">Понимаем вашу ситуацию</div>
+        <div class="section-title">Мы услышали ваши задачи</div>
     </div>
     
     {% if hiring_situation %}
-    <div class="p2-situation">
-        <div class="p2-situation-title">Текущая ситуация</div>
-        <div class="p2-situation-text">{{ hiring_situation }}</div>
+    <div class="context-card">
+        <div class="context-label">Текущая ситуация</div>
+        <div class="context-text">{{ hiring_situation }}</div>
     </div>
     {% endif %}
     
-    <div class="p2-columns">
-        <div class="p2-column">
-            <div class="p2-column-title">
-                <span class="p2-column-icon">🔴</span>
-                Текущие сложности
+    <div class="two-columns">
+        <div class="column-card">
+            <div class="column-header">
+                <div class="column-icon red">🔴</div>
+                <div class="column-title">Текущие сложности</div>
             </div>
-            <ul class="p2-list pains">
-                {% for pain in pain_points %}
+            <ul class="column-list red">
+                {% for pain in pain_points[:4] %}
                 <li>{{ pain }}</li>
                 {% endfor %}
             </ul>
         </div>
         
-        <div class="p2-column">
-            <div class="p2-column-title">
-                <span class="p2-column-icon">🎯</span>
-                Ваши потребности
+        <div class="column-card">
+            <div class="column-header">
+                <div class="column-icon blue">🎯</div>
+                <div class="column-title">Ваши потребности</div>
             </div>
-            <ul class="p2-list needs">
-                {% for need in needs %}
+            <ul class="column-list blue">
+                {% for need in needs[:4] %}
                 <li>{{ need }}</li>
                 {% endfor %}
             </ul>
         </div>
     </div>
     
-    {% if specific_request %}
-    <div class="p2-situation" style="background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); margin-bottom: 20px;">
-        <div class="p2-situation-title">Ключевой запрос</div>
-        <div class="p2-situation-text">{{ specific_request }}</div>
-    </div>
-    {% endif %}
-    
-    <div class="p2-features">
-        <div class="p2-features-title">Что заинтересовало</div>
-        <div class="p2-features-grid">
+    <div class="features-section">
+        <div class="features-title">Что вас заинтересовало в WorkHere</div>
+        <div class="features-grid">
             {% for feature in discussed_features[:6] %}
-            <div class="p2-feature">
-                <div class="p2-feature-icon">{{ feature_icons.get(feature, '✨') }}</div>
-                <div class="p2-feature-name">{{ feature }}</div>
+            <div class="feature-tag">
+                <div class="feature-tag-icon">{{ feature_icons.get(feature, '✨') }}</div>
+                <div class="feature-tag-name">{{ feature }}</div>
             </div>
             {% endfor %}
         </div>
     </div>
 </div>
 
-<!-- PAGE 3: ВОЗМОЖНОСТИ -->
-<div class="page p3">
-    <div class="p3-glow"></div>
+<!-- PAGE 3: РЕШЕНИЕ -->
+<div class="page solution">
+    <div class="section-header">
+        <div class="section-label">Платформа WorkHere</div>
+        <div class="section-title">Всё для <span>эффективного найма</span></div>
+    </div>
     
-    <div class="p3-content">
-        <div class="p3-header">
-            <div class="p3-label">Платформа WorkHere</div>
-            <div class="p3-title">Всё для <span>эффективного найма</span></div>
+    <div class="solution-grid">
+        <div class="solution-card {% if 'База' in highlighted_str %}highlight{% endif %}">
+            <div class="solution-card-icon">📁</div>
+            <div class="solution-card-title">Единая база</div>
+            <div class="solution-card-text">Все кандидаты, история, комментарии в одном месте</div>
         </div>
         
-        <div class="p3-grid">
-            <div class="p3-card {% if 'База кандидатов' in highlighted_features %}highlighted{% endif %}">
-                <div class="p3-card-icon">📁</div>
-                <div class="p3-card-title">База кандидатов</div>
-                <div class="p3-card-text">Единое хранилище контактов, истории взаимодействий и комментариев</div>
-            </div>
-            <div class="p3-card {% if 'Интеграции' in highlighted_features or 'job-сайт' in highlighted_features_str %}highlighted{% endif %}">
-                <div class="p3-card-icon">🔗</div>
-                <div class="p3-card-title">Интеграции</div>
-                <div class="p3-card-text">HH.ru, Авито, SuperJob — резюме автоматически попадают в систему</div>
-            </div>
-            <div class="p3-card {% if 'Коммуникации' in highlighted_features %}highlighted{% endif %}">
-                <div class="p3-card-icon">💬</div>
-                <div class="p3-card-title">Коммуникации</div>
-                <div class="p3-card-text">Чаты, мессенджеры и телефония в одном окне</div>
-            </div>
-            <div class="p3-card {% if 'Воронка' in highlighted_features %}highlighted{% endif %}">
-                <div class="p3-card-icon">📊</div>
-                <div class="p3-card-title">Воронка подбора</div>
-                <div class="p3-card-text">Настраиваемые этапы, SLA и контроль сроков</div>
-            </div>
-            <div class="p3-card {% if 'Автоматизация' in highlighted_features %}highlighted{% endif %}">
-                <div class="p3-card-icon">⚡</div>
-                <div class="p3-card-title">Автоматизация</div>
-                <div class="p3-card-text">Триггеры, авторассылки, задачи с дедлайнами</div>
-            </div>
-            <div class="p3-card {% if 'Аналитика' in highlighted_features %}highlighted{% endif %}">
-                <div class="p3-card-icon">📈</div>
-                <div class="p3-card-title">Аналитика</div>
-                <div class="p3-card-text">Воронка, time-to-hire, дашборды по ролям</div>
-            </div>
-            {% if show_ai %}
-            <div class="p3-card highlighted">
-                <div class="p3-card-icon">🤖</div>
-                <div class="p3-card-title">AI-поиск</div>
-                <div class="p3-card-text">Семантический поиск и скоринг кандидатов</div>
-            </div>
-            <div class="p3-card">
-                <div class="p3-card-icon">📱</div>
-                <div class="p3-card-title">Мобильное</div>
-                <div class="p3-card-text">Полноценное приложение iOS и Android</div>
-            </div>
-            <div class="p3-card">
-                <div class="p3-card-icon">📄</div>
-                <div class="p3-card-title">Документы</div>
-                <div class="p3-card-text">Офферы, КЭДО, передача в HR-систему</div>
-            </div>
-            {% else %}
-            <div class="p3-card">
-                <div class="p3-card-icon">📅</div>
-                <div class="p3-card-title">Календарь</div>
-                <div class="p3-card-text">Интервью через Телемост с автонапоминаниями</div>
-            </div>
-            <div class="p3-card">
-                <div class="p3-card-icon">📱</div>
-                <div class="p3-card-title">Мобильное</div>
-                <div class="p3-card-text">Полноценное приложение iOS и Android</div>
-            </div>
-            <div class="p3-card">
-                <div class="p3-card-icon">📄</div>
-                <div class="p3-card-title">Документы</div>
-                <div class="p3-card-text">Офферы, КЭДО, передача в HR-систему</div>
-            </div>
-            {% endif %}
+        <div class="solution-card {% if 'Интеграц' in highlighted_str or 'HH' in highlighted_str or 'Авито' in highlighted_str %}highlight{% endif %}">
+            <div class="solution-card-icon">🔗</div>
+            <div class="solution-card-title">Интеграции</div>
+            <div class="solution-card-text">HH, Авито, SuperJob — отклики автоматически в системе</div>
         </div>
         
-        <div class="p3-integrations">
-            <div class="p3-int-label">Интеграции:</div>
-            <div class="p3-int-list">
-                <div class="p3-int">HH.ru</div>
-                <div class="p3-int">Авито</div>
-                <div class="p3-int">SuperJob</div>
-                <div class="p3-int">Работа.ру</div>
-                <div class="p3-int">Телемост</div>
-                <div class="p3-int">WhatsApp</div>
-                <div class="p3-int">Telegram</div>
-                <div class="p3-int">1С</div>
-                <div class="p3-int">API</div>
-            </div>
+        <div class="solution-card {% if 'Коммуникац' in highlighted_str or 'мессенджер' in highlighted_str or 'WhatsApp' in highlighted_str %}highlight{% endif %}">
+            <div class="solution-card-icon">💬</div>
+            <div class="solution-card-title">Коммуникации</div>
+            <div class="solution-card-text">Чаты HH, WhatsApp, Telegram — всё в одном окне</div>
         </div>
+        
+        <div class="solution-card {% if 'Воронк' in highlighted_str %}highlight{% endif %}">
+            <div class="solution-card-icon">📊</div>
+            <div class="solution-card-title">Воронка</div>
+            <div class="solution-card-text">Настраиваемые этапы, SLA, контроль сроков</div>
+        </div>
+        
+        <div class="solution-card {% if 'телефон' in highlighted_str or 'Телефон' in highlighted_str %}highlight{% endif %}">
+            <div class="solution-card-icon">📞</div>
+            <div class="solution-card-title">Телефония</div>
+            <div class="solution-card-text">IP-телефония с записью и прослушиванием звонков</div>
+        </div>
+        
+        <div class="solution-card {% if 'Аналитик' in highlighted_str or 'отчёт' in highlighted_str %}highlight{% endif %}">
+            <div class="solution-card-icon">📈</div>
+            <div class="solution-card-title">Аналитика</div>
+            <div class="solution-card-text">Воронка, time-to-hire, отчёты в Excel</div>
+        </div>
+        
+        <div class="solution-card {% if 'Календар' in highlighted_str or 'Телемост' in highlighted_str %}highlight{% endif %}">
+            <div class="solution-card-icon">📅</div>
+            <div class="solution-card-title">Календарь</div>
+            <div class="solution-card-text">Интеграция с Телемост, автоуведомления</div>
+        </div>
+        
+        <div class="solution-card {% if 'заказчик' in highlighted_str or 'Заказчик' in highlighted_str %}highlight{% endif %}">
+            <div class="solution-card-icon">👥</div>
+            <div class="solution-card-title">Заказчики</div>
+            <div class="solution-card-text">Заявки от руководителей, обратная связь</div>
+        </div>
+        
+        <div class="solution-card {% if 'ФЗ-152' in highlighted_str or 'персональн' in highlighted_str %}highlight{% endif %}">
+            <div class="solution-card-icon">🛡️</div>
+            <div class="solution-card-title">ФЗ-152</div>
+            <div class="solution-card-text">Запрос согласий на обработку ПД через SMS</div>
+        </div>
+    </div>
+    
+    <div class="integrations-bar">
+        <span class="integrations-label">Интеграции:</span>
+        <span class="integration-tag">HH.ru</span>
+        <span class="integration-tag">Авито</span>
+        <span class="integration-tag">SuperJob</span>
+        <span class="integration-tag">Работа.ру</span>
+        <span class="integration-tag">Телемост</span>
+        <span class="integration-tag">WhatsApp</span>
+        <span class="integration-tag">Telegram</span>
+        <span class="integration-tag">1С</span>
     </div>
 </div>
 
 <!-- PAGE 4: СТОИМОСТЬ -->
-<div class="page p4">
-    <div class="p4-header">
-        <div class="p4-label">Стоимость</div>
-        <div class="p4-title">Выгодное решение для вас</div>
+<div class="page pricing">
+    <div class="section-header">
+        <div class="section-label">Инвестиции</div>
+        <div class="section-title">Стоимость для вашей команды</div>
     </div>
     
-    <div class="p4-pricing">
+    <div class="pricing-cards">
         {% if show_standard %}
-        <div class="p4-plan {% if not show_premium %}premium{% endif %}">
-            <div class="p4-plan-name">Стандартный</div>
-            <div class="p4-plan-desc">Все необходимое для эффективного найма</div>
-            <div class="p4-plan-price">20 000 ₽ <span>/ лицензия</span></div>
-            <div class="p4-plan-period">в год</div>
-            <ul class="p4-plan-features">
-                <li>База кандидатов</li>
+        <div class="pricing-card {% if not show_premium %}featured{% endif %}">
+            <div class="pricing-name">Стандартный</div>
+            <div class="pricing-desc">Всё необходимое для эффективного найма</div>
+            <div class="pricing-amount">20 000 ₽ <span>/ лицензия</span></div>
+            <div class="pricing-period">в год</div>
+            <ul class="pricing-features">
+                <li>Единая база кандидатов</li>
                 <li>Интеграции с job-сайтами</li>
                 <li>Воронка подбора</li>
                 <li>Коммуникации в одном окне</li>
-                <li>Календарь и напоминания</li>
-                <li>Базовая аналитика</li>
+                <li>Календарь собеседований</li>
+                <li>Аналитика и отчёты</li>
                 <li>Мобильное приложение</li>
             </ul>
         </div>
         {% endif %}
         
         {% if show_premium %}
-        <div class="p4-plan premium">
-            <div class="p4-plan-name">Премиум</div>
-            <div class="p4-plan-desc">Максимум возможностей + AI</div>
-            <div class="p4-plan-price">42 000 ₽ <span>/ лицензия</span></div>
-            <div class="p4-plan-period">в год, AI-поиск включён</div>
-            <ul class="p4-plan-features">
+        <div class="pricing-card featured">
+            <div class="pricing-name">Премиум</div>
+            <div class="pricing-desc">Максимум возможностей + AI</div>
+            <div class="pricing-amount">42 000 ₽ <span>/ лицензия</span></div>
+            <div class="pricing-period">в год, AI включён</div>
+            <ul class="pricing-features">
                 <li>Всё из Стандартного</li>
                 <li>ИИ-поиск кандидатов</li>
                 <li>Семантический поиск</li>
@@ -886,45 +786,45 @@
     </div>
     
     {% if show_standard and show_ai_option %}
-    <div class="p4-ai-option">
-        <div class="p4-ai-left">
-            <div class="p4-ai-icon">🤖</div>
+    <div class="ai-addon">
+        <div class="ai-addon-left">
+            <div class="ai-addon-icon">🤖</div>
             <div>
-                <div class="p4-ai-title">ИИ-поиск кандидатов</div>
-                <div class="p4-ai-desc">Дополнительная опция к Стандартному тарифу</div>
+                <div class="ai-addon-title">ИИ-поиск кандидатов</div>
+                <div class="ai-addon-desc">Опция к Стандартному тарифу</div>
             </div>
         </div>
-        <div class="p4-ai-prices">
-            <div class="p4-ai-price"><strong>5 000 ₽</strong> / месяц</div>
-            <div class="p4-ai-price"><strong>50 000 ₽</strong> / год (экономия 17%)</div>
+        <div class="ai-addon-prices">
+            <div class="ai-addon-price"><strong>5 000 ₽</strong> / месяц</div>
+            <div class="ai-addon-price"><strong>50 000 ₽</strong> / год (-17%)</div>
         </div>
     </div>
     {% endif %}
     
-    <div class="p4-calculation">
-        <div class="p4-calc-title">Расчёт для вашей команды ({{ num_recruiters }} {% if num_recruiters == 1 %}рекрутер{% elif num_recruiters < 5 %}рекрутера{% else %}рекрутеров{% endif %})</div>
+    <div class="calculation">
+        <div class="calculation-title">Расчёт для {{ num_recruiters }} {% if num_recruiters == 1 %}пользователя{% elif num_recruiters < 5 %}пользователей{% else %}пользователей{% endif %}</div>
         
         {% for calc in calculations %}
-        <div class="p4-calc-row">
+        <div class="calculation-row">
             <span>{{ calc.name }}</span>
-            <span class="p4-calc-val">{{ calc.value }}</span>
+            <span class="calc-value">{{ calc.value }}</span>
         </div>
         {% endfor %}
         
-        <div class="p4-calc-row total">
+        <div class="calculation-row total">
             <span>Итого в год</span>
-            <span class="p4-calc-val">{{ total_price }} ₽</span>
+            <span class="calc-value">{{ total_price }} ₽</span>
         </div>
     </div>
     
-    <div class="p4-footer">
-        <div class="p4-contact">
+    <div class="footer">
+        <div class="footer-contact">
             <strong>Свяжитесь с нами</strong>
             +7 (800) 000-00-00<br>
             sales@workhere.ru<br>
             Telegram: @workhere
         </div>
-        <div class="p4-cta">workhere.ru →</div>
+        <div class="footer-cta">workhere.ru →</div>
     </div>
 </div>
 
