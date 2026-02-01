@@ -117,6 +117,7 @@ def generate_proposal_pdf(
     # Render HTML
     html_content = template.render(
         logo_path=str(ASSETS_DIR / "logo.png"),
+        mascot_path=str(ASSETS_DIR / "mascot.svg"),
         company_name=analysis.company_name or "",
         contact_name=analysis.contact_name or "",
         contact_role=analysis.contact_role or "",
