@@ -200,20 +200,8 @@ def generate_proposal_pdf(
         
         total = f"{total:,}".replace(",", " ")
     
-    # Контент
-    discussed = analysis.discussed_features or []
-    if len(discussed) < 6:
-        defaults = [
-            "Единая база кандидатов: все контакты, резюме и история в одном месте",
-            "Интеграции с работными сайтами: HH.ru, Авито — автоматический сбор откликов",
-            "Настраиваемые воронки и статусы под ваши процессы",
-            "Аналитика и отчёты: конверсии, источники, Time-to-Hire",
-            "Коммуникации с кандидатами через мессенджеры",
-            "Telegram-бот для уведомлений и напоминаний"
-        ]
-        for d in defaults:
-            if d not in discussed and len(discussed) < 8:
-                discussed.append(d)
+    # Для расчёта размеров маскотов используем копию списка (не мутируем оригинал!)
+    discussed = list(analysis.diagnosis_pains or [])
     
     # 4 маскота с ПРАВИЛЬНЫМИ размерами
     mascot_paths = get_random_mascots(4)
@@ -228,36 +216,19 @@ def generate_proposal_pdf(
     
     logger.info(f"Mascot sizes calculated: {mascot_sizes}")
     
-    # Дефолты для персонализированных разделов
-    diagnosis_pains = getattr(analysis, 'diagnosis_pains', []) or analysis.current_pain_points or []
-    solution_base = getattr(analysis, 'solution_base', []) or [
-        "Единая база кандидатов — все резюме и история в одном месте",
-        "Воронки подбора — визуальный контроль статусов",
-        "Аналитика — понимание эффективности процесса",
-    ]
-    solution_integrations = getattr(analysis, 'solution_integrations', []) or [
-        "HH.ru, Авито — отклики автоматически в системе",
-        "Мессенджеры — переписка в карточке кандидата",
-    ]
-    solution_automation = getattr(analysis, 'solution_automation', []) or [
-        "Уведомления в Telegram",
-        "Напоминания о собеседованиях",
-    ]
-    solution_ai = getattr(analysis, 'solution_ai', []) or []
+    # Используем контент от AI напрямую — никаких дефолтов!
+    # AI должен генерировать всё сам
+    diagnosis_pains = analysis.diagnosis_pains or []
+    solution_base = analysis.solution_base or []
+    solution_integrations = analysis.solution_integrations or []
+    solution_automation = analysis.solution_automation or []
+    solution_ai = analysis.solution_ai or []
+    why_recruiters = analysis.why_recruiters or []
+    why_managers = analysis.why_managers or []
+    diagnosis_situation = analysis.diagnosis_situation or ""
+    key_message = analysis.key_message or ""
     
-    why_recruiters = getattr(analysis, 'why_recruiters', []) or [
-        "Все отклики в одном месте",
-        "Меньше рутины — больше времени на кандидатов",
-        "Удобная коммуникация без переключений",
-    ]
-    why_managers = getattr(analysis, 'why_managers', []) or [
-        "Прозрачность процесса подбора",
-        "Контроль сроков и эффективности",
-        "Отчёты для руководства",
-    ]
-    
-    diagnosis_situation = getattr(analysis, 'diagnosis_situation', '') or analysis.hiring_situation or ""
-    key_message = getattr(analysis, 'key_message', '') or ""
+    logger.info(f"Content from AI: pains={len(diagnosis_pains)}, base={len(solution_base)}, situation={len(diagnosis_situation)} chars")
     
     # Рендер
     html_content = template.render(
