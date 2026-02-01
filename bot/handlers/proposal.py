@@ -201,28 +201,17 @@ def validate_transcript(text: str) -> tuple[bool, str]:
     return True, ""
 
 
-# Handle transcript - text message
+# Handle transcript - text message (reject, only files allowed)
 @router.message(StateFilter(ProposalStates.waiting_for_transcript), F.text)
 async def handle_transcript_text(message: Message, state: FSMContext):
-    """Handle transcript as text message"""
+    """Reject text messages, only accept files"""
     if message.text.startswith("/"):
         return
     
-    transcript = message.text
-    
-    # Валидация
-    is_valid, error_msg = validate_transcript(transcript)
-    if not is_valid:
-        await message.answer(error_msg)
-        return
-    
-    await state.update_data(transcript=transcript)
-    
     await message.answer(
-        "✨ Отлично! Теперь выбери тариф:",
-        reply_markup=get_tariff_keyboard()
+        "📎 Пожалуйста, отправь файл с транскрибацией (.txt или .docx)\n\n"
+        "Текстовые сообщения не принимаю — нужен именно файл!"
     )
-    await state.set_state(ProposalStates.waiting_for_tariff)
 
 
 # Handle transcript - file
