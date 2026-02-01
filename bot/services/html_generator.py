@@ -381,10 +381,10 @@ async def generate_html_proposal(
         logo_path=logo_path
     )
     
-    logger.info(f"Generating HTML proposal via gpt-5.2-pro ({len(transcript)} chars transcript)...")
+    logger.info(f"Generating HTML proposal via gpt-4.1 ({len(transcript)} chars transcript)...")
     
     response = client.chat.completions.create(
-        model="gpt-5.2-pro",
+        model="gpt-4.1",
         messages=[
             {
                 "role": "system",
