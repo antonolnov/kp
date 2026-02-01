@@ -6,105 +6,111 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         
-        @page { size: A4; margin: 0; }
+        @page {
+            size: A4;
+            margin: 35px 40px 50px 40px;
+            
+            @bottom-right {
+                content: "Страница " counter(page);
+                font-family: 'Inter', sans-serif;
+                font-size: 9pt;
+                color: #999;
+            }
+        }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Inter', -apple-system, sans-serif;
             color: #1a1a2e;
             background: #fff;
-            font-size: 11pt;
-            line-height: 1.6;
+            font-size: 10pt;
+            line-height: 1.5;
         }
-        
-        .page {
-            width: 210mm;
-            min-height: 297mm;
-            padding: 40px 45px;
-            page-break-after: always;
-        }
-        
-        .page:last-child { page-break-after: avoid; }
         
         /* Header */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
             border-bottom: 2px solid #597FFF;
         }
         
         .logo img {
-            height: 36px;
+            height: 32px;
         }
         
         .header-info {
             text-align: right;
-            font-size: 10pt;
+            font-size: 9pt;
             color: #666;
         }
         
         .header-info strong {
             color: #1a1a2e;
-            font-size: 11pt;
+            font-size: 10pt;
         }
         
         /* Title */
         .doc-title {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         
         .doc-title h1 {
-            font-size: 20pt;
+            font-size: 18pt;
             font-weight: 800;
             color: #597FFF;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
         
         .doc-title p {
-            font-size: 11pt;
+            font-size: 10pt;
             color: #666;
         }
         
         /* Sections */
         .section {
-            margin-bottom: 24px;
+            margin-bottom: 18px;
+            page-break-inside: avoid;
         }
         
         .section-title {
-            font-size: 13pt;
+            font-size: 12pt;
             font-weight: 700;
             color: #1a1a2e;
-            margin-bottom: 12px;
-            padding-bottom: 6px;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
             border-bottom: 1px solid #E2E8F0;
+            page-break-after: avoid;
         }
         
         .section-title .num {
             display: inline-block;
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             background: #597FFF;
             color: white;
             border-radius: 50%;
             text-align: center;
-            line-height: 24px;
-            font-size: 11pt;
-            margin-right: 10px;
+            line-height: 22px;
+            font-size: 10pt;
+            margin-right: 8px;
         }
         
         .subsection {
-            margin-bottom: 16px;
+            margin-bottom: 12px;
+            page-break-inside: avoid;
         }
         
         .subsection-title {
-            font-size: 11pt;
+            font-size: 10pt;
             font-weight: 700;
             color: #374151;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            page-break-after: avoid;
         }
         
         /* Lists */
@@ -114,9 +120,10 @@
         }
         
         ul li {
-            padding: 4px 0;
-            padding-left: 18px;
+            padding: 3px 0;
+            padding-left: 16px;
             position: relative;
+            page-break-inside: avoid;
         }
         
         ul li::before {
@@ -135,10 +142,11 @@
         /* Highlight box */
         .highlight-box {
             background: #F0F4FF;
-            border-left: 4px solid #597FFF;
-            padding: 16px 20px;
-            margin: 16px 0;
-            border-radius: 0 8px 8px 0;
+            border-left: 3px solid #597FFF;
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            page-break-inside: avoid;
         }
         
         .highlight-box p {
@@ -149,12 +157,13 @@
         .price-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 16px 0;
+            margin: 12px 0;
+            page-break-inside: avoid;
         }
         
         .price-table th,
         .price-table td {
-            padding: 12px 16px;
+            padding: 10px 14px;
             text-align: left;
             border-bottom: 1px solid #E2E8F0;
         }
@@ -163,6 +172,7 @@
             background: #F8FAFC;
             font-weight: 600;
             color: #374151;
+            font-size: 9pt;
         }
         
         .price-table td:last-child {
@@ -171,51 +181,38 @@
             color: #597FFF;
         }
         
-        .price-table tr.total {
-            background: #597FFF;
-            color: white;
-        }
-        
-        .price-table tr.total td {
-            font-weight: 700;
-            font-size: 12pt;
-            border: none;
-        }
-        
-        .price-table tr.total td:last-child {
-            color: white;
-        }
-        
         /* Two columns */
         .two-cols {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            display: flex;
+            gap: 16px;
+            page-break-inside: avoid;
         }
         
         .col {
+            flex: 1;
             background: #F8FAFC;
-            padding: 16px;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 6px;
         }
         
         .col-title {
             font-weight: 700;
-            font-size: 11pt;
-            margin-bottom: 10px;
+            font-size: 10pt;
+            margin-bottom: 8px;
             color: #1a1a2e;
         }
         
         /* Steps */
         .steps {
             counter-reset: step;
+            page-break-inside: avoid;
         }
         
         .step {
-            padding: 10px 0;
-            padding-left: 36px;
+            padding: 8px 0 8px 32px;
             position: relative;
             border-bottom: 1px solid #F1F5F9;
+            page-break-inside: avoid;
         }
         
         .step:last-child {
@@ -227,329 +224,300 @@
             content: counter(step);
             position: absolute;
             left: 0;
-            top: 10px;
-            width: 24px;
-            height: 24px;
+            top: 8px;
+            width: 20px;
+            height: 20px;
             background: #597FFF;
             color: white;
             border-radius: 50%;
             text-align: center;
-            line-height: 24px;
-            font-size: 10pt;
+            line-height: 20px;
+            font-size: 9pt;
             font-weight: 600;
         }
         
         /* Footer */
         .footer {
-            margin-top: 30px;
-            padding-top: 20px;
+            margin-top: 20px;
+            padding-top: 15px;
             border-top: 1px solid #E2E8F0;
             display: flex;
             justify-content: space-between;
-            font-size: 10pt;
+            font-size: 9pt;
             color: #666;
+            page-break-inside: avoid;
         }
         
         .footer strong {
             color: #1a1a2e;
         }
         
-        /* Page numbers */
-        .page-num {
-            position: absolute;
-            bottom: 30px;
-            right: 45px;
-            font-size: 9pt;
-            color: #999;
+        /* Results box */
+        .results-box {
+            background: #F0FDF4;
+            border-left: 3px solid #10B981;
+            padding: 12px 16px;
+            margin-top: 12px;
+            border-radius: 0 6px 6px 0;
+            page-break-inside: avoid;
+        }
+        
+        .results-box ul {
+            margin-top: 6px;
         }
 
     </style>
 </head>
 <body>
 
-<!-- PAGE 1 -->
-<div class="page">
-    <div class="header">
-        <div class="logo">
-            <img src="{{ logo_path }}" alt="WorkHere">
-        </div>
-        <div class="header-info">
-            {% if company_name %}<strong>{{ company_name }}</strong><br>{% endif %}
-            {% if contact_name %}{{ contact_name }}{% if contact_role %}, {{ contact_role }}{% endif %}{% endif %}
-        </div>
+<!-- HEADER -->
+<div class="header">
+    <div class="logo">
+        <img src="{{ logo_path }}" alt="WorkHere">
     </div>
-    
-    <div class="doc-title">
-        <h1>Коммерческое предложение</h1>
-        <p>ATS + CRM для управления полным циклом подбора персонала</p>
+    <div class="header-info">
+        {% if company_name %}<strong>{{ company_name }}</strong><br>{% endif %}
+        {% if contact_name %}{{ contact_name }}{% if contact_role %}, {{ contact_role }}{% endif %}{% endif %}
     </div>
+</div>
+
+<div class="doc-title">
+    <h1>Коммерческое предложение</h1>
+    <p>ATS + CRM для управления полным циклом подбора персонала</p>
+</div>
+
+<!-- SECTION 1 -->
+<div class="section">
+    <div class="section-title"><span class="num">1</span>Что обсуждали на встрече</div>
     
-    <div class="section">
-        <div class="section-title"><span class="num">1</span>Что обсуждали на встрече</div>
-        
-        {% if hiring_situation %}
-        <div class="highlight-box">
-            <p><strong>Ситуация:</strong> {{ hiring_situation }}</p>
-        </div>
-        {% endif %}
-        
+    {% if hiring_situation %}
+    <div class="highlight-box">
+        <p><strong>Ситуация:</strong> {{ hiring_situation }}</p>
+    </div>
+    {% endif %}
+    
+    <ul>
+        {% for feature in discussed_features %}
+        <li>{{ feature }}</li>
+        {% endfor %}
+        {% for pain in pain_points %}
+        <li>{{ pain }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section">
+    <div class="section-title"><span class="num">2</span>Предлагаемое решение WorkHere</div>
+    
+    <div class="subsection">
+        <div class="subsection-title">2.1. Базовый функционал ATS/CRM</div>
         <ul>
-            {% for feature in discussed_features %}
-            <li>{{ feature }}</li>
-            {% endfor %}
-            {% for pain in pain_points %}
-            <li>{{ pain }}</li>
-            {% endfor %}
+            <li>Единая база кандидатов: контакты, резюме, история взаимодействий, комментарии, вложения</li>
+            <li>Настраиваемые воронки и статусы под разные типы подбора (массовый, точечный, IT/не-IT)</li>
+            <li>Напоминания и ежедневник: задачи по кандидатам и вакансиям с дедлайнами</li>
+            <li>Аналитика и отчёты: конверсии воронки, Time-to-Hire, источники, причины отказов</li>
+            <li>Выгрузка данных в Excel по кандидатам, вакансиям, воронкам</li>
+            <li>Импорт базы кандидатов из Excel по шаблону (массовая загрузка)</li>
+            <li>Мобильное приложение для iOS и Android</li>
         </ul>
     </div>
     
-    <div class="section">
-        <div class="section-title"><span class="num">2</span>Предлагаемое решение WorkHere</div>
-        
-        <div class="subsection">
-            <div class="subsection-title">2.1. Базовый функционал ATS/CRM</div>
-            <ul>
-                <li>Единая база кандидатов: контакты, резюме, история взаимодействий, комментарии, вложения</li>
-                <li>Настраиваемые воронки и статусы под разные типы подбора (массовый, точечный, IT/не-IT)</li>
-                <li>Напоминания и ежедневник: задачи по кандидатам и вакансиям с дедлайнами</li>
-                <li>Аналитика и отчёты: конверсии воронки, Time-to-Hire, источники, причины отказов</li>
-                <li>Выгрузка данных в Excel по кандидатам, вакансиям, воронкам</li>
-                <li>Импорт базы кандидатов из Excel по шаблону (массовая загрузка)</li>
-                <li>Мобильное приложение для iOS и Android</li>
-            </ul>
-        </div>
-        
-        <div class="subsection">
-            <div class="subsection-title">2.2. Интеграции с работными сайтами</div>
-            <ul>
-                <li>Подключение HH.ru, Avito, SuperJob, Работа.ру — отклики автоматически попадают в систему</li>
-                <li>Автоматическое создание карточки кандидата при новом отклике</li>
-                <li>Дублирование статусов обратно на HH.ru (не нужно переключаться между системами)</li>
-                <li>Отслеживание эффективности источников: конверсия в интервью/оффер/выход</li>
-            </ul>
-        </div>
-        
-        <div class="subsection">
-            <div class="subsection-title">2.3. Коммуникации с кандидатами</div>
-            <ul>
-                <li>Мессенджеры: Telegram, WhatsApp, Viber — переписка в карточке кандидата</li>
-                <li>Шаблоны сообщений: приглашение, отказ, напоминание, запрос документов</li>
-                <li>Email-рассылки и массовые действия по выборке кандидатов</li>
-                <li>IP-телефония: звонки из карточки, запись разговоров, статусы</li>
-            </ul>
-        </div>
-    </div>
-    
-    <div class="page-num">Страница 1</div>
-</div>
-
-<!-- PAGE 2 -->
-<div class="page">
-    <div class="header">
-        <div class="logo">
-            <img src="{{ logo_path }}" alt="WorkHere">
-        </div>
-        <div class="header-info">
-            Коммерческое предложение
-        </div>
-    </div>
-    
-    <div class="section">
-        <div class="subsection">
-            <div class="subsection-title">2.4. Заявки и работа с заказчиками</div>
-            <ul>
-                <li>Модуль «Заявки на подбор» — карточка заявки со статусами, сроками, согласующими лицами</li>
-                <li>Комментарии и внутренний диалог рекрутер ↔ заказчик внутри системы</li>
-                <li>Руководители видят кандидатов по своим заявкам и могут оставлять фидбек</li>
-                <li>История изменений: кто, что, когда изменил</li>
-            </ul>
-        </div>
-        
-        <div class="subsection">
-            <div class="subsection-title">2.5. Уведомления и Telegram-бот</div>
-            <ul>
-                <li>Уведомления на события: новый отклик, смена статуса, просрочка SLA — в Telegram и/или на почту</li>
-                <li>Telegram-бот: напоминания за 15 минут до собеседования, расписание на неделю/месяц</li>
-                <li>Импорт кандидатов через бота: отправьте ссылку/файл резюме — кандидат появится в системе</li>
-            </ul>
-        </div>
-        
-        <div class="subsection">
-            <div class="subsection-title">2.6. Календарь и собеседования</div>
-            <ul>
-                <li>Интеграция с Яндекс Телемост: создание ссылок на видео-интервью</li>
-                <li>Автоматические приглашения кандидатам с датой, временем, ссылкой</li>
-                <li>Подтверждение участия через SMS — статус меняется автоматически</li>
-                <li>Слоты интервью и контроль загрузки рекрутеров</li>
-            </ul>
-        </div>
-        
-        <div class="subsection">
-            <div class="subsection-title">2.7. Безопасность и 152-ФЗ</div>
-            <ul>
-                <li>Запрос согласия на обработку персональных данных: кандидату приходит SMS/форма</li>
-                <li>Фиксация статуса согласия в карточке кандидата</li>
-                <li>Российское ПО, данные хранятся в РФ</li>
-                <li>Роли и права доступа: рекрутер, руководитель, наблюдатель, админ</li>
-                <li>Логирование действий (аудит)</li>
-            </ul>
-        </div>
-        
-        {% if show_ai_option or show_premium %}
-        <div class="subsection">
-            <div class="subsection-title">2.8. AI-модуль (дополнительная опция)</div>
-            <ul>
-                <li>Умный поиск по базе кандидатов: семантический поиск, синонимы, похожие кандидаты</li>
-                <li>Матчинг кандидат ↔ вакансия: оценка соответствия, подсветка сильных/слабых сторон</li>
-                <li>Ранжирование кандидатов в рамках вакансии по набору признаков</li>
-                <li>Краткое резюме карточки: суть кандидата за 20 секунд</li>
-            </ul>
-        </div>
-        {% endif %}
-    </div>
-    
-    <div class="section">
-        <div class="section-title"><span class="num">3</span>Коммерческие условия</div>
-        
-        <table class="price-table">
-            <tr>
-                <th>Позиция</th>
-                <th>Стоимость</th>
-            </tr>
-            {% if show_standard %}
-            <tr>
-                <td>Лицензия рекрутера (Стандартный тариф)</td>
-                <td>20 000 ₽/год</td>
-            </tr>
-            {% endif %}
-            {% if show_premium %}
-            <tr>
-                <td>Лицензия рекрутера (Премиум тариф, AI включён)</td>
-                <td>42 000 ₽/год</td>
-            </tr>
-            {% endif %}
-            <tr>
-                <td>Пользователи-заказчики (руководители)</td>
-                <td>Бесплатно</td>
-            </tr>
-            {% if show_ai_option %}
-            <tr>
-                <td>AI-модуль (дополнительно к Стандартному)</td>
-                <td>5 000 ₽/мес или 50 000 ₽/год</td>
-            </tr>
-            {% endif %}
-        </table>
-        
-        <div class="highlight-box">
-            <p><strong>Расчёт для вашей команды ({{ num_recruiters }} {% if num_recruiters == 1 %}рекрутер{% elif num_recruiters < 5 %}рекрутера{% else %}рекрутеров{% endif %}):</strong></p>
-            <p style="margin-top: 8px;">
-                {% for calc in calculations %}
-                {{ calc.name }}: <strong>{{ calc.value }}</strong><br>
-                {% endfor %}
-                <strong style="font-size: 13pt; color: #597FFF;">Итого: {{ total_price }} ₽/год</strong>
-            </p>
-        </div>
-    </div>
-    
-    <div class="page-num">Страница 2</div>
-</div>
-
-<!-- PAGE 3 -->
-<div class="page">
-    <div class="header">
-        <div class="logo">
-            <img src="{{ logo_path }}" alt="WorkHere">
-        </div>
-        <div class="header-info">
-            Коммерческое предложение
-        </div>
-    </div>
-    
-    <div class="section">
-        <div class="section-title"><span class="num">4</span>Внедрение и запуск</div>
-        
-        <div class="steps">
-            <div class="step">
-                <strong>Фиксация процессов</strong><br>
-                Определение ролей пользователей, настройка воронок и статусов под ваши процессы
-            </div>
-            <div class="step">
-                <strong>Подключение интеграций</strong><br>
-                Настройка интеграций с работными сайтами (HH, Авито, SuperJob) и шаблонов коммуникаций
-            </div>
-            <div class="step">
-                <strong>Настройка модулей</strong><br>
-                Добавление модуля «Заявки», настройка уведомлений (почта/Telegram), подключение Telegram-бота
-            </div>
-            <div class="step">
-                <strong>Импорт данных</strong><br>
-                Загрузка базы кандидатов из Excel по шаблону, проверка качества загрузки
-            </div>
-            <div class="step">
-                <strong>Обучение и запуск</strong><br>
-                Обучение пользователей (рекрутеры и заказчики), сопровождение на старте
-            </div>
-        </div>
-    </div>
-    
-    <div class="section">
-        <div class="section-title"><span class="num">5</span>Почему WorkHere</div>
-        
-        <div class="two-cols">
-            <div class="col">
-                <div class="col-title">Для рекрутеров</div>
-                <ul class="check">
-                    <li>Все отклики в одном месте</li>
-                    <li>Коммуникации без переключений</li>
-                    <li>Напоминания и автоматизация</li>
-                    <li>Быстрый поиск по базе</li>
-                </ul>
-            </div>
-            <div class="col">
-                <div class="col-title">Для руководителей</div>
-                <ul class="check">
-                    <li>Прозрачность процесса</li>
-                    <li>Контроль сроков и SLA</li>
-                    <li>Аналитика эффективности</li>
-                    <li>Отчёты для руководства</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="highlight-box" style="margin-top: 20px; background: #F0FDF4; border-color: #10B981;">
-            <p><strong>Результаты клиентов:</strong></p>
-            <ul style="margin-top: 8px;">
-                <li>Сокращение времени закрытия вакансии на 40-60%</li>
-                <li>Рост конверсии воронки на 25-35%</li>
-                <li>Экономия 2-3 часов в день на рутинных операциях</li>
-            </ul>
-        </div>
-    </div>
-    
-    <div class="section">
-        <div class="section-title"><span class="num">6</span>Следующие шаги</div>
+    <div class="subsection">
+        <div class="subsection-title">2.2. Интеграции с работными сайтами</div>
         <ul>
-            <li>Согласование коммерческих условий</li>
-            <li>Подписание договора (счёт-оферта)</li>
-            <li>Предоставление доступа к системе в течение 1 рабочего дня</li>
-            <li>Старт внедрения с персональным менеджером</li>
+            <li>Подключение HH.ru, Avito, SuperJob, Работа.ру — отклики автоматически попадают в систему</li>
+            <li>Автоматическое создание карточки кандидата при новом отклике</li>
+            <li>Дублирование статусов обратно на HH.ru (не нужно переключаться между системами)</li>
+            <li>Отслеживание эффективности источников: конверсия в интервью/оффер/выход</li>
         </ul>
     </div>
     
-    <div class="footer">
-        <div>
-            <strong>Контакты</strong><br>
-            +7 (800) 000-00-00<br>
-            sales@workhere.ru
+    <div class="subsection">
+        <div class="subsection-title">2.3. Коммуникации с кандидатами</div>
+        <ul>
+            <li>Мессенджеры: Telegram, WhatsApp, Viber — переписка в карточке кандидата</li>
+            <li>Шаблоны сообщений: приглашение, отказ, напоминание, запрос документов</li>
+            <li>Email-рассылки и массовые действия по выборке кандидатов</li>
+            <li>IP-телефония: звонки из карточки, запись разговоров, статусы</li>
+        </ul>
+    </div>
+    
+    <div class="subsection">
+        <div class="subsection-title">2.4. Заявки и работа с заказчиками</div>
+        <ul>
+            <li>Модуль «Заявки на подбор» — карточка заявки со статусами, сроками, согласующими лицами</li>
+            <li>Комментарии и внутренний диалог рекрутер ↔ заказчик внутри системы</li>
+            <li>Руководители видят кандидатов по своим заявкам и могут оставлять фидбек</li>
+            <li>История изменений: кто, что, когда изменил</li>
+        </ul>
+    </div>
+    
+    <div class="subsection">
+        <div class="subsection-title">2.5. Уведомления и Telegram-бот</div>
+        <ul>
+            <li>Уведомления на события: новый отклик, смена статуса, просрочка SLA — в Telegram и/или на почту</li>
+            <li>Telegram-бот: напоминания за 15 минут до собеседования, расписание на неделю/месяц</li>
+            <li>Импорт кандидатов через бота: отправьте ссылку/файл резюме — кандидат появится в системе</li>
+        </ul>
+    </div>
+    
+    <div class="subsection">
+        <div class="subsection-title">2.6. Календарь и собеседования</div>
+        <ul>
+            <li>Интеграция с Яндекс Телемост: создание ссылок на видео-интервью</li>
+            <li>Автоматические приглашения кандидатам с датой, временем, ссылкой</li>
+            <li>Подтверждение участия через SMS — статус меняется автоматически</li>
+        </ul>
+    </div>
+    
+    <div class="subsection">
+        <div class="subsection-title">2.7. Безопасность и 152-ФЗ</div>
+        <ul>
+            <li>Запрос согласия на обработку персональных данных: кандидату приходит SMS/форма</li>
+            <li>Фиксация статуса согласия в карточке кандидата</li>
+            <li>Российское ПО, данные хранятся в РФ, роли и права доступа</li>
+        </ul>
+    </div>
+    
+    {% if show_ai_option or show_premium %}
+    <div class="subsection">
+        <div class="subsection-title">2.8. AI-модуль {% if show_premium %}(включён в Премиум){% else %}(дополнительная опция){% endif %}</div>
+        <ul>
+            <li>Умный поиск по базе кандидатов: семантический поиск, синонимы, похожие кандидаты</li>
+            <li>Матчинг кандидат ↔ вакансия: оценка соответствия, подсветка сильных/слабых сторон</li>
+            <li>Ранжирование кандидатов в рамках вакансии по набору признаков</li>
+            <li>Краткое резюме карточки: суть кандидата за 20 секунд</li>
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+<!-- SECTION 3 -->
+<div class="section">
+    <div class="section-title"><span class="num">3</span>Коммерческие условия</div>
+    
+    <table class="price-table">
+        <tr>
+            <th>Позиция</th>
+            <th>Стоимость</th>
+        </tr>
+        {% if show_standard %}
+        <tr>
+            <td>Лицензия рекрутера (Стандартный тариф)</td>
+            <td>20 000 ₽/год</td>
+        </tr>
+        {% endif %}
+        {% if show_premium %}
+        <tr>
+            <td>Лицензия рекрутера (Премиум тариф, AI включён)</td>
+            <td>42 000 ₽/год</td>
+        </tr>
+        {% endif %}
+        <tr>
+            <td>Пользователи-заказчики (руководители)</td>
+            <td>Бесплатно</td>
+        </tr>
+        {% if show_ai_option %}
+        <tr>
+            <td>AI-модуль (дополнительно к Стандартному)</td>
+            <td>5 000 ₽/мес или 50 000 ₽/год</td>
+        </tr>
+        {% endif %}
+    </table>
+    
+    <div class="highlight-box">
+        <p><strong>Расчёт для вашей команды ({{ num_recruiters }} {% if num_recruiters == 1 %}рекрутер{% elif num_recruiters < 5 %}рекрутера{% else %}рекрутеров{% endif %}):</strong></p>
+        <p style="margin-top: 6px;">
+            {% for calc in calculations %}
+            {{ calc.name }}: <strong>{{ calc.value }}</strong><br>
+            {% endfor %}
+        </p>
+        <p style="margin-top: 8px; font-size: 12pt;"><strong style="color: #597FFF;">Итого: {{ total_price }} ₽/год</strong></p>
+    </div>
+</div>
+
+<!-- SECTION 4 -->
+<div class="section">
+    <div class="section-title"><span class="num">4</span>Внедрение и запуск</div>
+    
+    <div class="steps">
+        <div class="step">
+            <strong>Фиксация процессов</strong> — определение ролей, настройка воронок и статусов
         </div>
-        <div style="text-align: right;">
-            <strong>WorkHere</strong><br>
-            workhere.ru<br>
-            Telegram: @workhere
+        <div class="step">
+            <strong>Подключение интеграций</strong> — работные сайты (HH, Авито, SuperJob) и шаблоны коммуникаций
+        </div>
+        <div class="step">
+            <strong>Настройка модулей</strong> — заявки, уведомления (почта/Telegram), Telegram-бот
+        </div>
+        <div class="step">
+            <strong>Импорт данных</strong> — загрузка базы кандидатов из Excel, проверка качества
+        </div>
+        <div class="step">
+            <strong>Обучение и запуск</strong> — обучение пользователей, сопровождение на старте
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 5 -->
+<div class="section">
+    <div class="section-title"><span class="num">5</span>Почему WorkHere</div>
+    
+    <div class="two-cols">
+        <div class="col">
+            <div class="col-title">Для рекрутеров</div>
+            <ul class="check">
+                <li>Все отклики в одном месте</li>
+                <li>Коммуникации без переключений</li>
+                <li>Напоминания и автоматизация</li>
+                <li>Быстрый поиск по базе</li>
+            </ul>
+        </div>
+        <div class="col">
+            <div class="col-title">Для руководителей</div>
+            <ul class="check">
+                <li>Прозрачность процесса</li>
+                <li>Контроль сроков и SLA</li>
+                <li>Аналитика эффективности</li>
+                <li>Отчёты для руководства</li>
+            </ul>
         </div>
     </div>
     
-    <div class="page-num">Страница 3</div>
+    <div class="results-box">
+        <p><strong>Результаты клиентов:</strong></p>
+        <ul>
+            <li>Сокращение времени закрытия вакансии на 40-60%</li>
+            <li>Рост конверсии воронки на 25-35%</li>
+            <li>Экономия 2-3 часов в день на рутинных операциях</li>
+        </ul>
+    </div>
+</div>
+
+<!-- SECTION 6 -->
+<div class="section">
+    <div class="section-title"><span class="num">6</span>Следующие шаги</div>
+    <ul>
+        <li>Согласование коммерческих условий</li>
+        <li>Подписание договора (счёт-оферта)</li>
+        <li>Предоставление доступа к системе в течение 1 рабочего дня</li>
+        <li>Старт внедрения с персональным менеджером</li>
+    </ul>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div>
+        <strong>Контакты</strong><br>
+        +7 (800) 000-00-00<br>
+        sales@workhere.ru
+    </div>
+    <div style="text-align: right;">
+        <strong>WorkHere</strong><br>
+        workhere.ru<br>
+        Telegram: @workhere
+    </div>
 </div>
 
 </body>
