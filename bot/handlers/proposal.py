@@ -42,6 +42,16 @@ def get_ai_option_keyboard() -> InlineKeyboardMarkup:
     ])
 
 
+def get_bonus_keyboard() -> InlineKeyboardMarkup:
+    """Keyboard for bonus option selection"""
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="🎁 2 года + 1 лицензия в подарок", callback_data="bonus_free_license")],
+        [InlineKeyboardButton(text="🔄 Бесплатный переход с конкурента", callback_data="bonus_competitor")],
+        [InlineKeyboardButton(text="📅 2 года + 3 месяца бесплатно", callback_data="bonus_3months")],
+        [InlineKeyboardButton(text="➡️ Без бонуса", callback_data="bonus_none")],
+    ])
+
+
 @router.message(Command("start"))
 async def cmd_start(message: Message, state: FSMContext):
     """Handle /start command"""
@@ -280,9 +290,9 @@ async def handle_tariff_selection(callback: CallbackQuery, state: FSMContext):
         )
         await state.set_state(ProposalStates.waiting_for_ai_option)
     else:
-        # Premium or both - proceed to generation
+        # Premium or both - ask about bonus
         await state.update_data(ai_option=False)
-        await generate_proposal(callback.message, state)
+        await ask_bonus(callback.message, state)
 
 
 # Handle AI option
@@ -293,6 +303,36 @@ async def handle_ai_option(callback: CallbackQuery, state: FSMContext):
     await callback.answer()
     
     await state.update_data(ai_option=ai_option)
+    await ask_bonus(callback.message, state)
+
+
+async def ask_bonus(message: Message, state: FSMContext):
+    """Ask about bonus option for 2-year payment"""
+    await message.edit_text(
+        "🎁 **Добавить специальное предложение при оплате на 2 года?**\n\n"
+        "Выбери бонус для клиента:",
+        parse_mode="Markdown",
+        reply_markup=get_bonus_keyboard()
+    )
+    await state.set_state(ProposalStates.waiting_for_bonus)
+
+
+# Handle bonus option
+@router.callback_query(StateFilter(ProposalStates.waiting_for_bonus), F.data.startswith("bonus_"))
+async def handle_bonus_option(callback: CallbackQuery, state: FSMContext):
+    """Handle bonus option selection"""
+    bonus = callback.data.replace("bonus_", "")
+    await callback.answer()
+    
+    # Map bonus codes to readable text
+    bonus_texts = {
+        "free_license": "При оплате на 2 года — 1 лицензия в подарок",
+        "competitor": "Бесплатный период использования = остаток срока у текущего провайдера",
+        "3months": "При оплате на 2 года — 3 месяца использования бесплатно",
+        "none": None
+    }
+    
+    await state.update_data(bonus=bonus_texts.get(bonus))
     await generate_proposal(callback.message, state)
 
 
@@ -307,6 +347,7 @@ async def generate_proposal(message: Message, state: FSMContext):
     transcript = data.get("transcript", "")
     tariff = data.get("tariff", "standard")
     ai_option = data.get("ai_option", False)
+    bonus = data.get("bonus")  # Бонус при оплате на 2 года
     
     # Статусные сообщения с анимацией
     status_messages = [
@@ -349,7 +390,8 @@ async def generate_proposal(message: Message, state: FSMContext):
                 transcript=transcript,
                 tariff=tariff,
                 num_recruiters=num_recruiters,
-                output_path=pdf_path
+                output_path=pdf_path,
+                bonus=bonus
             )
         finally:
             status_task.cancel()
@@ -434,6 +476,15 @@ async def handle_waiting_ai(message: Message):
     await message.answer(
         "☝️ Выбери вариант кнопкой выше",
         reply_markup=get_ai_option_keyboard()
+    )
+
+
+@router.message(StateFilter(ProposalStates.waiting_for_bonus))
+async def handle_waiting_bonus(message: Message):
+    """Handle message when waiting for bonus option"""
+    await message.answer(
+        "☝️ Выбери бонус кнопкой выше",
+        reply_markup=get_bonus_keyboard()
     )
 
 

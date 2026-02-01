@@ -9,4 +9,5 @@ class ProposalStates(StatesGroup):
     waiting_for_transcript = State()
     waiting_for_tariff = State()
     waiting_for_ai_option = State()
+    waiting_for_bonus = State()
     processing = State()

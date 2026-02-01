@@ -354,6 +354,7 @@ GENERATION_PROMPT = """Ты — опытный B2B копирайтер. Соз�
 
 Тариф: {tariff}
 Количество рекрутеров: {num_recruiters}
+{bonus_info}
 
 ## ТРАНСКРИБАЦИЯ ВСТРЕЧИ
 
@@ -366,9 +367,10 @@ GENERATION_PROMPT = """Ты — опытный B2B копирайтер. Соз�
 Включи:
 - <style> с CSS внутри <head>
 - Логотип в header: <img src="{logo_path}">
-- Все 6 разделов
-- 2-3 маскота между разделами
+- Все разделы
+- Маскоты для заполнения пустоты внизу страниц
 - Персонализированный контент на основе транскрибации
+- Если есть бонус — добавь его в блок "Коммерческие условия" как специальное предложение
 
 ВАЖНО: Возвращай ТОЛЬКО HTML, без ```html``` обёртки."""
 
@@ -387,10 +389,11 @@ async def generate_html_proposal(
     transcript: str,
     tariff: str,
     num_recruiters: int,
-    output_path: Path
+    output_path: Path,
+    bonus: str = None
 ) -> Path:
     """
-    Генерация КП через GPT-4o.
+    Генерация КП через GPT-5.2.
     GPT сам создаёт HTML, выступая как дизайнер.
     """
     
@@ -410,6 +413,11 @@ async def generate_html_proposal(
         "both": "Оба варианта"
     }.get(tariff, "Стандартный")
     
+    # Бонус при оплате на 2 года
+    bonus_text = ""
+    if bonus:
+        bonus_text = f"\n\n**СПЕЦИАЛЬНОЕ ПРЕДЛОЖЕНИЕ (добавить в блок Коммерческие условия):**\n🎁 {bonus}"
+    
     # Обрезаем транскрибацию если слишком длинная
     if len(transcript) > 20000:
         transcript = transcript[:20000] + "\n\n[...обрезано...]"
@@ -419,6 +427,7 @@ async def generate_html_proposal(
         mascot_paths=mascot_paths_str,
         tariff=tariff_label,
         num_recruiters=num_recruiters,
+        bonus_info=bonus_text,
         transcript=transcript,
         logo_path=logo_path
     )
