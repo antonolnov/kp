@@ -381,25 +381,18 @@ async def generate_html_proposal(
         logo_path=logo_path
     )
     
-    logger.info(f"Generating HTML proposal via gpt-4.1 ({len(transcript)} chars transcript)...")
+    logger.info(f"Generating HTML proposal via gpt-5.2 ({len(transcript)} chars transcript)...")
     
-    response = client.chat.completions.create(
-        model="gpt-4.1",
-        messages=[
-            {
-                "role": "system",
-                "content": "Ты — дизайнер коммерческих предложений. Генерируй качественный HTML. Отвечай ТОЛЬКО HTML-кодом."
-            },
-            {
-                "role": "user", 
-                "content": prompt
-            }
-        ],
-        max_tokens=16000,
-        temperature=0.7
+    # GPT-5.2 uses new Responses API
+    full_prompt = "Ты — дизайнер коммерческих предложений. Генерируй качественный HTML. Отвечай ТОЛЬКО HTML-кодом.\n\n" + prompt
+    
+    response = client.responses.create(
+        model="gpt-5.2",
+        input=full_prompt
     )
     
-    html_content = response.choices[0].message.content.strip()
+    # Extract text from Responses API format
+    html_content = response.output[0].content[0].text.strip()
     
     # Очистка от markdown если есть
     if html_content.startswith("```html"):
