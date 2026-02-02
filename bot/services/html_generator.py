@@ -365,7 +365,6 @@ GENERATION_PROMPT = """Создай HTML коммерческого предло
 ## ДАННЫЕ ДЛЯ ЗАПОЛНЕНИЯ
 
 Тариф: {tariff}
-Рекрутеров: {num_recruiters}
 {bonus_info}
 
 Маскоты: {mascot_paths}
@@ -377,6 +376,11 @@ GENERATION_PROMPT = """Создай HTML коммерческого предло
 
 1. СПИСКИ: Всегда <li><span>текст</span></li> — НИКОГДА без <span>!
 2. ШАГИ: ТОЛЬКО <table class="steps-table"> — ЗАПРЕЩЕНО div/flexbox/position!
+3. ЦЕНЫ: ТОЛЬКО таблица с ценой за 1 лицензию! ЗАПРЕЩЕНО:
+   - "Итого по запросу: X рекрутеров × Y ₽ = Z ₽"
+   - Любые расчёты с количеством рекрутеров
+   - Блоки с итоговой суммой
+   - Клиент сам посчитает, не считай за него!
 3. ФУТЕР: НЕ добавляй! Он в CSS автоматически!
 4. КОМПАНИЯ: Нет названия = пустая строка, НЕ выдумывай!
 5. РАЗДЕЛ 2: Максимум 4 подраздела по 2 пункта = 8 пунктов всего!
@@ -429,6 +433,15 @@ def sanitize_html(html: str) -> str:
     
     # 7. Убираем transform
     html = re.sub(r'transform\s*:\s*[^;]+;?', '', html, flags=re.IGNORECASE)
+    
+    # 8. Удаляем блоки "Итого по запросу" с расчётами
+    # Паттерны: "Итого: X рекрутеров × Y ₽", "Итого по запросу:", любые div с итогами
+    html = re.sub(r'<div[^>]*>.*?[Ии]того.*?рекрутер.*?</div>', '', html, flags=re.IGNORECASE | re.DOTALL)
+    html = re.sub(r'<p[^>]*>.*?[Ии]того.*?рекрутер.*?</p>', '', html, flags=re.IGNORECASE | re.DOTALL)
+    html = re.sub(r'<div[^>]*class="[^"]*total[^"]*"[^>]*>.*?</div>', '', html, flags=re.IGNORECASE | re.DOTALL)
+    html = re.sub(r'<div[^>]*class="[^"]*price-total[^"]*"[^>]*>.*?</div>', '', html, flags=re.IGNORECASE | re.DOTALL)
+    # Удаляем строки с "× 20 000" или "= 60 000" и т.п.
+    html = re.sub(r'<[^>]+>.*?\d+\s*рекрутер[а-я]*\s*[×x]\s*\d+.*?</[^>]+>', '', html, flags=re.IGNORECASE | re.DOTALL)
     
     logger.info("HTML sanitized")
     return html
