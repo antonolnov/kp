@@ -753,30 +753,50 @@ HTML_CONTENT = f"""
      SLIDE 1: TITLE
      ═══════════════════════════════════════════════════════════════ -->
 <div class="slide slide-dark">
-    <div class="pt-5">
+    <div style="padding-top: 12mm;">
         <p class="tag tag-light">ATS + CRM для рекрутинга</p>
-        <h1>WorkHere</h1>
-        <p class="text-lg mb-5" style="color: rgba(255,255,255,0.7); max-width: 180mm;">
-            Система управления наймом, которая закрывает вакансии быстрее
+        <h1 style="font-size: 48pt; margin-bottom: 6mm;">WorkHere</h1>
+        <p style="font-size: 14pt; color: rgba(255,255,255,0.8); max-width: 200mm; margin-bottom: 12mm; line-height: 1.6;">
+            Единая система управления наймом: от заявки до выхода сотрудника.<br>
+            Автоматизация, AI-поиск, аналитика — всё в одном месте.
         </p>
         
-        <div class="row gap-lg" style="max-width: 200mm;">
-            <div class="col col-4">
-                <div class="stat-value" style="color: #fff;">1 500+</div>
-                <p class="text-sm" style="color: rgba(255,255,255,0.5);">компаний-клиентов</p>
+        <div style="display: table; width: 100%; max-width: 240mm; margin-bottom: 10mm;">
+            <div style="display: table-row;">
+                <div style="display: table-cell; width: 20%; text-align: center; padding: 4mm; border-right: 1px solid rgba(255,255,255,0.1);">
+                    <div class="stat-value" style="color: #fff; font-size: 32pt;">1 500+</div>
+                    <p class="text-sm" style="color: rgba(255,255,255,0.5);">компаний</p>
+                </div>
+                <div style="display: table-cell; width: 20%; text-align: center; padding: 4mm; border-right: 1px solid rgba(255,255,255,0.1);">
+                    <div class="stat-value" style="color: #fff; font-size: 32pt;">AI</div>
+                    <p class="text-sm" style="color: rgba(255,255,255,0.5);">умный поиск</p>
+                </div>
+                <div style="display: table-cell; width: 20%; text-align: center; padding: 4mm; border-right: 1px solid rgba(255,255,255,0.1);">
+                    <div class="stat-value" style="color: #fff; font-size: 32pt;">−60%</div>
+                    <p class="text-sm" style="color: rgba(255,255,255,0.5);">время найма</p>
+                </div>
+                <div style="display: table-cell; width: 20%; text-align: center; padding: 4mm; border-right: 1px solid rgba(255,255,255,0.1);">
+                    <div class="stat-value" style="color: #fff; font-size: 32pt;">10+</div>
+                    <p class="text-sm" style="color: rgba(255,255,255,0.5);">интеграций</p>
+                </div>
+                <div style="display: table-cell; width: 20%; text-align: center; padding: 4mm;">
+                    <div class="stat-value" style="color: #fff; font-size: 32pt;">24/7</div>
+                    <p class="text-sm" style="color: rgba(255,255,255,0.5);">поддержка</p>
+                </div>
             </div>
-            <div class="col col-4">
-                <div class="stat-value" style="color: #fff;">AI</div>
-                <p class="text-sm" style="color: rgba(255,255,255,0.5);">умный поиск кандидатов</p>
-            </div>
-            <div class="col col-4">
-                <div class="stat-value" style="color: #fff;">−60%</div>
-                <p class="text-sm" style="color: rgba(255,255,255,0.5);">время закрытия вакансии</p>
-            </div>
-            <div class="col col-4">
-                <div class="stat-value" style="color: #fff;">24/7</div>
-                <p class="text-sm" style="color: rgba(255,255,255,0.5);">техническая поддержка</p>
-            </div>
+        </div>
+        
+        <div style="background: rgba(255,255,255,0.08); border-radius: 3mm; padding: 5mm 8mm; max-width: 240mm;">
+            <p style="color: rgba(255,255,255,0.6); font-size: 9pt; margin: 0;">
+                <strong style="color: #fff;">Нам доверяют:</strong>&nbsp;&nbsp;
+                <span style="margin-right: 6mm;">Ростелеком</span>
+                <span style="margin-right: 6mm;">Сбербанк</span>
+                <span style="margin-right: 6mm;">МТС</span>
+                <span style="margin-right: 6mm;">X5 Group</span>
+                <span style="margin-right: 6mm;">Ozon</span>
+                <span style="margin-right: 6mm;">Яндекс</span>
+                <span>VK</span>
+            </p>
         </div>
     </div>
     
@@ -856,52 +876,83 @@ HTML_CONTENT = f"""
 <!-- ═══════════════════════════════════════════════════════════════
      SLIDE 3: SOLUTION
      ═══════════════════════════════════════════════════════════════ -->
-<div class="slide slide-gradient text-center">
-    <div class="pt-3">
+<div class="slide slide-gradient">
+    <div style="padding-top: 8mm;">
         <p class="tag tag-light">Решение</p>
-        <h2 style="font-size: 28pt; margin-bottom: 10mm;">
-            Одна система для всего<br>процесса найма
+        <h2 style="font-size: 26pt; margin-bottom: 8mm;">
+            Одна система для всего процесса найма
         </h2>
         
-        <div style="background: rgba(255,255,255,0.15); padding: 6mm 12mm; border-radius: 4mm; display: inline-block; margin-bottom: 8mm;">
-            {logo_svg_white("10mm")}
-        </div>
-        
-        <p style="color: rgba(255,255,255,0.9); font-size: 11pt; max-width: 180mm; margin: 0 auto 10mm auto;">
-            От заявки на подбор до выхода сотрудника — всё в одном месте
-        </p>
-        
-        <div style="display: table; width: 100%; max-width: 220mm; margin: 0 auto;">
+        <div style="display: table; width: 100%; max-width: 245mm; margin-bottom: 4mm;">
             <div style="display: table-row;">
-                <div style="display: table-cell; width: 25%; padding: 4mm; text-align: center;">
-                    <div style="background: rgba(255,255,255,0.1); border-radius: 3mm; padding: 5mm;">
-                        {icon('database', 28, '#fff')}
-                        <p style="color: #fff; font-weight: 600; margin: 3mm 0 1mm 0; font-size: 10pt;">Единая база</p>
-                        <p style="color: rgba(255,255,255,0.6); font-size: 8pt; margin: 0;">Все кандидаты в одном месте</p>
+                <div style="display: table-cell; width: 25%; padding: 3mm;">
+                    <div style="background: rgba(255,255,255,0.12); border-radius: 3mm; padding: 4mm; min-height: 32mm;">
+                        {icon('database', 24, '#fff')}
+                        <p style="color: #fff; font-weight: 600; margin: 2mm 0 1mm 0; font-size: 10pt;">Единая база</p>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 8pt; margin: 0; line-height: 1.4;">Все кандидаты, история, комментарии, теги — в одном месте</p>
                     </div>
                 </div>
-                <div style="display: table-cell; width: 25%; padding: 4mm; text-align: center;">
-                    <div style="background: rgba(255,255,255,0.1); border-radius: 3mm; padding: 5mm;">
-                        {icon('rocket', 28, '#fff')}
-                        <p style="color: #fff; font-weight: 600; margin: 3mm 0 1mm 0; font-size: 10pt;">Автоматизация</p>
-                        <p style="color: rgba(255,255,255,0.6); font-size: 8pt; margin: 0;">Рассылки, напоминания, отчёты</p>
+                <div style="display: table-cell; width: 25%; padding: 3mm;">
+                    <div style="background: rgba(255,255,255,0.12); border-radius: 3mm; padding: 4mm; min-height: 32mm;">
+                        {icon('rocket', 24, '#fff')}
+                        <p style="color: #fff; font-weight: 600; margin: 2mm 0 1mm 0; font-size: 10pt;">Мультипостинг</p>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 8pt; margin: 0; line-height: 1.4;">Публикация вакансии на 10+ job-сайтах в 1 клик</p>
                     </div>
                 </div>
-                <div style="display: table-cell; width: 25%; padding: 4mm; text-align: center;">
-                    <div style="background: rgba(255,255,255,0.1); border-radius: 3mm; padding: 5mm;">
-                        {icon('chart', 28, '#fff')}
-                        <p style="color: #fff; font-weight: 600; margin: 3mm 0 1mm 0; font-size: 10pt;">Аналитика</p>
-                        <p style="color: rgba(255,255,255,0.6); font-size: 8pt; margin: 0;">Данные по всей воронке</p>
+                <div style="display: table-cell; width: 25%; padding: 3mm;">
+                    <div style="background: rgba(255,255,255,0.12); border-radius: 3mm; padding: 4mm; min-height: 32mm;">
+                        {icon('brain', 24, '#fff')}
+                        <p style="color: #fff; font-weight: 600; margin: 2mm 0 1mm 0; font-size: 10pt;">AI-поиск</p>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 8pt; margin: 0; line-height: 1.4;">Умный поиск, матчинг, ранжирование кандидатов</p>
                     </div>
                 </div>
-                <div style="display: table-cell; width: 25%; padding: 4mm; text-align: center;">
-                    <div style="background: rgba(255,255,255,0.1); border-radius: 3mm; padding: 5mm;">
-                        {icon('shield', 28, '#fff')}
-                        <p style="color: #fff; font-weight: 600; margin: 3mm 0 1mm 0; font-size: 10pt;">Безопасность</p>
-                        <p style="color: rgba(255,255,255,0.6); font-size: 8pt; margin: 0;">152-ФЗ, согласия, доступы</p>
+                <div style="display: table-cell; width: 25%; padding: 3mm;">
+                    <div style="background: rgba(255,255,255,0.12); border-radius: 3mm; padding: 4mm; min-height: 32mm;">
+                        {icon('chart', 24, '#fff')}
+                        <p style="color: #fff; font-weight: 600; margin: 2mm 0 1mm 0; font-size: 10pt;">Аналитика</p>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 8pt; margin: 0; line-height: 1.4;">Воронка, конверсии, источники, стоимость найма</p>
                     </div>
                 </div>
             </div>
+        </div>
+        
+        <div style="display: table; width: 100%; max-width: 245mm;">
+            <div style="display: table-row;">
+                <div style="display: table-cell; width: 25%; padding: 3mm;">
+                    <div style="background: rgba(255,255,255,0.12); border-radius: 3mm; padding: 4mm; min-height: 32mm;">
+                        {icon('message', 24, '#fff')}
+                        <p style="color: #fff; font-weight: 600; margin: 2mm 0 1mm 0; font-size: 10pt;">Коммуникации</p>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 8pt; margin: 0; line-height: 1.4;">Чаты HH, Авито, WhatsApp, Telegram — в одном окне</p>
+                    </div>
+                </div>
+                <div style="display: table-cell; width: 25%; padding: 3mm;">
+                    <div style="background: rgba(255,255,255,0.12); border-radius: 3mm; padding: 4mm; min-height: 32mm;">
+                        {icon('clock', 24, '#fff')}
+                        <p style="color: #fff; font-weight: 600; margin: 2mm 0 1mm 0; font-size: 10pt;">Автоматизация</p>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 8pt; margin: 0; line-height: 1.4;">Триггеры, шаблоны писем, напоминания, авто-отказы</p>
+                    </div>
+                </div>
+                <div style="display: table-cell; width: 25%; padding: 3mm;">
+                    <div style="background: rgba(255,255,255,0.12); border-radius: 3mm; padding: 4mm; min-height: 32mm;">
+                        {icon('users', 24, '#fff')}
+                        <p style="color: #fff; font-weight: 600; margin: 2mm 0 1mm 0; font-size: 10pt;">Командная работа</p>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 8pt; margin: 0; line-height: 1.4;">Роли, доступы, согласования, комментарии</p>
+                    </div>
+                </div>
+                <div style="display: table-cell; width: 25%; padding: 3mm;">
+                    <div style="background: rgba(255,255,255,0.12); border-radius: 3mm; padding: 4mm; min-height: 32mm;">
+                        {icon('shield', 24, '#fff')}
+                        <p style="color: #fff; font-weight: 600; margin: 2mm 0 1mm 0; font-size: 10pt;">Безопасность</p>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 8pt; margin: 0; line-height: 1.4;">152-ФЗ, согласия ПДн, аудит действий</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: rgba(255,255,255,0.15); border-radius: 2mm; padding: 4mm 6mm; margin-top: 6mm; max-width: 245mm;">
+            <p style="color: #fff; font-size: 10pt; margin: 0; text-align: center;">
+                <strong>Результат:</strong> рекрутер тратит время на людей, а не на рутину
+            </p>
         </div>
     </div>
     
@@ -980,43 +1031,91 @@ HTML_CONTENT = f"""
      ═══════════════════════════════════════════════════════════════ -->
 <div class="slide">
     <p class="tag">Процесс</p>
-    <h2>Полный цикл найма</h2>
+    <h2>Полный цикл найма под контролем</h2>
     
-    <div class="steps">
-        <div class="step">
-            <div class="step-num">01</div>
-            <div class="step-title">Заявка</div>
-            <div class="step-desc">От менеджера</div>
-        </div>
-        <div class="step">
-            <div class="step-num">02</div>
-            <div class="step-title">Публикация</div>
-            <div class="step-desc">На job-сайтах</div>
-        </div>
-        <div class="step">
-            <div class="step-num">03</div>
-            <div class="step-title">Отклики</div>
-            <div class="step-desc">Единый поток</div>
-        </div>
-        <div class="step">
-            <div class="step-num">04</div>
-            <div class="step-title">Скрининг</div>
-            <div class="step-desc">Отбор + AI</div>
-        </div>
-        <div class="step">
-            <div class="step-num">05</div>
-            <div class="step-title">Интервью</div>
-            <div class="step-desc">Оценка</div>
-        </div>
-        <div class="step step-active">
-            <div class="step-num">06</div>
-            <div class="step-title">Оффер</div>
-            <div class="step-desc">Выход</div>
+    <div style="display: table; width: 100%; margin-top: 6mm;">
+        <div style="display: table-row;">
+            <div style="display: table-cell; width: 16.6%; padding: 2mm; text-align: center; vertical-align: top;">
+                <div style="background: {C['primary_light']}; border: 2px solid {C['primary']}; border-radius: 3mm; padding: 4mm;">
+                    <div style="font-size: 24pt; font-weight: 700; color: {C['primary']};">01</div>
+                    <div style="font-weight: 600; font-size: 10pt; margin: 2mm 0;">Заявка</div>
+                    <div style="font-size: 8pt; color: {C['muted']}; line-height: 1.3;">Менеджер создаёт заявку с требованиями и сроками</div>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 16.6%; padding: 2mm; text-align: center; vertical-align: top;">
+                <div style="background: {C['bg']}; border: 1px solid {C['border']}; border-radius: 3mm; padding: 4mm;">
+                    <div style="font-size: 24pt; font-weight: 700; color: {C['text']};">02</div>
+                    <div style="font-weight: 600; font-size: 10pt; margin: 2mm 0;">Публикация</div>
+                    <div style="font-size: 8pt; color: {C['muted']}; line-height: 1.3;">Мультипостинг на HH, Авито, SuperJob за 1 клик</div>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 16.6%; padding: 2mm; text-align: center; vertical-align: top;">
+                <div style="background: {C['bg']}; border: 1px solid {C['border']}; border-radius: 3mm; padding: 4mm;">
+                    <div style="font-size: 24pt; font-weight: 700; color: {C['text']};">03</div>
+                    <div style="font-weight: 600; font-size: 10pt; margin: 2mm 0;">Отклики</div>
+                    <div style="font-size: 8pt; color: {C['muted']}; line-height: 1.3;">Все резюме в едином потоке, автопарсинг данных</div>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 16.6%; padding: 2mm; text-align: center; vertical-align: top;">
+                <div style="background: {C['bg']}; border: 1px solid {C['border']}; border-radius: 3mm; padding: 4mm;">
+                    <div style="font-size: 24pt; font-weight: 700; color: {C['text']};">04</div>
+                    <div style="font-weight: 600; font-size: 10pt; margin: 2mm 0;">Скрининг</div>
+                    <div style="font-size: 8pt; color: {C['muted']}; line-height: 1.3;">AI-ранжирование, фильтры, быстрый отбор лучших</div>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 16.6%; padding: 2mm; text-align: center; vertical-align: top;">
+                <div style="background: {C['bg']}; border: 1px solid {C['border']}; border-radius: 3mm; padding: 4mm;">
+                    <div style="font-size: 24pt; font-weight: 700; color: {C['text']};">05</div>
+                    <div style="font-weight: 600; font-size: 10pt; margin: 2mm 0;">Интервью</div>
+                    <div style="font-size: 8pt; color: {C['muted']}; line-height: 1.3;">Календарь, напоминания, оценочные листы</div>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 16.6%; padding: 2mm; text-align: center; vertical-align: top;">
+                <div style="background: {C['accent_light']}; border: 2px solid {C['accent']}; border-radius: 3mm; padding: 4mm;">
+                    <div style="font-size: 24pt; font-weight: 700; color: {C['accent']};">06</div>
+                    <div style="font-weight: 600; font-size: 10pt; margin: 2mm 0;">Оффер</div>
+                    <div style="font-size: 8pt; color: {C['muted']}; line-height: 1.3;">Согласование, оффер, онбординг нового сотрудника</div>
+                </div>
+            </div>
         </div>
     </div>
     
-    <div class="card card-primary mt-4" style="padding: 4mm 6mm;">
-        <p class="text-sm mb-0"><strong>Ключевое:</strong> контроль на каждом этапе с SLA и автоматическими напоминаниями</p>
+    <div style="display: table; width: 100%; margin-top: 8mm;">
+        <div style="display: table-row;">
+            <div style="display: table-cell; width: 33%; padding: 3mm;">
+                <div class="card card-filled" style="padding: 4mm; min-height: 28mm;">
+                    <div style="display: table; width: 100%;">
+                        <div style="display: table-cell; width: 12mm; vertical-align: top;">{icon('clock', 24, C['primary'])}</div>
+                        <div style="display: table-cell; vertical-align: top;">
+                            <p style="font-weight: 600; margin: 0 0 1mm 0; font-size: 10pt;">SLA и дедлайны</p>
+                            <p class="text-sm" style="margin: 0; color: {C['muted']};">Автоматический контроль сроков на каждом этапе воронки</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 33%; padding: 3mm;">
+                <div class="card card-filled" style="padding: 4mm; min-height: 28mm;">
+                    <div style="display: table; width: 100%;">
+                        <div style="display: table-cell; width: 12mm; vertical-align: top;">{icon('message', 24, C['primary'])}</div>
+                        <div style="display: table-cell; vertical-align: top;">
+                            <p style="font-weight: 600; margin: 0 0 1mm 0; font-size: 10pt;">Уведомления</p>
+                            <p class="text-sm" style="margin: 0; color: {C['muted']};">Push, email, Telegram — никто не забудет про кандидата</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 33%; padding: 3mm;">
+                <div class="card card-filled" style="padding: 4mm; min-height: 28mm;">
+                    <div style="display: table; width: 100%;">
+                        <div style="display: table-cell; width: 12mm; vertical-align: top;">{icon('chart', 24, C['primary'])}</div>
+                        <div style="display: table-cell; vertical-align: top;">
+                            <p style="font-weight: 600; margin: 0 0 1mm 0; font-size: 10pt;">Прозрачность</p>
+                            <p class="text-sm" style="margin: 0; color: {C['muted']};">Видно, где кандидат и кто за него отвечает</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <div class="footer">
@@ -1034,51 +1133,108 @@ HTML_CONTENT = f"""
     <p class="tag">Возможности</p>
     <h2>Единая база кандидатов</h2>
     
-    <div class="row gap-lg">
-        <div class="col col-2">
-            <ul class="list-check">
-                <li>Все резюме в одном месте</li>
-                <li>Полная история взаимодействий</li>
-                <li>Комментарии и теги</li>
-                <li>Умный поиск по тексту</li>
-                <li>Защита от дублей</li>
-                <li>Слияние карточек</li>
-            </ul>
-            
-            <div class="card card-primary mt-4" style="padding: 4mm 5mm;">
-                <p class="text-sm mb-0"><strong>Результат:</strong> ни один кандидат не теряется</p>
+    <div style="display: table; width: 100%;">
+        <div style="display: table-row;">
+            <div style="display: table-cell; width: 50%; vertical-align: top; padding-right: 6mm;">
+                <div style="display: table; width: 100%; margin-bottom: 4mm;">
+                    <div style="display: table-row;">
+                        <div style="display: table-cell; width: 50%; padding: 2mm;">
+                            <div class="card card-filled" style="padding: 4mm; min-height: 24mm;">
+                                {icon('database', 20, C['primary'])}
+                                <p style="font-weight: 600; font-size: 9pt; margin: 2mm 0 1mm 0;">Все резюме</p>
+                                <p style="font-size: 8pt; color: {C['muted']}; margin: 0;">В одном месте, без дублей</p>
+                            </div>
+                        </div>
+                        <div style="display: table-cell; width: 50%; padding: 2mm;">
+                            <div class="card card-filled" style="padding: 4mm; min-height: 24mm;">
+                                {icon('clock', 20, C['primary'])}
+                                <p style="font-weight: 600; font-size: 9pt; margin: 2mm 0 1mm 0;">История</p>
+                                <p style="font-size: 8pt; color: {C['muted']}; margin: 0;">Все взаимодействия и этапы</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: table; width: 100%; margin-bottom: 4mm;">
+                    <div style="display: table-row;">
+                        <div style="display: table-cell; width: 50%; padding: 2mm;">
+                            <div class="card card-filled" style="padding: 4mm; min-height: 24mm;">
+                                {icon('search', 20, C['primary'])}
+                                <p style="font-weight: 600; font-size: 9pt; margin: 2mm 0 1mm 0;">Умный поиск</p>
+                                <p style="font-size: 8pt; color: {C['muted']}; margin: 0;">По навыкам, опыту, городу</p>
+                            </div>
+                        </div>
+                        <div style="display: table-cell; width: 50%; padding: 2mm;">
+                            <div class="card card-filled" style="padding: 4mm; min-height: 24mm;">
+                                {icon('list', 20, C['primary'])}
+                                <p style="font-weight: 600; font-size: 9pt; margin: 2mm 0 1mm 0;">Теги и фильтры</p>
+                                <p style="font-size: 8pt; color: {C['muted']}; margin: 0;">Сегментация базы</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: table; width: 100%;">
+                    <div style="display: table-row;">
+                        <div style="display: table-cell; width: 50%; padding: 2mm;">
+                            <div class="card card-filled" style="padding: 4mm; min-height: 24mm;">
+                                {icon('link', 20, C['primary'])}
+                                <p style="font-weight: 600; font-size: 9pt; margin: 2mm 0 1mm 0;">Слияние</p>
+                                <p style="font-size: 8pt; color: {C['muted']}; margin: 0;">Объединение карточек</p>
+                            </div>
+                        </div>
+                        <div style="display: table-cell; width: 50%; padding: 2mm;">
+                            <div class="card card-filled" style="padding: 4mm; min-height: 24mm;">
+                                {icon('message', 20, C['primary'])}
+                                <p style="font-weight: 600; font-size: 9pt; margin: 2mm 0 1mm 0;">Комментарии</p>
+                                <p style="font-size: 8pt; color: {C['muted']}; margin: 0;">Заметки от команды</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col col-2">
-            <div class="mockup">
-                <div class="mockup-dots">
-                    <span class="mockup-dot" style="background: #ff5f57;"></span>
-                    <span class="mockup-dot" style="background: #febc2e;"></span>
-                    <span class="mockup-dot" style="background: #28c840;"></span>
-                </div>
-                <div class="mockup-card">
-                    <span class="mockup-avatar">АИ</span>
-                    <span class="mockup-info">
-                        <span class="mockup-name">Алексей Иванов</span><br>
-                        <span class="mockup-role">Senior Developer</span>
-                    </span>
-                    <span class="mockup-status status-green">Оффер</span>
-                </div>
-                <div class="mockup-card">
-                    <span class="mockup-avatar">МП</span>
-                    <span class="mockup-info">
-                        <span class="mockup-name">Мария Петрова</span><br>
-                        <span class="mockup-role">Product Manager</span>
-                    </span>
-                    <span class="mockup-status status-yellow">Интервью</span>
-                </div>
-                <div class="mockup-card">
-                    <span class="mockup-avatar">ДС</span>
-                    <span class="mockup-info">
-                        <span class="mockup-name">Дмитрий Сидоров</span><br>
-                        <span class="mockup-role">UX Designer</span>
-                    </span>
-                    <span class="mockup-status status-blue">Скрининг</span>
+            <div style="display: table-cell; width: 50%; vertical-align: top;">
+                <div class="mockup" style="min-height: 95mm;">
+                    <div class="mockup-dots">
+                        <span class="mockup-dot" style="background: #ff5f57;"></span>
+                        <span class="mockup-dot" style="background: #febc2e;"></span>
+                        <span class="mockup-dot" style="background: #28c840;"></span>
+                        <span style="float: right; font-size: 7pt; color: rgba(255,255,255,0.4);">База кандидатов: 12 847</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); border-radius: 2mm; padding: 2mm 3mm; margin-bottom: 3mm;">
+                        <span style="color: rgba(255,255,255,0.4); font-size: 8pt;">{icon('search', 12, 'rgba(255,255,255,0.4)')}</span>
+                        <span style="color: rgba(255,255,255,0.4); font-size: 8pt; margin-left: 2mm;">Python developer Москва 3+ года...</span>
+                    </div>
+                    <div class="mockup-card">
+                        <span class="mockup-avatar" style="background: #4F6AF5;">АИ</span>
+                        <span class="mockup-info">
+                            <span class="mockup-name">Алексей Иванов</span><br>
+                            <span class="mockup-role">Senior Python Developer • 5 лет • Москва</span>
+                        </span>
+                        <span class="mockup-status status-green">Оффер</span>
+                    </div>
+                    <div class="mockup-card">
+                        <span class="mockup-avatar" style="background: #10B981;">МП</span>
+                        <span class="mockup-info">
+                            <span class="mockup-name">Мария Петрова</span><br>
+                            <span class="mockup-role">Product Manager • 4 года • СПб</span>
+                        </span>
+                        <span class="mockup-status status-yellow">Интервью</span>
+                    </div>
+                    <div class="mockup-card">
+                        <span class="mockup-avatar" style="background: #F59E0B;">ДС</span>
+                        <span class="mockup-info">
+                            <span class="mockup-name">Дмитрий Сидоров</span><br>
+                            <span class="mockup-role">UX/UI Designer • 3 года • Удалённо</span>
+                        </span>
+                        <span class="mockup-status status-blue">Скрининг</span>
+                    </div>
+                    <div class="mockup-card">
+                        <span class="mockup-avatar" style="background: #6B7280;">ЕК</span>
+                        <span class="mockup-info">
+                            <span class="mockup-name">Елена Козлова</span><br>
+                            <span class="mockup-role">Data Analyst • 2 года • Казань</span>
+                        </span>
+                        <span class="mockup-status status-blue">Новый</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1097,41 +1253,81 @@ HTML_CONTENT = f"""
      ═══════════════════════════════════════════════════════════════ -->
 <div class="slide">
     <p class="tag">Интеграции</p>
-    <h2>Подключено к экосистеме</h2>
+    <h2>Подключено к экосистеме рекрутинга</h2>
     
-    <div class="row gap-lg">
-        <div class="col col-2">
-            <h4 class="mb-2">Job-сайты</h4>
-            <div class="mb-4">
-                <span class="int-badge" style="background: #d6001c;">HeadHunter</span>
-                <span class="int-badge" style="background: #00a859;">Авито</span>
-                <span class="int-badge" style="background: #ff6600;">SuperJob</span>
-                <span class="int-badge" style="background: #0066cc;">Работа.ру</span>
+    <div style="display: table; width: 100%; margin-top: 4mm;">
+        <div style="display: table-row;">
+            <div style="display: table-cell; width: 33%; vertical-align: top; padding-right: 4mm;">
+                <div class="card card-filled" style="padding: 4mm; min-height: 75mm;">
+                    <h4 style="margin-bottom: 3mm; font-size: 11pt;">{icon('globe', 18, C['primary'])} Job-сайты</h4>
+                    <div style="margin-bottom: 2mm;">
+                        <span class="int-badge" style="background: #d6001c;">HeadHunter</span>
+                        <span class="int-badge" style="background: #00a859;">Авито</span>
+                    </div>
+                    <div style="margin-bottom: 2mm;">
+                        <span class="int-badge" style="background: #ff6600;">SuperJob</span>
+                        <span class="int-badge" style="background: #0066cc;">Работа.ру</span>
+                    </div>
+                    <div style="margin-bottom: 2mm;">
+                        <span class="int-badge" style="background: #0077b5;">LinkedIn</span>
+                        <span class="int-badge" style="background: #6b4fbb;">Хабр Карьера</span>
+                    </div>
+                    <div>
+                        <span class="int-badge" style="background: #1a1a1a;">Зарплата.ру</span>
+                        <span class="int-badge" style="background: #ff4444;">Rabota.by</span>
+                    </div>
+                    <p style="font-size: 8pt; color: {C['muted']}; margin-top: 3mm;">Мультипостинг + парсинг откликов + чаты</p>
+                </div>
             </div>
-            
-            <h4 class="mb-2">Мессенджеры</h4>
-            <div class="mb-4">
-                <span class="int-badge" style="background: #0088cc;">Telegram</span>
-                <span class="int-badge" style="background: #25d366;">WhatsApp</span>
-                <span class="int-badge" style="background: #7360f2;">Viber</span>
+            <div style="display: table-cell; width: 33%; vertical-align: top; padding: 0 2mm;">
+                <div class="card card-filled" style="padding: 4mm; min-height: 75mm;">
+                    <h4 style="margin-bottom: 3mm; font-size: 11pt;">{icon('message', 18, C['primary'])} Коммуникации</h4>
+                    <div style="margin-bottom: 2mm;">
+                        <span class="int-badge" style="background: #0088cc;">Telegram</span>
+                        <span class="int-badge" style="background: #25d366;">WhatsApp</span>
+                    </div>
+                    <div style="margin-bottom: 2mm;">
+                        <span class="int-badge" style="background: #7360f2;">Viber</span>
+                        <span class="int-badge" style="background: #0078d4;">Email SMTP</span>
+                    </div>
+                    <div style="margin-bottom: 2mm;">
+                        <span class="int-badge" style="background: #ea4335;">Gmail</span>
+                        <span class="int-badge" style="background: #0072c6;">Outlook</span>
+                    </div>
+                    <div>
+                        <span class="int-badge" style="background: #333;">SMS-шлюзы</span>
+                    </div>
+                    <p style="font-size: 8pt; color: {C['muted']}; margin-top: 3mm;">Все переписки в карточке кандидата</p>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 33%; vertical-align: top; padding-left: 4mm;">
+                <div class="card card-filled" style="padding: 4mm; min-height: 75mm;">
+                    <h4 style="margin-bottom: 3mm; font-size: 11pt;">{icon('link', 18, C['primary'])} Сервисы</h4>
+                    <div style="margin-bottom: 2mm;">
+                        <span class="int-badge" style="background: #fc3f1d;">Телемост</span>
+                        <span class="int-badge" style="background: #2d8cff;">Zoom</span>
+                    </div>
+                    <div style="margin-bottom: 2mm;">
+                        <span class="int-badge" style="background: #4285f4;">Google Meet</span>
+                    </div>
+                    <div style="margin-bottom: 2mm;">
+                        <span class="int-badge" style="background: #ffcc00; color: #000;">1С:ЗУП</span>
+                        <span class="int-badge" style="background: #ff6a00; color: #000;">Битрикс24</span>
+                    </div>
+                    <div>
+                        <span class="int-badge" style="background: #333;">REST API</span>
+                        <span class="int-badge" style="background: #6b46c1;">Webhooks</span>
+                    </div>
+                    <p style="font-size: 8pt; color: {C['muted']}; margin-top: 3mm;">Открытое API для любых интеграций</p>
+                </div>
             </div>
         </div>
-        <div class="col col-2">
-            <h4 class="mb-2">Видеозвонки</h4>
-            <div class="mb-4">
-                <span class="int-badge" style="background: #fc3f1d;">Яндекс.Телемост</span>
-            </div>
-            
-            <h4 class="mb-2">Корпоративные</h4>
-            <div class="mb-4">
-                <span class="int-badge" style="background: #ffcc00; color: #000;">1С:Предприятие</span>
-                <span class="int-badge" style="background: #333;">Open API</span>
-            </div>
-            
-            <div class="card card-filled mt-2" style="padding: 4mm;">
-                <p class="text-sm mb-0">Чаты HH и Авито прямо в системе</p>
-            </div>
-        </div>
+    </div>
+    
+    <div style="background: {C['primary_light']}; border: 1px solid {C['primary']}; border-radius: 2mm; padding: 4mm 6mm; margin-top: 5mm;">
+        <p style="font-size: 10pt; margin: 0; color: {C['primary']};">
+            <strong>Бесшовная интеграция:</strong> кандидат откликается на HH → резюме автоматически в системе → переписка в едином чате → статус обновляется в реальном времени
+        </p>
     </div>
     
     <div class="footer">
@@ -1199,40 +1395,99 @@ HTML_CONTENT = f"""
     <p class="tag">Аналитика</p>
     <h2>Данные вместо догадок</h2>
     
-    <div class="row gap-lg">
-        <div class="col col-2">
-            <h4 class="mb-2">Воронка конверсий</h4>
-            <div class="funnel-row"><div class="funnel-bar" style="width: 100%;">Отклики — 1000</div></div>
-            <div class="funnel-row"><div class="funnel-bar" style="width: 60%;">Скрининг — 600</div></div>
-            <div class="funnel-row"><div class="funnel-bar" style="width: 30%;">Интервью — 300</div></div>
-            <div class="funnel-row"><div class="funnel-bar" style="width: 15%;">Оффер — 150</div></div>
-            <div class="funnel-row"><div class="funnel-bar" style="width: 10%;">Выход — 100</div></div>
-        </div>
-        <div class="col col-2">
-            <div class="row gap-md mb-3">
-                <div class="col col-2">
-                    <div class="card card-filled text-center">
-                        <div class="stat-value">14</div>
-                        <p class="text-sm text-muted">дней до найма</p>
-                        <p class="text-sm text-accent mt-1"><strong>↓ 40%</strong></p>
-                    </div>
-                </div>
-                <div class="col col-2">
-                    <div class="card card-filled text-center">
-                        <div class="stat-value">12K</div>
-                        <p class="text-sm text-muted">₽ за найм</p>
-                        <p class="text-sm text-accent mt-1"><strong>↓ 35%</strong></p>
-                    </div>
-                </div>
+    <div style="display: table; width: 100%;">
+        <div style="display: table-row;">
+            <div style="display: table-cell; width: 40%; vertical-align: top; padding-right: 5mm;">
+                <h4 style="margin-bottom: 3mm; font-size: 11pt;">Воронка найма</h4>
+                <div class="funnel-row"><div class="funnel-bar" style="width: 100%;">Отклики — 1 247 <span style="float: right; opacity: 0.7;">100%</span></div></div>
+                <div class="funnel-row"><div class="funnel-bar" style="width: 65%;">Скрининг — 811 <span style="float: right; opacity: 0.7;">65%</span></div></div>
+                <div class="funnel-row"><div class="funnel-bar" style="width: 35%;">Интервью — 437 <span style="float: right; opacity: 0.7;">35%</span></div></div>
+                <div class="funnel-row"><div class="funnel-bar" style="width: 18%;">Финал — 224 <span style="float: right; opacity: 0.7;">18%</span></div></div>
+                <div class="funnel-row"><div class="funnel-bar" style="width: 12%; background: {C['accent']};">Оффер — 150 <span style="float: right; opacity: 0.7;">12%</span></div></div>
+                <div class="funnel-row"><div class="funnel-bar" style="width: 9%; background: {C['accent']};">Выход — 112 <span style="float: right; opacity: 0.7;">9%</span></div></div>
+                
+                <p style="font-size: 8pt; color: {C['muted']}; margin-top: 3mm;">Видно, где теряются кандидаты и почему</p>
             </div>
-            
-            <div class="card card-filled">
-                <h4 class="mb-2">Источники</h4>
-                <p class="text-sm mb-0">
-                    <span style="color: #d6001c;">●</span> HH.ru — 45%<br>
-                    <span style="color: #00a859;">●</span> Авито — 30%<br>
-                    <span style="color: {C['primary']};">●</span> Реферал — 25%
-                </p>
+            <div style="display: table-cell; width: 60%; vertical-align: top;">
+                <div style="display: table; width: 100%; margin-bottom: 4mm;">
+                    <div style="display: table-row;">
+                        <div style="display: table-cell; width: 25%; padding: 2mm;">
+                            <div class="card card-filled text-center" style="padding: 4mm;">
+                                <div class="stat-value" style="font-size: 24pt;">14</div>
+                                <p style="font-size: 8pt; color: {C['muted']}; margin: 1mm 0;">дней до найма</p>
+                                <p style="font-size: 9pt; color: {C['accent']}; margin: 0; font-weight: 600;">↓ 40%</p>
+                            </div>
+                        </div>
+                        <div style="display: table-cell; width: 25%; padding: 2mm;">
+                            <div class="card card-filled text-center" style="padding: 4mm;">
+                                <div class="stat-value" style="font-size: 24pt;">12K</div>
+                                <p style="font-size: 8pt; color: {C['muted']}; margin: 1mm 0;">₽ за найм</p>
+                                <p style="font-size: 9pt; color: {C['accent']}; margin: 0; font-weight: 600;">↓ 35%</p>
+                            </div>
+                        </div>
+                        <div style="display: table-cell; width: 25%; padding: 2mm;">
+                            <div class="card card-filled text-center" style="padding: 4mm;">
+                                <div class="stat-value" style="font-size: 24pt;">87%</div>
+                                <p style="font-size: 8pt; color: {C['muted']}; margin: 1mm 0;">retention 1 год</p>
+                                <p style="font-size: 9pt; color: {C['accent']}; margin: 0; font-weight: 600;">↑ 15%</p>
+                            </div>
+                        </div>
+                        <div style="display: table-cell; width: 25%; padding: 2mm;">
+                            <div class="card card-filled text-center" style="padding: 4mm;">
+                                <div class="stat-value" style="font-size: 24pt;">4.2</div>
+                                <p style="font-size: 8pt; color: {C['muted']}; margin: 1mm 0;">NPS кандидатов</p>
+                                <p style="font-size: 9pt; color: {C['accent']}; margin: 0; font-weight: 600;">↑ 0.8</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display: table; width: 100%;">
+                    <div style="display: table-row;">
+                        <div style="display: table-cell; width: 50%; padding: 2mm;">
+                            <div class="card card-filled" style="padding: 4mm;">
+                                <h4 style="font-size: 10pt; margin-bottom: 2mm;">Источники найма</h4>
+                                <div style="margin-bottom: 2mm;">
+                                    <span style="display: inline-block; width: 8mm; height: 3mm; background: #d6001c; border-radius: 1mm; vertical-align: middle;"></span>
+                                    <span style="font-size: 9pt; margin-left: 2mm;">HeadHunter — 42%</span>
+                                </div>
+                                <div style="margin-bottom: 2mm;">
+                                    <span style="display: inline-block; width: 8mm; height: 3mm; background: #00a859; border-radius: 1mm; vertical-align: middle;"></span>
+                                    <span style="font-size: 9pt; margin-left: 2mm;">Авито — 28%</span>
+                                </div>
+                                <div style="margin-bottom: 2mm;">
+                                    <span style="display: inline-block; width: 8mm; height: 3mm; background: {C['primary']}; border-radius: 1mm; vertical-align: middle;"></span>
+                                    <span style="font-size: 9pt; margin-left: 2mm;">Рефералы — 18%</span>
+                                </div>
+                                <div>
+                                    <span style="display: inline-block; width: 8mm; height: 3mm; background: #ff6600; border-radius: 1mm; vertical-align: middle;"></span>
+                                    <span style="font-size: 9pt; margin-left: 2mm;">Другие — 12%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display: table-cell; width: 50%; padding: 2mm;">
+                            <div class="card card-filled" style="padding: 4mm;">
+                                <h4 style="font-size: 10pt; margin-bottom: 2mm;">Эффективность рекрутеров</h4>
+                                <div style="margin-bottom: 2mm;">
+                                    <span style="font-size: 9pt;">Анна К.</span>
+                                    <span style="float: right; font-size: 9pt; color: {C['accent']}; font-weight: 600;">24 найма</span>
+                                </div>
+                                <div style="margin-bottom: 2mm;">
+                                    <span style="font-size: 9pt;">Михаил С.</span>
+                                    <span style="float: right; font-size: 9pt; color: {C['accent']}; font-weight: 600;">21 найм</span>
+                                </div>
+                                <div style="margin-bottom: 2mm;">
+                                    <span style="font-size: 9pt;">Елена П.</span>
+                                    <span style="float: right; font-size: 9pt; font-weight: 600;">18 наймов</span>
+                                </div>
+                                <div>
+                                    <span style="font-size: 9pt;">Дмитрий В.</span>
+                                    <span style="float: right; font-size: 9pt; font-weight: 600;">15 наймов</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1250,52 +1505,99 @@ HTML_CONTENT = f"""
      ═══════════════════════════════════════════════════════════════ -->
 <div class="slide">
     <p class="tag">Безопасность</p>
-    <h2>Защита данных</h2>
+    <h2>Защита персональных данных</h2>
     
-    <div class="row gap-md">
-        <div class="col col-3">
-            <div class="card card-filled text-center" style="min-height: 38mm;">
-                <div class="icon-box">{icon('document', 32)}</div>
-                <h4>ФЗ-152</h4>
-                <p class="text-sm">Полное соответствие закону</p>
+    <div style="display: table; width: 100%; margin-top: 4mm;">
+        <div style="display: table-row;">
+            <div style="display: table-cell; width: 33%; padding: 2mm;">
+                <div class="card card-filled" style="padding: 4mm; min-height: 42mm;">
+                    <div style="display: table; width: 100%;">
+                        <div style="display: table-cell; width: 14mm; vertical-align: top;">{icon('document', 28, C['primary'])}</div>
+                        <div style="display: table-cell; vertical-align: top;">
+                            <h4 style="font-size: 11pt; margin: 0 0 2mm 0;">ФЗ-152</h4>
+                            <p style="font-size: 9pt; color: {C['muted']}; margin: 0; line-height: 1.4;">Полное соответствие закону о персональных данных. Готовые политики и документы.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col col-3">
-            <div class="card card-filled text-center" style="min-height: 38mm;">
-                <div class="icon-box">{icon('check', 32)}</div>
-                <h4>Согласия</h4>
-                <p class="text-sm">Автосбор и хранение</p>
+            <div style="display: table-cell; width: 33%; padding: 2mm;">
+                <div class="card card-filled" style="padding: 4mm; min-height: 42mm;">
+                    <div style="display: table; width: 100%;">
+                        <div style="display: table-cell; width: 14mm; vertical-align: top;">{icon('check', 28, C['accent'])}</div>
+                        <div style="display: table-cell; vertical-align: top;">
+                            <h4 style="font-size: 11pt; margin: 0 0 2mm 0;">Согласия ПДн</h4>
+                            <p style="font-size: 9pt; color: {C['muted']}; margin: 0; line-height: 1.4;">Автоматический сбор и хранение согласий. Отзыв по запросу за 1 клик.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col col-3">
-            <div class="card card-filled text-center" style="min-height: 38mm;">
-                <div class="icon-box">{icon('users', 32)}</div>
-                <h4>Роли</h4>
-                <p class="text-sm">Разграничение доступа</p>
+            <div style="display: table-cell; width: 33%; padding: 2mm;">
+                <div class="card card-filled" style="padding: 4mm; min-height: 42mm;">
+                    <div style="display: table; width: 100%;">
+                        <div style="display: table-cell; width: 14mm; vertical-align: top;">{icon('users', 28, C['primary'])}</div>
+                        <div style="display: table-cell; vertical-align: top;">
+                            <h4 style="font-size: 11pt; margin: 0 0 2mm 0;">Роли и доступы</h4>
+                            <p style="font-size: 9pt; color: {C['muted']}; margin: 0; line-height: 1.4;">Гибкая система прав. Видит только то, что нужно для работы.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     
-    <div class="row gap-md mt-3">
-        <div class="col col-3">
-            <div class="card card-filled text-center" style="min-height: 38mm;">
-                <div class="icon-box">{icon('audit', 32)}</div>
-                <h4>Аудит</h4>
-                <p class="text-sm">Логирование действий</p>
+    <div style="display: table; width: 100%; margin-top: 2mm;">
+        <div style="display: table-row;">
+            <div style="display: table-cell; width: 33%; padding: 2mm;">
+                <div class="card card-filled" style="padding: 4mm; min-height: 42mm;">
+                    <div style="display: table; width: 100%;">
+                        <div style="display: table-cell; width: 14mm; vertical-align: top;">{icon('audit', 28, C['primary'])}</div>
+                        <div style="display: table-cell; vertical-align: top;">
+                            <h4 style="font-size: 11pt; margin: 0 0 2mm 0;">Аудит действий</h4>
+                            <p style="font-size: 9pt; color: {C['muted']}; margin: 0; line-height: 1.4;">Полный лог: кто, когда и что делал. Для проверок и расследований.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 33%; padding: 2mm;">
+                <div class="card card-filled" style="padding: 4mm; min-height: 42mm;">
+                    <div style="display: table; width: 100%;">
+                        <div style="display: table-cell; width: 14mm; vertical-align: top;">{icon('lock', 28, C['primary'])}</div>
+                        <div style="display: table-cell; vertical-align: top;">
+                            <h4 style="font-size: 11pt; margin: 0 0 2mm 0;">Шифрование</h4>
+                            <p style="font-size: 9pt; color: {C['muted']}; margin: 0; line-height: 1.4;">TLS 1.3, шифрование данных в покое. Безопасная передача резюме.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 33%; padding: 2mm;">
+                <div class="card card-filled" style="padding: 4mm; min-height: 42mm;">
+                    <div style="display: table; width: 100%;">
+                        <div style="display: table-cell; width: 14mm; vertical-align: top;">{icon('shield', 28, C['accent'])}</div>
+                        <div style="display: table-cell; vertical-align: top;">
+                            <h4 style="font-size: 11pt; margin: 0 0 2mm 0;">Реестр ПО</h4>
+                            <p style="font-size: 9pt; color: {C['muted']}; margin: 0; line-height: 1.4;">Включены в реестр российского ПО. Подходит для госзакупок.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col col-3">
-            <div class="card card-filled text-center" style="min-height: 38mm;">
-                <div class="icon-box">{icon('lock', 32)}</div>
-                <h4>Шифрование</h4>
-                <p class="text-sm">Защита данных</p>
+    </div>
+    
+    <div style="display: table; width: 100%; margin-top: 4mm;">
+        <div style="display: table-row;">
+            <div style="display: table-cell; width: 50%; padding: 2mm;">
+                <div style="background: {C['accent_light']}; border: 1px solid {C['accent']}; border-radius: 2mm; padding: 4mm;">
+                    <p style="font-size: 10pt; margin: 0; color: {C['accent']};">
+                        <strong>Хранение:</strong> данные на серверах в России (Tier III дата-центры)
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="col col-3">
-            <div class="card card-filled text-center" style="min-height: 38mm;">
-                <div class="icon-box">{icon('shield', 32)}</div>
-                <h4>Реестр ПО</h4>
-                <p class="text-sm">Российское ПО</p>
+            <div style="display: table-cell; width: 50%; padding: 2mm;">
+                <div style="background: {C['primary_light']}; border: 1px solid {C['primary']}; border-radius: 2mm; padding: 4mm;">
+                    <p style="font-size: 10pt; margin: 0; color: {C['primary']};">
+                        <strong>Бэкапы:</strong> ежедневное резервное копирование, хранение 30 дней
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -1313,48 +1615,82 @@ HTML_CONTENT = f"""
      ═══════════════════════════════════════════════════════════════ -->
 <div class="slide slide-gradient">
     <p class="tag tag-light">Результаты</p>
-    <h2>Что получите</h2>
+    <h2>Что получите с WorkHere</h2>
     
-    <div class="row gap-md">
-        <div class="col col-3">
-            <div class="card text-center" style="padding: 6mm;">
-                <div class="stat-value" style="font-size: 36pt;">−40%</div>
-                <p class="text-sm text-muted">расходы на найм</p>
+    <div style="display: table; width: 100%; margin-top: 4mm;">
+        <div style="display: table-row;">
+            <div style="display: table-cell; width: 16.6%; padding: 2mm;">
+                <div class="card text-center" style="padding: 4mm;">
+                    <div class="stat-value" style="font-size: 28pt;">−40%</div>
+                    <p style="font-size: 9pt; color: {C['muted']}; margin: 2mm 0 0 0;">расходы на найм</p>
+                </div>
             </div>
-        </div>
-        <div class="col col-3">
-            <div class="card text-center" style="padding: 6mm;">
-                <div class="stat-value" style="font-size: 36pt;">×4</div>
-                <p class="text-sm text-muted">производительность</p>
+            <div style="display: table-cell; width: 16.6%; padding: 2mm;">
+                <div class="card text-center" style="padding: 4mm;">
+                    <div class="stat-value" style="font-size: 28pt;">×4</div>
+                    <p style="font-size: 9pt; color: {C['muted']}; margin: 2mm 0 0 0;">производительность</p>
+                </div>
             </div>
-        </div>
-        <div class="col col-3">
-            <div class="card text-center" style="padding: 6mm;">
-                <div class="stat-value" style="font-size: 36pt;">−60%</div>
-                <p class="text-sm text-muted">время закрытия</p>
+            <div style="display: table-cell; width: 16.6%; padding: 2mm;">
+                <div class="card text-center" style="padding: 4mm;">
+                    <div class="stat-value" style="font-size: 28pt;">−60%</div>
+                    <p style="font-size: 9pt; color: {C['muted']}; margin: 2mm 0 0 0;">время закрытия</p>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 16.6%; padding: 2mm;">
+                <div class="card text-center" style="padding: 4mm;">
+                    <div class="stat-value" style="font-size: 28pt;">×3</div>
+                    <p style="font-size: 9pt; color: {C['muted']}; margin: 2mm 0 0 0;">конверсия</p>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 16.6%; padding: 2mm;">
+                <div class="card text-center" style="padding: 4mm;">
+                    <div class="stat-value" style="font-size: 28pt;">0</div>
+                    <p style="font-size: 9pt; color: {C['muted']}; margin: 2mm 0 0 0;">потерь</p>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 16.6%; padding: 2mm;">
+                <div class="card text-center" style="padding: 4mm;">
+                    <div class="stat-value" style="font-size: 28pt;">100%</div>
+                    <p style="font-size: 9pt; color: {C['muted']}; margin: 2mm 0 0 0;">прозрачность</p>
+                </div>
             </div>
         </div>
     </div>
     
-    <div class="row gap-md mt-3">
-        <div class="col col-3">
-            <div class="card text-center" style="padding: 6mm;">
-                <div class="stat-value" style="font-size: 36pt;">×3</div>
-                <p class="text-sm text-muted">конверсия</p>
+    <div style="display: table; width: 100%; margin-top: 6mm;">
+        <div style="display: table-row;">
+            <div style="display: table-cell; width: 33%; padding: 2mm;">
+                <div class="card" style="padding: 5mm; min-height: 48mm;">
+                    <p style="font-size: 9pt; color: {C['primary']}; margin: 0 0 2mm 0; font-weight: 600;">Кейс: Ритейл</p>
+                    <p style="font-size: 10pt; font-weight: 600; margin: 0 0 2mm 0;">X5 Group</p>
+                    <p style="font-size: 9pt; color: {C['muted']}; margin: 0 0 3mm 0; line-height: 1.4;">Массовый подбор 500+ вакансий в месяц</p>
+                    <p style="font-size: 9pt; margin: 0;"><strong style="color: {C['accent']};">Результат:</strong> время закрытия −55%, рутина рекрутеров −70%</p>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 33%; padding: 2mm;">
+                <div class="card" style="padding: 5mm; min-height: 48mm;">
+                    <p style="font-size: 9pt; color: {C['primary']}; margin: 0 0 2mm 0; font-weight: 600;">Кейс: IT</p>
+                    <p style="font-size: 10pt; font-weight: 600; margin: 0 0 2mm 0;">СберТех</p>
+                    <p style="font-size: 9pt; color: {C['muted']}; margin: 0 0 3mm 0; line-height: 1.4;">IT-подбор разработчиков и DevOps</p>
+                    <p style="font-size: 9pt; margin: 0;"><strong style="color: {C['accent']};">Результат:</strong> конверсия воронки ×2.5, экономия 1.2 млн ₽/год</p>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 33%; padding: 2mm;">
+                <div class="card" style="padding: 5mm; min-height: 48mm;">
+                    <p style="font-size: 9pt; color: {C['primary']}; margin: 0 0 2mm 0; font-weight: 600;">Кейс: Производство</p>
+                    <p style="font-size: 10pt; font-weight: 600; margin: 0 0 2mm 0;">Северсталь</p>
+                    <p style="font-size: 9pt; color: {C['muted']}; margin: 0 0 3mm 0; line-height: 1.4;">Региональный подбор на заводы</p>
+                    <p style="font-size: 9pt; margin: 0;"><strong style="color: {C['accent']};">Результат:</strong> единая база 50K+ кандидатов, отказ от Excel</p>
+                </div>
             </div>
         </div>
-        <div class="col col-3">
-            <div class="card text-center" style="padding: 6mm;">
-                <div class="stat-value" style="font-size: 36pt;">0</div>
-                <p class="text-sm text-muted">потерянных кандидатов</p>
-            </div>
-        </div>
-        <div class="col col-3">
-            <div class="card text-center" style="padding: 6mm;">
-                <div class="stat-value" style="font-size: 36pt;">100%</div>
-                <p class="text-sm text-muted">прозрачность</p>
-            </div>
-        </div>
+    </div>
+    
+    <div style="background: rgba(255,255,255,0.1); border-radius: 2mm; padding: 4mm 6mm; margin-top: 5mm;">
+        <p style="font-size: 10pt; margin: 0; color: rgba(255,255,255,0.9); text-align: center;">
+            <strong>ROI в первый год:</strong> экономия от 500 000 ₽ на команду из 5 рекрутеров
+        </p>
     </div>
     
     <div class="footer">
@@ -1430,38 +1766,83 @@ HTML_CONTENT = f"""
      ═══════════════════════════════════════════════════════════════ -->
 <div class="slide">
     <p class="tag">Внедрение</p>
-    <h2>Запуск за 1 день</h2>
+    <h2>Запуск системы — быстро и безболезненно</h2>
     
-    <div class="steps mt-4">
-        <div class="step">
-            <div class="step-num" style="font-size: 24pt;">30</div>
-            <div class="step-desc">минут</div>
-            <div class="step-title mt-2">Демо</div>
-        </div>
-        <div class="step">
-            <div class="step-num" style="font-size: 24pt;">1</div>
-            <div class="step-desc">день</div>
-            <div class="step-title mt-2">Договор</div>
-        </div>
-        <div class="step">
-            <div class="step-num" style="font-size: 24pt;">2–3</div>
-            <div class="step-desc">дня</div>
-            <div class="step-title mt-2">Настройка</div>
-        </div>
-        <div class="step">
-            <div class="step-num" style="font-size: 24pt;">1</div>
-            <div class="step-desc">час</div>
-            <div class="step-title mt-2">Обучение</div>
-        </div>
-        <div class="step step-active">
-            <div class="step-num" style="font-size: 24pt;">∞</div>
-            <div class="step-desc">&nbsp;</div>
-            <div class="step-title mt-2">Поддержка 24/7</div>
+    <div style="display: table; width: 100%; margin-top: 5mm;">
+        <div style="display: table-row;">
+            <div style="display: table-cell; width: 20%; padding: 2mm; text-align: center; vertical-align: top;">
+                <div style="background: {C['primary_light']}; border: 2px solid {C['primary']}; border-radius: 3mm; padding: 4mm;">
+                    <div style="font-size: 28pt; font-weight: 700; color: {C['primary']};">30</div>
+                    <div style="font-size: 9pt; color: {C['muted']};">минут</div>
+                    <div style="font-weight: 600; font-size: 10pt; margin-top: 2mm;">Демо</div>
+                    <div style="font-size: 8pt; color: {C['muted']}; margin-top: 1mm;">Покажем систему под ваши задачи</div>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 20%; padding: 2mm; text-align: center; vertical-align: top;">
+                <div style="background: {C['bg']}; border: 1px solid {C['border']}; border-radius: 3mm; padding: 4mm;">
+                    <div style="font-size: 28pt; font-weight: 700; color: {C['text']};">1</div>
+                    <div style="font-size: 9pt; color: {C['muted']};">день</div>
+                    <div style="font-weight: 600; font-size: 10pt; margin-top: 2mm;">Договор</div>
+                    <div style="font-size: 8pt; color: {C['muted']}; margin-top: 1mm;">Быстрое согласование условий</div>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 20%; padding: 2mm; text-align: center; vertical-align: top;">
+                <div style="background: {C['bg']}; border: 1px solid {C['border']}; border-radius: 3mm; padding: 4mm;">
+                    <div style="font-size: 28pt; font-weight: 700; color: {C['text']};">2–3</div>
+                    <div style="font-size: 9pt; color: {C['muted']};">дня</div>
+                    <div style="font-weight: 600; font-size: 10pt; margin-top: 2mm;">Настройка</div>
+                    <div style="font-size: 8pt; color: {C['muted']}; margin-top: 1mm;">Воронки, роли, интеграции</div>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 20%; padding: 2mm; text-align: center; vertical-align: top;">
+                <div style="background: {C['bg']}; border: 1px solid {C['border']}; border-radius: 3mm; padding: 4mm;">
+                    <div style="font-size: 28pt; font-weight: 700; color: {C['text']};">1</div>
+                    <div style="font-size: 9pt; color: {C['muted']};">час</div>
+                    <div style="font-weight: 600; font-size: 10pt; margin-top: 2mm;">Обучение</div>
+                    <div style="font-size: 8pt; color: {C['muted']}; margin-top: 1mm;">Онлайн-сессия для команды</div>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 20%; padding: 2mm; text-align: center; vertical-align: top;">
+                <div style="background: {C['accent_light']}; border: 2px solid {C['accent']}; border-radius: 3mm; padding: 4mm;">
+                    <div style="font-size: 28pt; font-weight: 700; color: {C['accent']};">∞</div>
+                    <div style="font-size: 9pt; color: {C['muted']};">&nbsp;</div>
+                    <div style="font-weight: 600; font-size: 10pt; margin-top: 2mm;">Поддержка</div>
+                    <div style="font-size: 8pt; color: {C['muted']}; margin-top: 1mm;">24/7 чат, звонок, почта</div>
+                </div>
+            </div>
         </div>
     </div>
     
-    <div class="card card-filled mt-4" style="padding: 5mm 6mm;">
-        <p class="mb-0">Персональный менеджер на всех этапах внедрения и работы с системой</p>
+    <div style="display: table; width: 100%; margin-top: 6mm;">
+        <div style="display: table-row;">
+            <div style="display: table-cell; width: 33%; padding: 2mm;">
+                <div class="card card-filled" style="padding: 4mm; min-height: 32mm;">
+                    {icon('users', 24, C['primary'])}
+                    <p style="font-weight: 600; font-size: 10pt; margin: 2mm 0 1mm 0;">Персональный менеджер</p>
+                    <p style="font-size: 9pt; color: {C['muted']}; margin: 0;">Один контакт на все вопросы. Знает вашу компанию и задачи.</p>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 33%; padding: 2mm;">
+                <div class="card card-filled" style="padding: 4mm; min-height: 32mm;">
+                    {icon('document', 24, C['primary'])}
+                    <p style="font-weight: 600; font-size: 10pt; margin: 2mm 0 1mm 0;">База знаний</p>
+                    <p style="font-size: 9pt; color: {C['muted']}; margin: 0;">Видеоуроки, статьи, FAQ. Ответы на 90% вопросов уже есть.</p>
+                </div>
+            </div>
+            <div style="display: table-cell; width: 33%; padding: 2mm;">
+                <div class="card card-filled" style="padding: 4mm; min-height: 32mm;">
+                    {icon('rocket', 24, C['primary'])}
+                    <p style="font-weight: 600; font-size: 10pt; margin: 2mm 0 1mm 0;">Миграция данных</p>
+                    <p style="font-size: 9pt; color: {C['muted']}; margin: 0;">Перенесём базу из Excel, другой ATS или почты. Бесплатно.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="background: {C['primary_light']}; border: 1px solid {C['primary']}; border-radius: 2mm; padding: 4mm 6mm; margin-top: 4mm;">
+        <p style="font-size: 10pt; margin: 0; color: {C['primary']}; text-align: center;">
+            <strong>SLA поддержки:</strong> ответ в чате — до 5 минут, решение критичных багов — до 4 часов
+        </p>
     </div>
     
     <div class="footer">
