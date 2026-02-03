@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>WorkHere — Коммерческое предложение</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 20px 25px 25px 25px;
+            @bottom-right {
+                content: "Страница " counter(page);
+                font-size: 8pt;
+                color: #999;
+            }
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #1a1a2e;
+            background: #fff;
+            font-size: 10pt;
+            line-height: 1.5;
+        }
+        
+        /* ПРАВИЛО: Никогда не разрывать блоки */
+        .section,
+        .mascot-section,
+        .diagnosis-box,
+        .highlight-box,
+        .results-box,
+        .key-message-box,
+        .price-total-box,
+        .steps-table,
+        .cols-table,
+        ul {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        
+        /* ПРАВИЛО: Заголовок всегда с контентом */
+        .section-title {
+            page-break-after: avoid !important;
+            break-after: avoid !important;
+        }
+        
+        /* HEADER */
+        .header-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #597FFF;
+        }
+        .header-table td { padding: 0 0 10px 0; vertical-align: middle; }
+        .header-table img { height: 32px; }
+        .header-right { text-align: right; font-size: 9pt; color: #666; }
+        .header-right strong { color: #1a1a2e; font-size: 11pt; }
+        
+        /* TITLE */
+        .doc-title {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #597FFF;
+            border-radius: 10px;
+            color: white;
+        }
+        .doc-title h1 { font-size: 18pt; font-weight: bold; margin-bottom: 3px; }
+        .doc-title p { font-size: 9pt; }
+        
+        /* SECTIONS */
+        .section { margin-bottom: 18px; }
+        .section-title {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #E2E8F0;
+        }
+        .num {
+            display: inline-block;
+            width: 22px; height: 22px;
+            background: #597FFF;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 22px;
+            font-size: 11pt;
+            font-weight: bold;
+            margin-right: 6px;
+        }
+        .subsection-title {
+            font-size: 10pt;
+            font-weight: bold;
+            color: #597FFF;
+            margin: 10px 0 5px 0;
+            padding-left: 8px;
+            border-left: 3px solid #597FFF;
+        }
+        
+        /* LISTS */
+        ul { list-style: none; margin: 0; padding: 0; }
+        ul li { padding: 4px 0 4px 16px; position: relative; font-size: 10pt; }
+        ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #597FFF;
+            font-weight: bold;
+        }
+        ul.check li::before { content: '✓'; color: #10B981; }
+        
+        /* BOXES */
+        .highlight-box {
+            background: #F0F4FF;
+            border-left: 4px solid #597FFF;
+            padding: 10px 12px;
+            margin: 10px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 10pt;
+        }
+        .highlight-box strong { color: #597FFF; }
+        
+        .diagnosis-box {
+            background: #F0F4FF;
+            border-left: 4px solid #597FFF;
+            padding: 10px 12px;
+            margin: 10px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 10pt;
+        }
+        .diagnosis-box strong { color: #597FFF; }
+        
+        .results-box {
+            background: #ECFDF5;
+            border-left: 4px solid #10B981;
+            padding: 10px 12px;
+            margin: 10px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 10pt;
+        }
+        .results-box strong { color: #059669; }
+        
+        .key-message-box {
+            background: #597FFF;
+            color: white;
+            padding: 12px 15px;
+            margin: 12px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 10pt;
+        }
+        
+        /* PRICE */
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        .price-table th, .price-table td {
+            padding: 8px 10px;
+            text-align: left;
+            border-bottom: 1px solid #E2E8F0;
+            font-size: 10pt;
+        }
+        .price-table th { background: #597FFF; color: white; font-weight: bold; font-size: 9pt; }
+        .price-table td:last-child { text-align: right; font-weight: bold; color: #597FFF; }
+        
+        .price-total-box {
+            background: #597FFF;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .price-total-label { font-size: 9pt; margin-bottom: 2px; }
+        .price-total-value { font-size: 14pt; font-weight: bold; }
+        
+        /* STEPS */
+        .steps-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 6px 0;
+            margin: 10px 0;
+        }
+        .steps-table td {
+            width: 25%;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 6px;
+            padding: 10px 6px;
+            text-align: center;
+            vertical-align: top;
+        }
+        .step-num { font-size: 12pt; font-weight: bold; color: #597FFF; }
+        .step-title { display: block; font-weight: bold; font-size: 9pt; margin: 4px 0 2px 0; }
+        .step-desc { font-size: 8pt; color: #666; }
+        
+        /* COLUMNS — больше воздуха */
+        .cols-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 12px 0;
+            margin: 10px 0;
+        }
+        .cols-table td {
+            width: 50%;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 6px;
+            padding: 12px;
+            vertical-align: top;
+        }
+        .cols-table ul li {
+            padding: 6px 0 6px 16px;  /* Больше отступы между пунктами */
+            font-size: 9pt;  /* Чуть меньше шрифт */
+            line-height: 1.4;
+        }
+        .col-title { font-weight: bold; font-size: 9pt; margin-bottom: 8px; color: #597FFF; }
+        
+        /* MASCOT — компактный */
+        .mascot-section {
+            text-align: center;
+            margin: 12px 0;
+        }
+        .mascot-section img { vertical-align: middle; }
+        .speech-bubble {
+            display: inline-block;
+            background: #F0F4FF;
+            border: 2px solid #597FFF;
+            border-radius: 10px;
+            padding: 8px 12px;
+            font-size: 9pt;
+            color: #1a1a2e;
+            font-weight: 500;
+            margin: 0 10px;
+            vertical-align: middle;
+            max-width: 180px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<table class="header-table">
+    <tr>
+        <td><img src="{{ logo_path }}" alt="WorkHere"></td>
+        <td class="header-right">
+            {% if company_name %}<strong>{{ company_name }}</strong><br>{% endif %}
+            {% if contact_name %}{{ contact_name }}{% if contact_role %}, {{ contact_role }}{% endif %}{% endif %}
+        </td>
+    </tr>
+</table>
+
+<!-- TITLE -->
+<div class="doc-title">
+    <h1>Коммерческое предложение</h1>
+    <p>ATS + CRM для управления подбором персонала</p>
+</div>
+
+<!-- SECTION 1: ДИАГНОЗ -->
+<div class="section">
+    <div class="section-title"><span class="num">1</span> Текущая ситуация</div>
+    
+    {% if diagnosis_situation %}
+    <div class="diagnosis-box">
+        {{ diagnosis_situation }}
+    </div>
+    {% endif %}
+    
+    {% if diagnosis_pains %}
+    <p style="margin: 8px 0 4px 0; font-weight: bold; font-size: 10pt;">Основные сложности:</p>
+    <ul>
+        {% for pain in diagnosis_pains %}
+        <li>{{ pain }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+<!-- MASCOT 1 -->
+<div class="mascot-section">
+    <span class="speech-bubble">{{ mascot_phrase_1 }}</span>
+    <img src="{{ mascot_path_1 }}" alt="" style="height: {{ mascot_size_1 }}px;">
+</div>
+
+<!-- SECTION 2: РЕШЕНИЕ -->
+<div class="section">
+    <div class="section-title"><span class="num">2</span> Как WorkHere решит эти задачи</div>
+    
+    {% if solution_base %}
+    <div class="subsection-title">Базовый функционал</div>
+    <ul>
+        {% for item in solution_base %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    {% if solution_integrations %}
+    <div class="subsection-title">Интеграции</div>
+    <ul>
+        {% for item in solution_integrations %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    {% if solution_automation %}
+    <div class="subsection-title">Автоматизация</div>
+    <ul>
+        {% for item in solution_automation %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    {% if solution_ai and (show_ai_option or show_premium) %}
+    <div class="subsection-title">AI-модуль</div>
+    <ul>
+        {% for item in solution_ai %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+<!-- MASCOT 2 -->
+<div class="mascot-section">
+    <img src="{{ mascot_path_2 }}" alt="" style="height: {{ mascot_size_2 }}px;">
+    <span class="speech-bubble">{{ mascot_phrase_2 }}</span>
+</div>
+
+<!-- SECTION 3: СТОИМОСТЬ -->
+<div class="section">
+    <div class="section-title"><span class="num">3</span> Стоимость</div>
+    
+    <table class="price-table">
+        <tr>
+            <th>Позиция</th>
+            <th>Цена</th>
+        </tr>
+        {% if show_standard %}
+        <tr>
+            <td>Лицензия рекрутера (Стандарт)</td>
+            <td>20 000 ₽/год</td>
+        </tr>
+        {% endif %}
+        {% if show_premium %}
+        <tr>
+            <td>Лицензия рекрутера (Премиум + AI)</td>
+            <td>42 000 ₽/год</td>
+        </tr>
+        {% endif %}
+        <tr>
+            <td>Руководители-заказчики</td>
+            <td>Бесплатно</td>
+        </tr>
+        {% if show_ai_option %}
+        <tr>
+            <td>AI-модуль (дополнительно)</td>
+            <td>5 000 ₽/мес</td>
+        </tr>
+        {% endif %}
+    </table>
+    
+    <div class="highlight-box">
+        <strong>Расчёт для команды ({{ num_recruiters }} рекрутер{{ 'а' if num_recruiters in [2,3,4] else 'ов' if num_recruiters >= 5 else '' }}):</strong><br>
+        {% for calc in calculations %}
+        {{ calc.name }}: <strong>{{ calc.value }}</strong><br>
+        {% endfor %}
+    </div>
+    
+    <div class="price-total-box">
+        <div class="price-total-label">Итого в год</div>
+        <div class="price-total-value">{{ total_price }} ₽</div>
+    </div>
+</div>
+
+<!-- SECTION 4: ВНЕДРЕНИЕ -->
+<div class="section">
+    <div class="section-title"><span class="num">4</span> Внедрение</div>
+    
+    <table class="steps-table">
+        <tr>
+            <td>
+                <span class="step-num">01</span>
+                <span class="step-title">Настройка</span>
+                <span class="step-desc">воронки, статусы</span>
+            </td>
+            <td>
+                <span class="step-num">02</span>
+                <span class="step-title">Интеграции</span>
+                <span class="step-desc">HH, Авито</span>
+            </td>
+            <td>
+                <span class="step-num">03</span>
+                <span class="step-title">Импорт</span>
+                <span class="step-desc">база кандидатов</span>
+            </td>
+            <td>
+                <span class="step-num">04</span>
+                <span class="step-title">Обучение</span>
+                <span class="step-desc">команда</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!-- MASCOT 3 -->
+<div class="mascot-section">
+    <span class="speech-bubble">{{ mascot_phrase_3 }}</span>
+    <img src="{{ mascot_path_3 }}" alt="" style="height: {{ mascot_size_3 }}px;">
+</div>
+
+<!-- SECTION 5: ПОЧЕМУ WORKHERE -->
+<div class="section">
+    <div class="section-title"><span class="num">5</span> Что получит ваша команда</div>
+    
+    <table class="cols-table">
+        <tr>
+            <td>
+                <div class="col-title">Для рекрутеров</div>
+                <ul class="check">
+                    {% for item in why_recruiters %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <div class="col-title">Для руководителей</div>
+                <ul class="check">
+                    {% for item in why_managers %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    </table>
+    
+    <div class="results-box">
+        <strong>Результаты клиентов:</strong> Закрытие вакансий быстрее на 40-60%
+    </div>
+</div>
+
+<!-- KEY MESSAGE -->
+{% if key_message %}
+<div class="key-message-box">
+    {{ key_message }}
+</div>
+{% endif %}
+
+<!-- SECTION 6: СЛЕДУЮЩИЕ ШАГИ -->
+<div class="section">
+    <div class="section-title"><span class="num">6</span> Следующие шаги</div>
+    <ul>
+        <li>Согласование условий</li>
+        <li>Подписание договора</li>
+        <li>Доступ к системе за 1 рабочий день</li>
+        <li>Запуск с персональным менеджером</li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Environment
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+
+# Storage
+storage/*.pdf
+storage/index.json
+
+# IDE
+.vscode/
+.idea/
