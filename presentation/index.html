@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WorkHere — Гонка за кандидатами начинается здесь</title>
+    <title>WorkHere — ATS нового поколения</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,657 +20,1051 @@
         <div class="nav-counter">
             <span id="currentSlide">01</span>
             <span class="nav-separator">/</span>
-            <span id="totalSlides">11</span>
+            <span id="totalSlides">24</span>
         </div>
         <div class="nav-controls">
-            <button class="nav-btn" id="prevBtn" aria-label="Previous">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M12 15L7 10L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-            <button class="nav-btn" id="nextBtn" aria-label="Next">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M8 5L13 10L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
+            <button class="nav-btn" id="prevBtn" aria-label="Previous">←</button>
+            <button class="nav-btn" id="nextBtn" aria-label="Next">→</button>
         </div>
     </nav>
 
-    <!-- Slide 1: Hero -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 1: HERO — ВЗРЫВ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
     <section class="slide slide-hero" data-slide="0">
-        <div class="slide-inner">
-            <div class="hero-content">
-                <div class="logo">
-                    <div class="logo-mark">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <rect width="48" height="48" rx="12" fill="#597FFF"/>
-                            <path d="M14 28L20 22L26 28L34 20" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="34" cy="20" r="3" fill="white"/>
-                        </svg>
-                    </div>
-                    <span class="logo-text">WorkHere</span>
-                </div>
-                
-                <h1 class="hero-title">
-                    Гонка за кандидатами
-                    <span class="hero-title-accent">начинается здесь</span>
-                </h1>
-                
-                <p class="hero-subtitle">HRM-система нового поколения для эффективного рекрутинга</p>
-                
-                <div class="hero-cta">
-                    <a href="#" class="btn btn-primary">Начать бесплатно</a>
-                    <a href="#" class="btn btn-secondary">Смотреть демо</a>
-                </div>
-            </div>
-            
-            <div class="hero-visual">
-                <div class="hero-card card-1">
-                    <div class="card-icon">👤</div>
-                    <div class="card-label">Новый кандидат</div>
-                </div>
-                <div class="hero-card card-2">
-                    <div class="card-icon">✓</div>
-                    <div class="card-label">Принят на работу</div>
-                </div>
-                <div class="hero-card card-3">
-                    <div class="card-icon">📊</div>
-                    <div class="card-label">+40% эффективности</div>
-                </div>
-                <div class="hero-illustration">
-                    <svg viewBox="0 0 400 400" fill="none">
-                        <circle cx="200" cy="200" r="150" fill="#F0F4FF"/>
-                        <circle cx="200" cy="200" r="100" fill="#E0E8FF"/>
-                        <circle cx="200" cy="200" r="50" fill="#597FFF"/>
-                        <path d="M180 200L195 215L220 185" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-            </div>
+        <div class="hero-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+            <div class="grid-overlay"></div>
         </div>
-        <div class="scroll-indicator">
-            <span>Листайте вниз</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
-    </section>
-
-    <!-- Slide 2: Stats -->
-    <section class="slide slide-stats" data-slide="1">
         <div class="slide-inner">
-            <div class="section-header">
-                <span class="section-tag">О компании</span>
-                <h2 class="section-title">Надёжный механизм<br>в рекрутинге</h2>
-            </div>
-            
-            <div class="stats-container">
-                <div class="stat-item">
-                    <div class="stat-value">
-                        <span class="stat-number" data-target="1095">0</span>
-                    </div>
-                    <div class="stat-info">
-                        <span class="stat-label">дней непрерывного развития</span>
-                        <div class="stat-bar"><div class="stat-bar-fill" style="--width: 100%"></div></div>
-                    </div>
+            <div class="hero-badge">🚀 ATS + CRM нового поколения</div>
+            <h1 class="hero-title glitch" data-text="WorkHere">WorkHere</h1>
+            <p class="hero-subtitle">Система, которая закрывает вакансии<br><span class="gradient-text">пока другие только планируют</span></p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-value">8500+</span>
+                    <span class="hero-stat-label">компаний</span>
                 </div>
-                
-                <div class="stat-item featured">
-                    <div class="stat-value">
-                        <span class="stat-number" data-target="8500">0</span>
-                        <span class="stat-suffix">+</span>
-                    </div>
-                    <div class="stat-info">
-                        <span class="stat-label">клиентов закрывают вакансии вместе с нами</span>
-                        <div class="stat-bar"><div class="stat-bar-fill" style="--width: 85%"></div></div>
-                    </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">350+</span>
+                    <span class="hero-stat-label">городов</span>
                 </div>
-                
-                <div class="stat-item">
-                    <div class="stat-value">
-                        <span class="stat-number" data-target="100">0</span>
-                    </div>
-                    <div class="stat-info">
-                        <span class="stat-label">компаний ежемесячно приходят по рекомендации</span>
-                        <div class="stat-bar"><div class="stat-bar-fill" style="--width: 60%"></div></div>
-                    </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">3 года</span>
+                    <span class="hero-stat-label">развития</span>
                 </div>
             </div>
-            
-            <div class="trust-logos">
-                <span class="trust-text">Нам доверяют компании любого масштаба</span>
+            <div class="scroll-hint">
+                <span>Погнали!</span>
+                <div class="scroll-arrow">↓</div>
             </div>
         </div>
     </section>
 
-    <!-- Slide 3: Values -->
-    <section class="slide slide-values" data-slide="2">
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 2: ПРОБЛЕМА -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-problem" data-slide="1">
         <div class="slide-inner">
-            <div class="section-header centered">
-                <span class="section-tag">Почему мы</span>
-                <h2 class="section-title">Закройте вакансию<br>в 3 раза быстрее</h2>
-            </div>
-            
-            <div class="values-grid">
-                <div class="value-item">
-                    <div class="value-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <path d="M16 4L20 12L28 13L22 19L23.5 28L16 24L8.5 28L10 19L4 13L12 12L16 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="value-title">Уверенность</h3>
-                    <p class="value-desc">Российское ПО, которое не боится санкций</p>
+            <div class="section-tag">😤 Боль</div>
+            <h2 class="section-title">Знакомо?</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">📊</div>
+                    <h3>Excel-ад</h3>
+                    <p>Кандидаты в 15 разных таблицах, версии путаются, дубли повсюду</p>
                 </div>
-                
-                <div class="value-item">
-                    <div class="value-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <path d="M16 28C16 28 4 20 4 12C4 8 8 4 12 4C14 4 15.5 5 16 6C16.5 5 18 4 20 4C24 4 28 8 28 12C28 20 16 28 16 28Z" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <h3 class="value-title">Забота</h3>
-                    <p class="value-desc">Техническая поддержка 24/7</p>
+                <div class="problem-card">
+                    <div class="problem-icon">💬</div>
+                    <h3>Чат-хаос</h3>
+                    <p>Переписка с кандидатами в Telegram, WhatsApp, почте — ничего не найти</p>
                 </div>
-                
-                <div class="value-item">
-                    <div class="value-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <rect x="4" y="8" width="24" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
-                            <path d="M8 14H12M8 18H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="value-title">Адаптивность</h3>
-                    <p class="value-desc">Персональные доработки под ваши процессы</p>
+                <div class="problem-card">
+                    <div class="problem-icon">🔥</div>
+                    <h3>Горящие вакансии</h3>
+                    <p>Про кандидата забыли на неделю — ушёл к конкурентам</p>
                 </div>
-                
-                <div class="value-item">
-                    <div class="value-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <path d="M16 28L6 18V10L16 4L26 10V18L16 28Z" stroke="currentColor" stroke-width="2"/>
-                            <path d="M12 16L15 19L20 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="value-title">Безопасность</h3>
-                    <p class="value-desc">Работаем по ФЗ-152</p>
+                <div class="problem-card">
+                    <div class="problem-icon">📉</div>
+                    <h3>Ноль аналитики</h3>
+                    <p>Не понятно, откуда приходят хорошие кандидаты и где теряются</p>
                 </div>
-                
-                <div class="value-item">
-                    <div class="value-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"/>
-                            <path d="M16 8V16L22 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="value-title">Скорость</h3>
-                    <p class="value-desc">AI для быстрого и точного найма</p>
+                <div class="problem-card">
+                    <div class="problem-icon">🤯</div>
+                    <h3>Рутина съедает</h3>
+                    <p>80% времени — на ручные операции вместо работы с людьми</p>
                 </div>
-                
-                <div class="value-item">
-                    <div class="value-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <path d="M4 16H8L12 8L16 24L20 12L24 16H28" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="value-title">Гибкость</h3>
-                    <p class="value-desc">Настройка системы под ваш процесс</p>
+                <div class="problem-card">
+                    <div class="problem-icon">🔐</div>
+                    <h3>Риски ПДн</h3>
+                    <p>Согласия не собираются, база не защищена, 152-ФЗ под вопросом</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Slide 4: Pipeline -->
-    <section class="slide slide-pipeline" data-slide="3">
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 3: РЕШЕНИЕ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-solution" data-slide="2">
         <div class="slide-inner">
-            <div class="section-header centered">
-                <span class="section-tag">Как это работает</span>
-                <h2 class="section-title">Этапы найма с WorkHere</h2>
+            <div class="section-tag">💡 Решение</div>
+            <h2 class="section-title mega">Один WorkHere<br><span class="gradient-text">заменяет всё</span></h2>
+            <div class="replace-grid">
+                <div class="replace-item crossed">Excel</div>
+                <div class="replace-item crossed">Trello</div>
+                <div class="replace-item crossed">Notion</div>
+                <div class="replace-item crossed">Google Sheets</div>
+                <div class="replace-item crossed">Битрикс24</div>
+                <div class="replace-item crossed">amoCRM</div>
+                <div class="replace-arrow">→</div>
+                <div class="replace-result">
+                    <div class="replace-logo">W</div>
+                    <span>WorkHere</span>
+                </div>
             </div>
-            
-            <div class="pipeline-container">
-                <div class="pipeline-track"></div>
-                
-                <div class="pipeline-item">
-                    <div class="pipeline-dot">1</div>
-                    <div class="pipeline-content">
-                        <h4>Постановка задачи</h4>
-                        <ul>
-                            <li>Заявки на подбор</li>
-                            <li>Интеграции с Job-сайтами</li>
-                            <li>Автопубликация вакансий</li>
-                        </ul>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 4: ДЛЯ КОГО -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-audience" data-slide="3">
+        <div class="slide-inner">
+            <div class="section-tag">👥 Аудитория</div>
+            <h2 class="section-title">Для тех, кто нанимает</h2>
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <div class="audience-avatar">👨‍💼</div>
+                    <h3>Рекрутер</h3>
+                    <ul>
+                        <li>Работа с откликами в один клик</li>
+                        <li>Автоматизация рутины</li>
+                        <li>История по каждому кандидату</li>
+                        <li>Шаблоны сообщений</li>
+                    </ul>
+                </div>
+                <div class="audience-card featured">
+                    <div class="audience-avatar">👩‍💼</div>
+                    <h3>Руководитель подбора</h3>
+                    <ul>
+                        <li>Контроль SLA и дедлайнов</li>
+                        <li>Аналитика по рекрутерам</li>
+                        <li>Прозрачность воронки</li>
+                        <li>Отчёты для топов</li>
+                    </ul>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-avatar">🧑‍💻</div>
+                    <h3>Нанимающий менеджер</h3>
+                    <ul>
+                        <li>Быстрый фидбек</li>
+                        <li>Согласование кандидатов</li>
+                        <li>Прозрачный статус</li>
+                        <li>Уведомления в Telegram</li>
+                    </ul>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-avatar">📊</div>
+                    <h3>HRD / Бизнес</h3>
+                    <ul>
+                        <li>Стоимость найма</li>
+                        <li>Прогнозирование</li>
+                        <li>Качество источников</li>
+                        <li>Unit-экономика</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 5: ВОРОНКА НАЙМА -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-funnel" data-slide="4">
+        <div class="slide-inner">
+            <div class="section-tag">🎯 Процесс</div>
+            <h2 class="section-title">Полный цикл найма</h2>
+            <div class="funnel-container">
+                <div class="funnel-step" data-step="1">
+                    <div class="funnel-num">01</div>
+                    <div class="funnel-content">
+                        <h3>Заявка</h3>
+                        <p>Заявка на подбор от нанимающего менеджера</p>
                     </div>
                 </div>
-                
-                <div class="pipeline-item">
-                    <div class="pipeline-dot">2</div>
-                    <div class="pipeline-content">
-                        <h4>Поиск кандидатов</h4>
-                        <ul>
-                            <li>Быстрый импорт резюме</li>
-                            <li>Поиск с помощью AI</li>
-                            <li>Защита от дублей</li>
-                        </ul>
+                <div class="funnel-step" data-step="2">
+                    <div class="funnel-num">02</div>
+                    <div class="funnel-content">
+                        <h3>Публикация</h3>
+                        <p>Авто-публикация на job-сайтах</p>
                     </div>
                 </div>
-                
-                <div class="pipeline-item">
-                    <div class="pipeline-dot">3</div>
-                    <div class="pipeline-content">
-                        <h4>Скрининг</h4>
-                        <ul>
-                            <li>Настраиваемая воронка</li>
-                            <li>Шаблоны сообщений</li>
-                            <li>Согласие на ПД</li>
-                        </ul>
+                <div class="funnel-step" data-step="3">
+                    <div class="funnel-num">03</div>
+                    <div class="funnel-content">
+                        <h3>Сбор откликов</h3>
+                        <p>Все отклики в единый поток</p>
                     </div>
                 </div>
-                
-                <div class="pipeline-item">
-                    <div class="pipeline-dot">4</div>
-                    <div class="pipeline-content">
-                        <h4>Собеседование</h4>
-                        <ul>
-                            <li>Канбан-доска</li>
-                            <li>Яндекс.Телемост</li>
-                            <li>IP-телефония</li>
-                        </ul>
+                <div class="funnel-step" data-step="4">
+                    <div class="funnel-num">04</div>
+                    <div class="funnel-content">
+                        <h3>Скрининг</h3>
+                        <p>Первичный отбор + AI-ранжирование</p>
                     </div>
                 </div>
-                
-                <div class="pipeline-item">
-                    <div class="pipeline-dot">5</div>
-                    <div class="pipeline-content">
-                        <h4>Оценка</h4>
-                        <ul>
-                            <li>Обратная связь</li>
-                            <li>Формы оценки</li>
-                            <li>Автоуведомления</li>
-                        </ul>
+                <div class="funnel-step" data-step="5">
+                    <div class="funnel-num">05</div>
+                    <div class="funnel-content">
+                        <h3>Интервью</h3>
+                        <p>Созвоны через Яндекс.Телемост</p>
                     </div>
                 </div>
-                
-                <div class="pipeline-item active">
-                    <div class="pipeline-dot">6</div>
-                    <div class="pipeline-content">
-                        <h4>Оффер</h4>
-                        <ul>
-                            <li>Корп. стандарты</li>
-                            <li>КЭДО</li>
-                            <li>Трекинг закрытия</li>
-                        </ul>
+                <div class="funnel-step" data-step="6">
+                    <div class="funnel-num">06</div>
+                    <div class="funnel-content">
+                        <h3>Оценка</h3>
+                        <p>Scorecard и фидбек от команды</p>
+                    </div>
+                </div>
+                <div class="funnel-step active" data-step="7">
+                    <div class="funnel-num">07</div>
+                    <div class="funnel-content">
+                        <h3>Оффер</h3>
+                        <p>Согласование и отправка оффера</p>
+                    </div>
+                </div>
+                <div class="funnel-step" data-step="8">
+                    <div class="funnel-num">08</div>
+                    <div class="funnel-content">
+                        <h3>Выход</h3>
+                        <p>Онбординг нового сотрудника</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Slide 5: Features -->
-    <section class="slide slide-features" data-slide="4">
-        <div class="slide-inner">
-            <div class="section-header">
-                <span class="section-tag">Возможности</span>
-                <h2 class="section-title">Всё становится<br>на свои места</h2>
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 6: ЕДИНАЯ БАЗА -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-feature-1" data-slide="5">
+        <div class="slide-inner split">
+            <div class="feature-visual">
+                <div class="feature-mockup">
+                    <div class="mockup-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="candidate-card">
+                            <div class="candidate-avatar">АИ</div>
+                            <div class="candidate-info">
+                                <span class="name">Алексей Иванов</span>
+                                <span class="role">Senior Developer</span>
+                            </div>
+                            <span class="status green">Оффер</span>
+                        </div>
+                        <div class="candidate-card">
+                            <div class="candidate-avatar">МП</div>
+                            <div class="candidate-info">
+                                <span class="name">Мария Петрова</span>
+                                <span class="role">Product Manager</span>
+                            </div>
+                            <span class="status yellow">Интервью</span>
+                        </div>
+                        <div class="candidate-card">
+                            <div class="candidate-avatar">ДС</div>
+                            <div class="candidate-info">
+                                <span class="name">Дмитрий Сидоров</span>
+                                <span class="role">UX Designer</span>
+                            </div>
+                            <span class="status blue">Скрининг</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon-wrap">
-                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                            <rect x="2" y="6" width="24" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
-                            <path d="M8 14L12 18L20 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h4>Интеграции</h4>
-                    <p>HH.ru, Авито, SuperJob, Работа.ру</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon-wrap">
-                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                            <rect x="7" y="2" width="14" height="24" rx="2" stroke="currentColor" stroke-width="2"/>
-                            <circle cx="14" cy="22" r="2" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h4>Мобильное приложение</h4>
-                    <p>Работайте откуда угодно</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon-wrap">
-                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                            <circle cx="14" cy="10" r="6" stroke="currentColor" stroke-width="2"/>
-                            <path d="M4 26C4 20 8 16 14 16C20 16 24 20 24 26" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <h4>Перенос базы</h4>
-                    <p>Автоматизированный импорт</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon-wrap">
-                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                            <path d="M4 20L4 8L14 2L24 8L24 20L14 26L4 20Z" stroke="currentColor" stroke-width="2"/>
-                            <path d="M4 8L14 14L24 8M14 14V26" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <h4>Открытый API</h4>
-                    <p>Для ваших задач</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon-wrap">
-                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                            <circle cx="14" cy="14" r="10" stroke="currentColor" stroke-width="2"/>
-                            <path d="M14 6V14L20 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h4>Быстрый старт</h4>
-                    <p>Работа через 15 минут</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon-wrap">
-                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                            <path d="M4 6H24M4 14H24M4 22H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h4>Обучение</h4>
-                    <p>Персональная настройка</p>
+            <div class="feature-text">
+                <div class="section-tag">📁 Функция #1</div>
+                <h2 class="section-title">Единая база кандидатов</h2>
+                <ul class="feature-list">
+                    <li><span class="check">✓</span> Все резюме в одном месте</li>
+                    <li><span class="check">✓</span> Полная история взаимодействий</li>
+                    <li><span class="check">✓</span> Комментарии и теги</li>
+                    <li><span class="check">✓</span> Умный поиск по тексту резюме</li>
+                    <li><span class="check">✓</span> Защита от дублей</li>
+                    <li><span class="check">✓</span> Слияние карточек</li>
+                </ul>
+                <div class="feature-highlight">
+                    <span class="highlight-icon">💡</span>
+                    <span>Больше никаких потерянных кандидатов в переписках!</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Slide 6: Metrics -->
-    <section class="slide slide-metrics" data-slide="5">
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 7: ИНТЕГРАЦИИ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-integrations" data-slide="6">
         <div class="slide-inner">
-            <div class="section-header centered">
-                <span class="section-tag">Результаты</span>
-                <h2 class="section-title">Рекрутинг нового уровня</h2>
-            </div>
-            
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-icon">📉</div>
-                    <div class="metric-value">-40%</div>
-                    <div class="metric-label">расходы на найм</div>
-                </div>
-                
-                <div class="metric-card">
-                    <div class="metric-icon">🚀</div>
-                    <div class="metric-value">×4</div>
-                    <div class="metric-label">производительность рекрутера</div>
-                </div>
-                
-                <div class="metric-card">
-                    <div class="metric-icon">⚡</div>
-                    <div class="metric-value">-60%</div>
-                    <div class="metric-label">срок закрытия вакансии</div>
-                </div>
-                
-                <div class="metric-card">
-                    <div class="metric-icon">⭐</div>
-                    <div class="metric-value">98%</div>
-                    <div class="metric-label">индекс вежливости на hh.ru</div>
-                </div>
-                
-                <div class="metric-card">
-                    <div class="metric-icon">📈</div>
-                    <div class="metric-value">×3</div>
-                    <div class="metric-label">конверсия до оффера</div>
-                </div>
-                
-                <div class="metric-card">
-                    <div class="metric-icon">✓</div>
-                    <div class="metric-value">×2</div>
-                    <div class="metric-label">качество кандидатов</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Slide 7: Capabilities -->
-    <section class="slide slide-capabilities" data-slide="6">
-        <div class="slide-inner">
-            <div class="section-header">
-                <span class="section-tag">Функционал</span>
-                <h2 class="section-title">Работайте на победу</h2>
-            </div>
-            
-            <div class="capabilities-list">
-                <div class="capability-row">
-                    <div class="capability-num">01</div>
-                    <div class="capability-content">
-                        <h4>Единая защищённая база кандидатов</h4>
-                        <p>Все комментарии и история взаимодействия в одном месте</p>
+            <div class="section-tag">🔗 Интеграции</div>
+            <h2 class="section-title">Подключено к экосистеме</h2>
+            <div class="integrations-grid">
+                <div class="integration-category">
+                    <h3>Job-сайты</h3>
+                    <div class="integration-logos">
+                        <div class="integration-item">
+                            <span class="int-logo">hh</span>
+                            <span>HeadHunter</span>
+                        </div>
+                        <div class="integration-item">
+                            <span class="int-logo">A</span>
+                            <span>Авито</span>
+                        </div>
+                        <div class="integration-item">
+                            <span class="int-logo">SJ</span>
+                            <span>SuperJob</span>
+                        </div>
+                        <div class="integration-item">
+                            <span class="int-logo">R</span>
+                            <span>Работа.ру</span>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="capability-row">
-                    <div class="capability-num">02</div>
-                    <div class="capability-content">
-                        <h4>Кадровый резерв компании</h4>
-                        <p>Поиск тёплых кандидатов по тексту резюме, этапам, вакансиям</p>
+                <div class="integration-category">
+                    <h3>Мессенджеры</h3>
+                    <div class="integration-logos">
+                        <div class="integration-item">
+                            <span class="int-logo tg">✈</span>
+                            <span>Telegram</span>
+                        </div>
+                        <div class="integration-item">
+                            <span class="int-logo wa">📱</span>
+                            <span>WhatsApp</span>
+                        </div>
+                        <div class="integration-item">
+                            <span class="int-logo vb">📞</span>
+                            <span>Viber</span>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="capability-row">
-                    <div class="capability-num">03</div>
-                    <div class="capability-content">
-                        <h4>Встроенные мессенджеры</h4>
-                        <p>Чаты Авито и HH прямо в WorkHere</p>
+                <div class="integration-category">
+                    <h3>Видеозвонки</h3>
+                    <div class="integration-logos">
+                        <div class="integration-item">
+                            <span class="int-logo ya">Я</span>
+                            <span>Яндекс.Телемост</span>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="capability-row">
-                    <div class="capability-num">04</div>
-                    <div class="capability-content">
-                        <h4>Аналитика и расширенные отчёты</h4>
-                        <p>Быстрое выявление и устранение узких мест в подборе</p>
-                    </div>
-                </div>
-                
-                <div class="capability-row">
-                    <div class="capability-num">05</div>
-                    <div class="capability-content">
-                        <h4>Конструктор отчётов</h4>
-                        <p>Создавайте отчёты под любые задачи в найме</p>
-                    </div>
-                </div>
-                
-                <div class="capability-row">
-                    <div class="capability-num">06</div>
-                    <div class="capability-content">
-                        <h4>Персональные уведомления</h4>
-                        <p>Оповещения о важных событиях на почту или в мессенджер</p>
+                <div class="integration-category">
+                    <h3>Корпоративные</h3>
+                    <div class="integration-logos">
+                        <div class="integration-item">
+                            <span class="int-logo onec">1С</span>
+                            <span>1С:Предприятие</span>
+                        </div>
+                        <div class="integration-item">
+                            <span class="int-logo api">{ }</span>
+                            <span>Open API</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Slide 8: Geography -->
-    <section class="slide slide-geography" data-slide="7">
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 8: ВОРОНКИ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-kanban" data-slide="7">
         <div class="slide-inner">
-            <div class="section-header centered">
-                <span class="section-tag">География</span>
-                <h2 class="section-title">С нами уже побеждают</h2>
+            <div class="section-tag">📋 Воронки</div>
+            <h2 class="section-title">Гибкие этапы под любой процесс</h2>
+            <div class="kanban-demo">
+                <div class="kanban-column">
+                    <div class="kanban-header new">Новые <span class="count">12</span></div>
+                    <div class="kanban-card">Анна К.</div>
+                    <div class="kanban-card">Борис М.</div>
+                    <div class="kanban-card">Виктор С.</div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-header screen">Скрининг <span class="count">8</span></div>
+                    <div class="kanban-card">Галина Р.</div>
+                    <div class="kanban-card">Денис Л.</div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-header interview">Интервью <span class="count">5</span></div>
+                    <div class="kanban-card hot">Елена В. 🔥</div>
+                    <div class="kanban-card">Жанна О.</div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-header test">Тестовое <span class="count">3</span></div>
+                    <div class="kanban-card">Игорь Т.</div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-header offer">Оффер <span class="count">2</span></div>
+                    <div class="kanban-card star">Ксения М. ⭐</div>
+                </div>
             </div>
-            
-            <div class="geo-hero">
-                <div class="geo-number">350<span>+</span></div>
-                <div class="geo-label">городов России</div>
-            </div>
-            
-            <div class="formula-container">
-                <div class="formula-item">
-                    <span class="formula-icon">💡</span>
-                    <span>Технологии</span>
-                </div>
-                <div class="formula-plus">+</div>
-                <div class="formula-item">
-                    <span class="formula-icon">⚡</span>
-                    <span>Скорость</span>
-                </div>
-                <div class="formula-plus">+</div>
-                <div class="formula-item">
-                    <span class="formula-icon">🛡️</span>
-                    <span>Надёжность</span>
-                </div>
-                <div class="formula-equals">=</div>
-                <div class="formula-result">WorkHere</div>
+            <div class="kanban-features">
+                <span>✓ Неограниченное число воронок</span>
+                <span>✓ Шаблоны этапов</span>
+                <span>✓ Причины отказа с аналитикой</span>
+                <span>✓ Drag & Drop</span>
             </div>
         </div>
     </section>
 
-    <!-- Slide 9: Pricing -->
-    <section class="slide slide-pricing" data-slide="8">
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 9: AI МОДУЛЬ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-ai" data-slide="8">
+        <div class="ai-bg">
+            <div class="ai-particles"></div>
+        </div>
         <div class="slide-inner">
-            <div class="section-header centered">
-                <span class="section-tag">Тарифы</span>
-                <h2 class="section-title">Для чемпионов найма</h2>
+            <div class="section-tag">🤖 AI-модуль</div>
+            <h2 class="section-title mega">Искусственный<br><span class="gradient-text">интеллект в найме</span></h2>
+            <div class="ai-features">
+                <div class="ai-feature">
+                    <div class="ai-icon">🔍</div>
+                    <h3>Умный поиск</h3>
+                    <p>Семантический поиск по базе: синонимы, похожие кандидаты, расширение запроса</p>
+                </div>
+                <div class="ai-feature">
+                    <div class="ai-icon">🎯</div>
+                    <h3>Матчинг</h3>
+                    <p>Оценка соответствия кандидат ↔ вакансия, подсветка сильных/слабых сторон</p>
+                </div>
+                <div class="ai-feature">
+                    <div class="ai-icon">📊</div>
+                    <h3>Ранжирование</h3>
+                    <p>Автоматическая сортировка кандидатов по релевантности</p>
+                </div>
+                <div class="ai-feature">
+                    <div class="ai-icon">📝</div>
+                    <h3>Саммари</h3>
+                    <p>Суть кандидата за 20 секунд: опыт, роль, стек, риски</p>
+                </div>
             </div>
-            
+            <div class="ai-disclaimer">
+                <span>⚠️</span> AI ускоряет рутину, но решение всегда за человеком
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 10: КОММУНИКАЦИИ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-comms" data-slide="9">
+        <div class="slide-inner split">
+            <div class="feature-text">
+                <div class="section-tag">💬 Коммуникации</div>
+                <h2 class="section-title">Вся переписка<br>в одном месте</h2>
+                <ul class="feature-list big">
+                    <li><span class="emoji">📧</span> Email-рассылки по шаблонам</li>
+                    <li><span class="emoji">📱</span> Чаты HH и Авито прямо в системе</li>
+                    <li><span class="emoji">✈️</span> Telegram и WhatsApp</li>
+                    <li><span class="emoji">📞</span> Интеграция с телефонией</li>
+                    <li><span class="emoji">🎥</span> Видео через Яндекс.Телемост</li>
+                </ul>
+            </div>
+            <div class="feature-visual">
+                <div class="chat-demo">
+                    <div class="chat-message incoming">
+                        <span class="chat-author">Кандидат</span>
+                        <p>Добрый день! Когда удобно созвониться?</p>
+                        <span class="chat-time">10:23</span>
+                    </div>
+                    <div class="chat-message outgoing">
+                        <span class="chat-author">Рекрутер</span>
+                        <p>Здравствуйте! Предлагаю завтра в 14:00. Отправляю ссылку на Телемост 👇</p>
+                        <span class="chat-time">10:25</span>
+                    </div>
+                    <div class="chat-message outgoing template">
+                        <span class="template-badge">Шаблон</span>
+                        <p>📅 Приглашение на интервью...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 11: АНАЛИТИКА -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-analytics" data-slide="10">
+        <div class="slide-inner">
+            <div class="section-tag">📊 Аналитика</div>
+            <h2 class="section-title">Данные вместо догадок</h2>
+            <div class="analytics-grid">
+                <div class="analytics-card large">
+                    <h3>Воронка конверсий</h3>
+                    <div class="funnel-chart">
+                        <div class="funnel-bar" style="--width: 100%"><span>Отклики</span><span>1000</span></div>
+                        <div class="funnel-bar" style="--width: 60%"><span>Скрининг</span><span>600</span></div>
+                        <div class="funnel-bar" style="--width: 30%"><span>Интервью</span><span>300</span></div>
+                        <div class="funnel-bar" style="--width: 15%"><span>Оффер</span><span>150</span></div>
+                        <div class="funnel-bar" style="--width: 10%"><span>Выход</span><span>100</span></div>
+                    </div>
+                </div>
+                <div class="analytics-card">
+                    <h3>Time to Hire</h3>
+                    <div class="metric-big">
+                        <span class="value">14</span>
+                        <span class="unit">дней</span>
+                    </div>
+                    <span class="trend positive">↓ 40% быстрее</span>
+                </div>
+                <div class="analytics-card">
+                    <h3>Стоимость найма</h3>
+                    <div class="metric-big">
+                        <span class="value">12K</span>
+                        <span class="unit">₽</span>
+                    </div>
+                    <span class="trend positive">↓ 35% дешевле</span>
+                </div>
+                <div class="analytics-card">
+                    <h3>Загрузка рекрутеров</h3>
+                    <div class="recruiter-bars">
+                        <div class="rec-bar"><span>Анна</span><div class="bar" style="--p: 85%"></div></div>
+                        <div class="rec-bar"><span>Борис</span><div class="bar" style="--p: 72%"></div></div>
+                        <div class="rec-bar"><span>Виктор</span><div class="bar" style="--p: 91%"></div></div>
+                    </div>
+                </div>
+                <div class="analytics-card">
+                    <h3>Источники</h3>
+                    <div class="sources-chart">
+                        <div class="source"><span class="dot hh"></span>HH.ru — 45%</div>
+                        <div class="source"><span class="dot avito"></span>Авито — 30%</div>
+                        <div class="source"><span class="dot ref"></span>Реферал — 15%</div>
+                        <div class="source"><span class="dot other"></span>Другое — 10%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 12: SLA И АВТОМАТИЗАЦИЯ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-sla" data-slide="11">
+        <div class="slide-inner">
+            <div class="section-tag">⏱️ SLA</div>
+            <h2 class="section-title">Дисциплина процесса</h2>
+            <div class="sla-features">
+                <div class="sla-card">
+                    <div class="sla-icon">🔔</div>
+                    <h3>Напоминания</h3>
+                    <p>Автоматические пуши о просроченных кандидатах</p>
+                </div>
+                <div class="sla-card">
+                    <div class="sla-icon">⏰</div>
+                    <h3>Дедлайны</h3>
+                    <p>Настраиваемые SLA на каждый этап воронки</p>
+                </div>
+                <div class="sla-card">
+                    <div class="sla-icon">🚨</div>
+                    <h3>Алерты</h3>
+                    <p>Уведомления при нарушении сроков</p>
+                </div>
+                <div class="sla-card">
+                    <div class="sla-icon">📋</div>
+                    <h3>Задачи</h3>
+                    <p>Автоматическое создание задач на следующий шаг</p>
+                </div>
+            </div>
+            <div class="automation-demo">
+                <div class="trigger">Новый отклик</div>
+                <div class="arrow">→</div>
+                <div class="action">Уведомление рекрутеру в Telegram</div>
+                <div class="arrow">→</div>
+                <div class="action">Задача: связаться за 2 часа</div>
+                <div class="arrow">→</div>
+                <div class="action">Алерт руководителю при просрочке</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 13: МОБИЛЬНОЕ ПРИЛОЖЕНИЕ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-mobile" data-slide="12">
+        <div class="slide-inner split reverse">
+            <div class="feature-text">
+                <div class="section-tag">📱 Мобайл</div>
+                <h2 class="section-title">Работайте<br>откуда угодно</h2>
+                <ul class="feature-list">
+                    <li><span class="check">✓</span> iOS и Android</li>
+                    <li><span class="check">✓</span> Push-уведомления</li>
+                    <li><span class="check">✓</span> Просмотр кандидатов</li>
+                    <li><span class="check">✓</span> Быстрые действия</li>
+                    <li><span class="check">✓</span> Оффлайн-режим</li>
+                </ul>
+                <div class="app-badges">
+                    <div class="app-badge">App Store</div>
+                    <div class="app-badge">Google Play</div>
+                </div>
+            </div>
+            <div class="feature-visual">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="phone-header">WorkHere</div>
+                        <div class="phone-notification">
+                            <span class="notif-icon">🔔</span>
+                            <span>Новый отклик: Дизайнер</span>
+                        </div>
+                        <div class="phone-candidate">
+                            <div class="pc-avatar">АИ</div>
+                            <div class="pc-info">
+                                <span class="pc-name">Алексей Иванов</span>
+                                <span class="pc-role">Senior Developer</span>
+                            </div>
+                            <div class="pc-actions">
+                                <span class="pc-btn accept">✓</span>
+                                <span class="pc-btn reject">✕</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 14: БЕЗОПАСНОСТЬ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-security" data-slide="13">
+        <div class="slide-inner">
+            <div class="section-tag">🔐 Безопасность</div>
+            <h2 class="section-title">Защита данных на уровне</h2>
+            <div class="security-grid">
+                <div class="security-item">
+                    <div class="sec-icon">📜</div>
+                    <h3>ФЗ-152</h3>
+                    <p>Полное соответствие закону о персональных данных</p>
+                </div>
+                <div class="security-item">
+                    <div class="sec-icon">✍️</div>
+                    <h3>Согласия</h3>
+                    <p>Автоматический запрос и хранение согласий на обработку ПД</p>
+                </div>
+                <div class="security-item">
+                    <div class="sec-icon">👥</div>
+                    <h3>Роли и доступы</h3>
+                    <p>Гибкое разграничение прав по подразделениям и проектам</p>
+                </div>
+                <div class="security-item">
+                    <div class="sec-icon">📋</div>
+                    <h3>Аудит</h3>
+                    <p>Логирование всех действий: кто, что, когда изменил</p>
+                </div>
+                <div class="security-item">
+                    <div class="sec-icon">🔒</div>
+                    <h3>Шифрование</h3>
+                    <p>Данные зашифрованы при хранении и передаче</p>
+                </div>
+                <div class="security-item">
+                    <div class="sec-icon">🇷🇺</div>
+                    <h3>Российское ПО</h3>
+                    <p>В реестре отечественного софта, не боимся санкций</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 15: КАРЬЕРНЫЙ САЙТ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-career" data-slide="14">
+        <div class="slide-inner split">
+            <div class="feature-visual">
+                <div class="career-site-demo">
+                    <div class="cs-header">
+                        <span class="cs-logo">🏢 Ваша компания</span>
+                        <span class="cs-nav">Вакансии | О нас | Контакты</span>
+                    </div>
+                    <h3 class="cs-title">Присоединяйтесь к команде!</h3>
+                    <div class="cs-vacancies">
+                        <div class="cs-vacancy">
+                            <span class="csv-title">Frontend Developer</span>
+                            <span class="csv-salary">от 200 000 ₽</span>
+                        </div>
+                        <div class="cs-vacancy">
+                            <span class="csv-title">Product Manager</span>
+                            <span class="csv-salary">от 180 000 ₽</span>
+                        </div>
+                        <div class="cs-vacancy">
+                            <span class="csv-title">HR Business Partner</span>
+                            <span class="csv-salary">от 150 000 ₽</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-text">
+                <div class="section-tag">🌐 Карьерный сайт</div>
+                <h2 class="section-title">Брендированная<br>витрина вакансий</h2>
+                <ul class="feature-list">
+                    <li><span class="check">✓</span> Ваш фирменный стиль</li>
+                    <li><span class="check">✓</span> Формы отклика → сразу в ATS</li>
+                    <li><span class="check">✓</span> SEO-оптимизация</li>
+                    <li><span class="check">✓</span> Мобильная версия</li>
+                    <li><span class="check">✓</span> Аналитика источников</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 16: КАСТОМИЗАЦИЯ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-custom" data-slide="15">
+        <div class="slide-inner">
+            <div class="section-tag">⚙️ Кастомизация</div>
+            <h2 class="section-title">Система подстроится под вас</h2>
+            <div class="custom-grid">
+                <div class="custom-item">
+                    <span class="custom-icon">📝</span>
+                    <h3>Кастомные поля</h3>
+                    <p>Добавляйте любые поля в карточки кандидатов и вакансий</p>
+                </div>
+                <div class="custom-item">
+                    <span class="custom-icon">🏷️</span>
+                    <h3>Справочники и теги</h3>
+                    <p>Свои справочники навыков, причин отказа, источников</p>
+                </div>
+                <div class="custom-item">
+                    <span class="custom-icon">📋</span>
+                    <h3>Шаблоны воронок</h3>
+                    <p>Создавайте шаблоны под разные типы найма</p>
+                </div>
+                <div class="custom-item">
+                    <span class="custom-icon">📊</span>
+                    <h3>Конструктор отчётов</h3>
+                    <p>Собирайте отчёты под ваши KPI</p>
+                </div>
+                <div class="custom-item">
+                    <span class="custom-icon">✉️</span>
+                    <h3>Шаблоны писем</h3>
+                    <p>Готовые шаблоны с подстановкой переменных</p>
+                </div>
+                <div class="custom-item">
+                    <span class="custom-icon">🔧</span>
+                    <h3>Персональные доработки</h3>
+                    <p>Разработка функций под ваши процессы</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 17: ДОПОЛНИТЕЛЬНЫЕ МОДУЛИ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-modules" data-slide="16">
+        <div class="slide-inner">
+            <div class="section-tag">🧩 Модули</div>
+            <h2 class="section-title">Расширяйте возможности</h2>
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="module-icon">📄</div>
+                    <h3>КЭДО</h3>
+                    <p>Электронный документооборот: договоры, оферты, подписи</p>
+                    <span class="module-tag">Опционально</span>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">🚀</div>
+                    <h3>Онбординг</h3>
+                    <p>Передача данных в HR-процессы после найма</p>
+                    <span class="module-tag">Опционально</span>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">🎓</div>
+                    <h3>WorkHere Academy</h3>
+                    <p>Обучение рекрутингу, методички, стандарты процесса</p>
+                    <span class="module-tag">Включено</span>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">🤖</div>
+                    <h3>AI-модуль</h3>
+                    <p>Умный поиск, матчинг, ранжирование кандидатов</p>
+                    <span class="module-tag premium">Премиум</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 18: РЕЗУЛЬТАТЫ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-results" data-slide="17">
+        <div class="slide-inner">
+            <div class="section-tag">🏆 Результаты</div>
+            <h2 class="section-title">Что получите</h2>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-value">-40%</div>
+                    <div class="result-label">расходы на найм</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">×4</div>
+                    <div class="result-label">производительность рекрутера</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">-60%</div>
+                    <div class="result-label">срок закрытия вакансии</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">×3</div>
+                    <div class="result-label">конверсия до оффера</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">0%</div>
+                    <div class="result-label">потерянных кандидатов</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">100%</div>
+                    <div class="result-label">прозрачность процесса</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 19: ТАРИФЫ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-pricing" data-slide="18">
+        <div class="slide-inner">
+            <div class="section-tag">💰 Тарифы</div>
+            <h2 class="section-title">Прозрачное ценообразование</h2>
             <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-badge bronze">🥉</div>
-                    <h3 class="pricing-name">Старт</h3>
-                    <div class="pricing-price">
-                        <span class="price-from">от</span>
-                        <span class="price-value">5 000</span>
-                        <span class="price-period">₽/мес</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>До 3 пользователей</li>
-                        <li>Базовые интеграции</li>
-                        <li>Email-поддержка</li>
+                <div class="price-card">
+                    <div class="price-name">Стандартный</div>
+                    <div class="price-value">20 000 ₽</div>
+                    <div class="price-period">за лицензию / год</div>
+                    <ul class="price-features">
+                        <li>✓ Единая база кандидатов</li>
+                        <li>✓ Все интеграции</li>
+                        <li>✓ Воронки и этапы</li>
+                        <li>✓ Аналитика</li>
+                        <li>✓ Мобильное приложение</li>
+                        <li>✓ Поддержка 24/7</li>
                     </ul>
-                    <button class="btn btn-outline">Выбрать</button>
+                    <button class="price-btn">Выбрать</button>
                 </div>
-                
-                <div class="pricing-card">
-                    <div class="pricing-badge silver">🥈</div>
-                    <h3 class="pricing-name">Бизнес</h3>
-                    <div class="pricing-price">
-                        <span class="price-from">от</span>
-                        <span class="price-value">15 000</span>
-                        <span class="price-period">₽/мес</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>До 10 пользователей</li>
-                        <li>Все интеграции</li>
-                        <li>Приоритетная поддержка</li>
-                        <li>Аналитика</li>
+                <div class="price-card featured">
+                    <div class="price-popular">Популярный</div>
+                    <div class="price-name">Премиум</div>
+                    <div class="price-value">42 000 ₽</div>
+                    <div class="price-period">за лицензию / год</div>
+                    <ul class="price-features">
+                        <li>✓ Всё из Стандартного</li>
+                        <li>✓ <strong>AI-модуль</strong></li>
+                        <li>✓ Умный поиск кандидатов</li>
+                        <li>✓ Матчинг и ранжирование</li>
+                        <li>✓ Саммари резюме</li>
+                        <li>✓ Приоритетная поддержка</li>
                     </ul>
-                    <button class="btn btn-outline">Выбрать</button>
+                    <button class="price-btn primary">Выбрать</button>
                 </div>
-                
-                <div class="pricing-card featured">
-                    <div class="pricing-popular">Популярный</div>
-                    <div class="pricing-badge gold">🥇</div>
-                    <h3 class="pricing-name">Корпорация</h3>
-                    <div class="pricing-price">
-                        <span class="price-from">от</span>
-                        <span class="price-value">50 000</span>
-                        <span class="price-period">₽/мес</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>Безлимит пользователей</li>
-                        <li>Все интеграции + API</li>
-                        <li>Поддержка 24/7</li>
-                        <li>Персональный менеджер</li>
-                        <li>Кастомизация</li>
+                <div class="price-card free">
+                    <div class="price-name">Руководители</div>
+                    <div class="price-value">Бесплатно</div>
+                    <div class="price-period">без ограничений</div>
+                    <ul class="price-features">
+                        <li>✓ Просмотр кандидатов</li>
+                        <li>✓ Согласования</li>
+                        <li>✓ Фидбек</li>
+                        <li>✓ Отчёты</li>
                     </ul>
-                    <button class="btn btn-primary">Выбрать</button>
+                    <button class="price-btn">Подключить</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Slide 10: Contact -->
-    <section class="slide slide-contact" data-slide="9">
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 20: ВНЕДРЕНИЕ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-onboarding" data-slide="19">
         <div class="slide-inner">
-            <div class="section-header centered">
-                <span class="section-tag">Контакты</span>
-                <h2 class="section-title">Одержи победу в найме!</h2>
-            </div>
-            
-            <div class="contact-card">
-                <div class="contact-avatar">
-                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                        <circle cx="40" cy="40" r="38" stroke="#597FFF" stroke-width="2" fill="#F0F4FF"/>
-                        <circle cx="40" cy="32" r="12" fill="#597FFF" opacity="0.3"/>
-                        <path d="M20 68C20 54 28 46 40 46C52 46 60 54 60 68" fill="#597FFF" opacity="0.3"/>
-                    </svg>
-                </div>
-                <div class="contact-details">
-                    <h3>Ваш персональный менеджер</h3>
-                    <div class="contact-line">
-                        <span class="contact-icon">✉️</span>
-                        <span>manager@workhere.ru</span>
-                    </div>
-                    <div class="contact-line">
-                        <span class="contact-icon">📞</span>
-                        <span>+7 (800) 000-00-00</span>
-                    </div>
-                    <div class="contact-line">
-                        <span class="contact-icon">💬</span>
-                        <span>Telegram: @workhere</span>
+            <div class="section-tag">🚀 Внедрение</div>
+            <h2 class="section-title">Запуск за 1 день</h2>
+            <div class="onboarding-timeline">
+                <div class="ob-step">
+                    <div class="ob-time">30 мин</div>
+                    <div class="ob-content">
+                        <h3>Демо</h3>
+                        <p>Показываем систему, отвечаем на вопросы</p>
                     </div>
                 </div>
+                <div class="ob-connector"></div>
+                <div class="ob-step">
+                    <div class="ob-time">1 день</div>
+                    <div class="ob-content">
+                        <h3>Договор</h3>
+                        <p>Подписание и оплата</p>
+                    </div>
+                </div>
+                <div class="ob-connector"></div>
+                <div class="ob-step">
+                    <div class="ob-time">2-3 дня</div>
+                    <div class="ob-content">
+                        <h3>Настройка</h3>
+                        <p>Импорт базы, настройка воронок</p>
+                    </div>
+                </div>
+                <div class="ob-connector"></div>
+                <div class="ob-step">
+                    <div class="ob-time">1 час</div>
+                    <div class="ob-content">
+                        <h3>Обучение</h3>
+                        <p>Онлайн-сессия для команды</p>
+                    </div>
+                </div>
+                <div class="ob-connector"></div>
+                <div class="ob-step active">
+                    <div class="ob-time">∞</div>
+                    <div class="ob-content">
+                        <h3>Поддержка</h3>
+                        <p>24/7 помощь и консультации</p>
+                    </div>
+                </div>
             </div>
-            
-            <a href="https://workhere.ru/human-resources" class="btn btn-primary btn-large">
-                Начать бесплатно
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 21: КЕЙСЫ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-cases" data-slide="20">
+        <div class="slide-inner">
+            <div class="section-tag">💼 Кейсы</div>
+            <h2 class="section-title">Истории успеха</h2>
+            <div class="cases-grid">
+                <div class="case-card">
+                    <div class="case-logo">🏭</div>
+                    <div class="case-industry">Производство</div>
+                    <h3>Закрыли 500 вакансий за месяц</h3>
+                    <p>Массовый подбор рабочих специальностей. Срок закрытия снизился с 21 до 7 дней.</p>
+                    <div class="case-result">
+                        <span class="case-metric">-66%</span>
+                        <span>Time to Hire</span>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-logo">🛒</div>
+                    <div class="case-industry">Ритейл</div>
+                    <h3>Единая база на 50 магазинов</h3>
+                    <p>Централизованный подбор для федеральной сети. Прозрачность по всем регионам.</p>
+                    <div class="case-result">
+                        <span class="case-metric">×4</span>
+                        <span>Скорость подбора</span>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-logo">💻</div>
+                    <div class="case-industry">IT</div>
+                    <h3>AI-поиск сэкономил 200 часов</h3>
+                    <p>Автоматическое ранжирование кандидатов вместо ручного скрининга 3000 резюме.</p>
+                    <div class="case-result">
+                        <span class="case-metric">-80%</span>
+                        <span>Рутина</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 22: ГЕОГРАФИЯ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-geo" data-slide="21">
+        <div class="slide-inner">
+            <div class="section-tag">🗺️ География</div>
+            <h2 class="section-title">Работаем по всей России</h2>
+            <div class="geo-stats">
+                <div class="geo-stat">
+                    <span class="geo-value">350+</span>
+                    <span class="geo-label">городов</span>
+                </div>
+                <div class="geo-stat">
+                    <span class="geo-value">8500+</span>
+                    <span class="geo-label">компаний</span>
+                </div>
+                <div class="geo-stat">
+                    <span class="geo-value">100+</span>
+                    <span class="geo-label">новых клиентов в месяц</span>
+                </div>
+            </div>
+            <div class="geo-map">
+                <div class="map-dot" style="--x: 20%; --y: 40%">🏙️</div>
+                <div class="map-dot" style="--x: 35%; --y: 35%">🏙️</div>
+                <div class="map-dot" style="--x: 50%; --y: 45%">🏙️</div>
+                <div class="map-dot" style="--x: 65%; --y: 30%">🏙️</div>
+                <div class="map-dot" style="--x: 80%; --y: 50%">🏙️</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 23: КОНТАКТЫ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-contact" data-slide="22">
+        <div class="slide-inner">
+            <div class="section-tag">📞 Контакты</div>
+            <h2 class="section-title">Начните сегодня</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">🌐</div>
+                    <h3>Сайт</h3>
+                    <a href="https://workhere.ru">workhere.ru</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email</h3>
+                    <a href="mailto:info@workhere.ru">info@workhere.ru</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Телефон</h3>
+                    <a href="tel:+78001234567">8 (800) 123-45-67</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">✈️</div>
+                    <h3>Telegram</h3>
+                    <a href="https://t.me/workhere">@workhere</a>
+                </div>
+            </div>
+            <a href="https://workhere.ru/demo" class="cta-button">
+                🚀 Записаться на демо
             </a>
         </div>
     </section>
 
-    <!-- Slide 11: Final -->
-    <section class="slide slide-final" data-slide="10">
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 24: ФИНАЛ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="slide slide-final" data-slide="23">
+        <div class="final-bg">
+            <div class="confetti"></div>
+        </div>
         <div class="slide-inner">
-            <div class="final-content">
-                <h2 class="final-title">
-                    HRM-систем много,<br>
-                    но вершину найма<br>
-                    покоряет <span class="highlight">лишь одна</span>
-                </h2>
-                
-                <div class="final-mascot">
-                    <svg width="200" height="220" viewBox="0 0 200 220">
-                        <!-- Mountain -->
-                        <path d="M10 200 L100 60 L190 200 Z" fill="#E0E8FF"/>
-                        <path d="M50 200 L100 100 L150 200 Z" fill="#F0F4FF"/>
-                        <!-- Snow cap -->
-                        <path d="M85 75 L100 60 L115 75 L108 82 L100 78 L92 82 Z" fill="white"/>
-                        <!-- Trophy -->
-                        <g transform="translate(75, 20)">
-                            <ellipse cx="25" cy="45" rx="12" ry="4" fill="#FFD700"/>
-                            <rect x="18" y="38" width="14" height="8" fill="#FFD700"/>
-                            <path d="M5 10 L5 22 Q5 32 25 35 Q45 32 45 22 L45 10 Z" fill="#FFD700"/>
-                            <path d="M0 10 Q0 18 6 18 L6 10 Z" fill="#FFD700"/>
-                            <path d="M50 10 Q50 18 44 18 L44 10 Z" fill="#FFD700"/>
-                            <text x="25" y="24" text-anchor="middle" fill="white" font-size="14" font-weight="bold">★</text>
-                        </g>
-                        <!-- Flag -->
-                        <line x1="100" y1="60" x2="100" y2="20" stroke="#597FFF" stroke-width="3"/>
-                        <path d="M100 20 L130 28 L100 38 Z" fill="#597FFF"/>
-                    </svg>
-                </div>
-                
-                <div class="final-logo">
-                    <div class="logo-mark">
-                        <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
-                            <rect width="48" height="48" rx="12" fill="#597FFF"/>
-                            <path d="M14 28L20 22L26 28L34 20" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="34" cy="20" r="3" fill="white"/>
-                        </svg>
-                    </div>
-                    <span class="logo-text">WorkHere</span>
-                </div>
+            <h2 class="final-title">
+                HRM-систем много,<br>
+                но вершину найма покоряет<br>
+                <span class="mega-gradient">лишь одна</span>
+            </h2>
+            <div class="final-logo">
+                <div class="logo-icon">W</div>
+                <span class="logo-name">WorkHere</span>
             </div>
+            <p class="final-tagline">Ваши кандидаты уже ждут</p>
         </div>
     </section>
 
