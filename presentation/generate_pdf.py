@@ -647,14 +647,15 @@ li::before {{
 }}
 
 .funnel-bar {{
-    height: 7mm;
-    background: linear-gradient(90deg, {C['primary']} 0%, #6366F1 100%);
-    border-radius: 1mm;
+    height: 8mm;
+    background: {C['primary']};
+    border-radius: 1.5mm;
     color: {C['white']};
-    font-size: 8pt;
-    font-weight: 500;
-    line-height: 7mm;
-    padding: 0 3mm;
+    font-size: 9pt;
+    font-weight: 600;
+    line-height: 8mm;
+    padding: 0 4mm;
+    min-width: 45mm;
 }}
 
 /* ═══════════════════════════════════════════════════════════════
@@ -786,18 +787,6 @@ HTML_CONTENT = f"""
             </div>
         </div>
         
-        <div style="background: rgba(255,255,255,0.08); border-radius: 3mm; padding: 5mm 8mm; max-width: 240mm;">
-            <p style="color: rgba(255,255,255,0.6); font-size: 9pt; margin: 0;">
-                <strong style="color: #fff;">Нам доверяют:</strong>&nbsp;&nbsp;
-                <span style="margin-right: 6mm;">Ростелеком</span>
-                <span style="margin-right: 6mm;">Сбербанк</span>
-                <span style="margin-right: 6mm;">МТС</span>
-                <span style="margin-right: 6mm;">X5 Group</span>
-                <span style="margin-right: 6mm;">Ozon</span>
-                <span style="margin-right: 6mm;">Яндекс</span>
-                <span>VK</span>
-            </p>
-        </div>
     </div>
     
     <div class="footer">
@@ -971,49 +960,55 @@ HTML_CONTENT = f"""
     <p class="tag">Аудитория</p>
     <h2>Для всех участников найма</h2>
     
-    <div class="row gap-md">
-        <div class="col col-4">
-            <div class="card" style="min-height: 48mm;">
-                <div class="icon-box">{icon('users', 32)}</div>
-                <h4>Рекрутер</h4>
-                <ul class="list-check text-sm">
-                    <li>Единая база кандидатов</li>
-                    <li>Автоматизация рутины</li>
-                    <li>Шаблоны сообщений</li>
-                </ul>
+    <div style="display: table; width: 100%; margin-top: 6mm;">
+        <div style="display: table-row;">
+            <div style="display: table-cell; width: 25%; padding: 3mm; vertical-align: top;">
+                <div class="card" style="height: 65mm; padding: 5mm;">
+                    <div class="icon-box">{icon('users', 28)}</div>
+                    <h4 style="font-size: 11pt; margin: 3mm 0;">Рекрутер</h4>
+                    <ul class="list-check text-sm">
+                        <li>Единая база кандидатов</li>
+                        <li>Автоматизация рутины</li>
+                        <li>Шаблоны сообщений</li>
+                        <li>Календарь интервью</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="col col-4">
-            <div class="card card-accent" style="min-height: 48mm;">
-                <div class="icon-box">{icon('target', 32, '#fff')}</div>
-                <h4>Руководитель подбора</h4>
-                <ul class="list-check text-sm">
-                    <li style="color: rgba(255,255,255,0.9);">Контроль SLA и сроков</li>
-                    <li style="color: rgba(255,255,255,0.9);">Аналитика команды</li>
-                    <li style="color: rgba(255,255,255,0.9);">Отчёты для топов</li>
-                </ul>
+            <div style="display: table-cell; width: 25%; padding: 3mm; vertical-align: top;">
+                <div class="card card-accent" style="height: 65mm; padding: 5mm;">
+                    <div class="icon-box">{icon('target', 28, '#fff')}</div>
+                    <h4 style="font-size: 11pt; margin: 3mm 0; color: #fff;">Руководитель подбора</h4>
+                    <ul class="list-check text-sm" style="color: rgba(255,255,255,0.9);">
+                        <li>Контроль SLA и сроков</li>
+                        <li>Аналитика команды</li>
+                        <li>Отчёты для топов</li>
+                        <li>Распределение нагрузки</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="col col-4">
-            <div class="card" style="min-height: 48mm;">
-                <div class="icon-box">{icon('message', 32)}</div>
-                <h4>Нанимающий менеджер</h4>
-                <ul class="list-check text-sm">
-                    <li>Просмотр кандидатов</li>
-                    <li>Быстрый фидбек</li>
-                    <li>Уведомления</li>
-                </ul>
+            <div style="display: table-cell; width: 25%; padding: 3mm; vertical-align: top;">
+                <div class="card" style="height: 65mm; padding: 5mm;">
+                    <div class="icon-box">{icon('message', 28)}</div>
+                    <h4 style="font-size: 11pt; margin: 3mm 0;">Нанимающий менеджер</h4>
+                    <ul class="list-check text-sm">
+                        <li>Просмотр кандидатов</li>
+                        <li>Быстрый фидбек</li>
+                        <li>Уведомления</li>
+                        <li>Согласование оффера</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="col col-4">
-            <div class="card" style="min-height: 48mm;">
-                <div class="icon-box">{icon('chart', 32)}</div>
-                <h4>HRD / Бизнес</h4>
-                <ul class="list-check text-sm">
-                    <li>Стоимость найма</li>
-                    <li>Прогнозирование</li>
-                    <li>Unit-экономика</li>
-                </ul>
+            <div style="display: table-cell; width: 25%; padding: 3mm; vertical-align: top;">
+                <div class="card" style="height: 65mm; padding: 5mm;">
+                    <div class="icon-box">{icon('chart', 28)}</div>
+                    <h4 style="font-size: 11pt; margin: 3mm 0;">HRD / Бизнес</h4>
+                    <ul class="list-check text-sm">
+                        <li>Стоимость найма</li>
+                        <li>Прогнозирование</li>
+                        <li>Unit-экономика</li>
+                        <li>Дашборды и отчёты</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -1304,19 +1299,18 @@ HTML_CONTENT = f"""
                 <div class="card card-filled" style="padding: 4mm; min-height: 75mm;">
                     <h4 style="margin-bottom: 3mm; font-size: 11pt;">{icon('link', 18, C['primary'])} Сервисы</h4>
                     <div style="margin-bottom: 2mm;">
-                        <span class="int-badge" style="background: #fc3f1d;">Телемост</span>
-                        <span class="int-badge" style="background: #2d8cff;">Zoom</span>
-                    </div>
-                    <div style="margin-bottom: 2mm;">
-                        <span class="int-badge" style="background: #4285f4;">Google Meet</span>
+                        <span class="int-badge" style="background: #fc3f1d;">Яндекс.Телемост</span>
                     </div>
                     <div style="margin-bottom: 2mm;">
                         <span class="int-badge" style="background: #ffcc00; color: #000;">1С:ЗУП</span>
-                        <span class="int-badge" style="background: #ff6a00; color: #000;">Битрикс24</span>
+                        <span class="int-badge" style="background: #ffcc00; color: #000;">1С:Предприятие</span>
                     </div>
-                    <div>
+                    <div style="margin-bottom: 2mm;">
                         <span class="int-badge" style="background: #333;">REST API</span>
                         <span class="int-badge" style="background: #6b46c1;">Webhooks</span>
+                    </div>
+                    <div>
+                        <span class="int-badge" style="background: #0077ff;">VK HR</span>
                     </div>
                     <p style="font-size: 8pt; color: {C['muted']}; margin-top: 3mm;">Открытое API для любых интеграций</p>
                 </div>
@@ -1345,39 +1339,41 @@ HTML_CONTENT = f"""
     <p class="tag tag-light">AI-модуль</p>
     <h2>Искусственный интеллект в найме</h2>
     
-    <div class="row gap-md">
-        <div class="col col-4">
-            <div class="card-dark" style="padding: 5mm; min-height: 42mm;">
-                <div class="icon-box">{icon('search', 32, '#fff')}</div>
-                <h4 style="color: #fff;">Умный поиск</h4>
-                <p class="text-sm" style="color: rgba(255,255,255,0.6);">Семантический поиск по всей базе резюме. Понимает синонимы, опечатки и контекст запроса.</p>
+    <div style="display: table; width: 100%; margin-top: 6mm;">
+        <div style="display: table-row;">
+            <div style="display: table-cell; width: 25%; padding: 3mm; vertical-align: top;">
+                <div class="card-dark" style="padding: 5mm; height: 55mm;">
+                    <div class="icon-box">{icon('search', 28, '#fff')}</div>
+                    <h4 style="color: #fff; font-size: 11pt; margin: 3mm 0;">Умный поиск</h4>
+                    <p style="font-size: 9pt; color: rgba(255,255,255,0.7); margin: 0; line-height: 1.4;">Семантический поиск по базе. Понимает синонимы, опечатки и контекст.</p>
+                </div>
             </div>
-        </div>
-        <div class="col col-4">
-            <div class="card-dark" style="padding: 5mm; min-height: 42mm;">
-                <div class="icon-box">{icon('target', 32, '#fff')}</div>
-                <h4 style="color: #fff;">Матчинг</h4>
-                <p class="text-sm" style="color: rgba(255,255,255,0.6);">Автоматическая оценка соответствия кандидата требованиям вакансии в процентах.</p>
+            <div style="display: table-cell; width: 25%; padding: 3mm; vertical-align: top;">
+                <div class="card-dark" style="padding: 5mm; height: 55mm;">
+                    <div class="icon-box">{icon('target', 28, '#fff')}</div>
+                    <h4 style="color: #fff; font-size: 11pt; margin: 3mm 0;">Матчинг</h4>
+                    <p style="font-size: 9pt; color: rgba(255,255,255,0.7); margin: 0; line-height: 1.4;">Оценка соответствия кандидата требованиям вакансии в %.</p>
+                </div>
             </div>
-        </div>
-        <div class="col col-4">
-            <div class="card-dark" style="padding: 5mm; min-height: 42mm;">
-                <div class="icon-box">{icon('chart', 32, '#fff')}</div>
-                <h4 style="color: #fff;">Ранжирование</h4>
-                <p class="text-sm" style="color: rgba(255,255,255,0.6);">Сортировка откликов по релевантности. Лучшие кандидаты — всегда в топе списка.</p>
+            <div style="display: table-cell; width: 25%; padding: 3mm; vertical-align: top;">
+                <div class="card-dark" style="padding: 5mm; height: 55mm;">
+                    <div class="icon-box">{icon('chart', 28, '#fff')}</div>
+                    <h4 style="color: #fff; font-size: 11pt; margin: 3mm 0;">Ранжирование</h4>
+                    <p style="font-size: 9pt; color: rgba(255,255,255,0.7); margin: 0; line-height: 1.4;">Сортировка откликов. Лучшие кандидаты — всегда в топе.</p>
+                </div>
             </div>
-        </div>
-        <div class="col col-4">
-            <div class="card-dark" style="padding: 5mm; min-height: 42mm;">
-                <div class="icon-box">{icon('document', 32, '#fff')}</div>
-                <h4 style="color: #fff;">Саммари резюме</h4>
-                <p class="text-sm" style="color: rgba(255,255,255,0.6);">Краткая выжимка ключевых навыков и опыта кандидата за 20 секунд.</p>
+            <div style="display: table-cell; width: 25%; padding: 3mm; vertical-align: top;">
+                <div class="card-dark" style="padding: 5mm; height: 55mm;">
+                    <div class="icon-box">{icon('document', 28, '#fff')}</div>
+                    <h4 style="color: #fff; font-size: 11pt; margin: 3mm 0;">Саммари резюме</h4>
+                    <p style="font-size: 9pt; color: rgba(255,255,255,0.7); margin: 0; line-height: 1.4;">Краткая выжимка навыков и опыта за 20 секунд.</p>
+                </div>
             </div>
         </div>
     </div>
     
-    <div style="background: rgba(79,106,245,0.15); border: 1px solid rgba(79,106,245,0.3); padding: 4mm 6mm; border-radius: 2mm; margin-top: 8mm;">
-        <p class="text-sm mb-0" style="color: #4F6AF5;"><strong>AI — ваш помощник, не замена.</strong> Финальное решение о найме всегда остаётся за рекрутером.</p>
+    <div style="background: rgba(79,106,245,0.2); border: 1px solid rgba(79,106,245,0.4); padding: 4mm 6mm; border-radius: 2mm; margin-top: 8mm;">
+        <p style="font-size: 10pt; margin: 0; color: #7B8CFF;"><strong style="color: #fff;">AI — ваш помощник, не замена.</strong> Финальное решение о найме всегда за рекрутером.</p>
     </div>
     
     <div class="footer">
@@ -1510,7 +1506,7 @@ HTML_CONTENT = f"""
     <div style="display: table; width: 100%; margin-top: 4mm;">
         <div style="display: table-row;">
             <div style="display: table-cell; width: 33%; padding: 2mm;">
-                <div class="card card-filled" style="padding: 4mm; min-height: 42mm;">
+                <div class="card card-filled" style="padding: 4mm; height: 38mm;">
                     <div style="display: table; width: 100%;">
                         <div style="display: table-cell; width: 14mm; vertical-align: top;">{icon('document', 28, C['primary'])}</div>
                         <div style="display: table-cell; vertical-align: top;">
@@ -1521,7 +1517,7 @@ HTML_CONTENT = f"""
                 </div>
             </div>
             <div style="display: table-cell; width: 33%; padding: 2mm;">
-                <div class="card card-filled" style="padding: 4mm; min-height: 42mm;">
+                <div class="card card-filled" style="padding: 4mm; height: 38mm;">
                     <div style="display: table; width: 100%;">
                         <div style="display: table-cell; width: 14mm; vertical-align: top;">{icon('check', 28, C['accent'])}</div>
                         <div style="display: table-cell; vertical-align: top;">
@@ -1532,7 +1528,7 @@ HTML_CONTENT = f"""
                 </div>
             </div>
             <div style="display: table-cell; width: 33%; padding: 2mm;">
-                <div class="card card-filled" style="padding: 4mm; min-height: 42mm;">
+                <div class="card card-filled" style="padding: 4mm; height: 38mm;">
                     <div style="display: table; width: 100%;">
                         <div style="display: table-cell; width: 14mm; vertical-align: top;">{icon('users', 28, C['primary'])}</div>
                         <div style="display: table-cell; vertical-align: top;">
@@ -1548,7 +1544,7 @@ HTML_CONTENT = f"""
     <div style="display: table; width: 100%; margin-top: 2mm;">
         <div style="display: table-row;">
             <div style="display: table-cell; width: 33%; padding: 2mm;">
-                <div class="card card-filled" style="padding: 4mm; min-height: 42mm;">
+                <div class="card card-filled" style="padding: 4mm; height: 38mm;">
                     <div style="display: table; width: 100%;">
                         <div style="display: table-cell; width: 14mm; vertical-align: top;">{icon('audit', 28, C['primary'])}</div>
                         <div style="display: table-cell; vertical-align: top;">
@@ -1559,7 +1555,7 @@ HTML_CONTENT = f"""
                 </div>
             </div>
             <div style="display: table-cell; width: 33%; padding: 2mm;">
-                <div class="card card-filled" style="padding: 4mm; min-height: 42mm;">
+                <div class="card card-filled" style="padding: 4mm; height: 38mm;">
                     <div style="display: table; width: 100%;">
                         <div style="display: table-cell; width: 14mm; vertical-align: top;">{icon('lock', 28, C['primary'])}</div>
                         <div style="display: table-cell; vertical-align: top;">
@@ -1570,7 +1566,7 @@ HTML_CONTENT = f"""
                 </div>
             </div>
             <div style="display: table-cell; width: 33%; padding: 2mm;">
-                <div class="card card-filled" style="padding: 4mm; min-height: 42mm;">
+                <div class="card card-filled" style="padding: 4mm; height: 38mm;">
                     <div style="display: table; width: 100%;">
                         <div style="display: table-cell; width: 14mm; vertical-align: top;">{icon('shield', 28, C['accent'])}</div>
                         <div style="display: table-cell; vertical-align: top;">
