@@ -10,15 +10,24 @@ from pathlib import Path
 import base64
 
 # ═══════════════════════════════════════════════════════════════
-# LOAD LOGO AS BASE64
+# SVG LOGO (no artifacts)
 # ═══════════════════════════════════════════════════════════════
 
-LOGO_PATH = Path(__file__).parent.parent / "bot" / "assets" / "logo.png"
-if LOGO_PATH.exists():
-    LOGO_B64 = base64.b64encode(LOGO_PATH.read_bytes()).decode()
-    LOGO_SRC = f"data:image/png;base64,{LOGO_B64}"
-else:
-    LOGO_SRC = ""
+def logo_svg(color_work="#2196F3", color_here="#111827", height="6mm"):
+    """Generate clean SVG logo"""
+    return f'''<svg height="{height}" viewBox="0 0 120 28" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="55" height="28" rx="4" fill="{color_work}"/>
+        <text x="6" y="21" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="white">Work</text>
+        <text x="58" y="21" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="{color_here}">Here</text>
+    </svg>'''
+
+def logo_svg_white(height="6mm"):
+    """White version for dark backgrounds"""
+    return f'''<svg height="{height}" viewBox="0 0 120 28" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="55" height="28" rx="4" fill="#2196F3"/>
+        <text x="6" y="21" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="white">Work</text>
+        <text x="58" y="21" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="white">Here</text>
+    </svg>'''
 
 # ═══════════════════════════════════════════════════════════════
 # SVG ICONS
@@ -365,6 +374,7 @@ p {{
     border-radius: 3mm;
     padding: 5mm;
     margin-bottom: 4mm;
+    min-height: 40mm;
 }}
 
 .card-filled {{
@@ -380,6 +390,8 @@ p {{
 .card-dark {{
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 3mm;
+    min-height: 40mm;
 }}
 
 .card-accent {{
@@ -748,18 +760,22 @@ HTML_CONTENT = f"""
             Система управления наймом, которая закрывает вакансии быстрее
         </p>
         
-        <div class="row gap-lg" style="max-width: 160mm;">
-            <div class="col col-3">
-                <div class="stat-value" style="color: #fff;">8 500+</div>
-                <p class="text-sm" style="color: rgba(255,255,255,0.5);">компаний</p>
+        <div class="row gap-lg" style="max-width: 200mm;">
+            <div class="col col-4">
+                <div class="stat-value" style="color: #fff;">1 500+</div>
+                <p class="text-sm" style="color: rgba(255,255,255,0.5);">компаний-клиентов</p>
             </div>
-            <div class="col col-3">
-                <div class="stat-value" style="color: #fff;">350+</div>
-                <p class="text-sm" style="color: rgba(255,255,255,0.5);">городов России</p>
+            <div class="col col-4">
+                <div class="stat-value" style="color: #fff;">AI</div>
+                <p class="text-sm" style="color: rgba(255,255,255,0.5);">умный поиск кандидатов</p>
             </div>
-            <div class="col col-3">
-                <div class="stat-value" style="color: #fff;">3</div>
-                <p class="text-sm" style="color: rgba(255,255,255,0.5);">года на рынке</p>
+            <div class="col col-4">
+                <div class="stat-value" style="color: #fff;">−60%</div>
+                <p class="text-sm" style="color: rgba(255,255,255,0.5);">время закрытия вакансии</p>
+            </div>
+            <div class="col col-4">
+                <div class="stat-value" style="color: #fff;">24/7</div>
+                <p class="text-sm" style="color: rgba(255,255,255,0.5);">техническая поддержка</p>
             </div>
         </div>
     </div>
@@ -767,7 +783,7 @@ HTML_CONTENT = f"""
     <div class="footer">
         <div class="footer-inner">
             <div class="footer-left">
-                <img src="{LOGO_SRC}" class="logo" style="filter: brightness(0) invert(1);">
+                {logo_svg_white()}
             </div>
             <div class="footer-right" style="color: rgba(255,255,255,0.4);">1</div>
         </div>
@@ -831,7 +847,7 @@ HTML_CONTENT = f"""
     
     <div class="footer">
         <div class="footer-inner">
-            <div class="footer-left"><img src="{LOGO_SRC}" class="logo"></div>
+            <div class="footer-left">{logo_svg()}</div>
             <div class="footer-right">2</div>
         </div>
     </div>
@@ -841,25 +857,57 @@ HTML_CONTENT = f"""
      SLIDE 3: SOLUTION
      ═══════════════════════════════════════════════════════════════ -->
 <div class="slide slide-gradient text-center">
-    <div class="pt-5">
+    <div class="pt-3">
         <p class="tag tag-light">Решение</p>
-        <h2 style="font-size: 32pt; margin-bottom: 15mm;">
+        <h2 style="font-size: 28pt; margin-bottom: 10mm;">
             Одна система для всего<br>процесса найма
         </h2>
         
-        <div style="background: rgba(255,255,255,0.15); padding: 8mm 15mm; border-radius: 4mm; display: inline-block; margin-bottom: 12mm;">
-            <img src="{LOGO_SRC}" style="height: 12mm; filter: brightness(0) invert(1);">
+        <div style="background: rgba(255,255,255,0.15); padding: 6mm 12mm; border-radius: 4mm; display: inline-block; margin-bottom: 8mm;">
+            {logo_svg_white("10mm")}
         </div>
         
-        <p style="color: rgba(255,255,255,0.8); font-size: 12pt; max-width: 160mm; margin: 0 auto;">
-            От заявки на подбор до выхода сотрудника —<br>
-            всё в одном месте, под контролем, с аналитикой
+        <p style="color: rgba(255,255,255,0.9); font-size: 11pt; max-width: 180mm; margin: 0 auto 10mm auto;">
+            От заявки на подбор до выхода сотрудника — всё в одном месте
         </p>
+        
+        <div style="display: table; width: 100%; max-width: 220mm; margin: 0 auto;">
+            <div style="display: table-row;">
+                <div style="display: table-cell; width: 25%; padding: 4mm; text-align: center;">
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 3mm; padding: 5mm;">
+                        {icon('database', 28, '#fff')}
+                        <p style="color: #fff; font-weight: 600; margin: 3mm 0 1mm 0; font-size: 10pt;">Единая база</p>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 8pt; margin: 0;">Все кандидаты в одном месте</p>
+                    </div>
+                </div>
+                <div style="display: table-cell; width: 25%; padding: 4mm; text-align: center;">
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 3mm; padding: 5mm;">
+                        {icon('rocket', 28, '#fff')}
+                        <p style="color: #fff; font-weight: 600; margin: 3mm 0 1mm 0; font-size: 10pt;">Автоматизация</p>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 8pt; margin: 0;">Рассылки, напоминания, отчёты</p>
+                    </div>
+                </div>
+                <div style="display: table-cell; width: 25%; padding: 4mm; text-align: center;">
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 3mm; padding: 5mm;">
+                        {icon('chart', 28, '#fff')}
+                        <p style="color: #fff; font-weight: 600; margin: 3mm 0 1mm 0; font-size: 10pt;">Аналитика</p>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 8pt; margin: 0;">Данные по всей воронке</p>
+                    </div>
+                </div>
+                <div style="display: table-cell; width: 25%; padding: 4mm; text-align: center;">
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 3mm; padding: 5mm;">
+                        {icon('shield', 28, '#fff')}
+                        <p style="color: #fff; font-weight: 600; margin: 3mm 0 1mm 0; font-size: 10pt;">Безопасность</p>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 8pt; margin: 0;">152-ФЗ, согласия, доступы</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <div class="footer">
         <div class="footer-inner">
-            <div class="footer-left"><img src="{LOGO_SRC}" class="logo" style="filter: brightness(0) invert(1);"></div>
+            <div class="footer-left">{logo_svg_white()}</div>
             <div class="footer-right" style="color: rgba(255,255,255,0.4);">3</div>
         </div>
     </div>
@@ -921,7 +969,7 @@ HTML_CONTENT = f"""
     
     <div class="footer">
         <div class="footer-inner">
-            <div class="footer-left"><img src="{LOGO_SRC}" class="logo"></div>
+            <div class="footer-left">{logo_svg()}</div>
             <div class="footer-right">4</div>
         </div>
     </div>
@@ -973,7 +1021,7 @@ HTML_CONTENT = f"""
     
     <div class="footer">
         <div class="footer-inner">
-            <div class="footer-left"><img src="{LOGO_SRC}" class="logo"></div>
+            <div class="footer-left">{logo_svg()}</div>
             <div class="footer-right">5</div>
         </div>
     </div>
@@ -1038,7 +1086,7 @@ HTML_CONTENT = f"""
     
     <div class="footer">
         <div class="footer-inner">
-            <div class="footer-left"><img src="{LOGO_SRC}" class="logo"></div>
+            <div class="footer-left">{logo_svg()}</div>
             <div class="footer-right">6</div>
         </div>
     </div>
@@ -1088,7 +1136,7 @@ HTML_CONTENT = f"""
     
     <div class="footer">
         <div class="footer-inner">
-            <div class="footer-left"><img src="{LOGO_SRC}" class="logo"></div>
+            <div class="footer-left">{logo_svg()}</div>
             <div class="footer-right">7</div>
         </div>
     </div>
@@ -1103,42 +1151,42 @@ HTML_CONTENT = f"""
     
     <div class="row gap-md">
         <div class="col col-4">
-            <div class="card-dark" style="padding: 5mm;">
+            <div class="card-dark" style="padding: 5mm; min-height: 42mm;">
                 <div class="icon-box">{icon('search', 32, '#fff')}</div>
                 <h4 style="color: #fff;">Умный поиск</h4>
-                <p class="text-sm" style="color: rgba(255,255,255,0.6);">Семантический поиск по базе, синонимы</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.6);">Семантический поиск по всей базе резюме. Понимает синонимы, опечатки и контекст запроса.</p>
             </div>
         </div>
         <div class="col col-4">
-            <div class="card-dark" style="padding: 5mm;">
+            <div class="card-dark" style="padding: 5mm; min-height: 42mm;">
                 <div class="icon-box">{icon('target', 32, '#fff')}</div>
                 <h4 style="color: #fff;">Матчинг</h4>
-                <p class="text-sm" style="color: rgba(255,255,255,0.6);">Оценка соответствия кандидата</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.6);">Автоматическая оценка соответствия кандидата требованиям вакансии в процентах.</p>
             </div>
         </div>
         <div class="col col-4">
-            <div class="card-dark" style="padding: 5mm;">
+            <div class="card-dark" style="padding: 5mm; min-height: 42mm;">
                 <div class="icon-box">{icon('chart', 32, '#fff')}</div>
                 <h4 style="color: #fff;">Ранжирование</h4>
-                <p class="text-sm" style="color: rgba(255,255,255,0.6);">Автоматическая сортировка</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.6);">Сортировка откликов по релевантности. Лучшие кандидаты — всегда в топе списка.</p>
             </div>
         </div>
         <div class="col col-4">
-            <div class="card-dark" style="padding: 5mm;">
+            <div class="card-dark" style="padding: 5mm; min-height: 42mm;">
                 <div class="icon-box">{icon('document', 32, '#fff')}</div>
-                <h4 style="color: #fff;">Саммари</h4>
-                <p class="text-sm" style="color: rgba(255,255,255,0.6);">Краткое резюме за 20 сек</p>
+                <h4 style="color: #fff;">Саммари резюме</h4>
+                <p class="text-sm" style="color: rgba(255,255,255,0.6);">Краткая выжимка ключевых навыков и опыта кандидата за 20 секунд.</p>
             </div>
         </div>
     </div>
     
-    <div style="background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); padding: 4mm 6mm; border-radius: 2mm; margin-top: 8mm;">
-        <p class="text-sm mb-0" style="color: #F59E0B;">AI ускоряет рутину, но решение всегда за человеком</p>
+    <div style="background: rgba(79,106,245,0.15); border: 1px solid rgba(79,106,245,0.3); padding: 4mm 6mm; border-radius: 2mm; margin-top: 8mm;">
+        <p class="text-sm mb-0" style="color: #4F6AF5;"><strong>AI — ваш помощник, не замена.</strong> Финальное решение о найме всегда остаётся за рекрутером.</p>
     </div>
     
     <div class="footer">
         <div class="footer-inner">
-            <div class="footer-left"><img src="{LOGO_SRC}" class="logo" style="filter: brightness(0) invert(1);"></div>
+            <div class="footer-left">{logo_svg_white()}</div>
             <div class="footer-right" style="color: rgba(255,255,255,0.4);">8</div>
         </div>
     </div>
@@ -1191,7 +1239,7 @@ HTML_CONTENT = f"""
     
     <div class="footer">
         <div class="footer-inner">
-            <div class="footer-left"><img src="{LOGO_SRC}" class="logo"></div>
+            <div class="footer-left">{logo_svg()}</div>
             <div class="footer-right">9</div>
         </div>
     </div>
@@ -1254,7 +1302,7 @@ HTML_CONTENT = f"""
     
     <div class="footer">
         <div class="footer-inner">
-            <div class="footer-left"><img src="{LOGO_SRC}" class="logo"></div>
+            <div class="footer-left">{logo_svg()}</div>
             <div class="footer-right">10</div>
         </div>
     </div>
@@ -1311,7 +1359,7 @@ HTML_CONTENT = f"""
     
     <div class="footer">
         <div class="footer-inner">
-            <div class="footer-left"><img src="{LOGO_SRC}" class="logo" style="filter: brightness(0) invert(1);"></div>
+            <div class="footer-left">{logo_svg_white()}</div>
             <div class="footer-right" style="color: rgba(255,255,255,0.4);">11</div>
         </div>
     </div>
@@ -1371,7 +1419,7 @@ HTML_CONTENT = f"""
     
     <div class="footer">
         <div class="footer-inner">
-            <div class="footer-left"><img src="{LOGO_SRC}" class="logo"></div>
+            <div class="footer-left">{logo_svg()}</div>
             <div class="footer-right">12</div>
         </div>
     </div>
@@ -1418,7 +1466,7 @@ HTML_CONTENT = f"""
     
     <div class="footer">
         <div class="footer-inner">
-            <div class="footer-left"><img src="{LOGO_SRC}" class="logo"></div>
+            <div class="footer-left">{logo_svg()}</div>
             <div class="footer-right">13</div>
         </div>
     </div>
@@ -1466,7 +1514,7 @@ HTML_CONTENT = f"""
     
     <div class="footer">
         <div class="footer-inner">
-            <div class="footer-left"><img src="{LOGO_SRC}" class="logo"></div>
+            <div class="footer-left">{logo_svg()}</div>
             <div class="footer-right">14</div>
         </div>
     </div>
@@ -1484,7 +1532,7 @@ HTML_CONTENT = f"""
         </h2>
         
         <div style="margin-top: 15mm;">
-            <img src="{LOGO_SRC}" style="height: 15mm; filter: brightness(0) invert(1);">
+            {logo_svg_white("15mm")}
         </div>
         
         <p style="color: rgba(255,255,255,0.5); margin-top: 10mm; font-size: 12pt;">
