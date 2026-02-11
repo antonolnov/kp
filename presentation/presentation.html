@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>WorkHere — Презентация продукта</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        @page {
+            size: 1280px 720px;
+            margin: 0;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #597FFF;
+            --primary-dark: #3D5FE3;
+            --primary-deeper: #2A4BC8;
+            --primary-light: #7B9AFF;
+            --primary-pale: #E8EDFF;
+            --primary-ghost: #F5F7FF;
+            --accent-mint: #4ECDC4;
+            --accent-coral: #FF6B6B;
+            --accent-gold: #FFD93D;
+            --accent-purple: #A78BFA;
+            --dark: #0D0F1A;
+            --dark-2: #151729;
+            --gray-900: #111827;
+            --gray-800: #1F2937;
+            --gray-700: #374151;
+            --gray-600: #4B5563;
+            --gray-500: #6B7280;
+            --gray-400: #9CA3AF;
+            --gray-300: #D1D5DB;
+            --gray-200: #E5E7EB;
+            --gray-100: #F3F4F6;
+            --gray-50: #F9FAFB;
+            --white: #FFFFFF;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        body {
+            font-family: var(--font);
+            color: var(--gray-800);
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        .slide:last-child {
+            page-break-after: avoid;
+        }
+
+        /* =====================================================
+           SLIDE 1: COVER — Epic gradient + glassmorphism
+           ===================================================== */
+        .s1 {
+            background: linear-gradient(135deg, #4361EE 0%, #597FFF 30%, #7B9AFF 60%, #4361EE 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 48px 64px;
+        }
+
+        .s1::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -80px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .s1::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: 30%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .s1-orb1 {
+            position: absolute;
+            top: 60px;
+            right: 120px;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .s1-orb2 {
+            position: absolute;
+            top: 30px;
+            right: 340px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .s1-orb3 {
+            position: absolute;
+            bottom: 140px;
+            right: 80px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .s1-diamond {
+            position: absolute;
+            top: 160px;
+            right: 280px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 14px;
+            transform: rotate(45deg);
+        }
+
+        .s1-top {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .s1-logo-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .s1-logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .s1-brand {
+            font-size: 22px;
+            font-weight: 800;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+
+        .s1-center {
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 640px;
+        }
+
+        .s1-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            width: fit-content;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .s1-title {
+            font-size: 58px;
+            font-weight: 900;
+            line-height: 1.05;
+            color: white;
+            letter-spacing: -3px;
+            margin-bottom: 20px;
+        }
+
+        .s1-sub {
+            font-size: 19px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.7;
+            max-width: 460px;
+        }
+
+        .s1-bottom {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            gap: 40px;
+        }
+
+        .s1-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .s1-stat-val {
+            font-size: 36px;
+            font-weight: 900;
+            color: white;
+        }
+
+        .s1-stat-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .s1-stat-divider {
+            width: 1px;
+            background: rgba(255,255,255,0.2);
+            align-self: stretch;
+        }
+
+        /* =====================================================
+           SLIDE 2: PROBLEM — Pain points
+           ===================================================== */
+        .s2 {
+            background: var(--white);
+            padding: 56px 64px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--primary-pale);
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            width: fit-content;
+            margin-bottom: 14px;
+        }
+
+        .slide-title {
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--gray-900);
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 8px;
+        }
+
+        .slide-subtitle {
+            font-size: 16px;
+            color: var(--gray-500);
+            margin-bottom: 40px;
+        }
+
+        .s2-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            flex: 1;
+        }
+
+        .s2-card {
+            background: var(--gray-50);
+            border-radius: 20px;
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .s2-card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .s2-c1 .s2-card-icon { background: #FFF0F0; }
+        .s2-c2 .s2-card-icon { background: #FFF5E6; }
+        .s2-c3 .s2-card-icon { background: #F0F0FF; }
+
+        .s2-card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 10px;
+        }
+
+        .s2-card-text {
+            font-size: 14px;
+            color: var(--gray-500);
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .s2-card-stat {
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px solid var(--gray-200);
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--accent-coral);
+        }
+
+        .s2-card-stat span {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--gray-400);
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* =====================================================
+           SLIDE 3: SOLUTION — What is WorkHere
+           ===================================================== */
+        .s3 {
+            background: linear-gradient(180deg, var(--primary-ghost) 0%, var(--white) 100%);
+            padding: 56px 64px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .s3-main {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .s3-text h3 {
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--gray-900);
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .s3-text h3 span {
+            color: var(--primary);
+        }
+
+        .s3-text p {
+            font-size: 16px;
+            color: var(--gray-500);
+            line-height: 1.7;
+            margin-bottom: 28px;
+            max-width: 420px;
+        }
+
+        .s3-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .s3-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        .s3-chip-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .s3-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .s3-circle-outer {
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-pale) 0%, rgba(89,127,255,0.08) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .s3-circle-mid {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(89,127,255,0.15) 0%, rgba(89,127,255,0.05) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .s3-circle-inner {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 44px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            box-shadow: 0 20px 60px rgba(89,127,255,0.4);
+        }
+
+        .s3-float-card {
+            position: absolute;
+            background: white;
+            border-radius: 14px;
+            padding: 14px 18px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .s3-fc-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .s3-fc1 { top: 20px; left: 0; }
+        .s3-fc1 .s3-fc-icon { background: #E8FFF5; }
+        .s3-fc2 { bottom: 60px; left: -10px; }
+        .s3-fc2 .s3-fc-icon { background: #FFF0E8; }
+        .s3-fc3 { top: 50px; right: -20px; }
+        .s3-fc3 .s3-fc-icon { background: #F0E8FF; }
+        .s3-fc4 { bottom: 20px; right: -10px; }
+        .s3-fc4 .s3-fc-icon { background: #E8EDFF; }
+
+        .s3-fc-text {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        .s3-fc-sub {
+            font-size: 10px;
+            color: var(--gray-400);
+        }
+
+        /* =====================================================
+           SLIDE 4: BIG NUMBERS — Impact metrics
+           ===================================================== */
+        .s4 {
+            background: var(--dark);
+            color: white;
+            padding: 56px 64px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .s4::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse 60% 60% at 20% 50%, rgba(89,127,255,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 50% at 80% 30%, rgba(167,139,250,0.1) 0%, transparent 50%);
+        }
+
+        .s4-content {
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .s4 .slide-tag {
+            background: rgba(89,127,255,0.2);
+            color: var(--primary-light);
+        }
+
+        .s4 .slide-title {
+            color: white;
+            margin-bottom: 48px;
+        }
+
+        .s4-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .s4-metric {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 36px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .s4-metric-icon {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .s4-metric-val {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -3px;
+            margin-bottom: 8px;
+        }
+
+        .s4-m1 .s4-metric-val { color: #4ECDC4; }
+        .s4-m2 .s4-metric-val { color: var(--primary-light); }
+        .s4-m3 .s4-metric-val { color: #A78BFA; }
+
+        .s4-metric-label {
+            font-size: 15px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.5;
+        }
+
+        .s4-bar {
+            margin-top: 18px;
+            height: 5px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 100px;
+            overflow: hidden;
+        }
+
+        .s4-bar-fill {
+            height: 100%;
+            border-radius: 100px;
+        }
+
+        .s4-m1 .s4-bar-fill { width: 60%; background: #4ECDC4; }
+        .s4-m2 .s4-bar-fill { width: 85%; background: var(--primary-light); }
+        .s4-m3 .s4-bar-fill { width: 75%; background: #A78BFA; }
+
+        /* =====================================================
+           SLIDE 5: PIPELINE — Hiring funnel
+           ===================================================== */
+        .s5 {
+            background: linear-gradient(135deg, #597FFF 0%, #4361EE 100%);
+            padding: 56px 64px;
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+
+        .s5 .slide-tag {
+            background: rgba(255,255,255,0.15);
+            color: white;
+        }
+
+        .s5 .slide-title {
+            color: white;
+        }
+
+        .s5-pipeline {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin-top: 20px;
+        }
+
+        .s5-step {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .s5-step-circle {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 5;
+        }
+
+        .s5-step-num {
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .s5-step-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .s5-step-desc {
+            font-size: 11px;
+            color: rgba(255,255,255,0.65);
+            max-width: 130px;
+        }
+
+        .s5-connector {
+            position: absolute;
+            top: 36px;
+            left: 50%;
+            width: 100%;
+            height: 3px;
+            background: rgba(255,255,255,0.3);
+            z-index: 1;
+        }
+
+        .s5-step:last-child .s5-connector {
+            display: none;
+        }
+
+        .s5-bottom {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .s5-card {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 18px 20px;
+        }
+
+        .s5-card-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .s5-card-text {
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.5;
+        }
+
+        /* =====================================================
+           SLIDE 6: FEATURES — What's inside
+           ===================================================== */
+        .s6 {
+            background: var(--white);
+            padding: 56px 64px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .s6-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .s6-card {
+            background: var(--gray-50);
+            border-radius: 20px;
+            padding: 28px 26px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .s6-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 30px rgba(89,127,255,0.1);
+        }
+
+        .s6-card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .s6-card-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: var(--primary-pale);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .s6-card-num {
+            font-size: 36px;
+            font-weight: 900;
+            color: rgba(89,127,255,0.12);
+            line-height: 1;
+        }
+
+        .s6-card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .s6-card-text {
+            font-size: 13px;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        /* =====================================================
+           SLIDE 7: AI — Technology slide
+           ===================================================== */
+        .s7 {
+            background: linear-gradient(180deg, #0A0C1A 0%, #12152B 100%);
+            color: white;
+            padding: 56px 64px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .s7-glow1 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(89,127,255,0.3) 0%, transparent 60%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(80px);
+        }
+
+        .s7-glow2 {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(167,139,250,0.2) 0%, transparent 60%);
+            top: 20%;
+            right: 10%;
+            filter: blur(60px);
+        }
+
+        .s7-content {
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .s7 .slide-tag {
+            background: rgba(89,127,255,0.2);
+            color: var(--primary-light);
+        }
+
+        .s7-hero {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 64px;
+        }
+
+        .s7-ai-text {
+            font-size: 160px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #597FFF 0%, #A78BFA 35%, #E879F9 65%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -8px;
+            font-style: italic;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .s7-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            flex: 1;
+        }
+
+        .s7-feat {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 24px;
+        }
+
+        .s7-feat-icon {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .s7-feat-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .s7-feat-text {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.6;
+        }
+
+        /* =====================================================
+           SLIDE 8: INTEGRATIONS — Ecosystem
+           ===================================================== */
+        .s8 {
+            background: linear-gradient(180deg, var(--primary-ghost) 0%, var(--white) 100%);
+            padding: 56px 64px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .s8-main {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .s8-left h3 {
+            font-size: 38px;
+            font-weight: 900;
+            color: var(--gray-900);
+            letter-spacing: -1.5px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .s8-left h3 span {
+            color: var(--primary);
+        }
+
+        .s8-left p {
+            font-size: 15px;
+            color: var(--gray-500);
+            line-height: 1.7;
+            max-width: 380px;
+        }
+
+        .s8-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .s8-int {
+            background: white;
+            border-radius: 16px;
+            padding: 22px 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            border: 1px solid var(--gray-100);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+
+        .s8-int-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .s8-int-icon.red { background: #FFE8E8; }
+        .s8-int-icon.blue { background: #E8F0FF; }
+        .s8-int-icon.green { background: #E8FFF0; }
+        .s8-int-icon.purple { background: #F0E8FF; }
+        .s8-int-icon.yellow { background: #FFF8E8; }
+        .s8-int-icon.teal { background: #E8FFFC; }
+        .s8-int-icon.orange { background: #FFF0E8; }
+        .s8-int-icon.pink { background: #FFE8F5; }
+        .s8-int-icon.gray { background: #F0F0F0; }
+
+        .s8-int-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--gray-800);
+        }
+
+        .s8-int-desc {
+            font-size: 10px;
+            color: var(--gray-400);
+        }
+
+        /* =====================================================
+           SLIDE 9: PRICING — Tiers
+           ===================================================== */
+        .s9 {
+            background: var(--white);
+            padding: 56px 64px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .s9-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            align-items: center;
+        }
+
+        .s9-card {
+            background: var(--gray-50);
+            border-radius: 24px;
+            padding: 36px 32px;
+            text-align: center;
+            border: 2px solid transparent;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .s9-card.featured {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: scale(1.04);
+            box-shadow: 0 20px 60px rgba(89,127,255,0.3);
+            position: relative;
+        }
+
+        .s9-popular {
+            position: absolute;
+            top: -13px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-gold);
+            color: var(--gray-900);
+            font-size: 10px;
+            font-weight: 800;
+            padding: 5px 16px;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .s9-card-badge {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .s9-card-name {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .s9-card-name-default {
+            color: var(--gray-900);
+        }
+
+        .s9-card-price {
+            margin-bottom: 20px;
+        }
+
+        .s9-price-from {
+            font-size: 13px;
+            opacity: 0.6;
+        }
+
+        .s9-price-val {
+            font-size: 38px;
+            font-weight: 900;
+        }
+
+        .s9-price-val-default {
+            color: var(--gray-900);
+        }
+
+        .s9-price-period {
+            font-size: 13px;
+            opacity: 0.6;
+        }
+
+        .s9-card-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 24px;
+            flex: 1;
+        }
+
+        .s9-card-features li {
+            padding: 8px 0;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .s9-card.featured .s9-card-features li {
+            border-bottom-color: rgba(255,255,255,0.1);
+        }
+
+        .s9-card-features li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .s9-card.featured .s9-card-features li::before {
+            color: var(--accent-gold);
+        }
+
+        .s9-card-features li span {
+            color: var(--gray-600);
+        }
+
+        .s9-card.featured .s9-card-features li span {
+            color: rgba(255,255,255,0.85);
+        }
+
+        .s9-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid;
+        }
+
+        .s9-btn-outline {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .s9-btn-white {
+            border-color: white;
+            color: var(--primary);
+            background: white;
+        }
+
+        /* =====================================================
+           SLIDE 10: SECURITY & COMPLIANCE
+           ===================================================== */
+        .s10 {
+            background: var(--gray-50);
+            padding: 56px 64px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .s10-main {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            align-items: start;
+            margin-top: 10px;
+        }
+
+        .s10-card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px 24px;
+            text-align: center;
+            border: 1px solid var(--gray-100);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .s10-card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .s10-ci1 { background: #E8F0FF; }
+        .s10-ci2 { background: #E8FFF5; }
+        .s10-ci3 { background: #FFF0E8; }
+        .s10-ci4 { background: #F0E8FF; }
+
+        .s10-card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .s10-card-text {
+            font-size: 12px;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        .s10-bottom {
+            margin-top: 28px;
+            background: white;
+            border-radius: 20px;
+            padding: 24px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            border: 1px solid var(--gray-100);
+        }
+
+        .s10-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        .s10-trust-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--primary-pale);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        /* =====================================================
+           SLIDE 11: CTA — Final
+           ===================================================== */
+        .s11 {
+            background: linear-gradient(135deg, #4361EE 0%, #597FFF 40%, #7B9AFF 100%);
+            padding: 56px 64px;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            position: relative;
+        }
+
+        .s11::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -60px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .s11::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: 20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .s11-content {
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .s11-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .s11-logo-box {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .s11-logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .s11-logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            color: white;
+        }
+
+        .s11-title {
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            max-width: 700px;
+        }
+
+        .s11-sub {
+            font-size: 18px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 40px;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .s11-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--primary);
+            padding: 16px 40px;
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            margin-bottom: 48px;
+        }
+
+        .s11-contacts {
+            display: flex;
+            gap: 32px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .s11-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .s11-footer {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* =====================================================
+           SLIDE 12: MASCOT & THANK YOU
+           ===================================================== */
+        .s12 {
+            background: linear-gradient(180deg, var(--primary-ghost) 0%, var(--white) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .s12::before {
+            content: '';
+            position: absolute;
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(89,127,255,0.06) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+
+        .s12-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .s12-mascot {
+            width: 180px;
+            height: auto;
+            margin-bottom: 24px;
+            filter: drop-shadow(0 20px 40px rgba(89,127,255,0.25));
+        }
+
+        .s12-quote {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--gray-900);
+            letter-spacing: -1.5px;
+            line-height: 1.25;
+            margin-bottom: 16px;
+            max-width: 600px;
+        }
+
+        .s12-quote span {
+            color: var(--primary);
+        }
+
+        .s12-subquote {
+            font-size: 16px;
+            color: var(--gray-500);
+            margin-bottom: 32px;
+        }
+
+        .s12-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .s12-logo-box {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .s12-logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .s12-logo-text {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--gray-900);
+        }
+
+        /* =====================================================
+           PAGE NUMBER (footer on each slide)
+           ===================================================== */
+        .page-num {
+            position: absolute;
+            bottom: 24px;
+            right: 36px;
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(0,0,0,0.15);
+        }
+
+        .page-num-light {
+            color: rgba(255,255,255,0.2);
+        }
+
+        .slide-watermark {
+            position: absolute;
+            bottom: 24px;
+            left: 36px;
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .slide-watermark-light {
+            color: rgba(255,255,255,0.15);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== SLIDE 1: COVER ==================== -->
+<div class="slide s1">
+    <div class="s1-orb1"></div>
+    <div class="s1-orb2"></div>
+    <div class="s1-orb3"></div>
+    <div class="s1-diamond"></div>
+
+    <div class="s1-top">
+        <div class="s1-logo-box">
+            <img src="../kp/assets/logo.png" alt="WorkHere">
+        </div>
+        <span class="s1-brand">WorkHere</span>
+    </div>
+
+    <div class="s1-center">
+        <div class="s1-badge">HRM-СИСТЕМА НОВОГО ПОКОЛЕНИЯ</div>
+        <h1 class="s1-title">Гонка за<br>кандидатами<br>начинается здесь</h1>
+        <p class="s1-sub">Современная платформа для управления наймом.<br>От поиска до выхода на работу — всё в одной системе.</p>
+    </div>
+
+    <div class="s1-bottom">
+        <div class="s1-stat">
+            <div class="s1-stat-val">8 500+</div>
+            <div class="s1-stat-label">Клиентов</div>
+        </div>
+        <div class="s1-stat-divider"></div>
+        <div class="s1-stat">
+            <div class="s1-stat-val">350+</div>
+            <div class="s1-stat-label">Городов</div>
+        </div>
+        <div class="s1-stat-divider"></div>
+        <div class="s1-stat">
+            <div class="s1-stat-val">AI</div>
+            <div class="s1-stat-label">Технологии</div>
+        </div>
+        <div class="s1-stat-divider"></div>
+        <div class="s1-stat">
+            <div class="s1-stat-val">3 года</div>
+            <div class="s1-stat-label">Развития</div>
+        </div>
+    </div>
+
+    <div class="page-num page-num-light">01 / 12</div>
+</div>
+
+<!-- ==================== SLIDE 2: PROBLEM ==================== -->
+<div class="slide s2">
+    <div class="slide-tag">ПРОБЛЕМА</div>
+    <div class="slide-title">Почему рекрутинг буксует?</div>
+    <div class="slide-subtitle">Типичные проблемы, с которыми сталкиваются HR-команды ежедневно</div>
+
+    <div class="s2-grid">
+        <div class="s2-card s2-c1">
+            <div class="s2-card-icon">😩</div>
+            <div class="s2-card-title">Хаос в данных</div>
+            <div class="s2-card-text">Резюме в почте, Excel, мессенджерах. Нет единой базы — теряются кандидаты и история взаимодействия.</div>
+            <div class="s2-card-stat">73%<span>HR жалуются на разрозненность данных</span></div>
+        </div>
+        <div class="s2-card s2-c2">
+            <div class="s2-card-icon">⏰</div>
+            <div class="s2-card-title">Долгое закрытие</div>
+            <div class="s2-card-text">Средний срок закрытия вакансии без системы — 45+ дней. Каждый день простоя стоит бизнесу денег.</div>
+            <div class="s2-card-stat">45 дн<span>среднее время закрытия вакансии</span></div>
+        </div>
+        <div class="s2-card s2-c3">
+            <div class="s2-card-icon">📊</div>
+            <div class="s2-card-title">Нет аналитики</div>
+            <div class="s2-card-text">Без данных невозможно улучшать процесс. Решения принимаются на интуиции вместо цифр.</div>
+            <div class="s2-card-stat">0%<span>прозрачности воронки найма</span></div>
+        </div>
+    </div>
+
+    <div class="page-num">02 / 12</div>
+    <div class="slide-watermark">WorkHere</div>
+</div>
+
+<!-- ==================== SLIDE 3: SOLUTION ==================== -->
+<div class="slide s3">
+    <div class="slide-tag">РЕШЕНИЕ</div>
+
+    <div class="s3-main">
+        <div class="s3-text">
+            <h3>WorkHere — <span>единая<br>система найма</span></h3>
+            <p>Объединяем все каналы, автоматизируем рутину и даём прозрачную аналитику. Всё что нужно рекрутеру — в одном окне.</p>
+            <div class="s3-chips">
+                <div class="s3-chip"><div class="s3-chip-dot"></div>ATS</div>
+                <div class="s3-chip"><div class="s3-chip-dot"></div>CRM</div>
+                <div class="s3-chip"><div class="s3-chip-dot"></div>AI</div>
+                <div class="s3-chip"><div class="s3-chip-dot"></div>Аналитика</div>
+                <div class="s3-chip"><div class="s3-chip-dot"></div>Мессенджеры</div>
+                <div class="s3-chip"><div class="s3-chip-dot"></div>Телефония</div>
+            </div>
+        </div>
+
+        <div class="s3-visual">
+            <div class="s3-circle-outer">
+                <div class="s3-circle-mid">
+                    <div class="s3-circle-inner">WH</div>
+                </div>
+            </div>
+            <div class="s3-float-card s3-fc1">
+                <div class="s3-fc-icon">✅</div>
+                <div>
+                    <div class="s3-fc-text">Кандидат принят</div>
+                    <div class="s3-fc-sub">Только что</div>
+                </div>
+            </div>
+            <div class="s3-float-card s3-fc2">
+                <div class="s3-fc-icon">📩</div>
+                <div>
+                    <div class="s3-fc-text">Новый отклик</div>
+                    <div class="s3-fc-sub">hh.ru</div>
+                </div>
+            </div>
+            <div class="s3-float-card s3-fc3">
+                <div class="s3-fc-icon">🤖</div>
+                <div>
+                    <div class="s3-fc-text">AI-скоринг</div>
+                    <div class="s3-fc-sub">92% совпадение</div>
+                </div>
+            </div>
+            <div class="s3-float-card s3-fc4">
+                <div class="s3-fc-icon">📊</div>
+                <div>
+                    <div class="s3-fc-text">Воронка</div>
+                    <div class="s3-fc-sub">+24% конверсия</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-num">03 / 12</div>
+    <div class="slide-watermark">WorkHere</div>
+</div>
+
+<!-- ==================== SLIDE 4: BIG NUMBERS ==================== -->
+<div class="slide s4">
+    <div class="s4-content">
+        <div class="slide-tag">РЕЗУЛЬТАТЫ</div>
+        <div class="slide-title" style="color:white">Цифры, которые говорят сами за себя</div>
+
+        <div class="s4-grid">
+            <div class="s4-metric s4-m1">
+                <div class="s4-metric-icon">⚡</div>
+                <div class="s4-metric-val">-60%</div>
+                <div class="s4-metric-label">Сокращение времени<br>закрытия вакансии</div>
+                <div class="s4-bar"><div class="s4-bar-fill"></div></div>
+            </div>
+            <div class="s4-metric s4-m2">
+                <div class="s4-metric-icon">🚀</div>
+                <div class="s4-metric-val">x4</div>
+                <div class="s4-metric-label">Рост производительности<br>рекрутера</div>
+                <div class="s4-bar"><div class="s4-bar-fill"></div></div>
+            </div>
+            <div class="s4-metric s4-m3">
+                <div class="s4-metric-icon">📉</div>
+                <div class="s4-metric-val">-40%</div>
+                <div class="s4-metric-label">Снижение расходов<br>на подбор персонала</div>
+                <div class="s4-bar"><div class="s4-bar-fill"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-num page-num-light">04 / 12</div>
+    <div class="slide-watermark slide-watermark-light">WorkHere</div>
+</div>
+
+<!-- ==================== SLIDE 5: PIPELINE ==================== -->
+<div class="slide s5">
+    <div class="slide-tag">ВОРОНКА</div>
+    <div class="slide-title" style="color:white">Этапы найма с WorkHere</div>
+
+    <div class="s5-pipeline">
+        <div class="s5-step">
+            <div class="s5-connector"></div>
+            <div class="s5-step-circle"><div class="s5-step-num">1</div></div>
+            <div class="s5-step-title">Заявка</div>
+            <div class="s5-step-desc">Постановка задачи на подбор</div>
+        </div>
+        <div class="s5-step">
+            <div class="s5-connector"></div>
+            <div class="s5-step-circle"><div class="s5-step-num">2</div></div>
+            <div class="s5-step-title">Поиск</div>
+            <div class="s5-step-desc">Импорт резюме, AI-подбор</div>
+        </div>
+        <div class="s5-step">
+            <div class="s5-connector"></div>
+            <div class="s5-step-circle"><div class="s5-step-num">3</div></div>
+            <div class="s5-step-title">Скрининг</div>
+            <div class="s5-step-desc">Первичная оценка и фильтрация</div>
+        </div>
+        <div class="s5-step">
+            <div class="s5-connector"></div>
+            <div class="s5-step-circle"><div class="s5-step-num">4</div></div>
+            <div class="s5-step-title">Интервью</div>
+            <div class="s5-step-desc">Видео, звонки, чаты</div>
+        </div>
+        <div class="s5-step">
+            <div class="s5-connector"></div>
+            <div class="s5-step-circle"><div class="s5-step-num">5</div></div>
+            <div class="s5-step-title">Оценка</div>
+            <div class="s5-step-desc">Формы, обратная связь</div>
+        </div>
+        <div class="s5-step">
+            <div class="s5-step-circle"><div class="s5-step-num">6</div></div>
+            <div class="s5-step-title">Оффер</div>
+            <div class="s5-step-desc">Документы, КЭДО, выход</div>
+        </div>
+    </div>
+
+    <div class="s5-bottom">
+        <div class="s5-card">
+            <div class="s5-card-title">Автоподхват</div>
+            <div class="s5-card-text">Резюме с HH, Авито, SuperJob автоматически попадают в систему</div>
+        </div>
+        <div class="s5-card">
+            <div class="s5-card-title">Без дублей</div>
+            <div class="s5-card-text">Умный мерж карточек кандидатов из разных источников</div>
+        </div>
+        <div class="s5-card">
+            <div class="s5-card-title">Талант-пул</div>
+            <div class="s5-card-text">Кадровый резерв и поиск среди «тёплых» кандидатов</div>
+        </div>
+        <div class="s5-card">
+            <div class="s5-card-title">SLA</div>
+            <div class="s5-card-text">Контроль сроков и уведомления на каждом этапе</div>
+        </div>
+    </div>
+
+    <div class="page-num page-num-light">05 / 12</div>
+</div>
+
+<!-- ==================== SLIDE 6: FEATURES ==================== -->
+<div class="slide s6">
+    <div class="slide-tag">ВОЗМОЖНОСТИ</div>
+    <div class="slide-title">Что внутри WorkHere</div>
+    <div class="slide-subtitle">Полный арсенал инструментов для эффективного рекрутинга</div>
+
+    <div class="s6-grid">
+        <div class="s6-card">
+            <div class="s6-card-header">
+                <div class="s6-card-icon">👥</div>
+                <div class="s6-card-num">01</div>
+            </div>
+            <div class="s6-card-title">Единая база кандидатов</div>
+            <div class="s6-card-text">Все контакты, история переписки и комментарии в одном защищённом хранилище</div>
+        </div>
+        <div class="s6-card">
+            <div class="s6-card-header">
+                <div class="s6-card-icon">💬</div>
+                <div class="s6-card-num">02</div>
+            </div>
+            <div class="s6-card-title">Омниканальные чаты</div>
+            <div class="s6-card-text">HH.ru, Авито, WhatsApp, Telegram — все диалоги в одном окне</div>
+        </div>
+        <div class="s6-card">
+            <div class="s6-card-header">
+                <div class="s6-card-icon">📅</div>
+                <div class="s6-card-num">03</div>
+            </div>
+            <div class="s6-card-title">Умный календарь</div>
+            <div class="s6-card-text">Интервью через Телемост, автонапоминания кандидатам и нанимающим</div>
+        </div>
+        <div class="s6-card">
+            <div class="s6-card-header">
+                <div class="s6-card-icon">⚙️</div>
+                <div class="s6-card-num">04</div>
+            </div>
+            <div class="s6-card-title">Автоматизация</div>
+            <div class="s6-card-text">Триггеры, авторассылки, шаблоны, задачи с дедлайнами и уведомлениями</div>
+        </div>
+        <div class="s6-card">
+            <div class="s6-card-header">
+                <div class="s6-card-icon">📊</div>
+                <div class="s6-card-num">05</div>
+            </div>
+            <div class="s6-card-title">Аналитика и отчёты</div>
+            <div class="s6-card-text">Воронка найма, time-to-hire, дашборды по ролям, конструктор отчётов</div>
+        </div>
+        <div class="s6-card">
+            <div class="s6-card-header">
+                <div class="s6-card-icon">📄</div>
+                <div class="s6-card-num">06</div>
+            </div>
+            <div class="s6-card-title">Документооборот</div>
+            <div class="s6-card-text">Генерация офферов, КЭДО, передача данных в HR-систему</div>
+        </div>
+    </div>
+
+    <div class="page-num">06 / 12</div>
+    <div class="slide-watermark">WorkHere</div>
+</div>
+
+<!-- ==================== SLIDE 7: AI ==================== -->
+<div class="slide s7">
+    <div class="s7-glow1"></div>
+    <div class="s7-glow2"></div>
+
+    <div class="s7-content">
+        <div class="slide-tag">ТЕХНОЛОГИИ</div>
+
+        <div class="s7-hero">
+            <div class="s7-ai-text">AI</div>
+
+            <div class="s7-features">
+                <div class="s7-feat">
+                    <div class="s7-feat-icon">🔍</div>
+                    <div class="s7-feat-title">Семантический поиск</div>
+                    <div class="s7-feat-text">Находит кандидатов по смыслу, а не только по ключевым словам. Понимает контекст и синонимы.</div>
+                </div>
+                <div class="s7-feat">
+                    <div class="s7-feat-icon">📊</div>
+                    <div class="s7-feat-title">AI-скоринг</div>
+                    <div class="s7-feat-text">Автоматическое ранжирование кандидатов по степени соответствия вакансии.</div>
+                </div>
+                <div class="s7-feat">
+                    <div class="s7-feat-icon">✍️</div>
+                    <div class="s7-feat-title">Генерация текстов</div>
+                    <div class="s7-feat-text">Создание вакансий, сообщений кандидатам, шаблонов одним нажатием.</div>
+                </div>
+                <div class="s7-feat">
+                    <div class="s7-feat-icon">🎙️</div>
+                    <div class="s7-feat-title">Анализ звонков</div>
+                    <div class="s7-feat-text">Транскрибация, саммари, ключевые факты из телефонных интервью.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-num page-num-light">07 / 12</div>
+    <div class="slide-watermark slide-watermark-light">WorkHere</div>
+</div>
+
+<!-- ==================== SLIDE 8: INTEGRATIONS ==================== -->
+<div class="slide s8">
+    <div class="slide-tag">ЭКОСИСТЕМА</div>
+
+    <div class="s8-main">
+        <div class="s8-left">
+            <h3>Все ваши<br>инструменты —<br><span>в одном месте</span></h3>
+            <p>WorkHere интегрируется с ключевыми job-сайтами, мессенджерами, CRM и телефонией. Никаких переключений между вкладками.</p>
+        </div>
+
+        <div class="s8-grid">
+            <div class="s8-int">
+                <div class="s8-int-icon red">🔴</div>
+                <div class="s8-int-name">HH.ru</div>
+                <div class="s8-int-desc">Job-сайт</div>
+            </div>
+            <div class="s8-int">
+                <div class="s8-int-icon blue">🔵</div>
+                <div class="s8-int-name">Авито</div>
+                <div class="s8-int-desc">Job-сайт</div>
+            </div>
+            <div class="s8-int">
+                <div class="s8-int-icon green">🟢</div>
+                <div class="s8-int-name">SuperJob</div>
+                <div class="s8-int-desc">Job-сайт</div>
+            </div>
+            <div class="s8-int">
+                <div class="s8-int-icon purple">🟣</div>
+                <div class="s8-int-name">Работа.ру</div>
+                <div class="s8-int-desc">Job-сайт</div>
+            </div>
+            <div class="s8-int">
+                <div class="s8-int-icon yellow">📹</div>
+                <div class="s8-int-name">Телемост</div>
+                <div class="s8-int-desc">Видеозвонки</div>
+            </div>
+            <div class="s8-int">
+                <div class="s8-int-icon teal">💬</div>
+                <div class="s8-int-name">Telegram</div>
+                <div class="s8-int-desc">Мессенджер</div>
+            </div>
+            <div class="s8-int">
+                <div class="s8-int-icon green">💬</div>
+                <div class="s8-int-name">WhatsApp</div>
+                <div class="s8-int-desc">Мессенджер</div>
+            </div>
+            <div class="s8-int">
+                <div class="s8-int-icon orange">📦</div>
+                <div class="s8-int-name">1С</div>
+                <div class="s8-int-desc">Учётная система</div>
+            </div>
+            <div class="s8-int">
+                <div class="s8-int-icon gray">⚙️</div>
+                <div class="s8-int-name">API</div>
+                <div class="s8-int-desc">Свои решения</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-num">08 / 12</div>
+    <div class="slide-watermark">WorkHere</div>
+</div>
+
+<!-- ==================== SLIDE 9: PRICING ==================== -->
+<div class="slide s9">
+    <div class="slide-tag">ТАРИФЫ</div>
+    <div class="slide-title">Выберите свой план</div>
+    <div class="slide-subtitle">Гибкие тарифы для команд любого размера</div>
+
+    <div class="s9-grid">
+        <div class="s9-card">
+            <div class="s9-card-badge">🥉</div>
+            <div class="s9-card-name s9-card-name-default">Старт</div>
+            <div class="s9-card-price">
+                <span class="s9-price-from">от </span>
+                <span class="s9-price-val s9-price-val-default">5 000</span>
+                <span class="s9-price-period"> ₽/мес</span>
+            </div>
+            <ul class="s9-card-features">
+                <li><span>До 3 пользователей</span></li>
+                <li><span>Базовые интеграции</span></li>
+                <li><span>Email-поддержка</span></li>
+                <li><span>Мобильное приложение</span></li>
+            </ul>
+            <div class="s9-btn s9-btn-outline">Подробнее</div>
+        </div>
+
+        <div class="s9-card featured">
+            <div class="s9-popular">ПОПУЛЯРНЫЙ</div>
+            <div class="s9-card-badge">🥇</div>
+            <div class="s9-card-name">Корпорация</div>
+            <div class="s9-card-price">
+                <span class="s9-price-from">от </span>
+                <span class="s9-price-val">50 000</span>
+                <span class="s9-price-period"> ₽/мес</span>
+            </div>
+            <ul class="s9-card-features">
+                <li><span>Безлимит пользователей</span></li>
+                <li><span>Все интеграции + API</span></li>
+                <li><span>Поддержка 24/7</span></li>
+                <li><span>Персональный менеджер</span></li>
+                <li><span>Кастомизация</span></li>
+            </ul>
+            <div class="s9-btn s9-btn-white">Выбрать</div>
+        </div>
+
+        <div class="s9-card">
+            <div class="s9-card-badge">🥈</div>
+            <div class="s9-card-name s9-card-name-default">Бизнес</div>
+            <div class="s9-card-price">
+                <span class="s9-price-from">от </span>
+                <span class="s9-price-val s9-price-val-default">15 000</span>
+                <span class="s9-price-period"> ₽/мес</span>
+            </div>
+            <ul class="s9-card-features">
+                <li><span>До 10 пользователей</span></li>
+                <li><span>Все интеграции</span></li>
+                <li><span>Приоритетная поддержка</span></li>
+                <li><span>Расширенная аналитика</span></li>
+            </ul>
+            <div class="s9-btn s9-btn-outline">Подробнее</div>
+        </div>
+    </div>
+
+    <div class="page-num">09 / 12</div>
+    <div class="slide-watermark">WorkHere</div>
+</div>
+
+<!-- ==================== SLIDE 10: SECURITY ==================== -->
+<div class="slide s10">
+    <div class="slide-tag">БЕЗОПАСНОСТЬ</div>
+    <div class="slide-title">Надёжность и соответствие</div>
+    <div class="slide-subtitle">Ваши данные под защитой на каждом уровне</div>
+
+    <div class="s10-main">
+        <div class="s10-card">
+            <div class="s10-card-icon s10-ci1">🇷🇺</div>
+            <div class="s10-card-title">Российское ПО</div>
+            <div class="s10-card-text">Вся инфраструктура и данные располагаются на территории России</div>
+        </div>
+        <div class="s10-card">
+            <div class="s10-card-icon s10-ci2">🛡️</div>
+            <div class="s10-card-title">ФЗ-152</div>
+            <div class="s10-card-text">Полное соответствие закону о защите персональных данных из коробки</div>
+        </div>
+        <div class="s10-card">
+            <div class="s10-card-icon s10-ci3">🔐</div>
+            <div class="s10-card-title">Шифрование</div>
+            <div class="s10-card-text">SSL/TLS, шифрование данных на уровне базы, защита от утечек</div>
+        </div>
+        <div class="s10-card">
+            <div class="s10-card-icon s10-ci4">📱</div>
+            <div class="s10-card-title">Мобильная версия</div>
+            <div class="s10-card-text">Работайте откуда угодно — iOS и Android приложения</div>
+        </div>
+    </div>
+
+    <div class="s10-bottom">
+        <div class="s10-trust-item">
+            <div class="s10-trust-icon">⚡</div>
+            Быстрый старт за 15 минут
+        </div>
+        <div class="s10-trust-item">
+            <div class="s10-trust-icon">🎓</div>
+            Бесплатное обучение
+        </div>
+        <div class="s10-trust-item">
+            <div class="s10-trust-icon">🔄</div>
+            Автоперенос базы кандидатов
+        </div>
+        <div class="s10-trust-item">
+            <div class="s10-trust-icon">🤝</div>
+            Персональная настройка
+        </div>
+    </div>
+
+    <div class="page-num">10 / 12</div>
+    <div class="slide-watermark">WorkHere</div>
+</div>
+
+<!-- ==================== SLIDE 11: CTA ==================== -->
+<div class="slide s11">
+    <div class="s11-content">
+        <div class="s11-logo">
+            <div class="s11-logo-box">
+                <img src="../kp/assets/logo.png" alt="WorkHere">
+            </div>
+            <span class="s11-logo-text">WorkHere</span>
+        </div>
+
+        <h2 class="s11-title">Готовы нанимать эффективнее?</h2>
+        <p class="s11-sub">Присоединяйтесь к 8 500+ компаниям, которые уже ускорили свой рекрутинг с WorkHere</p>
+
+        <div class="s11-cta-btn">workhere.ru &rarr;</div>
+
+        <div class="s11-contacts">
+            <div class="s11-contact-item">
+                <span>📞</span>
+                <span>+7 (800) 000-00-00</span>
+            </div>
+            <div class="s11-contact-item">
+                <span>✉️</span>
+                <span>sales@workhere.ru</span>
+            </div>
+            <div class="s11-contact-item">
+                <span>💬</span>
+                <span>Telegram: @workhere</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="s11-footer">WorkHere &copy; 2026. Все права защищены.</div>
+
+    <div class="page-num page-num-light">11 / 12</div>
+</div>
+
+<!-- ==================== SLIDE 12: MASCOT ==================== -->
+<div class="slide s12">
+    <div class="s12-content">
+        <img class="s12-mascot" src="../kp/assets/mascot/workhere_mascot_08_transparent.svg" alt="WorkHere Mascot">
+
+        <div class="s12-quote">
+            HRM-систем много,<br>но вершину найма<br>покоряет <span>лишь одна</span>
+        </div>
+
+        <div class="s12-subquote">Спасибо за внимание!</div>
+
+        <div class="s12-logo">
+            <div class="s12-logo-box">
+                <img src="../kp/assets/logo.png" alt="WorkHere">
+            </div>
+            <span class="s12-logo-text">WorkHere</span>
+        </div>
+    </div>
+
+    <div class="page-num">12 / 12</div>
+</div>
+
+</body>
+</html>
